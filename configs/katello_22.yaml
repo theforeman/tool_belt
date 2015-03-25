@@ -1,0 +1,23 @@
+---
+:project: katello
+:release: 2.2
+:redmine_release_id: 23
+:repos:
+  :katello:
+    :branch: KATELLO-2.2
+    :repo: https://github.com/Katello/katello.git
+  :katello-installer:
+    :branch: KATELLO-2.2
+    :repo: https://github.com/Katello/katello-installer.git
+  :hammer-cli-katello:
+    :branch: 0.0.10
+    :repo: https://github.com/Katello/hammer-cli-katello.git
+  :katello.org:
+    :branch: KATELLO-2.2
+    :repo: https://github.com/Katello/katello.org.git
+:ignores:
+  - 9070
+  - 9474
+  - 9484
+  - 9345
+  - 9582

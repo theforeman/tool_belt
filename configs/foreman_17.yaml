@@ -1,0 +1,9 @@
+---
+:project: foreman
+:release: 1.7.0
+:redmine_release_id: 21
+:repos:
+  :foreman:
+    :branch: 1.7-stable
+    :repo: https://github.com/theforeman/foreman.git
+:ignores:
