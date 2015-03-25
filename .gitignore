@@ -1,4 +1,5 @@
 repos
+cherry_picks*
 .issue_cache
 .idea*
 .project

@@ -13,7 +13,7 @@ module ToolBelt
       self.issue_cache = IssueCache.new(project, release, redmine_release_id)
       setup_repos(repos)
       picks = find_cherry_picks(project, release, repos.keys)
-      write_cherry_pick_log(picks)
+      write_cherry_pick_log(picks, release)
     end
 
     def load_issues
@@ -94,7 +94,7 @@ module ToolBelt
       ignores.include?(id) if ignores
     end
 
-    def write_cherry_pick_log(picks)
+    def write_cherry_pick_log(picks, release)
       picks.sort_by! { |pick| pick['closed_on'] }
 
       ignore_string = ["Ignored Cherry Picks\n====================="]
@@ -108,9 +108,11 @@ module ToolBelt
         end
       end
 
-      File.open('cherry_picks', 'w') do |file|
+      File.open("cherry_picks_#{release}", 'w') do |file|
         file.write(ignore_string.join("\n") + "\n\n" + missing_string.join("\n"))
       end
+
+      puts "Cherry picks written to cherry_picks_#{release}"
     end
 
   end

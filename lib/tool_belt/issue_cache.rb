@@ -26,9 +26,11 @@ module ToolBelt
 
     def load_issues
       if cache_exists?
-        puts "Issues cache for #{@release} exists and was last updated on #{last_update}. Please remove .issue_cache/#{@project}_#{@release}_issues.json if you wish to re-cache."
+        puts "Issues cache for #{@release} exists and was last updated on #{last_update}."
+        puts "Please remove .issue_cache/#{@project}_#{@release}_issues.json if you wish to re-cache."
       else
-        puts "Issues cache for #{@release} does not exist. Loading issues from Redmine for this release and caching them at .issue_cache/#{@project}_#{@release}_issues.json"
+        puts "Issues cache for #{@release} does not exist."
+        puts "Loading issues from Redmine for this release and caching them at .issue_cache/#{@project}_#{@release}_issues.json"
         cache_issues
       end
 
