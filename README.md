@@ -8,3 +8,31 @@ After a release has been branched, managing what has been cherry picked and what
 
     ./tools.rb cherry-picks <config_file>
 
+### Release Config File
+
+The release configuration file maintains information about the release including redmine information, repositories, and branches. An example configuration file:
+
+    ---
+    :project: katello
+    :release: 2.1
+    :redmine_release_id: 14
+    :repos:
+      :katello:
+        :branch: KATELLO-2.1
+        :repo: https://github.com/Katello/katello.git
+      :katello-installer:
+        :branch: KATELLO-2.1
+        :repo: https://github.com/Katello/katello-installer.git
+      :hammer-cli-katello:
+        :branch: 0.0.7
+        :repo: https://github.com/Katello/hammer-cli-katello.git
+      :katello.org:
+        :branch: KATELLO-2.1
+        :repo: https://github.com/Katello/katello.org.git
+      :katello-agent:
+        :branch: KATELLO-2.1
+        :repo: https://github.com/Katello/katello-agent.git
+    :ignores:
+      - 7423
+      - 8265
+      - 7815
