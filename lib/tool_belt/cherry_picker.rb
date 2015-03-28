@@ -1,63 +1,27 @@
-#!/usr/bin/env ruby
-
 require 'json'
 require 'time'
+
+require File.join(File.dirname(__FILE__), 'systools')
+require File.join(File.dirname(__FILE__), 'issue_cache')
 
 module ToolBelt
   class CherryPicker
 
-    attr_accessor :ignores, :issue_cache
+    attr_accessor :ignores, :issue_cache, :release_environment
 
-    def initialize(project, release, repos, redmine_release_id, ignores=[])
-      self.ignores = ignores
-      self.issue_cache = IssueCache.new(project, release, redmine_release_id)
-      setup_repos(repos)
-      picks = find_cherry_picks(project, release, repos.keys)
-      write_cherry_pick_log(picks, release)
+    def initialize(config, release_environment)
+      self.ignores = config.ignores || []
+      self.issue_cache = IssueCache.new(config.project, config.release, config.redmine_release_id)
+      self.release_environment = release_environment
+      picks = find_cherry_picks(config.project, config.release, release_environment.repo_names)
+      write_cherry_pick_log(picks, config.release)
     end
 
     def load_issues
       issue_cache.load_issues
     end
 
-    def setup_repos(repos)
-      Dir.mkdir('repos') if !File.exist?('repos')
-
-      Dir.chdir('repos') do
-        repos.each do |name, repo|
-          syscall("git clone #{repo[:repo]}") if !File.exist?(name.to_s)
-          Dir.chdir(name.to_s) do
-            syscall("git checkout #{repo[:branch]}")
-          end
-        end
-      end
-    end
-
-    def commit_in_repos?(repos, message, issue)
-      repos.any? do |repo|
-        commit_in_repo?(repo, message, issue)
-      end
-    end
-
-    def git_escape(string)
-      string = string.split("`")[0] if string.include?("`")
-      string.gsub('"', '\"').gsub('[', '\[')
-    end
-
-    def commit_in_repo?(repo, message, issue)
-      Dir.chdir("repos/#{repo}") do
-        output = syscall('git log --grep="' + git_escape(message.split("\n").first) + '"')
-        if output.is_a?(String)
-          if output.empty?
-            return false
-          else
-            return true
-          end
-        end
-      end
-    end
-
-    def find_cherry_picks(project, release, repos)
+    def find_cherry_picks(project, release, repo_names)
       picks = []
       issues = load_issues
 
@@ -68,7 +32,7 @@ module ToolBelt
           if commit['comments'].start_with?('Merge pull request')
             break
           else
-            if !commit_in_repos?(repos, commit['comments'], issue)
+            if !@release_environment.commit_in_repos?(repo_names, commit['comments'])
               picks << issue
             end
           end

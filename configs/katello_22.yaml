@@ -1,9 +1,12 @@
 ---
 :project: katello
+:github_org: katello
 :release: 2.2
+:code_name: Maibock
 :redmine_release_id: 23
 :repos:
   :katello:
+    :main: true
     :branch: KATELLO-2.2
     :repo: https://github.com/Katello/katello.git
   :katello-installer:

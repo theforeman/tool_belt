@@ -1,8 +1,3 @@
-#!/usr/bin/env ruby
-
-require 'json'
-require 'yaml'
-
 require File.join(File.dirname(__FILE__), 'config')
 require File.join(File.dirname(__FILE__), 'redmine/project')
 require File.join(File.dirname(__FILE__), 'redmine/issue')
