@@ -7,10 +7,10 @@ module ToolBelt
 
     attr_accessor :project, :release, :redmine_release_id
 
-    def initialize(project, release, redmine_release_id)
-      self.project = project
-      self.release = release
-      self.redmine_release_id = redmine_release_id
+    def initialize(config)
+      self.project = config.project
+      self.release = config.release
+      self.redmine_release_id = config.redmine_release_id
     end
 
     def add_revisions(issues)
@@ -19,8 +19,8 @@ module ToolBelt
       end
     end
 
-    def load_issues
-      if cache_exists?
+    def load_issues(refresh=false)
+      if cache_exists? && !refresh
         puts "Issues cache for #{@release} exists and was last updated on #{last_update}."
         puts "Please remove .issue_cache/#{@project}_#{@release}_issues.json if you wish to re-cache."
       else

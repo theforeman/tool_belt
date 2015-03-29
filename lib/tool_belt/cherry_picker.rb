@@ -11,7 +11,7 @@ module ToolBelt
 
     def initialize(config, release_environment)
       self.ignores = config.ignores || []
-      self.issue_cache = IssueCache.new(config.project, config.release, config.redmine_release_id)
+      self.issue_cache = IssueCache.new(config)
       self.release_environment = release_environment
       picks = find_cherry_picks(config.project, config.release, release_environment.repo_names)
       write_cherry_pick_log(picks, config.release)

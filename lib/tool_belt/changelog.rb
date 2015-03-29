@@ -7,7 +7,7 @@ module ToolBelt
 
     def initialize(config, release_environment)
       self.config = config
-      issue_cache = IssueCache.new(config.project, config.release, config.redmine_release_id)
+      issue_cache = IssueCache.new(config)
 
       self.features = {}
       self.bugs = {}
