@@ -24,34 +24,31 @@ module ToolBelt
     def find_cherry_picks(project, release, repo_names)
       picks = []
       issues = load_issues
+      issues = issues.select { |issue| !issue['closed_on'].nil? }
 
       issues.each do |issue|
+        revisions = []
         commits = issue['changesets']
 
         commits.each do |commit|
-          if commit['comments'].start_with?('Merge pull request')
-            break
-          else
-            if !@release_environment.commit_in_repos?(repo_names, commit['comments'])
-              picks << issue
-            end
+          if !commit['comments'].start_with?('Merge pull request') && !@release_environment.commit_in_repos?(repo_names, commit['comments'])
+            revisions << commit['revision']
           end
         end
+
+        picks << cherry_pick(issue, revisions) unless revisions.empty?
       end
 
       picks
     end
 
-    def revisions(issue)
-      revisions = []
-
-      issue['changesets'].each do |commit|
-        if !commit['comments'].start_with?('Merge pull request')
-          revisions << commit['revision']
-        end
-      end
-
-      revisions
+    def cherry_pick(issue, revisions)
+      {
+        'id' => issue['id'],
+        'closed_on' => issue['closed_on'],
+        'subject' => issue['subject'],
+        'revisions' => revisions
+      }
     end
 
     def ignore?(id)
@@ -66,9 +63,9 @@ module ToolBelt
 
       picks.each do |pick|
         if ignore?(pick['id'])
-          ignore_string << "#{pick['id']} - #{Time.parse(pick['closed_on'])}: #{revisions(pick)} #{pick['subject']}"
+          ignore_string << "#{pick['id']} - #{Time.parse(pick['closed_on'])}: #{pick['revisions']} #{pick['subject']}"
         else
-          missing_string << "#{pick['id']} - #{Time.parse(pick['closed_on'])}: #{revisions(pick)} #{pick['subject']}"
+          missing_string << "#{pick['id']} - #{Time.parse(pick['closed_on'])}: #{pick['revisions']} #{pick['subject']}"
         end
       end
 
