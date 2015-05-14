@@ -18,6 +18,9 @@
   :katello.org:
     :branch: KATELLO-2.2
     :repo: https://github.com/Katello/katello.org.git
+  :katello-misc:
+    :branch: KATELLO-2.2
+    :repo: https://github.com/Katello/katello-misc.git
 :ignores:
   - 9070
   - 9474

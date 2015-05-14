@@ -38,10 +38,23 @@ class ChangelogCommand < Clamp::Command
 
 end
 
+class SetupEnvironmentCommand < Clamp::Command
+
+  parameter "config_file", "Release configuration file"
+
+  def execute
+    config = ToolBelt::Config.new(config_file)
+    release_environment = ToolBelt::ReleaseEnvironment.new(config.options.repos)
+    release_environment.setup
+  end
+
+end
+
 class MainCommand < Clamp::Command
 
   subcommand "cherry-picks", "Calculate needed cherry picks for a given release configuration", CherryPickCommand
   subcommand "changelog", "Generate changelog for a given release", ChangelogCommand
+  subcommand "setup-environment", "Setup release environment for a given configuration", SetupEnvironmentCommand
 
 end
 
