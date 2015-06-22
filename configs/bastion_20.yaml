@@ -1,0 +1,9 @@
+---
+:project: bastion
+:release: 2.0.0
+:redmine_release_id: 64
+:repos:
+  :bastion:
+    :branch: 2.0.0
+    :repo: https://github.com/Katello/bastion.git
+:ignores:
