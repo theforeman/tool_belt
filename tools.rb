@@ -50,11 +50,26 @@ class SetupEnvironmentCommand < Clamp::Command
 
 end
 
+class PulpRepositoryUpdateCommand < Clamp::Command
+
+  parameter "katello_version", "Katello version of Pulp to compare against"
+  parameter "pulp_version", "Pulp stable version to compare against"
+  option "--commit", :flag, "Runs the update command against Koji, otherwise runs in as a dry run and prints potential updates"
+
+  def execute
+    package_updater = ToolBelt::PulpRepositoryUpdater.new(katello_version, pulp_version, commit?)
+    package_updater.update_server
+    package_updater.update_client
+  end
+
+end
+
 class MainCommand < Clamp::Command
 
   subcommand "cherry-picks", "Calculate needed cherry picks for a given release configuration", CherryPickCommand
   subcommand "changelog", "Generate changelog for a given release", ChangelogCommand
   subcommand "setup-environment", "Setup release environment for a given configuration", SetupEnvironmentCommand
+  subcommand "pulp-repo-update", "Update Katello's Pulp repository based on parameters", PulpRepositoryUpdateCommand
 
 end
 
