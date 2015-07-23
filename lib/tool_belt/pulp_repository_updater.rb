@@ -32,8 +32,24 @@ module ToolBelt
 
     def compare_repos(os_version, client=false)
       katello_repo = client ? katello_client_repo(os_version) : katello_pulp_repo(os_version)
-      command = "repodiff --archlist=noarch --simple --old=#{katello_repo} --new=#{pulp_repo(os_version)}"
-      syscall(command)
+      setup_pulp_repo(os_version)
+      command = "repodiff --simple --old=#{katello_repo} --new=file://#{Dir.pwd}/tmp/"
+      syscall(command)[0]
+    end
+
+    def setup_pulp_repo(os_version)
+      syscall('rm -rf tmp/')
+      Dir.mkdir('tmp')
+      Dir.chdir('tmp') do
+        syscall("wget #{pulp_repo(os_version)}")
+        index = File.read('index.html')
+        rpms = index.scan(/href=".*.rpm"/).collect { |link| link.split('href=')[1].gsub('"', '') }
+        rpms.each do |rpm|
+          syscall("wget #{pulp_repo(os_version)}#{rpm}")
+        end
+        syscall("sudo yum -y install createrepo") unless syscall('rpm -q createrepo')[1]
+        syscall("createrepo .")
+      end
     end
 
     def removed_packages(output)
@@ -73,17 +89,17 @@ module ToolBelt
     end
 
     def katello_pulp_repo(os_version)
-      "https://fedorapeople.org/groups/katello/releases/yum/#{@katello_version}/pulp/RHEL/#{os_version}/x86_64/"
+      "https://fedorapeople.org/groups/katello/releases/source/srpm/#{@katello_version}/pulp/RHEL/#{os_version}/"
     end
 
     def katello_client_repo(os_version)
       os_name = os_version.include?('fedora') ? 'Fedora' : 'RHEL'
       os_version = os_version.split('fedora-')[1] if os_version.include?('fedora')
-      "https://fedorapeople.org/groups/katello/releases/yum/#{@katello_version}/client/#{os_name}/#{os_version}/x86_64/"
+      "https://fedorapeople.org/groups/katello/releases/source/srpm/#{@katello_version}/client/#{os_name}/#{os_version}/"
     end
 
     def pulp_repo(os_version)
-      "https://repos.fedorapeople.org/repos/pulp/pulp/stable/#{@pulp_version}/#{os_version}/x86_64/"
+      "https://repos.fedorapeople.org/repos/pulp/pulp/stable/#{@pulp_version}/#{os_version}/src/"
     end
 
     def koji_tag(os_version, client=false)
@@ -100,7 +116,10 @@ module ToolBelt
       puts "\n=== Removing Packages Phase ====\n"
       puts "The following packages are being removed from #{tag}: "
       puts "#{packages.join("\n")}"
-      run("koji-katello untag-pkg #{tag} #{packages.join(' ')}")
+
+      packages.each do |package|
+        run("koji -c ~/.koji/katello-config untag-pkg #{tag} #{package}")
+      end
     end
 
     def add_packages(packages, tag)
@@ -110,17 +129,22 @@ module ToolBelt
       puts "#{packages.join("\n")}"
 
       packages.each do |package|
-        run("koji-katello add-pkg #{tag} #{package.split(/-[0-9]/).first} --owner=jsherrill")
+        run("koji -c ~/.koji/katello-config add-pkg #{tag} #{package.split(/-[0-9]/).first} --owner=jsherril")
       end
 
-      run("koji-katello tag-pkg #{tag} #{packages.join(' ')}")
+      packages.each do |package|
+        run("koji -c ~/.koji/katello-config tag-pkg #{tag} #{package}")
+      end
     end
 
     def tag_packages(packages, tag)
       puts "\n=== Tagging Packages Phase ====\n"
       puts "The following packages are being tagged into #{tag}: "
       puts "#{packages.join("\n")}"
-      run("koji-katello tag-pkg #{tag} #{packages.join(' ')}")
+
+      packages.each do |package|
+        run("koji -c ~/.koji/katello-config tag-pkg #{tag} #{package}")
+      end
     end
 
     def run(command)
