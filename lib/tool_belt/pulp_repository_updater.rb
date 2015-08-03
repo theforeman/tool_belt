@@ -103,12 +103,13 @@ module ToolBelt
     end
 
     def koji_tag(os_version, client=false)
-      return "katello-thirdparty-pulp-rhel#{os_version}" unless client
+      prefix = katello_version == 'nightly' ? 'katello' : "katello-#{katello_version}"
+      return "#{prefix}-thirdparty-pulp-rhel#{os_version}" unless client
 
       if os_version.include?('fedora')
-        "katello-nightly-fedora#{os_version.split('fedora-')[1]}"
+        "katello-#{katello_version}-fedora#{os_version.split('fedora-')[1]}"
       else
-        "katello-nightly-rhel#{os_version}"
+        "katello-#{katello_version}-rhel#{os_version}"
       end
     end
 
@@ -151,7 +152,7 @@ module ToolBelt
       if @commit
         syscall(command)
       else
-        puts command
+        puts "[noop] #{command}"
       end
     end
   end
