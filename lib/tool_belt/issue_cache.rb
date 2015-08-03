@@ -55,7 +55,7 @@ module ToolBelt
     end
 
     def last_update
-      Time.at(syscall("date +%s -r #{cache_filename}").to_i)
+      Time.at(syscall("date +%s -r #{cache_filename}").first.to_i)
     end
 
   end

@@ -8,9 +8,10 @@ class CherryPickCommand < Clamp::Command
 
   parameter "config_file", "Release configuration file"
   option "--update-cache", :flag, "Re-download issues and cache them"
+  option "--version", "VERSION", "Release version to use"
 
   def execute
-    config = ToolBelt::Config.new(config_file)
+    config = ToolBelt::Config.new(config_file, version)
     if update_cache?
       issue_cache = ToolBelt::IssueCache.new(config.options)
       issue_cache.load_issues(true)
