@@ -3,10 +3,11 @@ require File.join(File.dirname(__FILE__), 'systools')
 module ToolBelt
   class ReleaseEnvironment
 
-    attr_accessor :repos
+    attr_reader :systools, :repos
 
     def initialize(repos)
-      self.repos = repos
+      @repos = repos
+      @systools = SysTools.new(:commit => true)
     end
 
     def setup(args = {})
@@ -15,19 +16,19 @@ module ToolBelt
 
       Dir.chdir('repos') do
         @repos.each do |name, repo|
-          syscall("git clone #{repo[:repo]}") if !File.exist?(name.to_s)
+          @systools.execute("git clone #{repo[:repo]}") if !File.exist?(name.to_s)
           if github_username
             Dir.chdir(name.to_s) do
-              syscall("git remote add #{github_username} #{repository_fork(github_username, repo[:repo])}")
+              @systools.execute("git remote add #{github_username} #{repository_fork(github_username, repo[:repo])}")
             end
           end
           Dir.chdir(name.to_s) do
-            output, _success = syscall("git branch -a")
+            output, _success = @systools.execute("git branch -a")
 
             if output.include?(repo[:branch])
-              syscall("git checkout #{repo[:branch]}")
+              @systools.execute("git checkout #{repo[:branch]}")
             else
-              syscall("git checkout -b #{repo[:branch]}")
+              @systools.execute("git checkout -b #{repo[:branch]}")
             end
           end
         end
@@ -64,7 +65,7 @@ module ToolBelt
 
     def commit_in_repo?(repo_name, message)
       Dir.chdir(repo_location(repo_name)) do
-        output = syscall('git log --grep="' + git_escape(message.split("\n").first) + '"').first
+        output = @systools.execute('git log --grep="' + git_escape(message.split("\n").first) + '"').first
         if output.is_a?(String)
           if output.empty?
             return false

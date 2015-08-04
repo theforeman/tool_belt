@@ -3,12 +3,12 @@ require File.join(File.dirname(__FILE__), 'systools')
 module ToolBelt
   class PulpRepositoryUpdater
 
-    attr_accessor :katello_version, :pulp_version, :commit
+    attr_accessor :katello_version, :pulp_version, :systools
 
-    def initialize(katello_version, pulp_version, commit=false)
+    def initialize(katello_version, pulp_version, systools = SysTools.new)
       self.katello_version = katello_version
       self.pulp_version = pulp_version
-      self.commit = commit
+      self.systools = systools
     end
 
     def update_server
@@ -30,15 +30,15 @@ module ToolBelt
 
     private
 
-    def compare_repos(os_version, client=false)
+    def compare_repos(os_version, client = false)
       katello_repo = client ? katello_client_repo(os_version) : katello_pulp_repo(os_version)
       setup_pulp_repo(os_version)
       command = "repodiff --simple --old=#{katello_repo} --new=file://#{Dir.pwd}/tmp/"
-      syscall(command)[0]
+      @systools.execute(command)[0]
     end
 
     def setup_pulp_repo(os_version)
-      syscall('rm -rf tmp/')
+      @systools.execute('rm -rf tmp/')
       Dir.mkdir('tmp')
       Dir.chdir('tmp') do
         syscall("wget #{pulp_repo(os_version)}")
@@ -119,7 +119,7 @@ module ToolBelt
       puts "#{packages.join("\n")}"
 
       packages.each do |package|
-        run("koji -c ~/.koji/katello-config untag-pkg #{tag} #{package}")
+        @systools.execute("koji -c ~/.koji/katello-config untag-pkg #{tag} #{package}")
       end
     end
 
@@ -130,11 +130,11 @@ module ToolBelt
       puts "#{packages.join("\n")}"
 
       packages.each do |package|
-        run("koji -c ~/.koji/katello-config add-pkg #{tag} #{package.split(/-[0-9]/).first} --owner=jsherril")
+        @systools.execute("koji -c ~/.koji/katello-config add-pkg #{tag} #{package.split(/-[0-9]/).first} --owner=jsherril")
       end
 
       packages.each do |package|
-        run("koji -c ~/.koji/katello-config tag-pkg #{tag} #{package}")
+        @systools.execute("koji -c ~/.koji/katello-config tag-pkg #{tag} #{package}")
       end
     end
 
@@ -144,15 +144,7 @@ module ToolBelt
       puts "#{packages.join("\n")}"
 
       packages.each do |package|
-        run("koji -c ~/.koji/katello-config tag-pkg #{tag} #{package}")
-      end
-    end
-
-    def run(command)
-      if @commit
-        syscall(command)
-      else
-        puts "[noop] #{command}"
+        @systools.execute("koji -c ~/.koji/katello-config tag-pkg #{tag} #{package}")
       end
     end
   end
