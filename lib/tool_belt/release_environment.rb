@@ -9,14 +9,26 @@ module ToolBelt
       self.repos = repos
     end
 
-    def setup
+    def setup(args = {})
+      github_username = args.fetch(:github_username, nil)
       Dir.mkdir('repos') if !File.exist?('repos')
 
       Dir.chdir('repos') do
         @repos.each do |name, repo|
           syscall("git clone #{repo[:repo]}") if !File.exist?(name.to_s)
+          if github_username
+            Dir.chdir(name.to_s) do
+              syscall("git remote add #{github_username} #{repository_fork(github_username, repo[:repo])}")
+            end
+          end
           Dir.chdir(name.to_s) do
-            syscall("git checkout #{repo[:branch]}")
+            output, _success = syscall("git branch -a")
+
+            if output.include?(repo[:branch])
+              syscall("git checkout #{repo[:branch]}")
+            else
+              syscall("git checkout -b #{repo[:branch]}")
+            end
           end
         end
       end
@@ -61,6 +73,12 @@ module ToolBelt
           end
         end
       end
+    end
+
+    def repository_fork(username, repo)
+      url = URI.parse(repo)
+      repo_name = url.path.split('/').last
+      "#{url.scheme}://#{url.host}/#{username}/#{repo_name}"
     end
 
   end
