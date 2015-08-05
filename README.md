@@ -27,9 +27,12 @@ The release configuration file maintains information about the release including
 
     ---
     :project: katello
-    :release: 2.1
+    :releases:
+      :2.1:
+        :redmine_release_id: 14
+      :2.1.1:
+        :redmine_release_id: 22
     :code_name: Winter Warmer
-    :redmine_release_id: 14
     :repos:
       :katello:
         :main: true
