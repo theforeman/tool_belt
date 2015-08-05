@@ -1,9 +1,14 @@
 ---
 :project: katello
 :github_org: katello
-:release: 2.2
+:releases:
+  :2.2:
+    :redmine_release_id: 23
+  :2.2.1:
+    :redmine_release_id: 51
+  :2.2.2:
+    :redmine_release_id: 55
 :code_name: Maibock
-:redmine_release_id: 23
 :repos:
   :katello:
     :main: true
@@ -32,3 +37,5 @@
   - 7940
   - 8544
   - 9839
+  - 10224
+  - 10616

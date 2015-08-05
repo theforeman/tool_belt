@@ -1,9 +1,10 @@
 ---
 :project: katello
 :github_org: katello
-:release: 2.3
+:releases:
+  :2.3:
+    :redmine_release_id: 31
 :code_name: Berliner Weisse
-:redmine_release_id: 31
 :repos:
   :katello:
     :main: true
