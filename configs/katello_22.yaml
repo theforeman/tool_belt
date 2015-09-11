@@ -8,6 +8,10 @@
     :redmine_release_id: 51
   :2.2.2:
     :redmine_release_id: 55
+  :2.2.3:
+    :redmine_release_id: 61
+  :2.2.4:
+    :redmine_release_id: 80
 :code_name: Maibock
 :repos:
   :katello:

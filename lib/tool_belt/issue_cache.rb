@@ -5,12 +5,13 @@ require File.join(File.dirname(__FILE__), 'redmine/issue')
 module ToolBelt
   class IssueCache
 
-    attr_accessor :project, :release, :redmine_release_id
+    attr_accessor :project, :release, :redmine_release_id, :systools
 
     def initialize(config)
       self.project = config.project
       self.release = config.release
       self.redmine_release_id = config.redmine_release_id
+      self.systools = SysTools.new
     end
 
     def add_revisions(issues)
@@ -55,7 +56,7 @@ module ToolBelt
     end
 
     def last_update
-      Time.at(syscall("date +%s -r #{cache_filename}").first.to_i)
+      Time.at(systools.execute("date +%s -r #{cache_filename}").first.to_i)
     end
 
   end
