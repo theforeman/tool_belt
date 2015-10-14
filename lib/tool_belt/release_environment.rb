@@ -60,7 +60,7 @@ module ToolBelt
 
     def git_escape(string)
       string = string.split("`")[0] if string.include?("`")
-      string.gsub('"', '\"').gsub('[', '\[')
+      string.gsub('"', '\"').gsub('[', '\[').gsub('*', '\*')
     end
 
     def commit_in_repo?(repo_name, message)
