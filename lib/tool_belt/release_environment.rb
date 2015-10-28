@@ -52,9 +52,16 @@ module ToolBelt
       repo.nil? ? '' : repo.first
     end
 
-    def commit_in_repos?(repo_names, message)
+    def commit_in_repo?(repo_name, hash)
+      Dir.chdir(repo_location(repo_name)) do
+        output, success = @systools.execute("git branch --contains #{hash}")
+        success
+      end
+    end
+
+    def commit_in_release_branch?(repo_names, message)
       repo_names.any? do |repo_name|
-        commit_in_repo?(repo_name, message)
+        commit_in_repo_release_branch?(repo_name, message)
       end
     end
 
@@ -63,7 +70,7 @@ module ToolBelt
       string.gsub('"', '\"').gsub('[', '\[').gsub('*', '\*')
     end
 
-    def commit_in_repo?(repo_name, message)
+    def commit_in_repo_release_branch?(repo_name, message)
       Dir.chdir(repo_location(repo_name)) do
         output = @systools.execute('git log --grep="' + git_escape(message.split("\n").first) + '"').first
         if output.is_a?(String)

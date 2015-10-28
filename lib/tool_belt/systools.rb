@@ -22,7 +22,6 @@ module ToolBelt
     private
 
     def syscall(*cmd)
-      puts cmd
       stdout, stderr, status = Open3.capture3(*cmd)
       if status.success?
         return stdout.slice!(1..-(1 + $INPUT_RECORD_SEPARATOR.size)), status.success? # strip trailing eol
