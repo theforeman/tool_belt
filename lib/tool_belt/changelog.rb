@@ -1,4 +1,5 @@
 require File.join(File.dirname(__FILE__), 'systools')
+require File.join(File.dirname(__FILE__), 'redmine/issue')
 
 module ToolBelt
   class Changelog
@@ -21,6 +22,7 @@ module ToolBelt
 
     def generate_entries(issues)
       issues.each do |issue|
+        next unless Redmine::Issue.closed?(issue)
         generate_entry(issue)
       end
     end

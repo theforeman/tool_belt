@@ -5,6 +5,7 @@ module Redmine
   class Issue < RedmineResource
 
     READY_FOR_TESTING = 7
+    CLOSED = ['Closed', 'Resolved', 'Rejected', 'Duplicate']
 
     def base_path
       '/issues'
@@ -23,8 +24,12 @@ module Redmine
       self
     end
 
+    def self.closed?(issue)
+      CLOSED.include?(issue['status']['name'])
+    end
+
     def closed?
-      ['Closed', 'Resolved', 'Rejected', 'Duplicate'].include? @raw_data['issue']['status']['name']
+      self.class.closed?(@raw_data['issue'])
     end
 
     def rejected?
