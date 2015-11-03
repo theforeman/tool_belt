@@ -3,12 +3,13 @@ require File.join(File.dirname(__FILE__), 'systools')
 module ToolBelt
   class PulpRepositoryUpdater
 
-    attr_accessor :katello_version, :pulp_version, :systools
+    attr_accessor :katello_version, :pulp_version, :systools, :beta
 
-    def initialize(katello_version, pulp_version, systools = SysTools.new)
+    def initialize(katello_version, pulp_version, release, systools = SysTools.new)
       self.katello_version = katello_version
       self.pulp_version = pulp_version
       self.systools = systools
+      self.beta = release == 'beta'
     end
 
     def update_server
@@ -22,7 +23,7 @@ module ToolBelt
     end
 
     def update_client
-      ['5', '6', '7', 'fedora-20', 'fedora-21'].each do |os_version|
+      ['5', '6', '7', 'fedora-21'].each do |os_version|
         output = compare_repos(os_version, true)
         tag_packages(updated_packages(output), koji_tag(os_version, true))
       end
@@ -34,21 +35,21 @@ module ToolBelt
       katello_repo = client ? katello_client_repo(os_version) : katello_pulp_repo(os_version)
       setup_pulp_repo(os_version)
       command = "repodiff --simple --old=#{katello_repo} --new=file://#{Dir.pwd}/tmp/"
-      @systools.execute(command)[0]
+      @systools.syscall(command)[0]
     end
 
     def setup_pulp_repo(os_version)
-      @systools.execute('rm -rf tmp/')
+      @systools.syscall('rm -rf tmp/')
       Dir.mkdir('tmp')
       Dir.chdir('tmp') do
-        syscall("wget #{pulp_repo(os_version)}")
+        @systools.syscall("wget #{pulp_repo(os_version)}")
         index = File.read('index.html')
         rpms = index.scan(/href=".*.rpm"/).collect { |link| link.split('href=')[1].gsub('"', '') }
         rpms.each do |rpm|
-          syscall("wget #{pulp_repo(os_version)}#{rpm}")
+          @systools.syscall("wget #{pulp_repo(os_version)}#{rpm}")
         end
-        syscall("sudo yum -y install createrepo") unless syscall('rpm -q createrepo')[1]
-        syscall("createrepo .")
+        @systools.syscall("sudo yum -y install createrepo") unless @systools.syscall('rpm -q createrepo')[1]
+        @systools.syscall("createrepo .")
       end
     end
 
@@ -66,7 +67,6 @@ module ToolBelt
 
     def new_packages(output)
       added = []
-
       output.split("\n").each do |line|
         if line.start_with?('New package:')
           added << line.split('New package: ')[1]
@@ -99,7 +99,11 @@ module ToolBelt
     end
 
     def pulp_repo(os_version)
-      "https://repos.fedorapeople.org/repos/pulp/pulp/stable/#{@pulp_version}/#{os_version}/src/"
+      if beta
+        "https://repos.fedorapeople.org/repos/pulp/pulp/beta/#{@pulp_version}/#{os_version}/src/"
+      else
+        "https://repos.fedorapeople.org/repos/pulp/pulp/stable/#{@pulp_version}/#{os_version}/src/"
+      end
     end
 
     def koji_tag(os_version, client=false)
