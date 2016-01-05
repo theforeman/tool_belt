@@ -7,7 +7,7 @@ module ToolBelt
 
       def execute
         config = ToolBelt::Config.new(config_file)
-        release_environment = ToolBelt::ReleaseEnvironment.new(config.options.repos)
+        release_environment = ToolBelt::ReleaseEnvironment.new(config.options.repos, config.options.namespace)
         release_environment.setup(:github_username => github_username)
       end
 

@@ -12,7 +12,7 @@ module ToolBelt
           issue_cache = ToolBelt::IssueCache.new(config.options)
           issue_cache.load_issues(true)
         end
-        release_environment = ToolBelt::ReleaseEnvironment.new(config.options.repos)
+        release_environment = ToolBelt::ReleaseEnvironment.new(config.options.repos, config[:namespace])
         ToolBelt::Changelog.new(config.options, release_environment)
       end
 
