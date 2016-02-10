@@ -18,36 +18,38 @@ class RedHatBugzilla
     })
   end
 
-  def bugs_for_release(id, options = {})
-    status = (options[:status] == 'closed') ? ["CLOSED"] : ["NEW", "ASSIGNED", "POST", "MODIFIED"]
+  def bugs_for_release(target_milestone, options = {})
+    status = options.fetch(:status, ["POST"])
 
-    case options[:state]
-    when "approved", "blocker"
-      id = "#{id}+"
-    when "pending"
-      id = "#{id}?"
-    end
+    # status params are case sensitive
+    status = status.upcase if status.respond_to?(:upcase)
+    status = status.map(&:upcase) if is_a?(Array)
 
     params = {
-      :o1 => "substring",
-      :v1 => "sat-#{id}",
-      :f1 => "flagtypes.name",
+      :product => "Red Hat Satellite 6",
       :query_format => "advanced",
       :status => status,
       :include_fields => default_fields,
-      :product => "Red Hat Satellite 6"
+      :f1 => "target_milestone",
+      :o1 => "equals",
+      :v1 => "#{target_milestone}"
     }
 
-    params[:limit] = options[:limit] if !options[:limit].nil?
-    params[:offset] = options[:offset] if !options[:offset].nil?
+    param_acc = 1
 
-    if options[:state] == 'blocker'
-      params.merge!({
-        :v2 => "blocker+",
-        :f2 => "flagtypes.name",
-        :o2 => "substring"
-      })
+    if options[:flags]
+      options[:flags].each do |flag|
+        param_acc = param_acc + 1
+        params.merge!({
+          "f#{param_acc}".to_sym => "flagtypes.name",
+          "o#{param_acc}".to_sym => flag[:option],
+          "v#{param_acc}".to_sym => flag[:value]
+        })
+      end
     end
+
+    params[:limit] = options.fetch(:limit, 0)
+    params[:offset] = options.fetch(:offset, 0)
 
     request("Bug.search", params)
   end
@@ -81,7 +83,8 @@ class RedHatBugzilla
   end
 
   def default_fields
-    %w(id status severity component summary flags comments assigned_to keywords url blocks product)
+    # %w(id status severity component summary target_milestone flags comments assigned_to keywords url blocks product)
+    %w(id status target_milestone flags url blocks product)
   end
 
 end
