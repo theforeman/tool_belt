@@ -3,18 +3,21 @@ require File.join(File.dirname(__FILE__), 'systools')
 module ToolBelt
   class ReleaseEnvironment
 
-    attr_reader :systools, :repos
+    attr_reader :systools, :repos, :release
 
-    def initialize(repos)
+    def initialize(repos, release)
       @repos = repos
+      @release = release
       @systools = SysTools.new(:commit => true)
     end
 
     def setup(args = {})
       github_username = args.fetch(:github_username, nil)
-      Dir.mkdir('repos') if !File.exist?('repos')
 
-      Dir.chdir('repos') do
+      Dir.mkdir("repos") unless File.exist?("repos")
+      Dir.mkdir(release_directory) unless File.exist?(release_directory)
+
+      Dir.chdir(release_directory) do
         @repos.each do |name, repo|
           @systools.execute("git clone #{repo[:repo]}") if !File.exist?(name.to_s)
           if github_username
@@ -39,8 +42,12 @@ module ToolBelt
       @repos
     end
 
+    def release_directory
+      "repos/#{@release}"
+    end
+
     def repo_location(repo_name)
-      "repos/#{repo_name}"
+      "#{release_directory}/#{repo_name}"
     end
 
     def repo_names

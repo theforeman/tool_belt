@@ -2,31 +2,27 @@ require 'json'
 require 'time'
 
 require File.join(File.dirname(__FILE__), 'systools')
-require File.join(File.dirname(__FILE__), 'issue_cache')
 
 module ToolBelt
   class CherryPicker
 
-    attr_accessor :ignores, :issue_cache, :release_environment
+    attr_accessor :ignores, :issues, :release_environment
 
-    def initialize(config, release_environment)
+    def initialize(config, release_environment, issues)
       self.ignores = config.ignores || []
-      self.issue_cache = IssueCache.new(config)
+      self.issues = issues
       self.release_environment = release_environment
       picks = find_cherry_picks(config.project, config.release, release_environment.repo_names)
       write_cherry_pick_log(picks, config.release)
     end
 
-    def load_issues
-      issue_cache.load_issues
-    end
-
     def find_cherry_picks(project, release, repo_names)
       picks = []
-      issues = load_issues
-      issues = issues.select { |issue| !issue['closed_on'].nil? }
+      closed_issues = @issues.select do |issue|
+        !issue['closed_on'].nil?
+      end
 
-      issues.each do |issue|
+      closed_issues.each do |issue|
         revisions = []
         commits = issue['changesets']
 

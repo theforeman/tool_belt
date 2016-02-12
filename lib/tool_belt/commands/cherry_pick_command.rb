@@ -8,12 +8,12 @@ module ToolBelt
 
       def execute
         config = ToolBelt::Config.new(config_file, version)
-        if update_cache?
-          issue_cache = ToolBelt::IssueCache.new(config.options)
-          issue_cache.load_issues(true)
-        end
-        release_environment = ToolBelt::ReleaseEnvironment.new(config.options.repos)
-        picker = ToolBelt::CherryPicker.new(config.options, release_environment)
+
+        issue_cache = ToolBelt::IssueCache.new(config.options)
+        issues = issue_cache.load_issues(update_cache?)
+
+        release_environment = ToolBelt::ReleaseEnvironment.new(config.options.repos, config.options.namespace)
+        picker = ToolBelt::CherryPicker.new(config.options, release_environment, issues)
       end
 
     end
