@@ -27,7 +27,7 @@ module ToolBelt
         commits = issue['changesets']
 
         commits.each do |commit|
-          if !commit['comments'].start_with?('Merge pull request') && !@release_environment.commit_in_release_branch?(repo_names, commit['comments'])
+          if commit['comments'].downcase.start_with?('fixes') && !@release_environment.commit_in_release_branch?(repo_names, commit['comments'])
             revisions << commit['revision']
           end
         end
