@@ -15,7 +15,7 @@ module ToolBelt
       ['6', '7'].each do |os_version|
         output = compare_repos(os_version)
         tag = koji_tag(os_version)
-        untag_packages(removed_packages(output), tag)
+        #untag_packages(removed_packages(output), tag)
         add_packages(new_packages(output), tag)
         tag_packages(updated_packages(output), tag)
       end
