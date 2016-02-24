@@ -19,7 +19,7 @@ module ToolBelt
 
       Dir.chdir(release_directory) do
         @repos.each do |name, repo|
-          @systools.execute("git clone #{repo[:repo]}") if !File.exist?(name.to_s)
+          @systools.execute("git clone #{repo[:repo]} #{name}") if !File.exist?(name.to_s)
           if github_username
             Dir.chdir(name.to_s) do
               @systools.execute("git remote add #{github_username} #{repository_fork(github_username, repo[:repo])}")
