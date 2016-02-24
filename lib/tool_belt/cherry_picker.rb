@@ -27,7 +27,7 @@ module ToolBelt
         commits = issue['changesets']
 
         commits.each do |commit|
-          if !commit['comments'].start_with?('Merge pull request') && !@release_environment.commit_in_release_branch?(repo_names, commit['comments'])
+          if commit['comments'].downcase.start_with?('fixes', 'refs') && !@release_environment.commit_in_release_branch?(repo_names, commit['comments'])
             revisions << commit['revision']
           end
         end
@@ -48,6 +48,7 @@ module ToolBelt
         'revision' => revision,
         'repository' => find_repository(revision)
       }
+      pick.merge({'bugzilla_id' => issue['bugzilla_id']}) if issue['bugzilla_id']
     end
 
     def ignore?(id)
@@ -92,7 +93,11 @@ module ToolBelt
     end
 
     def log_entry(pick)
-      "#{pick['id']} - #{Time.parse(pick['closed_on'])}: [#{pick['revision']}] #{pick['subject']}"
+      if pick['bugzilla_id']
+        "#{pick['bugzilla_id']} - #{pick['id']} : [#{pick['revision']}] #{pick['subject']}"
+      else
+        "#{pick['id']} - #{Time.parse(pick['closed_on'])}: [#{pick['revision']}] #{pick['subject']}"
+      end
     end
 
     def find_repository(revision)

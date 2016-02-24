@@ -34,6 +34,11 @@ module ToolBelt
             else
               @systools.execute("git checkout -b #{repo[:branch]}")
             end
+
+            if repo[:upstream]
+              output, _success = @systools.execute("git remote show | grep upstream")
+              @systools.execute("git remote add upstream #{repo[:upstream]}") unless output
+            end
           end
         end
       end
