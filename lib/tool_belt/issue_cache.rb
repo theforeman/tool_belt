@@ -1,3 +1,6 @@
+require 'fileutils'
+require 'yaml'
+
 require File.join(File.dirname(__FILE__), 'config')
 require File.join(File.dirname(__FILE__), 'redmine/project')
 require File.join(File.dirname(__FILE__), 'redmine/issue')
@@ -14,36 +17,47 @@ module ToolBelt
       self.systools = SysTools.new
     end
 
-    def add_revisions(issues)
-      issues.collect do |issue, index|
-        Redmine::Issue.new(issue['id'], :include => 'changesets')
-      end
+    def add_revisions(id)
+      Redmine::Issue.new(id, :include => 'changesets')
     end
 
     def load_issues(refresh=false)
-      if cache_exists? && !refresh
-        puts "Issues cache for #{@release} exists and was last updated on #{last_update}."
-        puts "Please remove .issue_cache/#{@project}_#{@release}_issues.json if you wish to re-cache."
-      else
-        puts "Issues cache for #{@release} does not exist."
-        puts "Loading issues from Redmine for this release and caching them at .issue_cache/#{@project}_#{@release}_issues.json"
+      if !cache_exists? || refresh
+        puts "Refreshing issues for #{@project}_#{@release}"
         cache_issues
       end
 
-      JSON.parse(File.open("./.issue_cache/#{@project}_#{@release}_issues.json", "r").read)
+      release_manifest[:issues].collect do |id|
+        JSON.parse(File.open("#{issue_cache}/#{id}.json").read)
+      end
     end
 
     def cache_issues
       project = Redmine::Project.new(@project)
-      issues = project.get_issues_for_release(redmine_release_id)
-      issues = add_revisions(issues)
 
-      if !File.exist?('.issue_cache')
-        Dir.mkdir('.issue_cache')
+      FileUtils.mkdir_p(issue_cache) unless File.exist?(issue_cache)
+      FileUtils.mkdir_p(release_cache) unless File.exist?(release_cache)
+
+      cache_manifest = if cache_exists?
+                        release_manifest
+                       else
+                        {release: redmine_release_id, project: @project, issues: []}
+                       end
+
+      issues = project.get_issues_for_release(redmine_release_id)
+      issue_ids = issues.collect { |issue| issue['id'] } - release_manifest[:issues]
+
+      issue_ids.each do |id|
+        issue = add_revisions(id)
+
+        File.open("#{issue_cache}/#{issue.id}.json", 'w') do |file|
+          file.write(JSON.dump(issue))
+          cache_manifest[:issues] << issue.id
+        end
       end
 
       File.open(cache_filename, 'w') do |file|
-        file.write(JSON.dump(issues))
+        file.write(cache_manifest.to_yaml)
       end
     end
 
@@ -51,8 +65,20 @@ module ToolBelt
       File.exist?(cache_filename)
     end
 
+    def release_manifest
+      YAML.load_file(cache_filename)
+    end
+
+    def issue_cache
+      '.cache/issues'
+    end
+
+    def release_cache
+      '.cache/releases'
+    end
+
     def cache_filename
-      ".issue_cache/#{@project}_#{@release}_issues.json"
+      "#{release_cache}/#{@project}_#{@release}_issues.yaml"
     end
 
     def last_update
