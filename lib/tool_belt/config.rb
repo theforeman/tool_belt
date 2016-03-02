@@ -37,6 +37,7 @@ module ToolBelt
         fail "Unknown version specified. Please ensure the releases field is configured { X.Y.Z }."
       end
 
+      configs[:bugzilla] = true
       configs[:release] = version.nil? ? releases.first.to_s : version.to_s
       configs[:namespace] = "#{configs[:project]}_#{configs[:release]}"
       configs

@@ -1,14 +1,16 @@
 require 'json'
 require 'time'
+require 'yaml'
 
 require File.join(File.dirname(__FILE__), 'systools')
 
 module ToolBelt
   class CherryPicker
 
-    attr_accessor :ignores, :issues, :release_environment
+    attr_accessor :bugzilla, :ignores, :issues, :release_environment
 
     def initialize(config, release_environment, issues)
+      self.bugzilla = config.bugzilla || false
       self.ignores = config.ignores || []
       self.issues = issues
       self.release_environment = release_environment
@@ -41,14 +43,12 @@ module ToolBelt
     end
 
     def cherry_pick(issue, revision)
-      pick = {
-        'id' => issue['id'],
-        'closed_on' => issue['closed_on'],
-        'subject' => issue['subject'],
-        'revision' => revision,
-        'repository' => find_repository(revision)
-      }
-      pick.merge({'bugzilla_id' => issue['bugzilla_id']}) if issue['bugzilla_id']
+      { 'repository' => find_repository(revision),
+        'closed' => issue['closed_on'],
+        'redmine' => { 'id' => issue['id'], 'subject' => issue['subject'] },
+        'bugzilla' => ({ 'id' => issue['custom_fields'].select { |cf| cf['id'] == 6 }.first['value'], 'summary' => 'TBD' } if self.bugzilla),
+        'commit' => revision
+      }.reject{ |k,v| v.nil? }
     end
 
     def ignore?(id)
@@ -56,54 +56,16 @@ module ToolBelt
     end
 
     def write_cherry_pick_log(picks, release)
-      picks.sort_by! { |pick| pick['closed_on'] }
-
-      picks_by_repository = {'unknown' => []}
-
-      picks.each do |pick|
-        if pick['repository'].nil?
-          picks_by_repository['unknown'] << pick
-        else
-          picks_by_repository[pick['repository']] = [] unless picks_by_repository.key?(pick['repository'])
-          picks_by_repository[pick['repository']] << pick
-        end
-      end
-
-      ignore_string = ["Ignored Cherry Picks\n====================="]
-      missing_string = ["Missing Cherry Picks\n===================="]
-
-      picks_by_repository.each do |key, value|
-        missing_string << "\nCherry Picks for repository: #{key}"
-        missing_string << "----------------------------------------------"
-
-        value.each do |pick|
-          if ignore?(pick['id'])
-            ignore_string << log_entry(pick)
-          else
-            missing_string << log_entry(pick)
-          end
-        end
-      end
+      picks = picks.sort_by { |p| [p['repository'], p['closed']] }.group_by { |h| h['repository'] }.each { |k,v| v.each { |x| x.delete('repository') } }
 
       File.open("cherry_picks_#{release}", 'w') do |file|
-        file.write(ignore_string.join("\n") + "\n\n" + missing_string.join("\n"))
-      end
-
-      puts "Cherry picks written to cherry_picks_#{release}"
-    end
-
-    def log_entry(pick)
-      if pick['bugzilla_id']
-        "#{pick['bugzilla_id']} - #{pick['id']} : [#{pick['revision']}] #{pick['subject']}"
-      else
-        "#{pick['id']} - #{Time.parse(pick['closed_on'])}: [#{pick['revision']}] #{pick['subject']}"
+        file.write(picks.to_yaml)
       end
     end
 
     def find_repository(revision)
-      @release_environment.repo_names.find do |repo_name|
-        @release_environment.commit_in_repo?(repo_name, revision)
-      end
+      repo = @release_environment.repo_names.find { |repo_name| @release_environment.commit_in_repo?(repo_name, revision) }
+      repo.nil? ? :unknown : repo
     end
 
   end
