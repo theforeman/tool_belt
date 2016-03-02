@@ -84,7 +84,7 @@ class RedHatBugzilla
 
   def default_fields
     # %w(id status severity component summary target_milestone flags comments assigned_to keywords url blocks product)
-    %w(id status target_milestone flags url blocks product)
+    %w(id status summary target_milestone flags url blocks product)
   end
 
 end
