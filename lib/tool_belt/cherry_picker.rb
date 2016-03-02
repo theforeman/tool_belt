@@ -1,3 +1,4 @@
+require 'fileutils'
 require 'json'
 require 'time'
 require 'yaml'
@@ -55,12 +56,17 @@ module ToolBelt
       ignores.include?(id) if ignores
     end
 
+    def write_log_file(path, filename, content)
+      FileUtils.mkdir_p("releases/#{path}") unless File.exist?("release/#{path}")
+      File.open("releases/#{path}/#{filename}", 'w') { |file| file.write(content) }
+    end
+
     def write_cherry_pick_log(picks, release)
       picks = picks.sort_by { |p| [p['repository'], p['closed']] }.group_by { |h| h['repository'] }.each { |k,v| v.each { |x| x.delete('repository') } }
+      write_log_file("#{release}", "cherry_picks_#{release}", picks.to_yaml)
 
-      File.open("cherry_picks_#{release}", 'w') do |file|
-        file.write(picks.to_yaml)
-      end
+      ignored_picks = Hash[picks.collect { |k,v| [k, v.select { |h| ignore?(h['redmine']['id']) }] }].reject { |k,v| v.empty? }
+      write_log_file("#{release}", "ignored_picks_#{release}", ignored_picks.to_yaml)
     end
 
     def find_repository(revision)
