@@ -47,12 +47,15 @@ module ToolBelt
       picks
     end
 
-    def log_entry(issue)
-      { 'closed' => issue['closed_on'],
-        'redmine' => { 'id' => issue['id'], 'subject' => issue['subject'] },
-        'bugzilla' => ({ 'id' => issue['custom_fields'].select { |cf| cf['id'] == 6 }.first['value'], 'summary' => 'TBD' } if self.bugzilla),
-      }.reject{ |k,v| v.nil? }
+    def write_cherry_pick_log(picks, release)
+      picks = picks.sort_by { |p| [p['repository'], p['closed']] }.group_by { |h| h['repository'] }.each { |k,v| v.each { |x| x.delete('repository') } }
+      write_log_file("#{release}", "cherry_picks_#{release}", picks.to_yaml)
+
+      ignored_picks = Hash[picks.collect { |k,v| [k, v.select { |h| ignore?(h['redmine']['id']) }] }].reject { |k,v| v.empty? }
+      write_log_file("#{release}", "ignored_picks_#{release}", ignored_picks.to_yaml)
     end
+
+    private
 
     def cherry_pick(issue, revision)
       { 'repository' => find_repository(revision),
@@ -67,22 +70,21 @@ module ToolBelt
       ignores.include?(id) if ignores
     end
 
-    def write_log_file(path, filename, content, mode = 'w')
-      FileUtils.mkdir_p("releases/#{path}") unless File.exist?("release/#{path}")
-      File.open("releases/#{path}/#{filename}", mode) { |file| file.write(content) }
-    end
-
-    def write_cherry_pick_log(picks, release)
-      picks = picks.sort_by { |p| [p['repository'], p['closed']] }.group_by { |h| h['repository'] }.each { |k,v| v.each { |x| x.delete('repository') } }
-      write_log_file("#{release}", "cherry_picks_#{release}", picks.to_yaml)
-
-      ignored_picks = Hash[picks.collect { |k,v| [k, v.select { |h| ignore?(h['redmine']['id']) }] }].reject { |k,v| v.empty? }
-      write_log_file("#{release}", "ignored_picks_#{release}", ignored_picks.to_yaml)
+    def log_entry(issue)
+      { 'closed' => issue['closed_on'],
+        'redmine' => { 'id' => issue['id'], 'subject' => issue['subject'] },
+        'bugzilla' => ({ 'id' => issue['custom_fields'].select { |cf| cf['id'] == 6 }.first['value'], 'summary' => 'TBD' } if self.bugzilla),
+      }.reject{ |k,v| v.nil? }
     end
 
     def find_repository(revision)
       repo = @release_environment.repo_names.find { |repo_name| @release_environment.commit_in_repo?(repo_name, revision) }
       repo.nil? ? :unknown : repo
+    end
+
+    def write_log_file(path, filename, content, mode = 'w')
+      FileUtils.mkdir_p("releases/#{path}") unless File.exist?("release/#{path}")
+      File.open("releases/#{path}/#{filename}", mode) { |file| file.write(content) }
     end
 
   end
