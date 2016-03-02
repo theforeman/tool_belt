@@ -29,6 +29,14 @@ module ToolBelt
         revisions = []
         commits = issue['changesets']
 
+        if commits.empty?
+          entry = { 'closed' => issue['closed_on'],
+                    'redmine' => { 'id' => issue['id'], 'subject' => issue['subject'] },
+                    'bugzilla' => ({ 'id' => issue['custom_fields'].select { |cf| cf['id'] == 6 }.first['value'], 'summary' => 'TBD' } if self.bugzilla),
+                  }.reject{ |k,v| v.nil? }
+          write_log_file("#{release}", "missing_changset_#{release}", entry.to_yaml, 'a')
+        end
+
         commits.each do |commit|
           if commit['comments'].downcase.start_with?('fixes', 'refs') && !@release_environment.commit_in_release_branch?(repo_names, commit['comments'])
             revisions << commit['revision']
@@ -56,9 +64,9 @@ module ToolBelt
       ignores.include?(id) if ignores
     end
 
-    def write_log_file(path, filename, content)
+    def write_log_file(path, filename, content, mode = 'w')
       FileUtils.mkdir_p("releases/#{path}") unless File.exist?("release/#{path}")
-      File.open("releases/#{path}/#{filename}", 'w') { |file| file.write(content) }
+      File.open("releases/#{path}/#{filename}", mode) { |file| file.write(content) }
     end
 
     def write_cherry_pick_log(picks, release)
