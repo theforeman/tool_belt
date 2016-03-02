@@ -37,6 +37,7 @@ module ToolBelt
             if repo[:upstream]
               output, _success = @systools.execute("git remote show | grep upstream")
               @systools.execute("git remote add upstream #{repo[:upstream]}") unless output
+              @systools.execute("git fetch upstream")
             end
           end
         end
