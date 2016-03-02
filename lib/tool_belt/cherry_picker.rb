@@ -30,11 +30,7 @@ module ToolBelt
         commits = issue['changesets']
 
         if commits.empty?
-          entry = { 'closed' => issue['closed_on'],
-                    'redmine' => { 'id' => issue['id'], 'subject' => issue['subject'] },
-                    'bugzilla' => ({ 'id' => issue['custom_fields'].select { |cf| cf['id'] == 6 }.first['value'], 'summary' => 'TBD' } if self.bugzilla),
-                  }.reject{ |k,v| v.nil? }
-          write_log_file("#{release}", "missing_changset_#{release}", entry.to_yaml, 'a')
+          write_log_file("#{release}", "missing_changset_#{release}", log_entry(issue).to_yaml, 'a')
         end
 
         commits.each do |commit|
@@ -49,6 +45,13 @@ module ToolBelt
       end
 
       picks
+    end
+
+    def log_entry(issue)
+      { 'closed' => issue['closed_on'],
+        'redmine' => { 'id' => issue['id'], 'subject' => issue['subject'] },
+        'bugzilla' => ({ 'id' => issue['custom_fields'].select { |cf| cf['id'] == 6 }.first['value'], 'summary' => 'TBD' } if self.bugzilla),
+      }.reject{ |k,v| v.nil? }
     end
 
     def cherry_pick(issue, revision)
