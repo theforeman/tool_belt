@@ -19,8 +19,6 @@ module ToolBelt
       end
     end
 
-    private
-
     def syscall(*cmd)
       puts cmd
       stdout, stderr, status = Open3.capture3(*cmd)
