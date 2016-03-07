@@ -1,7 +1,8 @@
 repos
 cherry_picks*
-.issue_cache
+.cache
 .idea*
+.byebug_history
 .project
 reports
 project.vim

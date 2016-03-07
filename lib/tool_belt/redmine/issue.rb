@@ -11,6 +11,10 @@ module Redmine
       '/issues'
     end
 
+    def id
+      @raw_data['issue']['id']
+    end
+
     def project
       @raw_data['issue']['project']['id']
     end
