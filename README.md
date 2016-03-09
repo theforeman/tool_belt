@@ -54,3 +54,10 @@ The release configuration file maintains information about the release including
       - 7423
       - 8265
       - 7815
+
+The `:ignores` list can be a list of Redmine ticket IDs, or a hash of ticket IDs to git revisions to ignore. This allows for only certain commits on a ticket to be ignored.
+
+    :ignores:
+      7423:
+        - d29a748f6653bcae41272d9faa1aae61a4bcfb6e
+      8265:   # ignores all revisions

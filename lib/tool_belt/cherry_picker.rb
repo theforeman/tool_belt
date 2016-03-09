@@ -50,8 +50,12 @@ module ToolBelt
       }
     end
 
-    def ignore?(id)
-      ignores.include?(id) if ignores
+    def ignore?(id, revision)
+      if ignores && ignores.is_a?(Hash)
+        ignores.has_key?(id) && (ignores[id].nil? || ignores[id].include?(revision))
+      elsif ignores
+        ignores.include?(id)
+      end
     end
 
     def write_cherry_pick_log(picks, release)
@@ -76,7 +80,7 @@ module ToolBelt
         missing_string << "----------------------------------------------"
 
         value.each do |pick|
-          if ignore?(pick['id'])
+          if ignore?(pick['id'], pick['revision'])
             ignore_string << log_entry(pick)
           else
             missing_string << log_entry(pick)
