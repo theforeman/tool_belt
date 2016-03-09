@@ -45,7 +45,7 @@ module ToolBelt
                        end
 
       issues = project.get_issues_for_release(redmine_release_id)
-      issue_ids = issues.collect { |issue| issue['id'] } - release_manifest[:issues]
+      issue_ids = issues.collect { |issue| issue['id'] } - cache_manifest[:issues]
 
       issue_ids.each do |id|
         issue = add_revisions(id)
