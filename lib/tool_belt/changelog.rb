@@ -65,7 +65,7 @@ module ToolBelt
         else
           short = changeset['revision'][0...8]
           full = changeset['revision']
-          repo = find_repo(changeset['comments'])
+          repo = find_repo(changeset['revision'])
           hashes += string % {:short => short, :full => full, :repo => repo}
           hashes += ', '
         end

@@ -1,6 +1,10 @@
+require_relative 'debug_option'
+
 module ToolBelt
   module Command
     class ChangelogCommand < Clamp::Command
+
+      include DebugOption
 
       parameter "config_file", "Release configuration file"
       option "--update-cache", :flag, "Re-download issues and cache them"
@@ -12,7 +16,11 @@ module ToolBelt
           issue_cache = ToolBelt::IssueCache.new(config.options)
           issue_cache.load_issues(true)
         end
-        release_environment = ToolBelt::ReleaseEnvironment.new(config.options.repos, config[:namespace])
+        release_environment = ToolBelt::ReleaseEnvironment.new(
+          config.options.repos,
+          config.options.namespace,
+          systools
+        )
         ToolBelt::Changelog.new(config.options, release_environment)
       end
 
