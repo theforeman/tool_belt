@@ -23,9 +23,9 @@ module ToolBelt
     end
 
     def update_client
-      ['5', '6', '7', 'fedora-21'].each do |os_version|
+      ['5', 'fedora-22', 'fedora-23'].each do |os_version|
         output = compare_repos(os_version, true)
-        tag_packages(updated_packages(output), koji_tag(os_version, true))
+        tag_packages(updated_packages(output), koji_tag(os_version))
       end
     end
 
@@ -106,14 +106,13 @@ module ToolBelt
       end
     end
 
-    def koji_tag(os_version, client=false)
+    def koji_tag(os_version)
       prefix = katello_version == 'nightly' ? 'katello' : "katello-#{katello_version}"
-      return "#{prefix}-thirdparty-pulp-rhel#{os_version}" unless client
 
       if os_version.include?('fedora')
-        "katello-#{katello_version}-fedora#{os_version.split('fedora-')[1]}"
+        "#{prefix}-thirdparty-pulp-fedora#{os_version.split('fedora-')[1]}"
       else
-        "katello-#{katello_version}-rhel#{os_version}"
+        "#{prefix}-thirdparty-pulp-rhel#{os_version}"
       end
     end
 
