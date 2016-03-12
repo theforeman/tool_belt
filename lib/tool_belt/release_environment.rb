@@ -5,10 +5,10 @@ module ToolBelt
 
     attr_reader :systools, :repos, :release
 
-    def initialize(repos, release)
+    def initialize(repos, release, systools = SysTools.new(:commit => true))
       @repos = repos
       @release = release
-      @systools = SysTools.new(:commit => true)
+      @systools = systools
     end
 
     def setup(args = {})

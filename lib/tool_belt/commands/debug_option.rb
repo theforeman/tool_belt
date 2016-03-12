@@ -1,14 +1,13 @@
 module ToolBelt
   module Command
-    module ToolsOption
+    module DebugOption
 
       def self.included(base)
-        base.send :option, "--commit", :flag, "Run all system actions for real instead of the default dry run mode"
         base.send :option, "--debug", :flag, "Print debug output when running a command"
       end
 
       def systools
-        ToolBelt::SysTools.new(:commit => commit?, :debug => debug?)
+        ToolBelt::SysTools.new(:commit => true, :debug => debug?)
       end
 
     end
