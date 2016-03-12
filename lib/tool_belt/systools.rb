@@ -4,10 +4,11 @@ require 'open3'
 module ToolBelt
   class SysTools
 
-    attr_reader :commit
+    attr_reader :commit, :debug
 
     def initialize(args = {})
       @commit = args.fetch(:commit, false)
+      @debug = args.fetch(:debug, false)
     end
 
     def execute(command)
@@ -20,13 +21,15 @@ module ToolBelt
     end
 
     def syscall(*cmd)
-      puts cmd
+      puts cmd if @debug
       stdout, stderr, status = Open3.capture3(*cmd)
       if status.success?
         return stdout.slice!(1..-(1 + $INPUT_RECORD_SEPARATOR.size)), status.success? # strip trailing eol
       else
-        puts "ERROR: #{stdout}" unless stdout.empty?
-        puts "ERROR: #{stderr}" unless stderr.empty?
+        if @debug
+          puts "ERROR: #{stdout}" unless stdout.empty?
+          puts "ERROR: #{stderr}" unless stderr.empty?
+        end
         status.success?
       end
     end
