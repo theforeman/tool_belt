@@ -4,7 +4,7 @@ module ToolBelt
   module Command
     class PulpRepositoryUpdateCommand < Clamp::Command
 
-      include CommitOption
+      include ToolsOption
 
       parameter "katello_version", "Katello version of Pulp to compare against"
       parameter "pulp_version", "Pulp stable version to compare against"
