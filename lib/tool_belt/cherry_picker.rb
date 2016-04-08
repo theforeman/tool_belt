@@ -79,6 +79,12 @@ module ToolBelt
         missing_string << "\nCherry Picks for repository: #{key}"
         missing_string << "----------------------------------------------"
 
+        revisions = value.select { |pick| !ignore?(pick['id'], pick['revision']) }
+        revisions = revisions.collect { |pick| pick['revision'] }
+
+        missing_string << "Pick All: git cherry-pick -x #{revisions.join(' ')}"
+        missing_string << "\n"
+
         value.each do |pick|
           if ignore?(pick['id'], pick['revision'])
             ignore_string << log_entry(pick)
