@@ -7,7 +7,6 @@ module ToolBelt
     attr_accessor :options
 
     def initialize(config_file, version = nil, bugzilla = false)
-      puts config_file
       configs = YAML.load_file(config_file)
 
       if bugzilla && valid_bugzilla?(configs)
