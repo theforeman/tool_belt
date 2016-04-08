@@ -7,6 +7,7 @@ module ToolBelt
     attr_accessor :options
 
     def initialize(config_file, version = nil, bugzilla = false)
+      puts config_file
       configs = YAML.load_file(config_file)
 
       if bugzilla && valid_bugzilla?(configs)
@@ -63,7 +64,7 @@ module ToolBelt
 
       configs[:release] = version.nil? ? releases.keys.first.to_s : version.to_s
       configs[:redmine_release_id] = configs[:releases][configs[:release].to_sym][:redmine_release_id]
-      configs[:namespace] = "#{configs[:project]}_#{configs[:release]}"
+      configs[:namespace] = "#{configs[:project]}_#{releases.keys.first}"
       configs
     end
 
