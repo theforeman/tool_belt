@@ -1,0 +1,44 @@
+---
+:project: katello
+:github_org: katello
+:releases:
+  :3.0:
+    :redmine_release_id: 86
+:code_name:
+:repos:
+  :katello:
+    :main: true
+    :branch: KATELLO-3.0
+    :repo: https://github.com/Katello/katello.git
+  :katello-selinux:
+    :branch: KATELLO-3.0
+    :repo: https://github.com/Katello/katello-selinux.git
+  :katello-installer:
+    :branch: KATELLO-3.0
+    :repo: https://github.com/Katello/katello-installer.git
+  :hammer-cli-katello:
+    :branch: 0.0.23
+    :repo: https://github.com/Katello/hammer-cli-katello.git
+  :katello.org:
+    :branch: KATELLO-3.0
+    :repo: https://github.com/Katello/katello.org.git
+  :katello-packaging:
+    :branch: KATELLO-3.0
+    :repo: https://github.com/Katello/katello-packaging.git
+  :puppet-katello:
+    :branch: b49ba8d6cec8e83fbb1d6e26c5e2408939620505
+    :repo: https://github.com/Katello/puppet-katello.git
+  :puppet-capsule:
+    :branch: 2.0.1
+    :repo: https://github.com/Katello/puppet-capsule.git
+  :puppet-pulp:
+    :branch: 3.2.0
+    :repo: https://github.com/Katello/puppet-pulp.git
+  :katello-agent:
+    :branch: 2.5.0
+    :repo: https://github.com/Katello/katello-agent.git
+:ignores:
+  - 12841
+  - 10533
+  - 12000
+  - 9848
