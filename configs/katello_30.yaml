@@ -4,7 +4,7 @@
 :releases:
   :3.0:
     :redmine_release_id: 86
-:code_name:
+:code_name: Saison
 :repos:
   :katello:
     :main: true
