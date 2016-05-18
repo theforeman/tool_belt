@@ -26,14 +26,9 @@ module ToolBelt
             end
           end
           Dir.chdir(name.to_s) do
-            output, _success = @systools.execute("git branch -a")
-
-            if output.include?(repo[:branch])
-              @systools.execute("git checkout #{repo[:branch]}")
-              @systools.execute("git pull")
-            else
-              @systools.execute("git checkout -b #{repo[:branch]}")
-            end
+            @systools.execute("git fetch origin --tags")
+            @systools.execute("git checkout #{repo[:branch]}")
+            @systools.execute("git reset origin/#{repo[:branch]} --hard")
           end
         end
       end
