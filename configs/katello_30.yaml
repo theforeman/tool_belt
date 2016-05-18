@@ -17,7 +17,7 @@
     :branch: KATELLO-3.0
     :repo: https://github.com/Katello/katello-installer.git
   :hammer-cli-katello:
-    :branch: 0.0.23
+    :branch: 0.0.26
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello.org:
     :branch: KATELLO-3.0
@@ -26,10 +26,10 @@
     :branch: KATELLO-3.0
     :repo: https://github.com/Katello/katello-packaging.git
   :puppet-katello:
-    :branch: b49ba8d6cec8e83fbb1d6e26c5e2408939620505
+    :branch: 3.1.0
     :repo: https://github.com/Katello/puppet-katello.git
   :puppet-capsule:
-    :branch: 2.0.1
+    :branch: 2.1.0
     :repo: https://github.com/Katello/puppet-capsule.git
   :puppet-pulp:
     :branch: 3.2.0
