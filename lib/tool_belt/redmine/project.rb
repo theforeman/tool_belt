@@ -28,7 +28,7 @@ module Redmine
     end
 
     def get_issues_for_release(id)
-      get_issues(:release_id => id, :limit => 100, :status_id => "*")
+      get_issues(:release_id => id, :limit => 100, :status_id => "5")
     end
 
     def trackers
