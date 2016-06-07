@@ -6,6 +6,8 @@
     :redmine_release_id: 70
   :2.4.1:
     :redmine_release_id: 113
+  :2.4.2:
+    :redmine_release_id: 150
 :code_name: Gose 
 :repos:
   :katello:

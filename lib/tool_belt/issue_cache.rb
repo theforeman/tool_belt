@@ -8,12 +8,13 @@ require File.join(File.dirname(__FILE__), 'redmine/issue')
 module ToolBelt
   class IssueCache
 
-    attr_accessor :project, :release, :redmine_release_id, :systools
+    attr_accessor :project, :release, :redmine_release_id, :systools, :prior_releases
 
     def initialize(config)
       self.project = config.project
       self.release = config.release
       self.redmine_release_id = config.redmine_release_id
+      self.prior_releases = config.prior_releases
       self.systools = SysTools.new
     end
 
@@ -44,7 +45,14 @@ module ToolBelt
                         {release: redmine_release_id, project: @project, issues: []}
                        end
 
+      issues = []
+
       issues = project.get_issues_for_release(redmine_release_id)
+
+      prior_releases.each do |key, value|
+        issues.concat(project.get_issues_for_release(value[:redmine_release_id]))
+      end
+
       issue_ids = issues.collect { |issue| issue['id'] } - cache_manifest[:issues]
 
       issue_ids.each do |id|
