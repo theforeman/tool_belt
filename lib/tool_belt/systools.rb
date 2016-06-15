@@ -30,7 +30,7 @@ module ToolBelt
           puts "ERROR: #{stdout}" unless stdout.empty?
           puts "ERROR: #{stderr}" unless stderr.empty?
         end
-        status.success?
+        return '', status.success?
       end
     end
 

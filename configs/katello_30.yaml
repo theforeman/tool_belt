@@ -22,7 +22,7 @@
     :branch: KATELLO-3.0
     :repo: https://github.com/Katello/katello-installer.git
   :hammer-cli-katello:
-    :branch: 0.0.26
+    :branch: 0.0.25
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello.org:
     :branch: KATELLO-3.0

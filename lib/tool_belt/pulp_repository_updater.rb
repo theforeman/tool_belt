@@ -91,13 +91,13 @@ module ToolBelt
     end
 
     def katello_pulp_repo(os_version)
-      "https://fedorapeople.org/groups/katello/releases/source/srpm/#{@katello_version}/pulp/RHEL/#{os_version}/"
+      "https://fedorapeople.org/groups/katello/releases/source/srpm/#{@katello_version}/pulp/el#{os_version}/"
     end
 
     def katello_client_repo(os_version)
-      os_name = os_version.include?('fedora') ? 'Fedora' : 'RHEL'
+      os_name = os_version.include?('fedora') ? 'f' : 'el'
       os_version = os_version.split('fedora-')[1] if os_version.include?('fedora')
-      "https://fedorapeople.org/groups/katello/releases/source/srpm/#{@katello_version}/client/#{os_name}/#{os_version}/"
+      "https://fedorapeople.org/groups/katello/releases/source/srpm/#{@katello_version}/client/#{os_name}#{os_version}/"
     end
 
     def pulp_repo(os_version)
