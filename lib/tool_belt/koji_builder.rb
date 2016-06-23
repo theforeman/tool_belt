@@ -8,6 +8,8 @@ module ToolBelt
     KOJI_COMMAND = 'koji -c ~/.koji/katello-config'
 
     EXTERNAL_REPOS = {
+      'fedora22' => ['fedora-22', 'fedora-22-updates'],
+      'fedora23' => ['fedora-23', 'fedora-23-updates'],
       'rhel5' => ['rhel-5.9-server', 'epel-5'],
       'rhel6' => ['rhel-6.6-server', 'rhel-6.6-server-optional', 'epel-6'],
       'rhel7' => ['rhel-7.0-server', 'rhel-7.0-server-optional', 'epel-7']
