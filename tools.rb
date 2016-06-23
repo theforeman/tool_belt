@@ -10,6 +10,7 @@ class MainCommand < Clamp::Command
   subcommand "changelog", "Generate changelog for a given release", ToolBelt::Command::ChangelogCommand
   subcommand "setup-environment", "Setup release environment for a given configuration", ToolBelt::Command::SetupEnvironmentCommand
   subcommand "pulp-repo-update", "Update Katello's Pulp repository based on parameters", ToolBelt::Command::PulpRepositoryUpdateCommand
+  subcommand "koji", "Commands for various Koji release related tasks", ToolBelt::Command::KojiCommand
 
 end
 
