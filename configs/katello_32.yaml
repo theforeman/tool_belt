@@ -1,0 +1,51 @@
+---
+:project: katello
+:github_org: katello
+:prior_releases:
+  :3.0.3:
+    :redmine_release_id: 171
+  :3.1.1:
+    :redmine_release_id: 184
+:releases:
+  :3.2:
+    :redmine_release_id: 162
+:code_name: Malt Liquor
+:repos:
+  :katello:
+    :main: true
+    :branch: KATELLO-3.2
+    :repo: https://github.com/Katello/katello.git
+  :katello-selinux:
+    :branch: KATELLO-3.2
+    :repo: https://github.com/Katello/katello-selinux.git
+  :katello-installer:
+    :branch: KATELLO-3.2
+    :repo: https://github.com/Katello/katello-installer.git
+  :hammer-cli-katello:
+    :branch: 0.1.0
+    :repo: https://github.com/Katello/hammer-cli-katello.git
+  :katello.org:
+    :branch: KATELLO-3.2
+    :repo: https://github.com/Katello/katello.org.git
+  :katello-packaging:
+    :branch: KATELLO-3.2
+    :repo: https://github.com/Katello/katello-packaging.git
+  :puppet-katello:
+    :branch: 5.1.1
+    :repo: https://github.com/Katello/puppet-katello.git
+  :puppet-capsule:
+    :branch: 3.1.2
+    :repo: https://github.com/Katello/puppet-capsule.git
+  :puppet-pulp:
+    :branch: 3.4.0
+    :repo: https://github.com/Katello/puppet-pulp.git
+  :katello-agent:
+    :branch: 2.6.0
+    :repo: https://github.com/Katello/katello-agent.git
+  :bastion:
+    :branch: 3.3.2
+    :repo: https://github.com/Katello/bastion
+  :puppet-certs:
+    :branch: 0.7.1
+    :repo: https://github.com/Katello/puppet-certs
+:ignores:
