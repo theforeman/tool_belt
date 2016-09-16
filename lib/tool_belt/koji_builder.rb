@@ -3,9 +3,9 @@ require File.join(File.dirname(__FILE__), 'systools')
 module ToolBelt
   class KojiBuilder
 
-    CLIENT_OSES = %w(rhel5 rhel6 rhel7 fedora22 fedora23)
+    CLIENT_OSES = %w(rhel5 rhel6 rhel7 fedora23 fedora24)
     SERVER_OSES = %w(rhel6 rhel7)
-    KOJI_COMMAND = 'koji -c ~/.koji/katello-config'
+    KOJI_COMMAND = 'kkoji'
 
     EXTERNAL_REPOS = {
       'fedora22' => ['fedora-22', 'fedora-22-updates'],
@@ -24,6 +24,7 @@ module ToolBelt
       '2.4' => '1.10',
       '3.0' => '1.11',
       '3.1' => '1.12',
+      '3.2' => '1.13'
     }
 
     attr_reader :version, :systools
@@ -64,7 +65,13 @@ module ToolBelt
         execute("add-target katello-#{@katello_version}-#{os} katello-#{@katello_version}-#{os}-build")
 
         add_external_repos(os, "katello-#{@katello_version}-#{os}-build")
-        execute("add-external-repo centos-sclo-rh-rhel-#{os.split('rhel')[1]} -t katello-#{@katello_version}-#{os}-build")
+        if os.include? "rhel"
+          execute("add-external-repo centos-sclo-rh-rhel-#{os.split('rhel')[1]} -t katello-#{@katello_version}-#{os}-build")
+          execute("add-external-repo centos-sclo-sclo-rhel-#{os.split('rhel')[1]} -t katello-#{@katello_version}-#{os}-build")
+        else
+          execute("add-external-repo fedora-#{os.split('fedora')[1]} -t katello-#{@katello_version}-#{os}-build")
+          execute("add-external-repo fedora-#{os.split('fedora')[1]}-updates -t katello-#{@katello_version}-#{os}-build")
+        end
 
         build_groups, _success = execute("list-groups katello-nightly-#{os}-build build")
         srpm_groups, _success = execute("list-groups katello-nightly-#{os}-build srpm-build")
