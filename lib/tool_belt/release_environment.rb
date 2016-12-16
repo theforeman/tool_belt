@@ -20,17 +20,50 @@ module ToolBelt
       Dir.chdir(release_directory) do
         @repos.each do |name, repo|
           @systools.execute("git clone #{repo[:repo]} #{name}") if !File.exist?(name.to_s)
-          if github_username
-            Dir.chdir(name.to_s) do
+
+          Dir.chdir(name.to_s) do
+            @systools.execute("git remote set-url origin #{add_username(repo[:repo], github_username)}") if github_username
+
+            if repo[:version_branch]
+              if branch_exists?("origin/#{repo[:branch]}") &&
+                @systools.execute("git checkout origin/#{repo[:branch]}")
+              else
+                create_branch(repo[:repo], repo[:branch])
+              end
+            end
+
+            if github_username
               @systools.execute("git remote add #{github_username} #{repository_fork(github_username, repo[:repo])}")
             end
-          end
-          Dir.chdir(name.to_s) do
+
             @systools.execute("git fetch origin --tags")
-            @systools.execute("git checkout #{repo[:branch]}")
             @systools.execute("git reset origin/#{repo[:branch]} --hard")
           end
         end
+      end
+    end
+
+    def add_username(repo_url, username)
+      uri = URI.parse(repo_url)
+      uri.user = username
+      uri.to_s
+    end
+
+    def branch_exists?(branch)
+      branch = branch.gsub('.', '\\.')
+      _value, exists = @systools.execute("git branch -r | grep '#{branch}$'")
+      exists
+    end
+
+    def create_branch(url, branch)
+      @systools.execute("git branch #{branch}")
+      command = "git push origin #{branch}:#{branch}"
+      puts "Run '#{command}' for repo #{url}? (y/n)"
+
+      value = STDIN.gets.chomp.downcase
+      if value == 'y'
+        output, success = @systools.execute(command)
+        puts "FAILED: #{output}" unless success
       end
     end
 
@@ -89,7 +122,7 @@ module ToolBelt
     def repository_fork(username, repo)
       url = URI.parse(repo)
       repo_name = url.path.split('/').last
-      "#{url.scheme}://#{url.host}/#{username}/#{repo_name}"
+      "#{url.scheme}://#{username}@#{url.host}/#{username}/#{repo_name}"
     end
 
   end
