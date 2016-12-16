@@ -15,12 +15,14 @@
     :main: true
     :branch: KATELLO-3.2
     :repo: https://github.com/Katello/katello.git
+    :version_branch: true
   :katello-selinux:
     :branch: KATELLO-3.2
     :repo: https://github.com/Katello/katello-selinux.git
   :katello-installer:
     :branch: KATELLO-3.2
     :repo: https://github.com/Katello/katello-installer.git
+    :version_branch: true
   :hammer-cli-katello:
     :branch: 0.1.0
     :repo: https://github.com/Katello/hammer-cli-katello.git
@@ -30,6 +32,7 @@
   :katello-packaging:
     :branch: KATELLO-3.2
     :repo: https://github.com/Katello/katello-packaging.git
+    :version_branch: true
   :puppet-katello:
     :branch: 5.1.1
     :repo: https://github.com/Katello/puppet-katello.git
