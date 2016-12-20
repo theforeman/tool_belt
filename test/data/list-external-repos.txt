@@ -1,0 +1,5 @@
+Pri External repo name        URL
+--- ------------------------- ----------------------------------------
+5   rhel-7.0-server           file:///mnt/tmp/external-repos/rhel7-x86_64/7.0/
+10  rhel-7.0-server-optional  file:///mnt/tmp/external-repos/rhel7-x86_64/7.0-optional/
+20  jpackage-5.0-generic-free file:///mnt/tmp/external-repos/www/jpackage-$arch/RPMS.jpackage/

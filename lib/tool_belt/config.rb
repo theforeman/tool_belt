@@ -9,12 +9,13 @@ module ToolBelt
     def initialize(config_file, version = nil, bugzilla = false)
       configs = YAML.load_file(config_file)
 
-      if bugzilla && valid_bugzilla?(configs)
-        configs = add_bugzilla_release(configs, version)
-      elsif valid_redmine?(configs)
-        configs = add_redmine_release(configs, version)
+      unless configs[:nightly]
+        if bugzilla && valid_bugzilla?(configs)
+          configs = add_bugzilla_release(configs, version)
+        elsif valid_redmine?(configs)
+          configs = add_redmine_release(configs, version)
+        end
       end
-
       self.options = OpenStruct.new(configs)
     end
 
