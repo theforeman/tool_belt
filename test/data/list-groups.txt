@@ -1,0 +1,7 @@
+build  [katello-nightly-rhel7-build]
+  bash: None, default  [katello-nightly-rhel7-build]
+  bzip2: None, default  [katello-nightly-rhel7-build]
+  coreutils: None, default  [katello-nightly-rhel7-build]
+  cpio: None, default  [katello-nightly-rhel7-build]
+  diffutils: None, default  [katello-nightly-rhel7-build]
+  findutils: None, default  [katello-nightly-rhel7-build]

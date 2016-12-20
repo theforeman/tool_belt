@@ -3,16 +3,24 @@ require 'open3'
 
 module ToolBelt
   class SysTools
-
     attr_reader :commit, :debug
+    @instance = nil
+
+    def self.instance
+      @instance
+    end
+
+    def self.instance=(some_instance)
+      @instance = some_instance
+    end
 
     def initialize(args = {})
       @commit = args.fetch(:commit, false)
       @debug = args.fetch(:debug, false)
     end
 
-    def execute(command)
-      if @commit
+    def execute(command, force = false)
+      if @commit || force
         syscall(command)
       else
         puts "[noop] #{command}"

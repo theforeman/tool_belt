@@ -1,0 +1,22 @@
+Tag: katello-nightly-rhel7-build [446]
+Arches: x86_64
+Groups: build, srpm-build
+Required permission: 'admin'
+This tag is a buildroot for one or more targets
+Current repo: repo#104746: 2016-12-18 17:53:51.832702
+Targets that build from this tag:
+  katello-nightly-rhel7
+  katello-thirdparty-rhel7
+External repos:
+    5 rhel-7.0-server (file:///mnt/tmp/external-repos/rhel7-x86_64/7.0/)
+   10 rhel-7.0-server-optional (file:///mnt/tmp/external-repos/rhel7-x86_64/7.0-optional/)
+   20 jpackage-5.0-generic-free (file:///mnt/tmp/external-repos/www/jpackage-$arch/RPMS.jpackage/)
+   25 epel-7 (file:///mnt/tmp/external-repos/www/epel7-$arch/RPMS.epel/)
+   30 centos-sclo-rh-rhel-7 (file:///mnt/tmp/external-repos/www/centos7-$arch/RPMS.sclo.rh/)
+   35 centos-sclo-sclo-rhel-7 (file:///mnt/tmp/external-repos/www/centos7-$arch/RPMS.sclo.sclo/)
+Inheritance:
+  0    .... katello-nightly-rhel7-override [447]
+  3    .... foreman-plugins-nightly-rhel7-override [404]
+  4    .... foreman-nightly-nonscl-rhel7 [399]
+  5    .... katello-thirdparty-pulp-rhel7 [420]
+  10   .... foreman-nightly-rhel7 [396]

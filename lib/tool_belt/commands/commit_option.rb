@@ -11,6 +11,10 @@ module ToolBelt
         ToolBelt::SysTools.new(:commit => commit?, :debug => debug?)
       end
 
+      def setup_systools
+        ToolBelt::SysTools.instance = systools
+      end
+
     end
   end
 end

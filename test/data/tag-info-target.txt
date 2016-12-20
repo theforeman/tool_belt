@@ -1,0 +1,7 @@
+Tag: katello-nightly-rhel7 [445]
+Arches: None
+Groups:
+Targets that build into this tag:
+  katello-nightly-rhel7 (katello-nightly-rhel7-build, repo#104746: 2016-12-18 17:53:51.832702)
+Inheritance:
+  0    .... katello-thirdparty-rhel7 [448]
