@@ -47,6 +47,17 @@
     :branch: 0.7.1
     :repo: https://github.com/Katello/puppet-certs
 :ignores:
+:gpg_key: BC62D13F
+:mash_scripts:
+ - katello-3.3-thirdparty-candlepin-rhel7
+ - katello-3.3-thirdparty-pulp-rhel7
+ - katello-3.3-rhel7
+ - katello-3.3-client-rhel7
+ - katello-3.3-client-rhel6
+ - katello-3.3-client-rhel5
+ - katello-3.3-client-fedora24
+ - katello-3.3-client-fedora25
+
 :tags:
   - name: katello-3.3-thirdparty-candlepin-rhel7
     based_off: katello-thirdparty-candlepin-rhel7

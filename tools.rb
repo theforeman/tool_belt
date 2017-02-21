@@ -11,7 +11,7 @@ class MainCommand < Clamp::Command
   subcommand "setup-environment", "Setup release environment for a given configuration", ToolBelt::Command::SetupEnvironmentCommand
   subcommand "pulp-repo-update", "Update Katello's Pulp repository based on parameters", ToolBelt::Command::PulpRepositoryUpdateCommand
   subcommand "koji", "Commands for various Koji release related tasks", ToolBelt::Command::KojiCommand
-
+  subcommand "mash-scripts", "Generate mash script files for a release", ToolBelt::Command::MashScriptsCommand
 end
 
 MainCommand.run
