@@ -13,7 +13,7 @@ module ToolBelt
     end
 
     def update_server
-      ['6', '7'].each do |os_version|
+      ['7'].each do |os_version|
         output = compare_repos(os_version)
         tag = koji_tag(os_version)
         #untag_packages(removed_packages(output), tag)
@@ -23,7 +23,7 @@ module ToolBelt
     end
 
     def update_client
-      ['5', 'fedora-22', 'fedora-23'].each do |os_version|
+      ['6', '5', 'fedora-24', 'fedora-25'].each do |os_version|
         output = compare_repos(os_version, true)
         tag = koji_tag(os_version)
         add_packages(new_packages(output), tag)
