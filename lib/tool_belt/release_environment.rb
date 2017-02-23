@@ -108,7 +108,7 @@ module ToolBelt
 
     def commit_in_repo_release_branch?(repo_name, message)
       Dir.chdir(repo_location(repo_name)) do
-        output = @systools.execute('git log --grep="' + git_escape(message.split("\n").first) + '"').first
+        output = @systools.execute('git log --grep="' + git_escape(message.downcase.split("\n").first) + '"').first
         if output.is_a?(String)
           if output.empty?
             return false
