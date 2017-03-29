@@ -1,0 +1,170 @@
+---
+:project: katello
+:github_org: katello
+:prior_releases:
+  :3.3.2:
+    :redmine_release_id: 226
+:releases:
+  :3.4.0:
+    :redmine_release_id: 211
+:code_name:
+:repos:
+  :katello:
+    :main: true
+    :branch: KATELLO-3.4
+    :repo: https://github.com/Katello/katello.git
+    :version_branch: true
+  :katello-selinux:
+    :branch: 3.0.2
+    :repo: https://github.com/Katello/katello-selinux.git
+  :katello-installer:
+    :branch: KATELLO-3.4
+    :repo: https://github.com/Katello/katello-installer.git
+    :version_branch: true
+  :hammer-cli-katello:
+    :branch: 0.3.0
+    :repo: https://github.com/Katello/hammer-cli-katello.git
+  :katello-packaging:
+    :branch: KATELLO-3.4
+    :repo: https://github.com/Katello/katello-packaging.git
+    :version_branch: true
+  :katello-agent:
+    :branch: 2.9.1
+    :repo: https://github.com/Katello/katello-agent.git
+  :bastion:
+    :branch: 5.0.1
+    :repo: https://github.com/Katello/bastion
+:ignores: []
+:gpg_key: ''
+:mash_scripts:
+ - katello-3.4-thirdparty-candlepin-rhel7
+ - katello-3.4-thirdparty-pulp-rhel7
+ - katello-3.4-rhel7
+ - katello-3.4-client-rhel7
+ - katello-3.4-client-rhel6
+ - katello-3.4-client-rhel5
+ - katello-3.4-client-fedora24
+ - katello-3.4-client-fedora25
+
+:tags:
+  - name: katello-3.4-thirdparty-candlepin-rhel7
+    based_off: katello-thirdparty-candlepin-rhel7
+    arches:
+      - x86_64
+  - name: katello-3.4-thirdparty-pulp-rhel7
+    based_off: katello-thirdparty-pulp-rhel7
+    arches:
+      - x86_64
+  - name: katello-3.4-thirdparty-pulp-rhel6
+    based_off: katello-thirdparty-pulp-rhel6
+    arches:
+      - x86_64
+  - name: katello-3.4-rhel7
+    based_off: katello-nightly-rhel7
+    helper_tags:
+      katello-3.4-thirdparty-rhel7: katello-nightly-thirdparty-rhel7
+      katello-3.4-rhel7-override: null
+      katello-3.4-client-rhel7: null
+    build_target: katello-3.4-rhel7-build
+    build_package_group_source_tag: katello-nightly-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      katello-3.4-rhel7-build:
+        katello-3.4-rhel7-override: 0
+        foreman-plugins-1.15-rhel7-override: 3
+        foreman-1.15-nonscl-rhel7: 4
+        foreman-1.15-rhel7: 10
+      katello-3.4-rhel7-override:
+        katello-3.4-rhel7: 0
+      katello-3.4-rhel7:
+        katello-3.4-thirdparty-rhel7: 0
+      katello-3.4-client-rhel7:
+        katello-3.4-rhel7: 0
+        katello-3.4-thirdparty-pulp-rhel7: 2
+    :external_repos:
+      - rhel-7.0-server
+      - rhel-7.0-server-optional
+      - epel-7
+      - centos-sclo-rh-rhel-7
+      - centos-sclo-sclo-rhel-7
+  - name: katello-3.4-rhel6
+    based_off: katello-nightly-rhel6
+    helper_tags:
+      katello-3.4-thirdparty-rhel6: katello-nightly-thirdparty-rhel6
+      katello-3.4-rhel6-override: null
+      katello-3.4-client-rhel6: null
+    build_target: katello-3.4-rhel6-build
+    build_package_group_source_tag: katello-nightly-rhel6-build
+    arches:
+      - x86_64
+    inherits:
+      katello-3.4-rhel6-build:
+        katello-3.4-rhel6-override: 0
+      katello-3.4-rhel6-override:
+        katello-3.4-rhel6: 1
+      katello-3.4-rhel6:
+        katello-3.4-thirdparty-rhel6: 0
+      katello-3.4-client-rhel6:
+        katello-3.4-rhel6: 0
+        katello-3.4-thirdparty-pulp-rhel6: 2
+    external_repos:
+      - rhel-6.6-server
+      - rhel-6.6-server-optional
+      - epel-6
+  - name: katello-3.4-rhel5
+    based_off: katello-nightly-rhel5
+    helper_tags:
+      katello-3.4-rhel5-override: null
+      katello-3.4-client-rhel5: null
+    build_target: katello-3.4-rhel5-build
+    build_package_group_source_tag: katello-nightly-rhel5-build
+    arches:
+      - x86_64
+    inherits:
+      katello-3.4-rhel5-build:
+        katello-3.4-rhel5-override: 0
+      katello-3.4-rhel5-override:
+        katello-3.4-rhel5: 0
+      katello-3.4-rhel5: {}
+      katello-3.4-client-rhel5:
+        katello-3.4-rhel5: 0
+        katello-3.4-thirdparty-pulp-rhel5: 2
+    :external_repos:
+      - rhel-5.9-server
+      - epel-5
+  - name: katello-3.4-fedora24
+    based_off: katello-nightly-fedora24
+    helper_tags:
+      katello-3.4-client-fedora24: null
+    build_target: katello-3.4-fedora24-build
+    build_package_group_source_tag: katello-nightly-fedora24-build
+    arches:
+      - x86_64
+    inherits:
+      katello-3.4-fedora24-build:
+        katello-3.4-fedora24: 0
+      katello-3.4-fedora24: {}
+      katello-3.4client-fedora24:
+        katello-3.4-fedora24: 0
+        katello-3.4-thirdparty-pulp-fedora24: 2
+    external_repos:
+      - fedora-24-updates
+      - fedora-24
+  - name: katello-3.4-fedora25
+    based_off: katello-nightly-fedora25
+    helper_tags:
+      katello-3.4-client-fedora25: null
+    build_target: katello-3.4-fedora25-build
+    build_package_group_source_tag: katello-nightly-fedora24-build
+    arches:
+      - x86_64
+    inherits:
+      katello-3.4-fedora25-build:
+        katello-3.4-fedora25: 0
+      katello-3.4-fedora25: {}
+      katello-3.4-client-fedora25:
+        katello-3.4-fedora25: 0
+    external_repos:
+      - fedora-25-updates
+      - fedora-25
