@@ -22,7 +22,7 @@
     :repo: https://github.com/Katello/katello-installer.git
     :version_branch: true
   :hammer-cli-katello:
-    :branch: 0.3.0
+    :branch: 0.10.0
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-packaging:
     :branch: KATELLO-3.4
@@ -34,8 +34,14 @@
   :bastion:
     :branch: 5.0.1
     :repo: https://github.com/Katello/bastion
-:ignores: []
-:gpg_key: ''
+:ignores:
+  - 17714
+  - 16256
+  - 17298
+  - 18812
+  - 17378
+  - 19016
+:gpg_key: '0D260CA2'
 :mash_scripts:
  - katello-3.4-thirdparty-candlepin-rhel7
  - katello-3.4-thirdparty-pulp-rhel7
@@ -45,7 +51,6 @@
  - katello-3.4-client-rhel5
  - katello-3.4-client-fedora24
  - katello-3.4-client-fedora25
-
 :tags:
   - name: katello-3.4-thirdparty-candlepin-rhel7
     based_off: katello-thirdparty-candlepin-rhel7
