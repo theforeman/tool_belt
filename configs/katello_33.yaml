@@ -7,6 +7,10 @@
 :releases:
   :3.3:
     :redmine_release_id: 188
+  :3.3.1:
+    :redmine_release_id: 219
+  :3.3.2:
+    :redmine_release_id: 226
 :code_name: Baltic Porter
 :repos:
   :katello:
