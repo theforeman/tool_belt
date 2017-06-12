@@ -67,7 +67,7 @@
   - name: katello-3.4-rhel7
     based_off: katello-nightly-rhel7
     helper_tags:
-      katello-3.4-thirdparty-rhel7: katello-nightly-thirdparty-rhel7
+      katello-3.4-thirdparty-rhel7: katello-thirdparty-rhel7
       katello-3.4-rhel7-override: null
       katello-3.4-client-rhel7: null
     build_target: katello-3.4-rhel7-build
@@ -96,7 +96,7 @@
   - name: katello-3.4-rhel6
     based_off: katello-nightly-rhel6
     helper_tags:
-      katello-3.4-thirdparty-rhel6: katello-nightly-thirdparty-rhel6
+      katello-3.4-thirdparty-rhel6: katello-thirdparty-rhel6
       katello-3.4-rhel6-override: null
       katello-3.4-client-rhel6: null
     build_target: katello-3.4-rhel6-build
@@ -150,7 +150,7 @@
       katello-3.4-fedora24-build:
         katello-3.4-fedora24: 0
       katello-3.4-fedora24: {}
-      katello-3.4client-fedora24:
+      katello-3.4-client-fedora24:
         katello-3.4-fedora24: 0
         katello-3.4-thirdparty-pulp-fedora24: 2
     external_repos:
