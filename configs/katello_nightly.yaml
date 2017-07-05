@@ -15,6 +15,10 @@
     based_off: null
     arches:
       - x86_64
+  - name: katello-thirdparty-pulp-rhel5
+    based_off: null
+    arches:
+      - x86_64
   - name: katello-nightly-rhel7
     based_off: null
     helper_tags:
@@ -103,7 +107,6 @@
       katello-nightly-fedora24: {}
       katello-client-fedora24:
         katello-nightly-fedora24: 0
-        katello-thirdparty-pulp-fedora24: 2
     external_repos:
       - fedora-24-updates
       - fedora-24
