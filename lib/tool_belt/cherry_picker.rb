@@ -41,12 +41,12 @@ module ToolBelt
     end
 
     def cherry_pick(issue, revision)
-      pick = {
+      {
         'id' => issue['id'],
         'closed_on' => issue['closed_on'],
         'subject' => issue['subject'],
         'revision' => revision,
-        'repository' => find_repository(revision)
+        'repository' => find_repository(revision, issue)
       }
     end
 
@@ -105,11 +105,28 @@ module ToolBelt
       "#{pick['id']} - #{Time.parse(pick['closed_on'])}: [#{pick['revision']}] #{pick['subject']}"
     end
 
-    def find_repository(revision)
-      @release_environment.repo_names.find do |repo_name|
-        @release_environment.commit_in_repo?(repo_name, revision)
+    def find_repository(revision, issue)
+      repo_name = case issue['project']['name'].downcase
+                  when 'installer'
+                    'foreman-installer'
+                  when 'foreman'
+                    'foreman'
+                  when 'selinux'
+                    'foreman-selinux'
+                  when 'smart proxy'
+                    'smart-proxy'
+                  end
+
+      if @release_environment.commit_in_repo?(repo_name, revision)
+        repo_name
+      else
+        repo_name = @release_environment.repo_names.find do |unknown_repo_name|
+          @release_environment.commit_in_repo?(unknown_repo_name, revision)
+        end
+
+        return repo_name unless repo_name.nil?
+        "#{issue['project']} - #{issue['category']}"
       end
     end
-
   end
 end
