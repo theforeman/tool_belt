@@ -143,7 +143,7 @@
     helper_tags:
       katello-3.5-client-fedora25: null
     build_target: katello-3.5-fedora25-build
-    build_package_group_source_tag: katello-nightly-fedora24-build
+    build_package_group_source_tag: katello-nightly-fedora25-build
     arches:
       - x86_64
     inherits:
@@ -160,7 +160,7 @@
     helper_tags:
       katello-3.5-client-fedora26: null
     build_target: katello-3.5-fedora26-build
-    build_package_group_source_tag: katello-nightly-fedora24-build
+    build_package_group_source_tag: katello-nightly-fedora26-build
     arches:
       - x86_64
     inherits:
@@ -170,5 +170,5 @@
       katello-3.5-client-fedora26:
         katello-3.5-fedora26: 0
     external_repos:
-      - fedora-25-updates
-      - fedora-25
+      - fedora-26-updates
+      - fedora-26
