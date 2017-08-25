@@ -7,7 +7,7 @@ module ToolBelt
     def ensure_tag_exists(tag_name, arches, based_off = nil)
       unless tag_exists?(tag_name)
         if based_off
-          koji_change("clone-tag #{based_off} #{tag_name}")
+          koji_change("clone-tag --all #{based_off} #{tag_name}")
         else
           koji_change("add-tag #{tag_name} --arches=#{arches.join(',')}")
         end
