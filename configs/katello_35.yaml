@@ -37,7 +37,7 @@
     :branch: 5.0.9
     :repo: https://github.com/Katello/bastion
 :ignores:
-:gpg_key: '0D260CA2'
+:gpg_key: '3DA3BBF0'
 :mash_scripts:
  - katello-3.5-thirdparty-candlepin-rhel7
  - katello-3.5-thirdparty-pulp-rhel7
