@@ -4,6 +4,16 @@
 :prior_releases:
   :3.3.2:
     :redmine_release_id: 226
+  :3.4.0:
+    :redmine_release_id: 211
+  :3.4.1:
+    :redmine_release_id: 228
+  :3.4.2:
+    :redmine_release_id: 258
+  :3.4.3:
+    :redmine_release_id: 267
+  :3.4.4:
+    :redmine_release_id: 281
 :releases:
   :3.4.0:
     :redmine_release_id: 211
@@ -11,6 +21,12 @@
     :redmine_release_id: 228
   :3.4.2:
     :redmine_release_id: 258
+  :3.4.3:
+    :redmine_release_id: 267
+  :3.4.4:
+    :redmine_release_id: 281
+  :3.4.5:
+    :redmine_release_id: 286
 :code_name:
 :repos:
   :katello:
@@ -33,28 +49,36 @@
     :repo: https://github.com/Katello/katello-packaging.git
     :version_branch: true
   :katello-agent:
-    :branch: 2.9.1
+    :branch: 3.0.2
     :repo: https://github.com/Katello/katello-agent.git
   :bastion:
-    :branch: 5.0.5
+    :branch: 5.0.10
     :repo: https://github.com/Katello/bastion
+  :puppet-katello:
+    :branch: 6.1.1
+    :repo: https://github.com/Katello/puppet-katello
   :puppet-certs:
     :branch: 2.0.1
     :repo: https://github.com/Katello/puppet-certs
   :puppet-foreman_proxy_content:
     :branch: 5.0.1
     :repo: https://github.com/Katello/puppet-foreman_proxy_content
+  :puppet-pulp:
+    :branch: 4.3.2
+    :repo: https://github.com/Katello/puppet-pulp
 :ignores:
+  - 19750
+  - 18699
 :gpg_key: '0D260CA2'
 :mash_scripts:
- - katello-3.4-thirdparty-candlepin-rhel7
- - katello-3.4-thirdparty-pulp-rhel7
- - katello-3.4-rhel7
- - katello-3.4-client-rhel7
- - katello-3.4-client-rhel6
- - katello-3.4-client-rhel5
- - katello-3.4-client-fedora24
- - katello-3.4-client-fedora25
+  - katello-3.4-thirdparty-candlepin-rhel7
+  - katello-3.4-thirdparty-pulp-rhel7
+  - katello-3.4-rhel7
+  - katello-3.4-client-rhel7
+  - katello-3.4-client-rhel6
+  - katello-3.4-client-rhel5
+  - katello-3.4-client-fedora24
+  - katello-3.4-client-fedora25
 :tags:
   - name: katello-3.4-thirdparty-candlepin-rhel7
     based_off: katello-thirdparty-candlepin-rhel7
