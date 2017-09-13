@@ -24,9 +24,11 @@ module ToolBelt
           Dir.chdir(name.to_s) do
             @systools.execute("git remote set-url origin #{add_username(repo[:repo], github_username)}") if github_username
 
-            if repo[:version_branch]
+            if repo[:branch]
               if branch_exists?("origin/#{repo[:branch]}") &&
                 @systools.execute("git checkout origin/#{repo[:branch]}")
+              elsif tag_exists?(repo[:branch]) &&
+                @systools.execute("git checkout #{repo[:branch]}")
               else
                 create_branch(repo[:repo], repo[:branch])
               end
@@ -37,7 +39,8 @@ module ToolBelt
             end
 
             @systools.execute("git fetch origin --tags")
-            @systools.execute("git reset origin/#{repo[:branch]} --hard")
+            @systools.execute("git reset origin/#{repo[:branch]} --hard") if branch_exists?(repo[:branch])
+            @systools.execute("git reset #{repo[:branch]} --hard") if tag_exists?(repo[:branch])
           end
         end
       end
@@ -50,9 +53,17 @@ module ToolBelt
     end
 
     def branch_exists?(branch)
-      branch = branch.gsub('.', '\\.')
-      _value, exists = @systools.execute("git branch -r | grep '#{branch}$'")
-      exists
+      value, _exists = @systools.execute("git branch -r")
+      return true if value.include?(branch)
+
+      false
+    end
+
+    def tag_exists?(tag)
+      value, _exists = @systools.execute("git tag")
+      return true if value.include?(tag)
+
+      false
     end
 
     def create_branch(url, branch)

@@ -1,5 +1,6 @@
 require 'json'
 require 'time'
+require 'octokit'
 
 require File.join(File.dirname(__FILE__), 'systools')
 
@@ -26,6 +27,16 @@ module ToolBelt
         revisions = []
         commits = issue['changesets']
 
+        if commits.empty?
+          pull_requests = issue['custom_fields'].find { |field| field['name'] == 'Pull request' }
+
+          unless pull_requests.nil? || pull_requests['value'].empty?
+            commits = extract_commits(pull_requests['value'])
+          end
+        end
+
+        picks << cherry_pick(issue, nil) if commits.empty?
+
         commits.each do |commit|
           if !commit['comments'].start_with?('Merge pull request') && !@release_environment.commit_in_release_branch?(repo_names, commit['comments'])
             revisions << commit['revision']
@@ -35,6 +46,8 @@ module ToolBelt
         revisions.each do |revision|
           picks << cherry_pick(issue, revision)
         end
+
+        picks << cherry_pick(issue, nil) if revisions.empty? && commits.empty?
       end
 
       picks
@@ -106,9 +119,29 @@ module ToolBelt
     end
 
     def find_repository(revision)
+      return 'unknown' if revision == '' || revision.nil?
+
       @release_environment.repo_names.find do |repo_name|
         @release_environment.commit_in_repo?(repo_name, revision)
       end
+    end
+
+    def extract_commits(pull_requests)
+      client = Octokit::Client.new
+      revisions = pull_requests.collect do |link|
+        pr = link.gsub('https://github.com/', '').split('/pull/')
+        repo = pr[0]
+        number = pr[1]
+
+        pr = client.pull_request(repo, number)
+
+        {
+          'revision' => pr['merge_commit_sha'],
+          'comments' => pr['title']
+        }
+      end
+
+      revisions.flatten
     end
 
   end

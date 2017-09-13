@@ -5,6 +5,7 @@ gem 'clamp'
 gem 'rest-client'
 gem 'minitest'
 gem 'mocha'
+gem 'octokit'
 
 group :development do
   gem 'byebug'
