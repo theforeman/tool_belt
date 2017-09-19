@@ -4,6 +4,8 @@
 :prior_releases:
   :3.4.5:
     :redmine_release_id: 258
+  :3.4.6:
+    :redmine_release_id: 295
 :releases:
   :3.5.0:
     :redmine_release_id: 250
