@@ -61,7 +61,7 @@ module ToolBelt
 
     def tag_exists?(tag)
       value, _exists = @systools.execute("git tag")
-      return true if value.include?(tag)
+      return true if value && value.include?(tag)
 
       false
     end
