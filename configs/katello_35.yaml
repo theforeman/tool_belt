@@ -24,18 +24,34 @@
     :repo: https://github.com/Katello/katello-installer.git
     :version_branch: true
   :hammer-cli-katello:
-    :branch: 0.11.0
+    :branch: 0.11.2
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-packaging:
     :branch: KATELLO-3.5
     :repo: https://github.com/Katello/katello-packaging.git
     :version_branch: true
   :katello-agent:
-    :branch: 3.0.1
+    :branch: 3.1.0
     :repo: https://github.com/Katello/katello-agent.git
   :bastion:
-    :branch: 5.0.9
+    :branch: 6.1.0
     :repo: https://github.com/Katello/bastion
+  :puppet-pulp:
+    :branch: 5.1.0
+    :repo: https://github.com/Katello/puppet-pulp
+  :puppet-foreman_proxy_content:
+    :branch: 6.0.0
+    :repo: https://github.com/Katello/puppet-foreman_proxy_content
+  :puppet-katello:
+    :branch: 7.0.0
+    :repo: https://github.com/Katello/puppet-katello
+  :puppet-candlepin:
+    :branch: 4.0.0
+    :repo: https://github.com/Katello/puppet-candlepin
+  :puppet-certs:
+    :branch: 3.0.0
+    :repo: https://github.com/Katello/puppet-certs
+
 :ignores:
 :gpg_key: '3DA3BBF0'
 :mash_scripts:
