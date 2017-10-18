@@ -53,6 +53,7 @@
     :repo: https://github.com/Katello/puppet-certs
 
 :ignores:
+  - 20792
 :gpg_key: '3DA3BBF0'
 :mash_scripts:
  - katello-3.5-thirdparty-candlepin-rhel7
