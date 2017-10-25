@@ -29,8 +29,6 @@ module ToolBelt
                 @systools.execute("git checkout origin/#{repo[:branch]}")
               elsif tag_exists?(repo[:branch]) &&
                 @systools.execute("git checkout #{repo[:branch]}")
-              else
-                create_branch(repo[:repo], repo[:branch])
               end
             end
 
