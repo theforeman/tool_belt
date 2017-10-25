@@ -3,10 +3,9 @@ module ToolBelt
     class BranchCommand < Clamp::Command
 
       parameter "config_file", "Release configuration file"
-      option "--version", 'VERSION', "Version to build for"
 
       def execute
-        config = ToolBelt::Config.new(config_file, version)
+        config = ToolBelt::Config.new(config_file)
         if File.exist?("repos/#{config.options.namespace}")
           repositories = ToolBelt::Repository.parse(config)
           repositories.each do |repo|

@@ -37,28 +37,30 @@ module ToolBelt
       "repos/#{options[:namespace]}/#{name}"
     end
 
-    private def git
+    private
+
+    def git
       @git ||= Git.open(path, log: Logger.new(STDOUT, level: :warn))
     end
 
-    private def origin_branch
+    def origin_branch
       "origin/#{branch}"
     end
 
-    private def create_origin_branch
+    def create_origin_branch
       git.checkout(branch)
       puts "Push #{branch_or_tag} #{branch} to repo #{url}? (y/n)"
       return unless STDIN.gets.chomp.downcase == 'y'
       git.push('origin', branch)
     end
 
-    private def create_local_branch
+    def create_local_branch
       puts "Create #{branch_or_tag} #{branch} in repo #{name}? (y/n)"
       return unless STDIN.gets.chomp.downcase == 'y'
       git.branch(branch).checkout
     end
 
-    private def branch_or_tag
+    def branch_or_tag
       version_branch ? "branch" : "tag"
     end
   end
