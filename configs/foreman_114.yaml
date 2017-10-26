@@ -1,0 +1,84 @@
+---
+:project: foreman
+:prior_releases:
+  :1.13.2:
+    :redmine_release_id: 203
+  :1.13.3:
+    :redmine_release_id: 207
+  :1.13.4:
+    :redmine_release_id: 213
+:releases:
+  :1.14.0:
+    :redmine_release_id: 189
+  :1.14.1:
+    :redmine_release_id: 210
+  :1.14.2:
+    :redmine_release_id: 221
+:repos:
+  :foreman:
+    :main: true
+    :branch: 1.14-stable
+    :repo: https://github.com/theforeman/foreman.git
+  :smart-proxy:
+    :main: true
+    :branch: 1.14-stable
+    :repo: https://github.com/theforeman/smart-proxy.git
+  :foreman-selinux:
+    :main: true
+    :branch: 1.14-stable
+    :repo: https://github.com/theforeman/foreman-selinux.git
+  :foreman-installer:
+    :main: true
+    :branch: 1.14-stable
+    :repo: https://github.com/theforeman/foreman-installer.git
+  :foreman-packaging-deb:
+    :main: true
+    :branch: deb/1.14
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :foreman-packaging-rpm:
+    :main: true
+    :branch: rpm/1.14
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :community-templates:
+    :main: true
+    :branch: 1.14-stable
+    :repo: https://github.com/theforeman/community-templates.git
+:ignores:
+  16899:
+    # All help buttons are broken, commits from other plugin projects
+    - 430407ae32a2246ea6a743165dfe41c157be2f0d
+    - d536005604e5cf3171e8374b1fd3c1d09cdb3863
+  17781:
+    # "us-east-2" (Ohio region) not in foreman-ec2 compute resource
+    # rubygem-fog-aws build retagged
+    - 669a1cc307c960040e271327723262b800e0ac5c
+  17979:
+    # nokogiri 1.7 was released which requires ruby >= 2.1, alternative fix used on stable branch
+    - 7c7a2c1ffe951facf7610ace7003432b7b624ac5
+  18123:
+    # Package conflict rubygem-multipart-post with EPEL7, rubygem-faraday retagged
+    - 045a244ee91c61c2e60be9f645828a95b88f23b5
+  # Installer module changes
+  14920:
+    # Change dhcpd.conf to support EFI loaders
+    - 6d0140778b68808b31c1c4a186f3e9b034163494
+  17133:
+    # Puppet SSL certificate generated after Apache started from 'foreman' module
+    - 960d5e1e620e83610f1fbb207c0f21232be48675
+    - 14d9ca66c984319de023fdc2d8b20a0eeaab84f0
+  17062:
+    # changing --puppet-server-foreman-url does not restart puppetmaster/apache2 service
+    - 4767937236946fbae1c8511c6edd7c8da47f5d4d
+  16802:
+    # Hammer CLI scap plugin install support via foreman-installer
+    - b9b2c34dcf6fa14be927c3d120267af7e1fe178c
+  16705:
+    # grubx64.efi fails to boot with Secure Boot
+    - 3c11b38f76680f9363971b490cbc6cf2838a7aab
+  16942:
+    # next-server in dhcp.conf should be configurable via foreman-installer
+    - cad1c72d4f9c6cecf852b967c9ebff1cc9a0b17e
+  17634:
+    # Puppet4 vardir and Upgrading from Puppet3 (theforeman/puppet 7.0.1)
+    - 7a9226d3f5e2596cdb7a254043e9a649e4e52cdc
+

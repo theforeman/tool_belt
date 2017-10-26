@@ -1,0 +1,54 @@
+---
+:project: foreman
+:prior_releases: []
+:releases:
+  :1.11.0:
+    :redmine_release_id: 71
+  :1.11.1:
+    :redmine_release_id: 141
+  :1.11.2:
+    :redmine_release_id: 155
+  :1.11.3:
+    :redmine_release_id: 159
+  :1.11.4:
+    :redmine_release_id: 169
+:repos:
+  :foreman:
+    :main: true
+    :branch: 1.11-stable
+    :repo: https://github.com/theforeman/foreman.git
+  :smart-proxy:
+    :main: true
+    :branch: 1.11-stable
+    :repo: https://github.com/theforeman/smart-proxy.git
+  :foreman-selinux:
+    :main: true
+    :branch: 1.11-stable
+    :repo: https://github.com/theforeman/foreman-selinux.git
+  :foreman-installer:
+    :main: true
+    :branch: 1.11-stable
+    :repo: https://github.com/theforeman/foreman-installer.git
+  :foreman-packaging-deb:
+    :main: true
+    :branch: deb/1.11
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :foreman-packaging-rpm:
+    :main: true
+    :branch: rpm/1.11
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :community-templates:
+    :main: true
+    :branch: 1.11-stable
+    :repo: https://github.com/theforeman/community-templates.git
+:ignores:
+  - 13405  # handled via installer pinning commit
+  - 12209  # smart proxy plugin commit
+  - 13960  # due in Hammer 0.6
+  - 13948  # RPM retagged
+  - 13966  # Hammer 0.6.2
+  # installer Puppet module changes
+  - 8389
+  - 12745
+  - 12988
+  - 11652

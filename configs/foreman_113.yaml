@@ -1,0 +1,60 @@
+---
+:project: foreman
+:prior_releases:
+  :1.12.2:
+    :redmine_release_id: 175
+  :1.12.3:
+    :redmine_release_id: 181
+  :1.12.4:
+    :redmine_release_id: 194
+:releases:
+  :1.13.0:
+    :redmine_release_id: 160
+  :1.13.1:
+    :redmine_release_id: 190
+  :1.13.2:
+    :redmine_release_id: 203
+  :1.13.3:
+    :redmine_release_id: 207
+  :1.13.4:
+    :redmine_release_id: 213
+:repos:
+  :foreman:
+    :main: true
+    :branch: 1.13-stable
+    :repo: https://github.com/theforeman/foreman.git
+  :smart-proxy:
+    :main: true
+    :branch: 1.13-stable
+    :repo: https://github.com/theforeman/smart-proxy.git
+  :foreman-selinux:
+    :main: true
+    :branch: 1.13-stable
+    :repo: https://github.com/theforeman/foreman-selinux.git
+  :foreman-installer:
+    :main: true
+    :branch: 1.13-stable
+    :repo: https://github.com/theforeman/foreman-installer.git
+  :foreman-packaging-deb:
+    :main: true
+    :branch: deb/1.13
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :foreman-packaging-rpm:
+    :main: true
+    :branch: rpm/1.13
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :community-templates:
+    :main: true
+    :branch: 1.13-stable
+    :repo: https://github.com/theforeman/community-templates.git
+:ignores:
+ 7806:
+   # Docs for "As a user, I would like roles to associate roles with organizations."
+   - 11c2f026dab0671fec8beaa6783e87d06f0bde34
+ # # Change present, but grep failing: faulty ENC yaml for multi-line parameters
+ 13813:
+   - 0069c98dcb50a8960f92397921cfb8a98dc8401e
+ ### Foreman installer module changes (not in the above repo list, as we don't maintain stable branches)
+ 15556:
+   # Plugin enable options are confusing (foreman_proxy)
+   - 9a23ee14413400bfa7f0e6216fd8aeb14aaa1667
