@@ -1,0 +1,29 @@
+---
+:project: foreman
+:releases:
+  :1.9.0:
+    :redmine_release_id: 35
+  :1.9.1:
+    :redmine_release_id: 72
+  :1.9.2:
+    :redmine_release_id: 88
+  :1.9.3:
+    :redmine_release_id: 91
+:repos:
+  :foreman:
+    :main: true
+    :branch: 1.9-stable
+    :repo: https://github.com/theforeman/foreman.git
+  :smart-proxy:
+    :main: true
+    :branch: 1.9-stable
+    :repo: https://github.com/theforeman/smart-proxy.git
+  :foreman-selinux:
+    :main: true
+    :branch: 1.9-stable
+    :repo: https://github.com/theforeman/foreman-selinux.git
+  :foreman-installer:
+    :main: true
+    :branch: 1.9-stable
+    :repo: https://github.com/theforeman/foreman-installer.git
+:ignores:

@@ -1,0 +1,90 @@
+---
+:project: foreman
+:prior_releases:
+  :1.11.1:
+    :redmine_release_id: 141
+  :1.11.2:
+    :redmine_release_id: 155
+  :1.11.3:
+    :redmine_release_id: 159
+  :1.11.4:
+    :redmine_release_id: 169
+:releases:
+  :1.12.0:
+    :redmine_release_id: 136
+  :1.12.1:
+    :redmine_release_id: 161
+  :1.12.2:
+    :redmine_release_id: 175
+  :1.12.3:
+    :redmine_release_id: 181
+  :1.12.4:
+    :redmine_release_id: 194
+:repos:
+  :foreman:
+    :main: true
+    :branch: 1.12-stable
+    :repo: https://github.com/theforeman/foreman.git
+  :smart-proxy:
+    :main: true
+    :branch: 1.12-stable
+    :repo: https://github.com/theforeman/smart-proxy.git
+  :foreman-selinux:
+    :main: true
+    :branch: 1.12-stable
+    :repo: https://github.com/theforeman/foreman-selinux.git
+  :foreman-installer:
+    :main: true
+    :branch: 1.12-stable
+    :repo: https://github.com/theforeman/foreman-installer.git
+  :foreman-packaging-deb:
+    :main: true
+    :branch: deb/1.12
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :foreman-packaging-rpm:
+    :main: true
+    :branch: rpm/1.12
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :community-templates:
+    :main: true
+    :branch: 1.12-stable
+    :repo: https://github.com/theforeman/community-templates.git
+:ignores:
+  # foreman_openscap commit on wrong Foreman ticket
+  14253:
+    - dc22dab37427095187ecaf01c5246b90cb4be841
+  # Commit message contains slash/quotes, probably failing to match
+  13813:
+    - 0069c98dcb50a8960f92397921cfb8a98dc8401e
+  ### Foreman installer module changes (not in the above repo list, as we don't maintain stable branches)
+  # katello-installer --help references a flag using "RedHat" in the context
+  14197:
+    - 06d587bc7561f40341553dd2433e5bab803a3535
+  # Set KeepAlive to on
+  8489:
+    - 0a6966ce22111b1ce592b5e215a948b3734680e7
+  # Installer create upstream openscap repo file by default
+  14520:
+    - 361136edfec01f2cba9b1d00c927133e952c7ed9
+    # not included; for 1.13
+    - 416698ca98126b8cb9c50a36326f69cb666a7cb7
+  # Openscap repository should be added by smart_proxy_openscap plugin rather than foreman_openscap
+  14522:
+    - 34cf002e2ad5395f059f8cabd0533ca1a6288579
+  # Add foreman_smartproxy provider with dependencies for AIO
+  14455:
+    - 51e26e56ec1d95ff2ce0235b541b0d04e7566b53
+  # rest_v3.rb does not send headers when 'data' field in request is nil
+  14852:
+    - 02f4ae071bf2b5966d218be3036e868033f72a31
+  # puppet group fails when added to foreman user before puppetserver installation
+  14942:
+    - ec18f649daac9f3c2354b042838ba309e426831c
+    - 9114252e9d95cf8485f69579a7e23abc55846944
+    - dc4ceb533b25c3c6a8811c6c32b5d012837d03be
+  # /etc/puppetlabs/puppetserver/bootstrap.cfg is missing in Puppet Server 2.5.0
+  15132:
+    - 68c2d50eac54de1e21e66a96794eca1d1d51f8af
+  # auth_kerb.conf error when using external authentication and foreman-installer
+  15642:
+    - 837849846c43ca4dcb44f8c61e039c543c576968
