@@ -20,13 +20,17 @@ module ToolBelt
       end
     end
 
+    def tag_exists?(tag)
+      return git.tags.any? { |r| r.name == tag}
+    end
+
     def create_or_checkout_branch
       git.checkout('origin/HEAD')
       git.reset_hard('origin/HEAD')
 
-      if git.branches[origin_branch] || git.tags[origin_branch]
+      if git.branches[origin_branch] || tag_exists?(origin_branch)
         git.checkout(origin_branch)
-      elsif git.branches[branch] || git.tags[branch]
+      elsif git.branches[branch] || tag_exists?(branch)
         create_origin_branch
       else
         create_local_branch
