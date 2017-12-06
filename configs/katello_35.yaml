@@ -24,7 +24,7 @@
     :repo: https://github.com/Katello/katello-installer.git
     :version_branch: true
   :hammer-cli-katello:
-    :branch: 0.11.2
+    :branch: 0.11.4
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-packaging:
     :branch: KATELLO-3.5
@@ -49,7 +49,7 @@
     :branch: 4.0.0
     :repo: https://github.com/Katello/puppet-candlepin
   :puppet-certs:
-    :branch: 3.0.0
+    :branch: 3.0.1
     :repo: https://github.com/Katello/puppet-certs
 
 :ignores:
