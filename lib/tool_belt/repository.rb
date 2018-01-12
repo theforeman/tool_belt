@@ -31,9 +31,9 @@ module ToolBelt
       if git.branches[origin_branch] || tag_exists?(origin_branch)
         git.checkout(origin_branch)
       elsif git.branches[branch] || tag_exists?(branch)
-        create_origin_branch
+        create_origin_branch if @version_branch
       else
-        create_local_branch
+        create_local_branch if @version_branch
       end
     end
 
@@ -44,7 +44,10 @@ module ToolBelt
     private
 
     def git
-      @git ||= Git.open(path, log: Logger.new(STDOUT, level: :warn))
+      logger = Logger.new(STDOUT)
+      logger.level = :warn
+
+      @git ||= Git.open(path, log: logger)
     end
 
     def origin_branch

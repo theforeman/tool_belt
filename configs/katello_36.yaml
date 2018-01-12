@@ -14,14 +14,14 @@
   :katello:
     :main: true
     :branch: KATELLO-3.6
-    :repo: https://github.com/Katello/katello.git
+    :repo: git@github.com:Katello/katello.git
     :version_branch: true
   :katello-selinux:
     :branch: 3.0.3
     :repo: https://github.com/Katello/katello-selinux.git
   :katello-installer:
     :branch: KATELLO-3.6
-    :repo: https://github.com/Katello/katello-installer.git
+    :repo: git@github.com:Katello/katello-installer.git
     :version_branch: true
   :hammer-cli-katello:
     :branch: 0.11.4

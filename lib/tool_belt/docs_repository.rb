@@ -62,7 +62,10 @@ module ToolBelt
     end
 
     def docs_repo
-      @docs_repo ||= Git.open(repo_name, log: Logger.new(STDOUT, level: :warn))
+      logger = Logger.new(STDOUT)
+      logger.level = :warn
+
+      @docs_repo ||= Git.open(repo_name, log: logger)
     end
 
     def repo_name
