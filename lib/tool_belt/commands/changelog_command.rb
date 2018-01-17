@@ -9,6 +9,7 @@ module ToolBelt
       parameter "config_file", "Release configuration file"
       option "--update-cache", :flag, "Re-download issues and cache them"
       option "--version", 'VERSION', "Version to check cherry picks for"
+      option "--omit-gh-link", :flag, "Do not include the link to Github commit"
 
       def execute
         config = ToolBelt::Config.new(config_file, version)
@@ -21,7 +22,7 @@ module ToolBelt
           config.options.namespace,
           systools
         )
-        ToolBelt::Changelog.new(config.options, release_environment)
+        ToolBelt::Changelog.new(config.options, release_environment, omit_gh_link?)
       end
 
     end
