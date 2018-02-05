@@ -21,6 +21,7 @@ module ToolBelt
         @repos.each do |name, repo|
           @systools.execute("git clone #{repo[:repo]} #{name}") if !File.exist?(name.to_s)
 
+
           Dir.chdir(name.to_s) do
             @systools.execute("git remote set-url origin #{add_username(repo[:repo], github_username)}") if github_username
 
@@ -39,6 +40,16 @@ module ToolBelt
             @systools.execute("git fetch origin --tags")
             @systools.execute("git reset origin/#{repo[:branch]} --hard") if branch_exists?(repo[:branch])
             @systools.execute("git reset #{repo[:branch]} --hard") if tag_exists?(repo[:branch])
+          end
+        end
+      end
+    end
+
+    def update_repos
+      Dir.chdir(release_directory) do
+        @repos.each do |name, repo|
+          Dir.chdir(name.to_s) do
+            @systools.execute("git fetch --all")
           end
         end
       end

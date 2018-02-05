@@ -13,6 +13,8 @@ module ToolBelt
         issues = issue_cache.load_issues(update_cache?)
 
         release_environment = ToolBelt::ReleaseEnvironment.new(config.options.repos, config.options.namespace)
+        release_environment.update_repos
+
         picker = ToolBelt::CherryPicker.new(config.options, release_environment, issues)
       end
 
