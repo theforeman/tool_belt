@@ -23,8 +23,6 @@ module ToolBelt
 
 
           Dir.chdir(name.to_s) do
-            @systools.execute("git remote set-url origin #{add_username(repo[:repo], github_username)}") if github_username
-
             if repo[:branch]
               if branch_exists?("origin/#{repo[:branch]}") &&
                 @systools.execute("git checkout origin/#{repo[:branch]}")
