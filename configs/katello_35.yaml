@@ -43,9 +43,6 @@
   :puppet-pulp:
     :branch: 5.1.0
     :repo: https://github.com/Katello/puppet-pulp
-  :puppet-foreman_proxy_content:
-    :branch: 7.0.0
-    :repo: https://github.com/Katello/puppet-foreman_proxy_content
   :puppet-katello:
     :branch: 7.0.0
     :repo: https://github.com/Katello/puppet-katello
@@ -59,7 +56,7 @@
     :branch: 4.0.0
     :repo: https://github.com/Katello/puppet-qpid
   :puppet-foreman_proxy_content:
-    :branch: 6.1.0
+    :branch: 6.1.1
     :repo: https://github.com/Katello/puppet-foreman_proxy_content
 
 :ignores:
