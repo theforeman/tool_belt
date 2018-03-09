@@ -4,9 +4,9 @@ require File.join(File.dirname(__FILE__), 'redmine/issue')
 module ToolBelt
   class Changelog
 
-    attr_accessor :issues, :bugs, :features, :release_environment, :config
+    attr_accessor :issues, :bugs, :features, :release_environment, :config, :omit_gh_link
 
-    def initialize(config, release_environment)
+    def initialize(config, release_environment, omit_gh_link)
       self.config = config
       issue_cache = IssueCache.new(config)
 
@@ -14,6 +14,7 @@ module ToolBelt
       self.bugs = {}
       self.issues = issue_cache.load_issues
       self.release_environment = release_environment
+      self.omit_gh_link = omit_gh_link
 
       generate_entries(@issues)
       changelog = format_entries
@@ -35,8 +36,8 @@ module ToolBelt
 
       list_item = title_string
       list_item += issue_string
-      list_item += ", "
 
+      list_item += ", "
       list_item += hash_string(issue)
 
       list_item.chop!.chop! # Remove trailing ", "
@@ -56,7 +57,11 @@ module ToolBelt
 
     def hash_string(issue)
       base_url = "http://github.com/#{config.github_org}"
-      string = "[%{short}](#{base_url}/%{repo}/commit/%{full})"
+      string = if @omit_gh_link
+                 "%{short}"
+               else
+                 "[%{short}](#{base_url}/%{repo}/commit/%{full})"
+               end
       hashes = ""
 
       issue['changesets'].each do |changeset|
@@ -82,7 +87,7 @@ module ToolBelt
 
     def format_entries
       entry_string = "\n## Features \n"
-      @features.each do |category, entries|
+      @features.sort.to_h.each do |category, entries|
         if category != 'Other'
           entry_string += "\n### #{category}\n"
 
@@ -100,7 +105,7 @@ module ToolBelt
       end
 
       entry_string += "\n## Bug Fixes \n"
-      @bugs.each do |category, entries|
+      @bugs.sort.to_h.each do |category, entries|
         if category != 'Other'
           entry_string += "\n### #{category}\n"
 
