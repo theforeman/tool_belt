@@ -1,0 +1,93 @@
+---
+:project: pulp
+:github_org: pulp
+:prior_releases:
+  :2.15.0:
+  :2.15.1:
+  :2.15.2:
+  :2.15.3:
+:releases:
+  :2.16.0:
+:code_name: American Black Ale
+:repos:
+  :pulp:
+    :main: true
+    :branch: 2.16-release
+    :repo: https://github.com/pulp/pulp.git
+    :version_branch: true
+  :pulp-rpm:
+    :branch: 2.16-release
+    :repo: https://github.com/pulp/pulp_rpm.git
+    :version_branch: true
+  :pulp-puppet:
+    :branch: 2.16-release
+    :repo: https://github.com/pulp/pulp_puppet.git
+    :version_branch: true
+  :pulp-docker:
+    :branch: 3.1.2
+    :repo: https://github.com/pulp/pulp_docker.git
+  :pulp-ostree:
+    :branch: pulp-ostree-1.3.0-1
+    :repo: https://github.com/pulp/pulp_ostree.git
+  :pulp-python:
+    :branch: pulp-python-2.0.2-1
+    :repo: https://github.com/pulp/pulp_python.git
+  :pulp-deb:
+    :branch: 1.7-release
+    :repo: https://github.com/pulp/pulp_deb.git
+    :version_branch: true
+  :pulp-packaging:
+    :branch: 2.16
+    :repo: https://github.com/pulp/pulp-packaging.git
+  :python-crane:
+    :branch: 3.1.1
+    :repo: https://github.com/pulp/crane.git
+:tags:
+  - name: pulp-2.16-rhel7
+    based_off: pulp-nightly-rhel7
+    build_target: pulp-2.16-rhel7-build
+    build_package_group_source_tag: pulp-nightly-rhel7-build
+    arches:
+      - x86_64
+    external_repos:
+      - rhel-7.0-server
+      - rhel-7.0-server-optional
+      - epel-7
+  - name: pulp-2.16-rhel6
+    based_off: pulp-nightly-rhel6
+    build_target: pulp-2.16-rhel6-build
+    build_package_group_source_tag: pulp-nightly-rhel6-build
+    arches:
+      - x86_64
+    external_repos:
+      - epel-6
+      - qpid-copr
+      - rhel-6.6-server
+      - rhel-6.6-server-optional
+  - name: pulp-2.16-rhel5
+    based_off: pulp-nightly-rhel5
+    build_target: pulp-2.16-rhel5-build
+    build_package_group_source_tag: pulp-nightly-rhel5-build
+    arches:
+      - x86_64
+    external_repos:
+      - rhel-5.9-server
+      - epel-5
+  - name: pulp-2.16-fedora27
+    based_off: pulp-nightly-fedora27
+    build_target: pulp-2.16-fedora27-build
+    build_package_group_source_tag: pulp-nightly-fedora27-build
+    arches:
+      - x86_64
+    external_repos:
+      - fedora27-external-repo
+      - fedora27-updates-external-repo
+  - name: pulp-2.16-fedora26
+    based_off: pulp-nightly-fedora26
+    build_target: pulp-2.16-fedora26-build
+    build_package_group_source_tag: pulp-nightly-fedora26-build
+    arches:
+      - x86_64
+    external_repos:
+      - fedora-26
+      - fedora-26-updates
