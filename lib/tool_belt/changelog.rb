@@ -22,7 +22,10 @@ module ToolBelt
 
     def generate_entries(issues)
       issues.each do |issue|
-        next unless Redmine::Issue.closed?(issue)
+        redmine_issue = Redmine::Issue.from_raw_data('issue' => issue)
+        next unless redmine_issue.closed?
+        next unless redmine_issue.release_id == config.redmine_release_id
+
         generate_entry(issue)
       end
     end
