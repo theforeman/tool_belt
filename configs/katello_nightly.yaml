@@ -129,3 +129,21 @@
     external_repos:
       - fedora-27-updates
       - fedora-27
+  - name: katello-nightly-sles12
+    based_off: null
+    arches:
+      - x86_64
+    helper_tags:
+      katello-client-sles12: null
+    inherits:
+      katello-client-sles12:
+        katello-nightly-sles12: 0
+  - name: katello-nightly-sles11
+    based_off: null
+    arches:
+      - x86_64
+    helper_tags:
+      katello-client-sles11: null
+    inherits:
+      katello-client-sles11:
+        katello-nightly-sles11: 0
