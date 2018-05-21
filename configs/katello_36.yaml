@@ -6,6 +6,8 @@
     :redmine_release_id: 250
   :3.5.1:
     :redmine_release_id: 329
+  :3.5.2:
+    :redmine_release_id: 339
 :releases:
   :3.6.0:
     :redmine_release_id: 284
