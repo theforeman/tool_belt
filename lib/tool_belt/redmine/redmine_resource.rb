@@ -19,13 +19,6 @@ class RedmineResource
     self.raw_data = get(path, params) unless path.nil?
   end
 
-  def self.from_raw_data(raw_data = {})
-    resource = self.new
-    resource.raw_data = raw_data
-
-    resource
-  end
-
   def base_path
     '/'
   end

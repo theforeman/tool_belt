@@ -1,9 +1,3 @@
-require 'json'
-require 'time'
-require 'octokit'
-
-require File.join(File.dirname(__FILE__), 'systools')
-
 module ToolBelt
   class CherryPicker
 
@@ -19,21 +13,13 @@ module ToolBelt
 
     def find_cherry_picks(project, release, repo_names)
       picks = []
-      closed_issues = @issues.select do |issue|
-        !issue['closed_on'].nil?
-      end
+      closed_issues = issues.select(&:closed?)
 
       closed_issues.each do |issue|
         revisions = []
-        commits = issue['changesets']
+        commits = issue.changesets
 
-        if commits.empty?
-          pull_requests = issue['custom_fields'].find { |field| field['name'] == 'Pull request' }
-
-          unless pull_requests.nil? || pull_requests['value'].empty?
-            commits = extract_commits(pull_requests['value'])
-          end
-        end
+        commits = issue.pull_request_commits if commits.empty?
 
         picks << cherry_pick(issue, nil) if commits.empty?
 
@@ -55,9 +41,9 @@ module ToolBelt
 
     def cherry_pick(issue, revision)
       pick = {
-        'id' => issue['id'],
-        'closed_on' => issue['closed_on'],
-        'subject' => issue['subject'],
+        'id' => issue.id,
+        'closed_on' => issue.closed_on,
+        'subject' => issue.subject,
         'revision' => revision,
         'repository' => find_repository(revision)
       }
@@ -125,24 +111,5 @@ module ToolBelt
         @release_environment.commit_in_repo?(repo_name, revision)
       end
     end
-
-    def extract_commits(pull_requests)
-      client = Octokit::Client.new
-      revisions = pull_requests.collect do |link|
-        pr = link.gsub('https://github.com/', '').split('/pull/')
-        repo = pr[0]
-        number = pr[1]
-
-        pr = client.pull_request(repo, number)
-
-        {
-          'revision' => pr['merge_commit_sha'],
-          'comments' => pr['title']
-        }
-      end
-
-      revisions.flatten
-    end
-
   end
 end
