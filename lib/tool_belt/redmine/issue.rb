@@ -26,7 +26,10 @@ module Redmine
     def pull_request_commits
       return [] if pull_requests.nil? || pull_requests.empty?
 
-      client = Octokit::Client.new
+      access_token = ENV['GITHUB_ACCESS_TOKEN']
+      puts "GITHUB_ACCESS_TOKEN not present in the environment. Requests will be rate-limited." unless access_token
+
+      client = Octokit::Client.new(access_token: access_token)
       commits = pull_requests.collect do |link|
         pr = link.gsub('https://github.com/', '').split('/pull/')
         repo = pr[0]
