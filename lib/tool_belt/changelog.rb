@@ -8,11 +8,11 @@ module ToolBelt
 
     def initialize(config, release_environment)
       self.config = config
-      issue_cache = IssueCache.new(config)
+      issue_service = IssueService.new(config)
 
       self.features = {}
       self.bugs = {}
-      self.issues = issue_cache.load_issues
+      self.issues = issue_service.load_issues
       self.release_environment = release_environment
 
       generate_entries(@issues)
@@ -22,19 +22,18 @@ module ToolBelt
 
     def generate_entries(issues)
       issues.each do |issue|
-        redmine_issue = Redmine::Issue.from_raw_data('issue' => issue)
-        next unless redmine_issue.closed?
-        next unless redmine_issue.release_id == config.redmine_release_id
+        next unless issue.closed?
+        next unless issue.release_id == config.redmine_release_id
 
         generate_entry(issue)
       end
     end
 
     def generate_entry(issue)
-      title = issue['subject']
+      title = issue.subject
 
       title_string = " * #{title} ("
-      issue_string = "[##{issue['id']}](http://projects.theforeman.org/issues/#{issue['id']})"
+      issue_string = "[##{issue.id}](http://projects.theforeman.org/issues/#{issue.id})"
 
       list_item = title_string
       list_item += issue_string
@@ -45,8 +44,8 @@ module ToolBelt
       list_item.chop!.chop! # Remove trailing ", "
       list_item += ')'
 
-      tracker = issue ? issue['tracker']['name'] : 'Bug'
-      category = (issue && issue['category']) ? issue['category']['name'] : 'Other'
+      tracker = (issue && issue.tracker) ? issue.tracker['name'] : 'Bug'
+      category = (issue && issue.category) ? issue.category['name'] : 'Other'
 
       if tracker == 'Bug'
         @bugs[category] = [] unless @bugs.key?(category)
@@ -62,7 +61,7 @@ module ToolBelt
       string = "[%{short}](#{base_url}/%{repo}/commit/%{full})"
       hashes = ""
 
-      issue['changesets'].each do |changeset|
+      issue.changesets.each do |changeset|
         if changeset['comments'].start_with?('Merge pull request')
           break
         else
@@ -141,6 +140,5 @@ module ToolBelt
 
       puts "Changelog is located at #{release_environment.repo_location(repo)}/CHANGELOG.md"
     end
-
   end
 end
