@@ -2,7 +2,7 @@
 
 #### Github Access Token
 
-Commands such as 'changelog' and 'cherry-picks' fetch data through Github's API. In order to avoid rate-limiting when querying a large number of issues you should define the GITHUB_ACCESS_TOKEN environment variable with a token you've created which has repository acccess.
+Commands such as 'changelog' and 'cherry-picks' fetch data through Github's API. In order to avoid rate-limiting when querying a large number of issues you should define the GITHUB_ACCESS_TOKEN environment variable with a token you've created which has repository access.
 
 #### Cherry Picks
 
