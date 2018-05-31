@@ -35,22 +35,22 @@
     :branch: 3.2.1
     :repo: https://github.com/Katello/katello-host-tools.git
   :bastion:
-    :branch: 6.1.10
+    :branch: 6.1.11
     :repo: https://github.com/Katello/bastion
   :puppet-pulp:
-    :branch: 5.4.0
+    :branch: 5.4.1
     :repo: https://github.com/Katello/puppet-pulp
   :puppet-foreman_proxy_content:
-    :branch: 7.0.0
+    :branch: 7.1.0
     :repo: https://github.com/Katello/puppet-foreman_proxy_content
   :puppet-katello:
-    :branch: 7.2.0
+    :branch: 8.0.1
     :repo: https://github.com/Katello/puppet-katello
   :puppet-candlepin:
     :branch: 5.1.0
     :repo: https://github.com/Katello/puppet-candlepin
   :puppet-certs:
-    :branch: 4.0.1
+    :branch: 4.1.0
     :repo: https://github.com/Katello/puppet-certs
 
 :gpg_key: '4D0D8597'
