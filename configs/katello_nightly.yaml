@@ -95,23 +95,6 @@
     external_repos:
       - rhel-5.9-server
       - epel-5
-  - name: katello-nightly-fedora26
-    based_off: null
-    helper_tags:
-      katello-client-fedora26: null
-    build_target: katello-nightly-fedora26-build
-    build_package_group_source_tag: katello-nightly-fedora25-build
-    arches:
-      - x86_64
-    inherits:
-      katello-nightly-fedora26-build:
-        katello-nightly-fedora26: 0
-      katello-nightly-fedora26: {}
-      katello-client-fedora26:
-        katello-nightly-fedora26: 0
-    external_repos:
-      - fedora-26-updates
-      - fedora-26
   - name: katello-nightly-fedora27
     based_off: null
     helper_tags:
@@ -129,6 +112,23 @@
     external_repos:
       - fedora-27-updates
       - fedora-27
+  - name: katello-nightly-fedora28
+    based_off: null
+    helper_tags:
+      katello-client-fedora28: null
+    build_target: katello-nightly-fedora28-build
+    build_package_group_source_tag: katello-nightly-fedora27-build
+    arches:
+      - x86_64
+    inherits:
+      katello-nightly-fedora28-build:
+        katello-nightly-fedora28: 0
+      katello-nightly-fedora28: {}
+      katello-client-fedora28:
+        katello-nightly-fedora28: 0
+    external_repos:
+      - fedora-28-updates
+      - fedora-28
   - name: katello-nightly-sles12
     based_off: null
     arches:
