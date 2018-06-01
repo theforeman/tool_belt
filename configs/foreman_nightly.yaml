@@ -23,7 +23,7 @@
       - centos-sclo-sclo-rhel-7
       - centos-7-server
       - rhel-7.0-server
-      - tfm-ror51-rhel-7
+      - foreman-rails-nightly-rhel-7
   - name: foreman-nightly-nonscl-rhel7
     based_off: null
     helper_tags:
@@ -65,7 +65,7 @@
       - centos-7-server
       - rhel-7.0-server
       - rhel-7.0-server-optional
-      - tfm-ror51-rhel-7
+      - foreman-rails-nightly-rhel-7
   - name: foreman-plugins-nightly-nonscl-rhel7
     based_off: null
     helper_tags:

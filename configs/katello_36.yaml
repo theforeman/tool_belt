@@ -109,7 +109,7 @@
       - epel-7
       - centos-sclo-rh-rhel-7
       - centos-sclo-sclo-rhel-7
-      - tfm-ror51-rhel-7
+      - foreman-rails-1.17-rhel-7
       - centos-7-server
   - name: katello-3.6-rhel6
     based_off: katello-3.6-nightly-rhel6
