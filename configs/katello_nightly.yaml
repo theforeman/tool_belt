@@ -24,7 +24,7 @@
     helper_tags:
       katello-thirdparty-rhel7: null
       katello-nightly-rhel7-override: null
-      katello-client-rhel7: null
+      katello-nightly-client-rhel7: null
     build_target: katello-nightly-rhel7-build
     build_package_group_source_tag: katello-nightly-rhel7-build
     arches:
@@ -39,7 +39,7 @@
         katello-nightly-rhel7: 0
       katello-nightly-rhel7:
         katello-thirdparty-rhel7: 0
-      katello-client-rhel7:
+      katello-nightly-client-rhel7:
         katello-nightly-rhel7: 0
         katello-thirdparty-pulp-rhel7: 2
     external_repos:
@@ -55,7 +55,7 @@
     helper_tags:
       katello-thirdparty-rhel6: null
       katello-nightly-rhel6-override: null
-      katello-client-rhel6: null
+      katello-nightly-client-rhel6: null
     build_target: katello-nightly-rhel6-build
     build_package_group_source_tag: katello-nightly-rhel6-build
     arches:
@@ -67,7 +67,7 @@
         katello-nightly-rhel6: 1
       katello-nightly-rhel6:
         katello-thirdparty-rhel6: 0
-      katello-client-rhel6:
+      katello-nightly-client-rhel6:
         katello-nightly-rhel6: 0
         katello-thirdparty-pulp-rhel6: 2
     external_repos:
@@ -78,7 +78,7 @@
     based_off: null
     helper_tags:
       katello-nightly-rhel5-override: null
-      katello-client-rhel5: null
+      katello-nightly-client-rhel5: null
     build_target: katello-nightly-rhel5-build
     build_package_group_source_tag: katello-nightly-rhel5-build
     arches:
@@ -89,7 +89,7 @@
       katello-nightly-rhel5-override:
         katello-nightly-rhel5: 0
       katello-nightly-rhel5: {}
-      katello-client-rhel5:
+      katello-nightly-client-rhel5:
         katello-nightly-rhel5: 0
         katello-thirdparty-pulp-rhel5: 2
     external_repos:
@@ -98,7 +98,7 @@
   - name: katello-nightly-fedora27
     based_off: null
     helper_tags:
-      katello-client-fedora27: null
+      katello-nightly-client-fedora27: null
     build_target: katello-nightly-fedora27-build
     build_package_group_source_tag: katello-nightly-fedora26-build
     arches:
@@ -107,7 +107,7 @@
       katello-nightly-fedora27-build:
         katello-nightly-fedora27: 0
       katello-nightly-fedora27: {}
-      katello-client-fedora27:
+      katello-nightly-client-fedora27:
         katello-nightly-fedora27: 0
     external_repos:
       - fedora-27-updates
@@ -115,7 +115,7 @@
   - name: katello-nightly-fedora28
     based_off: null
     helper_tags:
-      katello-client-fedora28: null
+      katello-nightly-client-fedora28: null
     build_target: katello-nightly-fedora28-build
     build_package_group_source_tag: katello-nightly-fedora27-build
     arches:
@@ -124,7 +124,7 @@
       katello-nightly-fedora28-build:
         katello-nightly-fedora28: 0
       katello-nightly-fedora28: {}
-      katello-client-fedora28:
+      katello-nightly-client-fedora28:
         katello-nightly-fedora28: 0
     external_repos:
       - fedora-28-updates
@@ -134,16 +134,16 @@
     arches:
       - x86_64
     helper_tags:
-      katello-client-sles12: null
+      katello-nightly-client-sles12: null
     inherits:
-      katello-client-sles12:
+      katello-nightly-client-sles12:
         katello-nightly-sles12: 0
   - name: katello-nightly-sles11
     based_off: null
     arches:
       - x86_64
     helper_tags:
-      katello-client-sles11: null
+      katello-nightly-client-sles11: null
     inherits:
-      katello-client-sles11:
+      katello-nightly-client-sles11:
         katello-nightly-sles11: 0
