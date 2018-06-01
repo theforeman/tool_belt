@@ -2,7 +2,7 @@ require File.join(File.dirname(__FILE__), 'systools')
 
 module ToolBelt
   class KojiBuilder
-    KOJI_COMMAND = 'kkoji'
+    KOJI_COMMAND = system("which kkoji") ? 'kkoji' : 'koji'
 
     def initialize(tags = [])
       @tags = tags.map{|tag| KojiTag.new(tag)}

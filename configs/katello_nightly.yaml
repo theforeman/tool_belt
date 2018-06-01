@@ -49,7 +49,7 @@
       - centos-sclo-rh-rhel-7
       - centos-sclo-sclo-rhel-7
       - centos-7-server
-      - tfm-ror51-rhel-7
+      - foreman-rails-nightly-rhel-7
   - name: katello-nightly-rhel6
     based_off: null
     helper_tags:
