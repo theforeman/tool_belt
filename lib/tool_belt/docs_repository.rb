@@ -25,6 +25,22 @@ module ToolBelt
       Dir.chdir("repos/#{namespace}") do
         clone_docs_repo unless File.exist?(repo_name)
         if project == 'katello'
+
+          # copy sidebar
+          katello_includes_path = "#{repo_name}/_includes/plugins/katello"
+          Dir.chdir(katello_includes_path) do
+            last_release_sidebar = "sidebar_#{last_release}.html"
+
+            releases.each do |release|
+              release_sidebar = "sidebar_#{release}.html"
+              unless File.exist?(release_sidebar)
+                if File.exist?(last_release_sidebar)
+                  FileUtils.copy_entry(last_release_sidebar, release_sidebar)
+                end
+              end
+            end
+          end
+
           Dir.chdir("#{repo_name}/plugins/katello") do
             releases.each do |release|
               unless File.exist?(release)
@@ -41,8 +57,10 @@ module ToolBelt
               puts
               puts `grep -R '#{last_release.gsub('.', '\.')}' #{release}`
               puts
-              puts "Update the docs at #{katello_docs_path}."
-              puts "Be sure to add a link to #{release} in #{docs_path}/_layouts/plugins/katello/documentation.html."
+              puts "Don't forget to:"
+              puts " - Update the sidebar at repos/#{namespace}/#{katello_includes_path}"
+              puts " - Update the docs at #{katello_docs_path}."
+              puts " - Add a link to #{release} in #{docs_path}/_layouts/plugins/katello/documentation.html."
             end
           end
         end
