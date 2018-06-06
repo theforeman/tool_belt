@@ -18,6 +18,9 @@
     :branch: KATELLO-3.7
     :repo: https://github.com/Katello/katello.git
     :version_branch: true
+  :katello-client-bootstrap:
+    :branch: 1.5.1
+    :repo: https://github.com/Katello/katello-client-bootstrap.git
   :katello-selinux:
     :branch: 3.0.3
     :repo: https://github.com/Katello/katello-selinux.git
@@ -26,13 +29,13 @@
     :repo: https://github.com/Katello/katello-installer.git
     :version_branch: true
   :hammer-cli-katello:
-    :branch: 0.12.1
+    :branch: 0.13.2
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :foreman-packaging:
     :branch: rpm/1.18
     :repo: https://github.com/theforeman/foreman-packaging.git
   :katello-host-tools:
-    :branch: 3.2.1
+    :branch: 3.3.0
     :repo: https://github.com/Katello/katello-host-tools.git
   :bastion:
     :branch: 6.1.11
@@ -41,17 +44,45 @@
     :branch: 5.4.1
     :repo: https://github.com/Katello/puppet-pulp
   :puppet-foreman_proxy_content:
-    :branch: 7.1.0
+    :branch: 7.1.1
     :repo: https://github.com/Katello/puppet-foreman_proxy_content
   :puppet-katello:
     :branch: 8.0.1
     :repo: https://github.com/Katello/puppet-katello
   :puppet-candlepin:
-    :branch: 5.1.0
+    :branch: 5.1.1
     :repo: https://github.com/Katello/puppet-candlepin
   :puppet-certs:
     :branch: 4.1.0
     :repo: https://github.com/Katello/puppet-certs
+  :puppet-qpid:
+    :branch: 4.2.2
+    :repo: https://github.com/Katello/puppet-qpid
+
+:ignores:
+  - 21183 # katello-packaging
+  - 21219 # katello-packaging
+  - 21220 # katello-packaging
+  - 21198 # katello-packaging
+  - 21492 # katello-packaging
+  - 21698 # tracker
+  - 21979 # fixed by related issue
+  - 21252 # fixed by related issue
+  - 22418 # merged in 1.17
+  - 20879 # all MRs closed
+  - 22709 # no associated PR (OK)
+  - 21795 # packaging, merged into nightly
+  - 22490 # docs, no PR
+  - 23198 # katello_devel
+  - 23265 # fixed by another PR
+  - 23176 # fixed in bastion / separate issue
+  - 22469 # closed, no pr
+  - 22754 # fixed by dup
+  - 23284 # no reproducer
+  - 22648 # docs
+  - 23588 # no PR
+  - 23541 # closed, no PR
+  - 23435 # closed, no PR
 
 :gpg_key: '4D0D8597'
 :mash_scripts:
