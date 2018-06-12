@@ -142,7 +142,7 @@
       - foreman-rails-1.18-rhel-7
       - centos-7-server
   - name: katello-3.7-rhel6
-    based_off: katello-3.7-nightly-rhel6
+    based_off: katello-nightly-rhel6
     helper_tags:
       katello-3.7-thirdparty-rhel6: katello-thirdparty-rhel6
       katello-3.7-rhel6-override: null
