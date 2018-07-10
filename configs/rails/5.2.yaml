@@ -1,0 +1,50 @@
+---
+:project: rails-scl
+:nightly: true
+tags:
+  - name: tfm-ror52-rhel7
+    based_off: null
+    build_target: tfm-ror52-rhel7-build
+    arches:
+      - x86_64
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-release-server
+        - redhat-rpm-config
+        - rh-ruby25-scldevel
+        - rpm-build
+        - scl-utils-build
+        - sed
+        - shadow-utils
+        - tar tfm-build
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - redhat-release-server
+        - redhat-rpm-config
+        - rh-ruby25-scldevel
+        - rhpkg-simple
+        - rpm-build
+        - scl-utils-build
+        - shadow-utils
+    external_repos:
+      - centos-sclo-rh-rhel-7
+      - centos-sclo-sclo-rhel-7
+      - centos-7-server

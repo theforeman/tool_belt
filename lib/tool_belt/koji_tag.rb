@@ -2,7 +2,7 @@ module ToolBelt
   class KojiTag
 
     attr_accessor :name, :based_off, :helper_tags, :inherits, :build_target, :external_repos,
-                  :koji_tools, :build_package_group_source_tag, :arches
+                  :koji_tools, :build_package_group_source_tag, :arches, :build_groups
     attr_accessor :tools
 
     def initialize(hash = {})
@@ -23,6 +23,13 @@ module ToolBelt
         if build_package_group_source_tag
           tools.ensure_package_group(build_package_group_source_tag, build_target, 'build')
           tools.ensure_package_group(build_package_group_source_tag, build_target, 'srpm-build')
+        end
+
+        if build_groups
+          build_groups.each do |group, packages|
+            tools.create_package_group(build_target, group)
+            tools.add_group_packages(build_target, group, packages)
+          end
         end
 
         tools.ensure_external_repos(build_target, external_repos) if external_repos && external_repos.any?
