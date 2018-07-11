@@ -27,6 +27,10 @@ module ToolBelt
       end
     end
 
+    def ensure_packages(tag_name, packages)
+      koji_change("add-pkg #{tag_name} #{packages.join(' ')} --owner=kojiadm")
+    end
+
     def ensure_package_group(source_tag, dest_tag, package_group)
       unless has_package_group?(dest_tag, package_group)
         create_package_group(dest_tag, package_group)

@@ -2,7 +2,7 @@ module ToolBelt
   class KojiTag
 
     attr_accessor :name, :based_off, :helper_tags, :inherits, :build_target, :external_repos,
-                  :koji_tools, :build_package_group_source_tag, :arches, :build_groups
+                  :koji_tools, :build_package_group_source_tag, :arches, :build_groups, :packages
     attr_accessor :tools
 
     def initialize(hash = {})
@@ -45,6 +45,10 @@ module ToolBelt
         inherits.each do |root_tag, branches_with_priority|
           tools.ensure_inherited(root_tag, branches_with_priority)
         end
+      end
+
+      if packages
+        tools.ensure_packages(name, packages)
       end
 
       tools.regen_repo(build_target) if build_target
