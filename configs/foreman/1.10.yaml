@@ -2,15 +2,15 @@
 :project: foreman
 :releases:
   :1.10.0:
-    :redmine_release_id: 63
+    :redmine_release_id: 37
   :1.10.1:
-    :redmine_release_id: 104
-  :1.10.2:
-    :redmine_release_id: 123
-  :1.10.3:
     :redmine_release_id: 145
-  :1.10.4:
+  :1.10.2:
+    :redmine_release_id: 153
+  :1.10.3:
     :redmine_release_id: 152
+  :1.10.4:
+    :redmine_release_id: 510
 :repos:
   :foreman:
     :main: true

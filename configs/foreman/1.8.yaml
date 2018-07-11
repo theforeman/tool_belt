@@ -2,9 +2,15 @@
 :project: foreman
 :releases:
   :1.8.0:
-    :redmine_release_id: 28
+    :redmine_release_id: 53
+  :1.8.1:
+    :redmine_release_id: 50
+  :1.8.2:
+    :redmine_release_id: 47
+  :1.8.3:
+    :redmine_release_id: 46
   :1.8.4:
-    :redmine_release_id: 84
+    :redmine_release_id: 42
 :repos:
   :foreman:
     :branch: 1.8-stable

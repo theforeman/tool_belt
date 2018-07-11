@@ -1,7 +1,7 @@
 ---
 :project: bastion
 :release: 2.0.0
-:redmine_release_id: 64
+:redmine_release_id: 531
 :repos:
   :bastion:
     :branch: 2.0.0

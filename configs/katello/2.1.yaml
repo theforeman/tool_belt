@@ -2,7 +2,7 @@
 :project: katello
 :releases:
   :2.1:
-    :redmine_release_id: 14
+    :redmine_release_id: 507
 :repos:
   :katello:
     :branch: KATELLO-2.1

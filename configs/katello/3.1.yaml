@@ -9,10 +9,10 @@
 #  :3.0.2:
 #    :redmine_release_id: 168
   :3.0.3:
-    :redmine_release_id: 171
+    :redmine_release_id: 542
 :releases:
   :3.1:
-    :redmine_release_id: 143
+    :redmine_release_id: 491
 :code_name: California Common
 :repos:
   :katello:

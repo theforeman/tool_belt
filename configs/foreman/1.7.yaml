@@ -1,7 +1,7 @@
 ---
 :project: foreman
 :release: 1.7.0
-:redmine_release_id: 21
+:redmine_release_id: 114
 :repos:
   :foreman:
     :branch: 1.7-stable

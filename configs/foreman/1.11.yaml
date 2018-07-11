@@ -3,15 +3,15 @@
 :prior_releases: []
 :releases:
   :1.11.0:
-    :redmine_release_id: 71
+    :redmine_release_id: 162
   :1.11.1:
-    :redmine_release_id: 141
+    :redmine_release_id: 156
   :1.11.2:
-    :redmine_release_id: 155
-  :1.11.3:
     :redmine_release_id: 159
+  :1.11.3:
+    :redmine_release_id: 165
   :1.11.4:
-    :redmine_release_id: 169
+    :redmine_release_id: 167
 :repos:
   :foreman:
     :main: true
