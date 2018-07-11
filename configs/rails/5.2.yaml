@@ -52,3 +52,55 @@ tags:
       - centos-sclo-rh-rhel-7
       - centos-sclo-sclo-rhel-7
       - centos-7-server
+    packages:
+      - tfm-ror52
+      - tfm-ror52-rubygem-actioncable
+      - tfm-ror52-rubygem-actionmailer
+      - tfm-ror52-rubygem-actionpack
+      - tfm-ror52-rubygem-actionview
+      - tfm-ror52-rubygem-activejob
+      - tfm-ror52-rubygem-activemodel
+      - tfm-ror52-rubygem-activerecord
+      - tfm-ror52-rubygem-activesupport
+      - tfm-ror52-rubygem-arel
+      - tfm-ror52-rubygem-builder
+      - tfm-ror52-rubygem-coffee-rails
+      - tfm-ror52-rubygem-coffee-script
+      - tfm-ror52-rubygem-coffee-script-source
+      - tfm-ror52-rubygem-concurrent-ruby
+      - tfm-ror52-rubygem-crass
+      - tfm-ror52-rubygem-erubi
+      - tfm-ror52-rubygem-execjs
+      - tfm-ror52-rubygem-globalid
+      - tfm-ror52-rubygem-i18n
+      - tfm-ror52-rubygem-jquery-turbolinks
+      - tfm-ror52-rubygem-loofah
+      - tfm-ror52-rubygem-mail
+      - tfm-ror52-rubygem-method_source
+      - tfm-ror52-rubygem-mime-types
+      - tfm-ror52-rubygem-mime-types-data
+      - tfm-ror52-rubygem-mini_mime
+      - tfm-ror52-rubygem-multi_json
+      - tfm-ror52-rubygem-mustermann
+      - tfm-ror52-rubygem-nio4r
+      - tfm-ror52-rubygem-nokogiri
+      - tfm-ror52-rubygem-rack-protection
+      - tfm-ror52-rubygem-rack-test
+      - tfm-ror52-rubygem-rails
+      - tfm-ror52-rubygem-rails-dom-testing
+      - tfm-ror52-rubygem-rails-html-sanitizer
+      - tfm-ror52-rubygem-railties
+      - tfm-ror52-rubygem-sass
+      - tfm-ror52-rubygem-sass-rails
+      - tfm-ror52-rubygem-sinatra
+      - tfm-ror52-rubygem-sqlite3
+      - tfm-ror52-rubygem-sprockets
+      - tfm-ror52-rubygem-sprockets-rails
+      - tfm-ror52-rubygem-tilt
+      - tfm-ror52-rubygem-thor
+      - tfm-ror52-rubygem-thread_safe
+      - tfm-ror52-rubygem-turbolinks
+      - tfm-ror52-rubygem-tzinfo
+      - tfm-ror52-rubygem-websocket-driver
+      - tfm-ror52-rubygem-websocket-extensions
+      - tfm-ror52-rubygem-uglifier
