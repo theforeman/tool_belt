@@ -30,7 +30,8 @@ tags:
         - scl-utils-build
         - sed
         - shadow-utils
-        - tar tfm-build
+        - tar
+        - tfm-ror52-build
         - unzip
         - util-linux
         - which
@@ -42,9 +43,12 @@ tags:
         - rh-ruby25-scldevel
         - rhpkg-simple
         - rpm-build
+        - tfm-ror52-build
         - scl-utils-build
         - shadow-utils
     external_repos:
+      - rhel-7.0-server
+      - rhel-7.0-server-optional
       - centos-sclo-rh-rhel-7
       - centos-sclo-sclo-rhel-7
       - centos-7-server
