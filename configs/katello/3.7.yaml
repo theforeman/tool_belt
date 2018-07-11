@@ -3,14 +3,14 @@
 :github_org: katello
 :prior_releases:
   :3.6.0:
-    :redmine_release_id: 284
+    :redmine_release_id: 474
   :3.6.1:
-    :redmine_release_id: 352
+    :redmine_release_id: 354
   :3.5.2:
-    :redmine_release_id: 339
+    :redmine_release_id: 475
 :releases:
   :3.7.0:
-    :redmine_release_id: 338
+    :redmine_release_id: 264
 :code_name: Blonde Ale
 :repos:
   :katello:
