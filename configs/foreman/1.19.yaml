@@ -1,0 +1,149 @@
+:project: foreman
+:prior_releases:
+  :1.18.0:
+    :redmine_release_id: 260
+  :1.18.1:
+    :redmine_release_id: 261
+:releases:
+  :1.19.0:
+    :redmine_release_id: 262
+:repos:
+  :foreman:
+    :main: true
+    :branch: 1.19-stable
+    :version_branch: true
+    :repo: https://github.com/theforeman/foreman.git
+  :smart-proxy:
+    :main: true
+    :branch: 1.19-stable
+    :version_branch: true
+    :repo: https://github.com/theforeman/smart-proxy.git
+  :foreman-selinux:
+    :main: true
+    :branch: 1.19-stable
+    :version_branch: true
+    :repo: https://github.com/theforeman/foreman-selinux.git
+  :foreman-installer:
+    :main: true
+    :branch: 1.19-stable
+    :version_branch: true
+    :repo: https://github.com/theforeman/foreman-installer.git
+  :foreman-packaging-deb:
+    :main: true
+    :branch: deb/1.19
+    :version_branch: true
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :foreman-packaging-rpm:
+    :main: true
+    :branch: rpm/1.19
+    :version_branch: true
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :community-templates:
+    :main: true
+    :branch: 1.19-stable
+    :version_branch: true
+    :repo: https://github.com/theforeman/community-templates.git
+
+:gpg_key: 'CE3159AAC3EC09E51614775446020A10694FA479'
+:mash_scripts:
+   - foreman-1.19-rhel7-dist
+   - foreman-plugins-1.19-rhel7-dist
+# List non-scl tags first as scl ones inherit from them
+:tags:
+  - name: foreman-1.19-nonscl-rhel7
+    based_off: foreman-nightly-nonscl-rhel7
+    helper_tags:
+      foreman-1.19-rhel7-override: null
+    build_target: foreman-1.19-nonscl-rhel7-build
+    build_package_group_source_tag: foreman-nightly-nonscl-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-1.19-nonscl-rhel7-build:
+        foreman-1.19-nonscl-rhel7-override: 0
+      foreman-1.19-nonscl-rhel7-override:
+        foreman-1.19-nonscl-rhel7: 0
+    external_repos:
+      - epel-7
+      - puppetlabs-pc1-rhel-7
+      - centos-7-server
+      - rhel-7.0-server
+
+  - name: foreman-1.19-rhel7
+    based_off: foreman-nightly-rhel7
+    helper_tags:
+      foreman-1.19-rhel7-override: null
+    build_target: foreman-1.19-rhel7-build
+    build_package_group_source_tag: foreman-nightly-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-1.19-rhel7-build:
+        foreman-1.19-rhel7-override: 0
+        foreman-1.19-nonscl-rhel7: 10
+      foreman-1.19-rhel7-override:
+        foreman-1.19-rhel7: 0
+    external_repos:
+      - epel-7
+      - centos-sclo-rh-rhel-7
+      - centos-sclo-sclo-rhel-7
+      - centos-7-server
+      - rhel-7.0-server
+      - foreman-rails-1.19-rhel-7
+
+  - name: foreman-plugins-1.19-nonscl-rhel7
+    based_off: foreman-plugins-1.19-nonscl-rhel7
+    helper_tags:
+      foreman-plugins-1.19-nonscl-rhel7-override: null
+    build_target: foreman-plugins-1.19-nonscl-rhel7-build
+    build_package_group_source_tag: foreman-plugins-nightly-nonscl-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-plugins-1.19-nonscl-rhel7-build:
+        foreman-plugins-1.19-nonscl-rhel7-override: 0
+        foreman-1.19-rhel7: 15
+        foreman-1.19-nonscl-rhel7: 10
+      foreman-plugins-1.19-nonscl-rhel7-override:
+        foreman-plugins-1.19-nonscl-rhel7: 0
+    external_repos:
+      - epel-7
+      - centos-7-server
+      - rhel-7.0-server
+  - name: foreman-1.19-rhel7-dist
+    based_off: foreman-nightly-rhel7-dist
+    inherits:
+      foreman-1.19-rhel7-dist:
+        foreman-1.19-rhel7: 20
+        foreman-1.19-nonscl-rhel7: 10
+
+  - name: foreman-plugins-1.19-rhel7-dist
+    based_off: foreman-plugins-nightly-rhel7-dist
+    inherits:
+      foreman-plugins-1.19-rhel7-dist:
+        foreman-plugins-1.19-rhel7: 2
+        foreman-plugins-1.19-nonscl-rhel7: 0
+
+  - name: foreman-plugins-1.19-rhel7
+    based_off: foreman-plugins-nightly-rhel7
+    helper_tags:
+      foreman-plugins-1.19-rhel7-override: null
+    build_target: foreman-plugins-1.19-rhel7-build
+    build_package_group_source_tag: foreman-plugins-nightly-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-plugins-1.19-rhel7-build:
+        foreman-plugins-1.19-rhel7-override: 0
+        foreman-plugins-1.19-nonscl-rhel7: 5
+        foreman-1.19-rhel7: 15
+        foreman-1.19-nonscl-rhel7: 20
+      foreman-plugins-1.19-rhel7-override:
+        foreman-plugins-1.19-rhel7: 0
+    external_repos:
+      - epel-7
+      - centos-sclo-rh-rhel-7
+      - centos-sclo-sclo-rhel-7
+      - centos-7-server
+      - rhel-7.0-server
+      - foreman-rails-1.19-rhel-7
