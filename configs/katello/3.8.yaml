@@ -9,7 +9,7 @@
 :releases:
   :3.8.0:
     :redmine_release_id: 356
-:code_name:
+:code_name: Stout
 :repos:
   :katello:
     :main: true
@@ -25,7 +25,7 @@
     :repo: https://github.com/theforeman/foreman-packaging.git
 :ignores:
 
-:gpg_key: ''
+:gpg_key: '10668686'
 :mash_scripts:
  - katello-3.8-thirdparty-candlepin-rhel7
  - katello-3.8-rhel7
