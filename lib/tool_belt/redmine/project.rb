@@ -27,10 +27,6 @@ module Redmine
       issues.is_a?(Array) ? issues : issues['issues']
     end
 
-    def get_issues_for_release(id)
-      get_issues(:fixed_version_id => id, :limit => 100, :status_id => "5")
-    end
-
     def trackers
       issues = get_issues(:limit => 100, :tracker_id => 6, :include => 'relations')
 

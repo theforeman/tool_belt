@@ -23,7 +23,7 @@ module ToolBelt
     def generate_entries(issues)
       issues.each do |issue|
         next unless issue.closed?
-        next unless issue.release_id == config.redmine_release_id
+        next unless issue.version == config.redmine_version_id
 
         generate_entry(issue)
       end

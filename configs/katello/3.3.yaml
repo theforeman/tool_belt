@@ -3,14 +3,14 @@
 :github_org: katello
 :prior_releases:
   :3.2.3:
-    :redmine_release_id: 486
+    :redmine_version_id: 486
 :releases:
   :3.3:
-    :redmine_release_id: 484
+    :redmine_version_id: 484
   :3.3.1:
-    :redmine_release_id: 483
+    :redmine_version_id: 483
   :3.3.2:
-    :redmine_release_id: 351
+    :redmine_version_id: 351
 :code_name: Baltic Porter
 :repos:
   :katello:

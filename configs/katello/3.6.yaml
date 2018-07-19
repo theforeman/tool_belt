@@ -3,14 +3,14 @@
 :github_org: katello
 :prior_releases:
   :3.5.0:
-    :redmine_release_id: 477
+    :redmine_version_id: 477
   :3.5.1:
-    :redmine_release_id: 476
+    :redmine_version_id: 476
   :3.5.2:
-    :redmine_release_id: 475
+    :redmine_version_id: 475
 :releases:
   :3.6.0:
-    :redmine_release_id: 474
+    :redmine_version_id: 474
 :code_name: Imperial IPA
 :repos:
   :katello:

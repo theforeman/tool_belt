@@ -3,26 +3,26 @@
 :github_org: theforeman
 :prior_releases:
   :1.13.0:
-    :redmine_release_id: 183
+    :redmine_version_id: 183
   :1.13.1:
-    :redmine_release_id: 186
+    :redmine_version_id: 186
   :1.13.2:
-    :redmine_release_id: 191
+    :redmine_version_id: 191
   :1.13.3:
-    :redmine_release_id: 190
+    :redmine_version_id: 190
   :1.13.4:
-    :redmine_release_id: 192
+    :redmine_version_id: 192
 :releases:
   :1.14.0:
-    :redmine_release_id: 199
+    :redmine_version_id: 199
   :1.14.1:
-    :redmine_release_id: 197
+    :redmine_version_id: 197
   :1.14.2:
-    :redmine_release_id: 201
+    :redmine_version_id: 201
   :1.14.3:
-    :redmine_release_id: 203
+    :redmine_version_id: 203
   :1.14.4:
-    :redmine_release_id: 511
+    :redmine_version_id: 511
 :repos:
   :foreman:
     :main: true

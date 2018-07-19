@@ -3,13 +3,13 @@
 :github_org: theforeman
 :releases:
   :1.9.0:
-    :redmine_release_id: 41
+    :redmine_version_id: 41
   :1.9.1:
-    :redmine_release_id: 40
+    :redmine_version_id: 40
   :1.9.2:
-    :redmine_release_id: 39
+    :redmine_version_id: 39
   :1.9.3:
-    :redmine_release_id: 38
+    :redmine_version_id: 38
 :repos:
   :foreman:
     :main: true

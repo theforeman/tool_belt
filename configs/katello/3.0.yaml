@@ -3,14 +3,14 @@
 :github_org: katello
 :prior_releases:
   :2.4.1:
-    :redmine_release_id: 497
+    :redmine_version_id: 497
   :2.4.2:
-    :redmine_release_id: 496
+    :redmine_version_id: 496
 :releases:
   :3.0:
-    :redmine_release_id: 494
+    :redmine_version_id: 494
   :3.0.1:
-    :redmine_release_id: 493
+    :redmine_version_id: 493
 :code_name: Saison
 :repos:
   :katello:

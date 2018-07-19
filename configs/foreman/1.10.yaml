@@ -3,15 +3,15 @@
 :github_org: theforeman
 :releases:
   :1.10.0:
-    :redmine_release_id: 37
+    :redmine_version_id: 37
   :1.10.1:
-    :redmine_release_id: 145
+    :redmine_version_id: 145
   :1.10.2:
-    :redmine_release_id: 153
+    :redmine_version_id: 153
   :1.10.3:
-    :redmine_release_id: 152
+    :redmine_version_id: 152
   :1.10.4:
-    :redmine_release_id: 510
+    :redmine_version_id: 510
 :repos:
   :foreman:
     :main: true
