@@ -14,17 +14,17 @@
   :foreman:
     :main: true
     :branch: 1.9-stable
-    :repo: https://github.com/theforeman/foreman.git
+    :repo: https://github.com/theforeman/foreman
   :smart-proxy:
     :main: true
     :branch: 1.9-stable
-    :repo: https://github.com/theforeman/smart-proxy.git
+    :repo: https://github.com/theforeman/smart-proxy
   :foreman-selinux:
     :main: true
     :branch: 1.9-stable
-    :repo: https://github.com/theforeman/foreman-selinux.git
+    :repo: https://github.com/theforeman/foreman-selinux
   :foreman-installer:
     :main: true
     :branch: 1.9-stable
-    :repo: https://github.com/theforeman/foreman-installer.git
+    :repo: https://github.com/theforeman/foreman-installer
 :ignores:

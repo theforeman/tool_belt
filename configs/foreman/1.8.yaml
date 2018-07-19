@@ -15,5 +15,5 @@
 :repos:
   :foreman:
     :branch: 1.8-stable
-    :repo: https://github.com/theforeman/foreman.git
+    :repo: https://github.com/theforeman/foreman
 :ignores:

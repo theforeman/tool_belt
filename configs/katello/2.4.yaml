@@ -8,23 +8,23 @@
     :redmine_version_id: 497
   :2.4.2:
     :redmine_version_id: 496
-:code_name: Gose 
+:code_name: Gose
 :repos:
   :katello:
     :main: true
     :branch: KATELLO-2.4
-    :repo: https://github.com/Katello/katello.git
+    :repo: https://github.com/Katello/katello
   :katello-installer:
     :branch: KATELLO-2.4
-    :repo: https://github.com/Katello/katello-installer.git
+    :repo: https://github.com/Katello/katello-installer
   :hammer-cli-katello:
     :branch: 0.0.17
-    :repo: https://github.com/Katello/hammer-cli-katello.git
+    :repo: https://github.com/Katello/hammer-cli-katello
   :katello.org:
     :branch: KATELLO-2.4
-    :repo: https://github.com/Katello/katello.org.git
+    :repo: https://github.com/Katello/katello.org
   :katello-utils:
     :branch: KATELLO-2.4
-    :repo: https://github.com/Katello/katello-utils.git
+    :repo: https://github.com/Katello/katello-utils
 :ignores:
 

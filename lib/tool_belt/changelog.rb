@@ -41,28 +41,26 @@ module ToolBelt
     end
 
     def commit_urls(issue)
-      base_url = "https://github.com/#{config.github_org}"
-      string = "[%{short}](#{base_url}/%{repo}/commit/%{full})"
-      hashes = []
+      urls = []
 
       issue.changesets.each do |changeset|
-        if changeset['comments'].start_with?('Merge pull request')
-          break
+        break if changeset['comments'].start_with?('Merge pull request')
+
+        commit = changeset['revision']
+
+        repo_name = @release_environment.repo_names.find do |name|
+          @release_environment.commit_in_repo?(name, commit)
+        end
+
+        if repo_name
+          url = "#{@release_environment.repos[repo_name][:repo]}/commit/#{commit}"
+          urls << "[#{changeset['revision'][0...8]}](#{url})"
         else
-          short = changeset['revision'][0...8]
-          full = changeset['revision']
-          repo = find_repo(changeset['revision'])
-          hashes << string % {:short => short, :full => full, :repo => repo}
+          puts "Repo for commit #{commit} from #{issue.id} not found"
         end
       end
 
-      hashes
-    end
-
-    def find_repo(message)
-      @release_environment.repo_names.find do |repo_name|
-        @release_environment.commit_in_repo?(repo_name, message)
-      end
+      urls
     end
 
     def format_entries
