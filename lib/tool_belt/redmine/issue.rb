@@ -107,6 +107,10 @@ module Redmine
       put(@raw_data['issue']['id'], @raw_data)
     end
 
+    def html_url
+      @resource["#{base_path}/#{id}"].url
+    end
+
     def to_json(*args)
       @raw_data['issue'].to_json
     end
