@@ -9,17 +9,17 @@
   :katello:
     :main: true
     :branch: KATELLO-2.3
-    :repo: https://github.com/Katello/katello.git
+    :repo: https://github.com/Katello/katello
   :katello-installer:
     :branch: KATELLO-2.3
-    :repo: https://github.com/Katello/katello-installer.git
+    :repo: https://github.com/Katello/katello-installer
   :hammer-cli-katello:
     :branch: 0.0.15
-    :repo: https://github.com/Katello/hammer-cli-katello.git
+    :repo: https://github.com/Katello/hammer-cli-katello
   :katello.org:
     :branch: KATELLO-2.3
-    :repo: https://github.com/Katello/katello.org.git
+    :repo: https://github.com/Katello/katello.org
   :katello-misc:
     :branch: KATELLO-2.3
-    :repo: https://github.com/Katello/katello-misc.git
+    :repo: https://github.com/Katello/katello-misc
 :ignores:

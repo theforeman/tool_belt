@@ -27,31 +27,31 @@
   :foreman:
     :main: true
     :branch: 1.14-stable
-    :repo: https://github.com/theforeman/foreman.git
+    :repo: https://github.com/theforeman/foreman
   :smart-proxy:
     :main: true
     :branch: 1.14-stable
-    :repo: https://github.com/theforeman/smart-proxy.git
+    :repo: https://github.com/theforeman/smart-proxy
   :foreman-selinux:
     :main: true
     :branch: 1.14-stable
-    :repo: https://github.com/theforeman/foreman-selinux.git
+    :repo: https://github.com/theforeman/foreman-selinux
   :foreman-installer:
     :main: true
     :branch: 1.14-stable
-    :repo: https://github.com/theforeman/foreman-installer.git
+    :repo: https://github.com/theforeman/foreman-installer
   :foreman-packaging-deb:
     :main: true
     :branch: deb/1.14
-    :repo: https://github.com/theforeman/foreman-packaging.git
+    :repo: https://github.com/theforeman/foreman-packaging
   :foreman-packaging-rpm:
     :main: true
     :branch: rpm/1.14
-    :repo: https://github.com/theforeman/foreman-packaging.git
+    :repo: https://github.com/theforeman/foreman-packaging
   :community-templates:
     :main: true
     :branch: 1.14-stable
-    :repo: https://github.com/theforeman/community-templates.git
+    :repo: https://github.com/theforeman/community-templates
 :ignores:
   16899:
     # All help buttons are broken, commits from other plugin projects

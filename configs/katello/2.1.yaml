@@ -6,19 +6,19 @@
 :repos:
   :katello:
     :branch: KATELLO-2.1
-    :repo: https://github.com/Katello/katello.git
+    :repo: https://github.com/Katello/katello
   :katello-installer:
     :branch: KATELLO-2.1
-    :repo: https://github.com/Katello/katello-installer.git
+    :repo: https://github.com/Katello/katello-installer
   :hammer-cli-katello:
     :branch: 0.0.7
-    :repo: https://github.com/Katello/hammer-cli-katello.git
+    :repo: https://github.com/Katello/hammer-cli-katello
   :katello.org:
     :branch: KATELLO-2.1
-    :repo: https://github.com/Katello/katello.org.git
+    :repo: https://github.com/Katello/katello.org
   :katello-agent:
     :branch: KATELLO-2.1
-    :repo: https://github.com/Katello/katello-agent.git
+    :repo: https://github.com/Katello/katello-agent
 :ignores:
   - 7423
   - 8265

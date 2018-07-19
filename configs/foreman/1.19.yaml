@@ -13,37 +13,37 @@
     :main: true
     :branch: 1.19-stable
     :version_branch: true
-    :repo: https://github.com/theforeman/foreman.git
+    :repo: https://github.com/theforeman/foreman
   :smart-proxy:
     :main: true
     :branch: 1.19-stable
     :version_branch: true
-    :repo: https://github.com/theforeman/smart-proxy.git
+    :repo: https://github.com/theforeman/smart-proxy
   :foreman-selinux:
     :main: true
     :branch: 1.19-stable
     :version_branch: true
-    :repo: https://github.com/theforeman/foreman-selinux.git
+    :repo: https://github.com/theforeman/foreman-selinux
   :foreman-installer:
     :main: true
     :branch: 1.19-stable
     :version_branch: true
-    :repo: https://github.com/theforeman/foreman-installer.git
+    :repo: https://github.com/theforeman/foreman-installer
   :foreman-packaging-deb:
     :main: true
     :branch: deb/1.19
     :version_branch: true
-    :repo: https://github.com/theforeman/foreman-packaging.git
+    :repo: https://github.com/theforeman/foreman-packaging
   :foreman-packaging-rpm:
     :main: true
     :branch: rpm/1.19
     :version_branch: true
-    :repo: https://github.com/theforeman/foreman-packaging.git
+    :repo: https://github.com/theforeman/foreman-packaging
   :community-templates:
     :main: true
     :branch: 1.19-stable
     :version_branch: true
-    :repo: https://github.com/theforeman/community-templates.git
+    :repo: https://github.com/theforeman/community-templates
 
 :gpg_key: 'CE3159AAC3EC09E51614775446020A10694FA479'
 :mash_scripts:

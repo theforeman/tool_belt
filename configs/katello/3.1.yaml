@@ -18,32 +18,32 @@
   :katello:
     :main: true
     :branch: KATELLO-3.1
-    :repo: https://github.com/Katello/katello.git
+    :repo: https://github.com/Katello/katello
   :katello-selinux:
     :branch: KATELLO-3.1
-    :repo: https://github.com/Katello/katello-selinux.git
+    :repo: https://github.com/Katello/katello-selinux
   :katello-installer:
     :branch: KATELLO-3.1
-    :repo: https://github.com/Katello/katello-installer.git
+    :repo: https://github.com/Katello/katello-installer
   :hammer-cli-katello:
     :branch: 0.0.26
-    :repo: https://github.com/Katello/hammer-cli-katello.git
+    :repo: https://github.com/Katello/hammer-cli-katello
   :katello.org:
     :branch: KATELLO-3.1
-    :repo: https://github.com/Katello/katello.org.git
+    :repo: https://github.com/Katello/katello.org
   :katello-packaging:
     :branch: KATELLO-3.1
-    :repo: https://github.com/Katello/katello-packaging.git
+    :repo: https://github.com/Katello/katello-packaging
   :puppet-katello:
     :branch: 5.0.1
-    :repo: https://github.com/Katello/puppet-katello.git
+    :repo: https://github.com/Katello/puppet-katello
   :puppet-capsule:
     :branch: 3.0.0
-    :repo: https://github.com/Katello/puppet-capsule.git
+    :repo: https://github.com/Katello/puppet-capsule
   :puppet-pulp:
     :branch: 3.3.1
-    :repo: https://github.com/Katello/puppet-pulp.git
+    :repo: https://github.com/Katello/puppet-pulp
   :katello-agent:
     :branch: 2.6.0
-    :repo: https://github.com/Katello/katello-agent.git
+    :repo: https://github.com/Katello/katello-agent
 :ignores:
