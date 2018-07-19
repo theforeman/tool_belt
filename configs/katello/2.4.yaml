@@ -3,11 +3,11 @@
 :github_org: katello
 :releases:
   :2.4:
-    :redmine_release_id: 70
+    :redmine_release_id: 498
   :2.4.1:
-    :redmine_release_id: 113
+    :redmine_release_id: 497
   :2.4.2:
-    :redmine_release_id: 150
+    :redmine_release_id: 496
 :code_name: Gose 
 :repos:
   :katello:

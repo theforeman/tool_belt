@@ -3,30 +3,30 @@
 :github_org: katello
 :prior_releases:
   :3.3.2:
-    :redmine_release_id: 226
+    :redmine_release_id: 351
   :3.4.0:
-    :redmine_release_id: 211
+    :redmine_release_id: 482
   :3.4.1:
-    :redmine_release_id: 228
+    :redmine_release_id: 481
   :3.4.2:
-    :redmine_release_id: 258
+    :redmine_release_id: 480
   :3.4.3:
-    :redmine_release_id: 267
+    :redmine_release_id: 543
   :3.4.4:
-    :redmine_release_id: 281
+    :redmine_release_id: 479
 :releases:
   :3.4.0:
-    :redmine_release_id: 211
+    :redmine_release_id: 482
   :3.4.1:
-    :redmine_release_id: 228
+    :redmine_release_id: 481
   :3.4.2:
-    :redmine_release_id: 258
+    :redmine_release_id: 480
   :3.4.3:
-    :redmine_release_id: 267
+    :redmine_release_id: 543
   :3.4.4:
-    :redmine_release_id: 281
+    :redmine_release_id: 479
   :3.4.5:
-    :redmine_release_id: 286
+    :redmine_release_id: 478
 :code_name:
 :repos:
   :katello:
