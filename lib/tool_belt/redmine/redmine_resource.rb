@@ -24,7 +24,7 @@ class RedmineResource
   end
 
   def get(path = nil, params = {})
-    JSON.parse(@resource[format_path(path, params)].get)
+    JSON.parse(@resource[format_path(path)].get(params: params))
   end
 
   def post(path, payload)
@@ -39,19 +39,8 @@ class RedmineResource
     @resource[format_path(path)].delete
   end
 
-  def format_path(path, params = {})
-    path = if path
-             "#{base_path}/#{path}.json?"
-           else
-             "#{base_path}.json?"
-           end
-
-    params.each do |key, value|
-      path += "&#{key}=#{value}"
-    end
-
-    puts path
-    path
+  def format_path(path)
+    path ? "#{base_path}/#{path}.json" : "#{base_path}.json"
   end
 
 end
