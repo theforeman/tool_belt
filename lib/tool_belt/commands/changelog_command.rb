@@ -11,12 +11,17 @@ module ToolBelt
 
       def execute
         config = ToolBelt::Config.new(config_file, version)
+
         release_environment = ToolBelt::ReleaseEnvironment.new(
           config.options.repos,
           config.options.namespace,
           systools
         )
-        ToolBelt::Changelog.new(config.options, release_environment)
+
+        issue_service = IssueService.new(config.options)
+        issues = issue_service.load_issues
+
+        ToolBelt::Changelog.new(config.options, release_environment, issues)
       end
 
     end
