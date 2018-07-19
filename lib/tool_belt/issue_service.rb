@@ -20,11 +20,13 @@ module ToolBelt
       project.issues_for_version(version_id)
     end
 
-    def load_issues
+    def load_issues(include_prior=false)
       issues = release_issues(redmine_version_id)
 
-      prior_releases.each do |_version, meta|
-        issues.concat(release_issues(meta[:redmine_version_id]))
+      if include_prior
+        prior_releases.each do |_version, meta|
+          issues.concat(release_issues(meta[:redmine_version_id]))
+        end
       end
 
       issue_ids = issues.collect { |issue| issue['id'] }.uniq.compact

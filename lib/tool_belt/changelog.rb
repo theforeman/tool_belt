@@ -6,13 +6,11 @@ module ToolBelt
 
     attr_accessor :issues, :bugs, :features, :release_environment, :config
 
-    def initialize(config, release_environment)
+    def initialize(config, release_environment, issues)
       self.config = config
-      issue_service = IssueService.new(config)
-
       self.features = {}
       self.bugs = {}
-      self.issues = issue_service.load_issues
+      self.issues = issues
       self.release_environment = release_environment
 
       generate_entries(@issues)
@@ -21,10 +19,7 @@ module ToolBelt
     end
 
     def generate_entries(issues)
-      issues.each do |issue|
-        next unless issue.closed?
-        next unless issue.version == config.redmine_version_id
-
+      issues.select(&:closed?).each do |issue|
         generate_entry(issue)
       end
     end
