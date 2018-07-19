@@ -51,7 +51,7 @@ module ToolBelt
       elsif !required_fields.all? { |k| configs.keys.include?(k) }
         fail "Configuration file is incomplete. Please ensure it includes #{required_fields - configs.keys}."
       elsif configs[:releases].keys.empty?
-        fail "Configuration file is incomplete. Please ensure releases contains at least one entry of the form {version: X.Y, redmine_release_id: N}."
+        fail "Configuration file is incomplete. Please ensure releases contains at least one entry of the form {version: X.Y, redmine_version_id: N}."
       end
     end
 
@@ -59,11 +59,11 @@ module ToolBelt
       releases = configs[:releases]
 
       if version && !releases.keys.map(&:to_s).include?(version)
-        fail "Unknown version specified. Please ensure the releases field is configured {version: X.Y, redmine_release_id: N}."
+        fail "Unknown version specified. Please ensure the releases field is configured {version: X.Y, redmine_version_id: N}."
       end
 
       configs[:release] = version.nil? ? releases.keys.first.to_s : version.to_s
-      configs[:redmine_release_id] = configs[:releases][configs[:release].to_sym][:redmine_release_id]
+      configs[:redmine_version_id] = configs[:releases][configs[:release].to_sym][:redmine_version_id]
       configs[:namespace] = "#{configs[:project]}_#{releases.keys.first}"
       configs
     end

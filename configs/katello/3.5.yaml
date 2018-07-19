@@ -3,16 +3,16 @@
 :github_org: katello
 :prior_releases:
   :3.4.5:
-    :redmine_release_id: 478
+    :redmine_version_id: 478
   :3.4.6:
-    :redmine_release_id: 352
+    :redmine_version_id: 352
   :3.5.0:
-    :redmine_release_id: 477
+    :redmine_version_id: 477
 :releases:
   :3.5.0:
-    :redmine_release_id: 477
+    :redmine_version_id: 477
   :3.5.1:
-    :redmine_release_id: 476
+    :redmine_version_id: 476
 :code_name: Schwarzbier
 :repos:
   :katello:

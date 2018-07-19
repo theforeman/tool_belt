@@ -3,12 +3,12 @@
 :github_org: katello
 :prior_releases:
   :3.0.3:
-    :redmine_release_id: 542
+    :redmine_version_id: 542
   :3.1.1:
-    :redmine_release_id: 490
+    :redmine_version_id: 490
 :releases:
   :3.2:
-    :redmine_release_id: 489
+    :redmine_version_id: 489
 :code_name: Malt Liquor
 :repos:
   :katello:

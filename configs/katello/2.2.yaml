@@ -3,15 +3,15 @@
 :github_org: katello
 :releases:
   :2.2:
-    :redmine_release_id: 504
+    :redmine_version_id: 504
   :2.2.1:
-    :redmine_release_id: 503
+    :redmine_version_id: 503
   :2.2.2:
-    :redmine_release_id: 502
+    :redmine_version_id: 502
   :2.2.3:
-    :redmine_release_id: 544
+    :redmine_version_id: 544
   :2.2.4:
-    :redmine_release_id: 501
+    :redmine_version_id: 501
 :code_name: Maibock
 :repos:
   :katello:

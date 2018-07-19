@@ -3,7 +3,7 @@
 :github_org: pulp
 :releases:
   :2.15.3:
-    :redmine_release_id: 59
+    :redmine_version_id: 59
 :repos:
   :pulp:
     :main: true

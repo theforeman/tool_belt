@@ -2,12 +2,12 @@
 :github_org: theforeman
 :prior_releases:
   :1.18.0:
-    :redmine_release_id: 260
+    :redmine_version_id: 260
   :1.18.1:
-    :redmine_release_id: 261
+    :redmine_version_id: 261
 :releases:
   :1.19.0:
-    :redmine_release_id: 262
+    :redmine_version_id: 262
 :repos:
   :foreman:
     :main: true

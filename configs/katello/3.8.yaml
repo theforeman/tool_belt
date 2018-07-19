@@ -3,12 +3,12 @@
 :github_org: katello
 :prior_releases:
   :3.7.0:
-    :redmine_release_id: 338
+    :redmine_version_id: 338
   :3.7.1:
-    :redmine_release_id: 355
+    :redmine_version_id: 355
 :releases:
   :3.8.0:
-    :redmine_release_id: 356
+    :redmine_version_id: 356
 :code_name: Stout
 :repos:
   :katello:

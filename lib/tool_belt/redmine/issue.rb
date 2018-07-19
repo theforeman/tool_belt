@@ -62,10 +62,6 @@ module Redmine
       @raw_data['issue']['fixed_version']['id'] if @raw_data['issue']['fixed_version']
     end
 
-    def release_id
-      @raw_data['issue']['fixed_version']['id']
-    end
-
     def set_version(version_id)
       @raw_data['issue']['fixed_version_id'] = version_id
       self
