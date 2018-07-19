@@ -25,19 +25,8 @@ module ToolBelt
     end
 
     def generate_entry(issue)
-      title = issue.subject
-
-      title_string = " * #{title} ("
-      issue_string = "[##{issue.id}](https://projects.theforeman.org/issues/#{issue.id})"
-
-      list_item = title_string
-      list_item += issue_string
-      list_item += ", "
-
-      list_item += hash_string(issue)
-
-      list_item.chop!.chop! # Remove trailing ", "
-      list_item += ')'
+      links = ["[##{issue.id}](#{issue.html_url})"] + commit_urls(issue)
+      list_item = " * #{issue.subject} (#{links.join(', ')})"
 
       tracker = (issue && issue.tracker) ? issue.tracker['name'] : 'Bug'
       category = (issue && issue.category) ? issue.category['name'] : 'Other'
@@ -51,10 +40,10 @@ module ToolBelt
       end
     end
 
-    def hash_string(issue)
+    def commit_urls(issue)
       base_url = "https://github.com/#{config.github_org}"
       string = "[%{short}](#{base_url}/%{repo}/commit/%{full})"
-      hashes = ""
+      hashes = []
 
       issue.changesets.each do |changeset|
         if changeset['comments'].start_with?('Merge pull request')
@@ -63,8 +52,7 @@ module ToolBelt
           short = changeset['revision'][0...8]
           full = changeset['revision']
           repo = find_repo(changeset['revision'])
-          hashes += string % {:short => short, :full => full, :repo => repo}
-          hashes += ', '
+          hashes << string % {:short => short, :full => full, :repo => repo}
         end
       end
 
@@ -78,7 +66,7 @@ module ToolBelt
     end
 
     def format_entries
-      entry_string = "\n## Features \n"
+      entry_string = "\n## Features\n"
       @features.each do |category, entries|
         if category != 'Other'
           entry_string += "\n### #{category}\n"
@@ -96,7 +84,7 @@ module ToolBelt
         end
       end
 
-      entry_string += "\n## Bug Fixes \n"
+      entry_string += "\n## Bug Fixes\n"
       @bugs.each do |category, entries|
         if category != 'Other'
           entry_string += "\n### #{category}\n"
@@ -122,7 +110,11 @@ module ToolBelt
         File.rename('CHANGELOG.md', 'CHANGELOG.md.backup') if File.exist?('CHANGELOG.md')
 
         File.open('CHANGELOG.md', 'w') do |file|
-          file.puts("# #{release} #{code_name} (#{Date.parse(Time.now.to_s)})")
+          if code_name
+            file.puts("# #{release} #{code_name} (#{Date.today.to_s})")
+          else
+            file.puts("# #{release} (#{Date.today.to_s})")
+          end
           file.write(changelog)
 
           if File.exist?('CHANGELOG.md.backup')
