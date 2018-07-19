@@ -9,7 +9,7 @@ class RedmineResource
   attr_accessor :base_path, :raw_data
 
   def initialize(path = nil, params = {})
-    site = 'http://projects.theforeman.org'
+    site = 'https://projects.theforeman.org'
     key = ENV['REDMINE_API_KEY']
 
     options = {}

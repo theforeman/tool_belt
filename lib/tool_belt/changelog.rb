@@ -33,7 +33,7 @@ module ToolBelt
       title = issue.subject
 
       title_string = " * #{title} ("
-      issue_string = "[##{issue.id}](http://projects.theforeman.org/issues/#{issue.id})"
+      issue_string = "[##{issue.id}](https://projects.theforeman.org/issues/#{issue.id})"
 
       list_item = title_string
       list_item += issue_string
@@ -57,7 +57,7 @@ module ToolBelt
     end
 
     def hash_string(issue)
-      base_url = "http://github.com/#{config.github_org}"
+      base_url = "https://github.com/#{config.github_org}"
       string = "[%{short}](#{base_url}/%{repo}/commit/%{full})"
       hashes = ""
 
