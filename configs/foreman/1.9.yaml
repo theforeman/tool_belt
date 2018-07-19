@@ -1,5 +1,6 @@
 ---
 :project: foreman
+:github_org: theforeman
 :releases:
   :1.9.0:
     :redmine_release_id: 41

@@ -1,4 +1,5 @@
 :project: foreman
+:github_org: theforeman
 :prior_releases:
   :1.18.0:
     :redmine_release_id: 260
