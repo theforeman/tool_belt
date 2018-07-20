@@ -63,7 +63,7 @@ module Redmine
     end
 
     def release_id
-      @raw_data['issue']['release']['release']['id']
+      @raw_data['issue']['fixed_version']['id'] if @raw_data['issue']['fixed_version']
     end
 
     def set_version(version_id)
