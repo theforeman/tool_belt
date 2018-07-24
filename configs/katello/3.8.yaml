@@ -34,6 +34,8 @@
  - katello-3.8-client-rhel5
  - katello-3.8-client-fedora27
  - katello-3.8-client-fedora28
+ - katello-3.8-client-sles11
+ - katello-3.8-client-sles12
 :tags:
   - name: katello-3.8-thirdparty-candlepin-rhel7
     based_off: katello-thirdparty-candlepin-rhel7
