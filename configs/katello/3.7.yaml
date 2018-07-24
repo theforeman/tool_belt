@@ -29,13 +29,13 @@
     :repo: https://github.com/Katello/katello-installer.git
     :version_branch: true
   :hammer-cli-katello:
-    :branch: 0.13.2
+    :branch: 0.13.4
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :foreman-packaging:
     :branch: rpm/1.18
     :repo: https://github.com/theforeman/foreman-packaging.git
   :katello-host-tools:
-    :branch: 3.3.0
+    :branch: 3.3.4
     :repo: https://github.com/Katello/katello-host-tools.git
   :bastion:
     :branch: 6.1.11
@@ -53,7 +53,7 @@
     :branch: 5.1.1
     :repo: https://github.com/Katello/puppet-candlepin
   :puppet-certs:
-    :branch: 4.1.0
+    :branch: 4.2.0
     :repo: https://github.com/Katello/puppet-certs
   :puppet-qpid:
     :branch: 4.2.2
@@ -83,6 +83,48 @@
   - 23588 # no PR
   - 23541 # closed, no PR
   - 23435 # closed, no PR
+  - 22502 # picked, stop being annoying
+  - 22802 # picked, stop being annoying
+  - 22337 # dup
+  - 23925 # puppet-katello_devel
+  - 24079 # newer gofer
+  - 22947 # N/A
+  - 23988 # no repro
+  - 23767 # already there
+  - 22376 # already there
+  - 21021 # rejected
+  - 21480 # dup
+  - 21897 # rejected
+  - 21948 # dup
+  - 22565 # dup
+  - 18721 # resolved
+  - 22808 # dup
+  - 22897 # rejected
+  - 23036 # dup
+  - 23201 # dup
+  - 23109 # dup
+  - 21895 # rejected
+  - 23030 # done
+  - 22377 # dup
+  - 21806 # dup
+  - 22133 # resolved, non issue
+  - 22795 # dup
+  - 23283 # dup
+  - 23633 # dup
+  - 23171 # dup
+  - 23946 # dup
+  - 22680 # resolved
+  - 22877 # resolved
+  - 23032 # dup
+  - 23762 # itsthere
+  - 23786 # its there
+  - 23760 # dup
+  - 23160 # dup
+  - 23732 # dup
+  - 24095 # dup
+  - 24223 # dup
+  - 23287 # we have the right apipie-rails
+  - 23302 # closed can't dup
 
 :gpg_key: '4D0D8597'
 :mash_scripts:
@@ -93,6 +135,8 @@
  - katello-3.7-client-rhel5
  - katello-3.7-client-fedora27
  - katello-3.7-client-fedora28
+ - katello-3.7-client-sles11
+ - katello-3.7-client-sles12
 :tags:
   - name: katello-3.7-thirdparty-candlepin-rhel7
     based_off: katello-thirdparty-candlepin-rhel7
