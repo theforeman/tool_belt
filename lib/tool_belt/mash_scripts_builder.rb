@@ -5,11 +5,10 @@ module ToolBelt
     attr_accessor :path, :tags, :gpgkey
 
     def initialize(config)
-      version = config.options[:releases].keys.sort.first
       self.tags = config.options[:mash_scripts]
       self.gpgkey = config.options[:gpg_key]
 
-      self.path = "./mash_scripts/#{version}"
+      self.path = "./mash_scripts/#{config.options[:namespace]}"
       FileUtils.mkpath(self.path)
     end
 
