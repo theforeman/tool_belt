@@ -39,7 +39,7 @@ module ToolBelt
       end
 
       configs[:release] = version.nil? ? releases.first.to_s : version.to_s
-      configs[:namespace] = "#{configs[:project]}_#{configs[:release]}"
+      configs[:namespace] = "#{configs[:project]}/#{configs[:release]}"
       configs
     end
 
@@ -64,7 +64,7 @@ module ToolBelt
 
       configs[:release] = version.nil? ? releases.keys.first.to_s : version.to_s
       configs[:redmine_version_id] = configs[:releases][configs[:release].to_sym][:redmine_version_id]
-      configs[:namespace] = "#{configs[:project]}_#{releases.keys.first}"
+      configs[:namespace] = "#{configs[:project]}/#{releases.keys.first}"
       configs
     end
 
