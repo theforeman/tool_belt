@@ -93,7 +93,7 @@
       - tfm-ror51-rhel-7
 
   - name: foreman-plugins-1.18-nonscl-rhel7
-    based_off: foreman-plugins-1.18-nonscl-rhel7
+    based_off: foreman-plugins-nightly-nonscl-rhel7
     helper_tags:
       foreman-plugins-1.18-nonscl-rhel7-override: null
     build_target: foreman-plugins-1.18-nonscl-rhel7-build
