@@ -93,7 +93,7 @@
       - foreman-rails-1.19-rhel-7
 
   - name: foreman-plugins-1.19-nonscl-rhel7
-    based_off: foreman-plugins-1.19-nonscl-rhel7
+    based_off: foreman-plugins-nightly-nonscl-rhel7
     helper_tags:
       foreman-plugins-1.19-nonscl-rhel7-override: null
     build_target: foreman-plugins-1.19-nonscl-rhel7-build
