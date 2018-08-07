@@ -3,7 +3,7 @@
 :github_org: katello
 :prior_releases:
   :3.7.0:
-    :redmine_version_id: 338
+    :redmine_version_id: 264
   :3.7.1:
     :redmine_version_id: 355
 :releases:
@@ -23,7 +23,61 @@
   :foreman-packaging:
     :branch: rpm/1.19
     :repo: https://github.com/theforeman/foreman-packaging.git
+  :puppet-katello:
+    :branch: 8.0.2
+    :repo: https://github.com/Katello/puppet-katello
+  :hammer-cli-katello:
+    :branch: 0.14.0
+    :repo: https://github.com/Katello/hammer-cli-katello.git
+  :foreman-packaging:
+    :branch: rpm/1.19
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :katello-host-tools:
+    :branch: 3.3.4
+    :repo: https://github.com/Katello/katello-host-tools.git
+  :bastion:
+    :branch: 6.1.12
+    :repo: https://github.com/Katello/bastion.git
+  :puppet-pulp:
+    :branch: 5.5.0
+    :repo: https://github.com/Katello/puppet-pulp
+  :puppet-candlepin:
+    :branch: 5.1.1
+    :repo: https://github.com/Katello/puppet-candlepin
+  :puppet-certs:
+    :branch: 4.2.0
+    :repo: https://github.com/Katello/puppet-certs
+  :puppet-qpid:
+    :branch: 4.2.2
+    :repo: https://github.com/Katello/puppet-qpid
+  :puppet-foreman_proxy_content:
+    :branch: 7.2.0
+    :repo: https://github.com/Katello/puppet-foreman_proxy_content
+  :puppet-service_wait:
+    :branch: 1.0.4
+    :repo: https://github.com/theforeman/puppet-service_wait.git
 :ignores:
+  - 23322
+  - 22961
+  - 24127
+  - 24317
+  - 24341
+  - 23785
+  - 24309
+  - 22565
+  - 22808
+  - 22897
+  - 23036
+  - 23201
+  - 23109
+  - 23265
+  - 23176
+  - 22377
+  - 23284
+  - 22648
+  - 23541
+  - 22795
+  - 23925
 
 :gpg_key: '10668686'
 :mash_scripts:
@@ -180,3 +234,4 @@
     inherits:
       katello-3.8-client-sles11:
         katello-3.8-sles11: 0
+
