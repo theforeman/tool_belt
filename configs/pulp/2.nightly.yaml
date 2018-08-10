@@ -8,6 +8,10 @@
     build_package_group_source_tag: pulp-nightly-rhel7-build
     arches:
       - x86_64
+    inherits:
+      pulp-nightly-rhel7-build:
+        pulp-nightly-rhel7: 0
+      pulp-nightly-rhel7: {}
     external_repos:
       - rhel-7.0-server
       - rhel-7.0-server-optional
@@ -17,6 +21,10 @@
     build_package_group_source_tag: pulp-nightly-rhel6-build
     arches:
       - x86_64
+    inherits:
+      pulp-nightly-rhel6-build:
+        pulp-nightly-rhel6: 0
+      pulp-nightly-rhel6: {}
     external_repos:
       - epel-6
       - qpid-copr
@@ -27,22 +35,34 @@
     build_package_group_source_tag: pulp-nightly-rhel5-build
     arches:
       - x86_64
+    inherits:
+      pulp-nightly-rhel5-build:
+        pulp-nightly-rhel5: 0
+      pulp-nightly-rhel5: {}
     external_repos:
       - rhel-5.9-server
       - epel-5
+  - name: pulp-nightly-fedora28
+    build_target: pulp-nightly-fedora28-build
+    build_package_group_source_tag: pulp-nightly-fedora28-build
+    arches:
+      - x86_64
+    inherits:
+      pulp-nightly-fedora28-build:
+        pulp-nightly-fedora28: 0
+      pulp-nightly-fedora28: {}
+    external_repos:
+      - fedora-28
+      - fedora-28-updates
   - name: pulp-nightly-fedora27
     build_target: pulp-nightly-fedora27-build
     build_package_group_source_tag: pulp-nightly-fedora27-build
     arches:
       - x86_64
+    inherits:
+      pulp-nightly-fedora27-build:
+        pulp-nightly-fedora27: 0
+      pulp-nightly-fedora27: {}
     external_repos:
-      - fedora27-external-repo
-      - fedora27-updates-external-repo
-  - name: pulp-nightly-fedora26
-    build_target: pulp-nightly-fedora26-build
-    build_package_group_source_tag: pulp-nightly-fedora26-build
-    arches:
-      - x86_64
-    external_repos:
-      - fedora-26
-      - fedora-26-updates
+      - fedora27
+      - fedora27-updates
