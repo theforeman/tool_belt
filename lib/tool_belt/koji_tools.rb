@@ -31,11 +31,16 @@ module ToolBelt
       koji_change("add-pkg #{tag_name} #{packages.join(' ')} --owner=kojiadm")
     end
 
-    def ensure_package_group(source_tag, dest_tag, package_group)
+    def ensure_package_group(dest_tag, package_group, options)
       unless has_package_group?(dest_tag, package_group)
         create_package_group(dest_tag, package_group)
       end
-      packages = packages_for_group(source_tag, package_group)
+      packages = if source_tag = options.fetch(:source_tag, false)
+                   packages_for_group(source_tag, package_group)
+                 else
+                   options.fetch(:packages)
+                 end
+
       existing_packages = packages_for_group(dest_tag, package_group)
       add_group_packages(dest_tag, package_group, packages) if (packages - existing_packages).any?
     end
