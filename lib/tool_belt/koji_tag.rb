@@ -21,14 +21,13 @@ module ToolBelt
         tools.ensure_build_target(name, build_target)
 
         if build_package_group_source_tag
-          tools.ensure_package_group(build_package_group_source_tag, build_target, 'build')
-          tools.ensure_package_group(build_package_group_source_tag, build_target, 'srpm-build')
+          tools.ensure_package_group(build_target, 'build', :source_tag => build_package_group_source_tag)
+          tools.ensure_package_group(build_target, 'srpm-build', :source_tag => build_package_group_source_tag)
         end
 
         if build_groups
           build_groups.each do |group, packages|
-            tools.create_package_group(build_target, group)
-            tools.add_group_packages(build_target, group, packages)
+            tools.ensure_package_group(build_target, group, :packages => packages)
           end
         end
 
