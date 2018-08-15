@@ -2,6 +2,16 @@
 :project: foreman
 :github_org: theforeman
 :nightly: true
+:mash_scripts:
+  - foreman-nightly-rhel7-dist
+  - foreman-plugins-nightly-rhel7-dist
+  - foreman-client-nightly-rhel7
+  - foreman-client-nightly-rhel6
+  - foreman-client-nightly-rhel5
+  - foreman-client-nightly-fedora27
+  - foreman-client-nightly-fedora28
+  - foreman-client-nightly-sles11
+  - foreman-client-nightly-sles12
 :tags:
   - name: foreman-nightly-rhel7
     based_off: null
