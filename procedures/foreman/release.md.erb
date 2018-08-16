@@ -1,0 +1,83 @@
+# Writing release notes
+
+* [ ] Update manual if applicable for any additional installation steps
+* [ ] Draft release notes in markdown ([example](https://gist.github.com/domcleal/5567450)), with these sections (and do not use personal pronouns):
+  * [ ] Headline features: half a dozen important features with a few sentences description each
+  * [ ] Upgrade notes: all important notices that users must be aware of before upgrading
+  * [ ] Release notes: bullet point list by category of most changes, excluding bug fixes for issues introduced during the release cycle, include link to bug numbers. You can auto-generate changes using the 'changelog' command in [tool_belt](https://github.com/theforeman/tool_belt)
+  * [ ] CLI release notes are taken from the hammer-cli and hammer-cli-foreman changelogs
+  * [ ] Link to installer changelogs and note versions being used
+* [ ] Get the apipie doc and place it in [api](https://github.com/theforeman/theforeman.org/tree/gh-pages/api)/<%= branch %>
+
+# Preparing code
+
+* [ ] Request Hammer CLI releases from maintainers if desired
+* [ ] Make patch releases of installer modules that have important changes
+  * [ ] Branch to MAJ.MIN-stable if recent changes to the module aren't suitable for patch (x.y.z) release
+* [ ] Compare tagged packages in nightly vs. release koji tag and re-tag any updated dependencies that are required
+<% unless is_rc %>* [ ] Add a new [Redmine version](https://projects.theforeman.org/projects/foreman/settings/versions) for the next minor, unless the series is EOL. Be sure the version is set to sharing with subprojects.
+<% end %>* [ ] Remove/change release field for any open Redmine tickets assigned to the release still (next minor, unset it or reject)
+<% unless is_rc %>* [ ] Change Redmine version <%= full_version %> state to Closed
+<% end %>* [ ] List all issues targeted at the release, order by Closed date ascending and use git cherry-pick -x to cherry pick from develop to <%= full_version %>-stable branch
+* [ ] Clone [tool_belt](https://github.com/theforeman/tool_belt) and run:
+  * [ ] `./tools.rb setup-environment configs/foreman/<%= branch %>.yaml`
+  * [ ] `./tools.rb cherry-picks --version <%= full_version %> configs/foreman/<%= branch %>.yaml`
+  * [ ] Verify tickets in the cherry_picks_<%= full_version %> file are accounted for or additional cherry pick them
+
+# Tagging a release
+
+* [ ] In foreman <%= branch %>-stable:
+  * [ ] Make sure [test_<%= branch.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_<%= branch.tr('.', '_') %>_stable/) is green
+  * [ ] run make -C locale tx-update (if Transifex has not switched to the next major release yet, usually after .2)
+  * [ ] run script/sync_templates.sh
+  * [ ] change VERSION to <%= full_version %>
+  * [ ] Run `extras/changelog`
+  * [ ] Commit: `git commit -m "Release <%= full_version %>"`
+  * [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
+  * [ ] Push: `git push --follow-tags`
+* [ ] In smart-proxy <%= branch %>-stable:
+  * [ ] Make sure [test_proxy_<%= branch.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_proxy_<%= branch.tr('.', '_') %>_stable/) is green
+  * [ ] change VERSION to <%= full_version %>
+  * [ ] Run `extra/changelog`
+  * [ ] Commit: `git commit -m "Release <%= full_version %>"`
+  * [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
+  * [ ] Push: `git push --follow-tags`
+* [ ] In foreman-selinux <%= branch %>-stable:
+  * [ ] change VERSION to <%= full_version %>
+  * [ ] Run `extras/changelog`
+  * [ ] Commit: `git commit -m "Release <%= full_version %>"`
+  * [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
+  * [ ] Push: `git push --follow-tags`
+* [ ] In foreman-installer <%= branch %>-stable:
+  * [ ] change VERSION to <%= full_version %>
+  * [ ] Commit: `git commit -m "Release <%= full_version %>"`
+  * [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
+  * [ ] Push: `git push --follow-tags`
+* [ ] Run the Jenkins [Tarballs Release](https://ci.theforeman.org/job/tarballs-release/) to create tarballs
+* [ ] Verify tarballs are present on downloads.theforeman.org
+* [ ] Download, sign and upload detached signatures
+
+Note: If for some reason there was an issue with the tarballs that required uploading new tarballs, CDN cache should be invalidated so that the builders use the updated tarballs.
+
+# Packaging a release
+
+* [ ] In foreman-packaging rpm/<%= branch %> branch, change foreman.spec, foreman-proxy.spec, foreman-selinux.spec, foreman-installer.spec:
+  * [ ] Set version to `<%= version %>`
+  * [ ] Set prerelease to `<%= extra %>`
+<% unless is_rc %>  * [ ] Reset release to `1`
+<% end %>  * [ ] In each package dir, remove the old tarball, run `spectool -g *.spec` and `git annex add *.tar.bz2`
+  * [ ] Commit with message "Release <%= full_version %>"
+  * [ ] Submit a pull request
+* [ ] Update changelog files for debs:
+  * [ ] `scripts/changelog.rb -v <%= debian_full_version %> -m "<%= full_version %> released" debian/*/*/changelog`
+  * [ ] Submit a pull request
+* [ ] Trigger next step of release pipeline: [release_packages](https://ci.theforeman.org/job/release_packages/)
+* [ ] Use [RPM_Packaging](https://projects.theforeman.org/projects/foreman/wiki/RPM_Packaging) to sign RPMs
+  * [ ] Download RPMs
+  * [ ] Sign RPMs
+  * [ ] Upload signatures
+  * [ ] Upload RPMs
+  * [ ] Sign "extra" RPMs
+* [ ] Trigger [release_mash](https://ci.theforeman.org/job/release_mash/)
+* [ ] Trigger [release_test](https://ci.theforeman.org/job/release_test/) if mashing didn't
+* [ ] Trigger [release_push_deb](https://ci.theforeman.org/job/release_push_deb/) and [release_push_rpm](https://ci.theforeman.org/job/release_push_rpm/) if testing didn't
