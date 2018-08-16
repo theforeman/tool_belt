@@ -14,8 +14,7 @@ module ToolBelt
     def setup(args = {})
       github_username = args.fetch(:github_username, nil)
 
-      Dir.mkdir("repos") unless File.exist?("repos")
-      Dir.mkdir(release_directory) unless File.exist?(release_directory)
+      FileUtils.mkdir_p(release_directory) unless Dir.exist?(release_directory)
 
       Dir.chdir(release_directory) do
         @repos.each do |name, repo|
