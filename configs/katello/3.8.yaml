@@ -33,7 +33,7 @@
     :branch: rpm/1.19
     :repo: https://github.com/theforeman/foreman-packaging.git
   :katello-host-tools:
-    :branch: 3.3.4
+    :branch: 3.3.5
     :repo: https://github.com/Katello/katello-host-tools.git
   :bastion:
     :branch: 6.1.12
@@ -108,6 +108,7 @@
   - 22972
   - 23330
   - 24070
+  - 22802
 
 :gpg_key: '10668686'
 :mash_scripts:
