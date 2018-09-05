@@ -24,6 +24,7 @@
     inherits:
       foreman-nightly-rhel7-build:
         foreman-nightly-rhel7-override: 0
+        tfm-ror52-rhel7: 2
         foreman-nightly-nonscl-rhel7: 10
       foreman-nightly-rhel7-override:
         foreman-nightly-rhel7: 0
@@ -33,7 +34,6 @@
       - centos-sclo-sclo-rhel-7
       - centos-7-server
       - rhel-7.0-server
-      - foreman-rails-nightly-rhel-7
   - name: foreman-nightly-nonscl-rhel7
     based_off: null
     helper_tags:
@@ -63,6 +63,7 @@
     inherits:
       foreman-plugins-nightly-rhel7-build:
         foreman-plugins-nightly-rhel7-override: 0
+        tfm-ror52-rhel7: 2
         foreman-plugins-nightly-nonscl-rhel7: 5
         foreman-nightly-rhel7: 15
         foreman-nightly-nonscl-rhel7: 20
@@ -74,7 +75,6 @@
       - centos-sclo-sclo-rhel-7
       - centos-7-server
       - rhel-7.0-server
-      - foreman-rails-nightly-rhel-7
   - name: foreman-plugins-nightly-nonscl-rhel7
     based_off: null
     helper_tags:
