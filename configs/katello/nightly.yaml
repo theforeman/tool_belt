@@ -44,11 +44,10 @@
         katello-nightly-rhel7: 0
         katello-thirdparty-pulp-rhel7: 2
     external_repos:
-      - rhel-7.0-server
-      - rhel-7.0-server-optional
       - epel-7
       - centos-sclo-rh-rhel-7
       - centos-sclo-sclo-rhel-7
+      - centos-7-server-updates
       - centos-7-server
   - name: katello-nightly-rhel6
     based_off: null
