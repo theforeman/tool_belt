@@ -11,6 +11,10 @@
 :releases:
   :3.7.0:
     :redmine_version_id: 264
+  :3.7.1:
+    :redmine_version_id: 355
+  :3.7.2:
+    :redmine_version_id: 931
 :code_name: Blonde Ale
 :repos:
   :katello:
@@ -29,13 +33,13 @@
     :repo: https://github.com/Katello/katello-installer.git
     :version_branch: true
   :hammer-cli-katello:
-    :branch: 0.13.4
+    :branch: 0.13.5
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :foreman-packaging:
     :branch: rpm/1.18
     :repo: https://github.com/theforeman/foreman-packaging.git
   :katello-host-tools:
-    :branch: 3.3.4
+    :branch: 3.3.5
     :repo: https://github.com/Katello/katello-host-tools.git
   :bastion:
     :branch: 6.1.11
@@ -125,6 +129,11 @@
   - 24223 # dup
   - 23287 # we have the right apipie-rails
   - 23302 # closed can't dup
+  - 24127 # dup
+  - 24341 # dup
+  - 24649 # dup
+  - 23801 # resolved
+  - 24309 # dup
 
 :gpg_key: '4D0D8597'
 :mash_scripts:

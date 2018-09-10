@@ -2,7 +2,7 @@ module ToolBelt
   module Command
     class CherryPickCommand < Clamp::Command
       parameter "config_file", "Release configuration file"
-      option "--version", 'VERSION', "Version to generate changelog for"
+      option "--version", 'VERSION', "Which version to pick for. Defaults to first version in the config"
 
       def execute
         config = ToolBelt::Config.new(config_file, version)
