@@ -127,6 +127,7 @@
       build:
         - bash
         - bzip2
+        - buildsys-macros
         - coreutils
         - cpio
         - diffutils
@@ -147,6 +148,7 @@
         - shadow-utils
         - tar
         - unzip
+        - unziputil-linux-ng
         - util-linux
         - which
         - xz
