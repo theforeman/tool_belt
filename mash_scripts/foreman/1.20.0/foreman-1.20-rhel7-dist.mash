@@ -1,0 +1,12 @@
+[foreman-1.20-rhel7-dist]
+rpm_path = %(arch)s/os/Packages
+repodata_path = %(arch)s/os/
+source_path = source/SRPMS
+debuginfo = False
+multilib = False
+multilib_method = devel
+tag = foreman-1.20-rhel7-dist
+inherit = True
+strict_keys = False
+keys = 565EA533
+arches = x86_64

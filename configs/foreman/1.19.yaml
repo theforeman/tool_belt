@@ -44,7 +44,6 @@
     :branch: 1.19-stable
     :version_branch: true
     :repo: https://github.com/theforeman/community-templates
-
 :gpg_key: 'CE3159AAC3EC09E51614775446020A10694FA479'
 :mash_scripts:
    - foreman-1.19-rhel7-dist

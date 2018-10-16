@@ -1,0 +1,381 @@
+---
+:project: foreman
+:github_org: theforeman
+:releases:
+  :1.20.0:
+    :redmine_version_id: 885
+:mash_scripts:
+  - foreman-1.20-rhel7-dist
+  - foreman-plugins-1.20-rhel7-dist
+  - foreman-client-1.20-rhel7
+  - foreman-client-1.20-rhel6
+  - foreman-client-1.20-rhel5
+  - foreman-client-1.20-fedora27
+  - foreman-client-1.20-fedora28
+  - foreman-client-1.20-sles11
+  - foreman-client-1.20-sles12
+:repos: []
+:gpg_key: 565EA533
+:tags:
+  - name: foreman-1.20-nonscl-rhel7
+    based_off: foreman-nightly-nonscl-rhel7
+    helper_tags:
+      foreman-1.20-nonscl-rhel7-override: null
+    build_target: foreman-1.20-nonscl-rhel7-build
+    build_package_group_source_tag: foreman-nightly-nonscl-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-1.20-nonscl-rhel7-build:
+        foreman-1.20-nonscl-rhel7-override: 0
+      foreman-1.20-nonscl-rhel7-override:
+        foreman-1.20-nonscl-rhel7: 0
+    external_repos:
+      - epel-7
+      - puppetlabs-pc1-rhel-7
+      - centos-7-server-updates
+      - centos-7-server
+  - name: foreman-1.20-rhel7
+    based_off: foreman-nightly-rhel7
+    helper_tags:
+      foreman-1.20-rhel7-override: null
+    build_target: foreman-1.20-rhel7-build
+    build_package_group_source_tag: foreman-nightly-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-1.20-rhel7-build:
+        foreman-1.20-rhel7-override: 0
+        tfm-ror52-rhel7: 2
+        foreman-1.20-nonscl-rhel7: 10
+      foreman-1.20-rhel7-override:
+        foreman-1.20-rhel7: 0
+    external_repos:
+      - epel-7
+      - centos-sclo-rh-rhel-7
+      - centos-7-server-updates
+      - centos-7-server
+  - name: foreman-plugins-1.20-nonscl-rhel7
+    based_off: foreman-plugins-nightly-nonscl-rhel7
+    helper_tags:
+      foreman-plugins-1.20-nonscl-rhel7-override: null
+    build_target: foreman-plugins-1.20-nonscl-rhel7-build
+    build_package_group_source_tag: foreman-plugins-nightly-nonscl-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-plugins-1.20-nonscl-rhel7-build:
+        foreman-plugins-1.20-nonscl-rhel7-override: 0
+        foreman-1.20-rhel7: 15
+        foreman-1.20-nonscl-rhel7: 10
+      foreman-plugins-1.20-nonscl-rhel7-override:
+        foreman-plugins-1.20-nonscl-rhel7: 0
+    external_repos:
+      - epel-7
+      - centos-7-server-updates
+      - centos-7-server
+      - rhel-7.0-server-optional
+  - name: foreman-plugins-1.20-rhel7
+    based_off: foreman-plugins-nightly-rhel7
+    helper_tags:
+      foreman-plugins-1.20-rhel7-override: null
+    build_target: foreman-plugins-1.20-rhel7-build
+    build_package_group_source_tag: foreman-plugins-nightly-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-plugins-1.20-rhel7-build:
+        foreman-plugins-1.20-rhel7-override: 0
+        tfm-ror52-rhel7: 2
+        foreman-plugins-1.20-nonscl-rhel7: 5
+        foreman-1.20-rhel7: 15
+        foreman-1.20-nonscl-rhel7: 20
+      foreman-plugins-1.20-rhel7-override:
+        foreman-plugins-1.20-rhel7: 0
+    external_repos:
+      - epel-7
+      - centos-sclo-rh-rhel-7
+      - centos-7-server-updates
+      - centos-7-server
+  - name: foreman-1.20-rhel7-dist
+    based_off: foreman-nightly-rhel7-dist
+    inherits:
+      foreman-1.20-rhel7-dist:
+        foreman-1.20-rhel7: 20
+        foreman-1.20-nonscl-rhel7: 10
+  - name: foreman-plugins-1.20-rhel7-dist
+    based_off: foreman-plugins-nightly-rhel7-dist
+    inherits:
+      foreman-plugins-1.20-rhel7-dist:
+        foreman-plugins-1.20-rhel7: 2
+        foreman-plugins-1.20-nonscl-rhel7: 0
+  - name: foreman-client-1.20-rhel5
+    based_off: foreman-client-nightly-rhel5
+    helper_tags:
+      foreman-client-1.20-rhel5-override: null
+      foreman-client-1.20-rhel5: null
+    build_target: foreman-client-1.20-rhel5-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-client-1.20-rhel5-build:
+        foreman-client-1.20-rhel5-override: 0
+      foreman-client-1.20-rhel5-override:
+        foreman-client-1.20-rhel5: 0
+      foreman-client-1.20-rhel5: {}
+    external_repos:
+      - rhel-5.9-server
+      - epel-5
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-release-server
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - redhat-release-server
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
+  - name: foreman-client-1.20-rhel6
+    based_off: foreman-client-nightly-rhel6
+    helper_tags:
+      foreman-client-1.20-rhel6-override: null
+      foreman-client-1.20-rhel6: null
+    build_target: foreman-client-1.20-rhel6-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-client-1.20-rhel6-build:
+        foreman-client-1.20-rhel6-override: 0
+      foreman-client-1.20-rhel6-override:
+        foreman-client-1.20-rhel6: 0
+      foreman-client-1.20-rhel6: {}
+    external_repos:
+      - rhel-6.6-server
+      - rhel-6.6-server-optional
+      - epel-6
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-release-server
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - redhat-release-server
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
+  - name: foreman-client-1.20-rhel7
+    based_off: foreman-client-nightly-rhel7
+    helper_tags:
+      foreman-client-1.20-rhel7-override: null
+      foreman-client-1.20-rhel7: null
+    build_target: foreman-client-1.20-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-client-1.20-rhel7-build:
+        foreman-client-1.20-rhel7-override: 0
+      foreman-client-1.20-rhel7-override:
+        foreman-client-1.20-rhel7: 0
+      foreman-client-1.20-rhel7: {}
+    external_repos:
+      - rhel-7.0-server
+      - rhel-7.0-server-optional
+      - epel-7
+      - centos-7-server-updates
+      - centos-7-server
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-release-server
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - redhat-release-server
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
+  - name: foreman-client-1.20-fedora27
+    based_off: foreman-client-nightly-fedora27
+    helper_tags:
+      foreman-client-1.20-fedora27-override: null
+      foreman-client-1.20-fedora27: null
+    build_target: foreman-client-1.20-fedora27-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-client-1.20-fedora27-build:
+        foreman-client-1.20-fedora27-override: 0
+      foreman-client-1.20-fedora27-override:
+        foreman-client-1.20-fedora27: 0
+      foreman-client-1.20-fedora27: {}
+    external_repos:
+      - fedora-27-updates
+      - fedora-27
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - fedora-release
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - fedora-release
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
+  - name: foreman-client-1.20-fedora28
+    based_off: foreman-client-nightly-fedora28
+    helper_tags:
+      foreman-client-1.20-fedora28-override: null
+      foreman-client-1.20-fedora28: null
+    build_target: foreman-client-1.20-fedora28-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-client-1.20-fedora28-build:
+        foreman-client-1.20-fedora28-override: 0
+      foreman-client-1.20-fedora28-override:
+        foreman-client-1.20-fedora28: 0
+      foreman-client-1.20-fedora28: {}
+    external_repos:
+      - fedora-28-updates
+      - fedora-28
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - fedora-release
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - fedora-release
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
+  - name: foreman-client-1.20-sles12
+    based_off: foreman-client-nightly-sles12
+    arches:
+      - x86_64
+    helper_tags:
+      foreman-client-1.20-sles12: null
+    inherits:
+      foreman-client-1.20-sles12: {}
+  - name: foreman-client-1.20-sles11
+    based_off: foreman-client-nightly-sles11
+    arches:
+      - x86_64
+    helper_tags:
+      foreman-client-1.20-sles11: null
+    inherits:
+      foreman-client-1.20-sles11: {}
