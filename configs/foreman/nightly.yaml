@@ -28,7 +28,7 @@
         foreman-nightly-nonscl-rhel7: 0
     external_repos:
       - epel-7
-      - puppetlabs-pc1-rhel-7
+      - puppetlabs-puppet5-rhel-7
       - centos-7-server-updates
       - centos-7-server
   - name: foreman-nightly-rhel7
