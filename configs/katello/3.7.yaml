@@ -13,8 +13,6 @@
     :redmine_version_id: 264
   :3.7.1:
     :redmine_version_id: 355
-  :3.7.2:
-    :redmine_version_id: 931
 :code_name: Blonde Ale
 :repos:
   :katello:
@@ -42,7 +40,7 @@
     :branch: 3.3.5
     :repo: https://github.com/Katello/katello-host-tools.git
   :bastion:
-    :branch: 6.1.11
+    :branch: 6.1.12
     :repo: https://github.com/Katello/bastion
   :puppet-pulp:
     :branch: 5.4.1
