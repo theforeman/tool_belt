@@ -129,6 +129,7 @@
     build_groups:
       build:
         - bash
+        - buildsys-macros
         - bzip2
         - coreutils
         - cpio
@@ -154,6 +155,7 @@
         - xz
       srpm-build:
         - bash
+        - buildsys-macros
         - redhat-release-server
         - redhat-rpm-config
         - rhpkg-simple
