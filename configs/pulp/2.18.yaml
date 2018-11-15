@@ -14,8 +14,8 @@
         pulp-2.18-rhel7: 0
       pulp-2.18-rhel7: {}
     external_repos:
-      - rhel-7.0-server
-      - rhel-7.0-server-optional
+      - centos-7-server-updates
+      - centos-7-server
       - epel-7
     build_groups:
       build:
@@ -24,7 +24,8 @@
         - coreutils
         - cpio
         - diffutils
-        - fedora-release
+        - epel-release
+        - epel-rpm-macros
         - findutils
         - gawk
         - gcc
@@ -34,6 +35,9 @@
         - info
         - make
         - patch
+        - redhat-release
+        - redhat-release-everything
+        - redhat-release-server
         - redhat-rpm-config
         - rpm-build
         - sed
@@ -41,18 +45,22 @@
         - tar
         - unzip
         - util-linux
+        - util-linux-ng
         - which
         - xz
       srpm-build:
-        - curl
-        - cvs
-        - fedora-release
-        - fedpkg
-        - gnupg2
+        - bash
+        - epel-release
+        - epel-rpm-macros
+        - fedpkg-minimal
+        - git
+        - gnupg
         - make
+        - redhat-release
+        - redhat-release-everything
+        - redhat-release-server
         - redhat-rpm-config
         - rpm-build
-        - sh
         - shadow-utils
   - name: pulp-2.18-rhel6
     based_off: pulp-nightly-rhel6
