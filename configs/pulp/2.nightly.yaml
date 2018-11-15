@@ -13,9 +13,54 @@
         pulp-nightly-rhel7: 0
       pulp-nightly-rhel7: {}
     external_repos:
-      - rhel-7.0-server
-      - rhel-7.0-server-optional
+      - centos-7-server-updates
+      - centos-7-server
       - epel-7
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - epel-release
+        - epel-rpm-macros
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-release
+        - redhat-release-everything
+        - redhat-release-server
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - util-linux-ng
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - epel-release
+        - epel-rpm-macros
+        - fedpkg-minimal
+        - git
+        - gnupg
+        - make
+        - redhat-release
+        - redhat-release-everything
+        - redhat-release-server
+        - redhat-rpm-config
+        - rpm-build
+        - shadow-utils
   - name: pulp-nightly-rhel6
     build_target: pulp-nightly-rhel6-build
     build_package_group_source_tag: pulp-nightly-rhel6-build
