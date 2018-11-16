@@ -109,5 +109,5 @@
         pulp-nightly-fedora27: 0
       pulp-nightly-fedora27: {}
     external_repos:
-      - fedora27
-      - fedora27-updates
+      - fedora-27
+      - fedora-27-updates
