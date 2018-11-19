@@ -7,6 +7,6 @@ multilib = False
 multilib_method = devel
 tag = foreman-1.20-rhel7-dist
 inherit = True
-strict_keys = False
+strict_keys = True
 keys = 565EA533
 arches = x86_64
