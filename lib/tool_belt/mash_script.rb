@@ -25,7 +25,7 @@ multilib = False
 multilib_method = devel
 tag = #{self.tag}
 inherit = True
-strict_keys = False
+strict_keys = True
 keys = #{self.gpgkey}
 arches = x86_64
       EOF
