@@ -1,7 +1,7 @@
 module ToolBelt
   class MashScript
 
-    attr_accessor :filename, :tag, :gpgkey
+    attr_accessor :filename, :tag, :gpgkey, :strict_keys
 
     def initialize(filename, options = {})
       self.filename = filename
@@ -25,7 +25,7 @@ multilib = False
 multilib_method = devel
 tag = #{self.tag}
 inherit = True
-strict_keys = True
+strict_keys = #{self.strict_keys}
 keys = #{self.gpgkey}
 arches = x86_64
       EOF

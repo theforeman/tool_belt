@@ -49,6 +49,7 @@
     :branch: 1.0.4
     :repo: https://github.com/theforeman/puppet-service_wait.git
 :ignores:
+:strict_keys: true
 :gpg_key: '88287C2B'
 :mash_scripts:
  - katello-3.10-thirdparty-candlepin-rhel7
