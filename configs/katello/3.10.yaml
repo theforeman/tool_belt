@@ -2,7 +2,7 @@
 :project: katello
 :github_org: katello
 :prior_releases:
-  :3.10.1:
+  :3.9.1:
     :redmine_version_id: 919
 :releases:
   :3.10.0:
@@ -30,24 +30,24 @@
   :bastion:
     :branch: 6.1.12
     :repo: https://github.com/Katello/bastion.git
-  :puppet-pulp:
-    :branch: 5.5.0
-    :repo: https://github.com/theforeman/puppet-pulp
   :puppet-candlepin:
-    :branch: 5.2.2
+    :branch: 5.2.1
     :repo: https://github.com/theforeman/puppet-candlepin
   :puppet-certs:
-    :branch: 4.3.1
+    :branch: 4.4-stable
     :repo: https://github.com/theforeman/puppet-certs
-  :puppet-qpid:
-    :branch: 4.3.1
-    :repo: https://github.com/theforeman/puppet-qpid
   :puppet-foreman_proxy_content:
-    :branch: 7.2.0
+    :branch: 7.3.2
     :repo: https://github.com/theforeman/puppet-foreman_proxy_content
-  :puppet-service_wait:
-    :branch: 1.0.4
-    :repo: https://github.com/theforeman/puppet-service_wait.git
+  :puppet-katello:
+    :branch: 8.2.0
+    :repo: https://github.com/theforeman/puppet-katello
+  :puppet-pulp:
+    :branch: 5.7.0
+    :repo: https://github.com/theforeman/puppet-pulp
+  :puppet-qpid:
+    :branch: 4.3.0
+    :repo: https://github.com/theforeman/puppet-qpid
 :ignores:
 :strict_keys: true
 :gpg_key: '88287C2B'
