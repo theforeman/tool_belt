@@ -28,29 +28,30 @@
 
 * [ ] In foreman <%= branch %>-stable:
   * [ ] Make sure [test_<%= branch.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_<%= branch.tr('.', '_') %>_stable/) is green
-  * [ ] run make -C locale tx-update (if Transifex has not switched to the next major release yet, usually after .2)
-  * [ ] run script/sync_templates.sh
+  * [ ] run `make -C locale tx-update` (if Transifex has not switched to the next major release yet, usually after .2)
+  * [ ] run `script/sync_templates.sh`
+  * [ ] update template snapshots with `rake snapshots:generate RAILS_ENV=test` and verify changes are expected
   * [ ] change VERSION to <%= full_version %>
   * [ ] Run `extras/changelog`
-  * [ ] Commit: `git commit -m "Release <%= full_version %>"`
+  * [ ] Commit: `git commit -am "Release <%= full_version %>"`
   * [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
   * [ ] Push: `git push --follow-tags`
 * [ ] In smart-proxy <%= branch %>-stable:
   * [ ] Make sure [test_proxy_<%= branch.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_proxy_<%= branch.tr('.', '_') %>_stable/) is green
   * [ ] change VERSION to <%= full_version %>
   * [ ] Run `extra/changelog`
-  * [ ] Commit: `git commit -m "Release <%= full_version %>"`
+  * [ ] Commit: `git commit -am "Release <%= full_version %>"`
   * [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
   * [ ] Push: `git push --follow-tags`
 * [ ] In foreman-selinux <%= branch %>-stable:
   * [ ] change VERSION to <%= full_version %>
   * [ ] Run `extras/changelog`
-  * [ ] Commit: `git commit -m "Release <%= full_version %>"`
+  * [ ] Commit: `git commit -am "Release <%= full_version %>"`
   * [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
   * [ ] Push: `git push --follow-tags`
 * [ ] In foreman-installer <%= branch %>-stable:
   * [ ] change VERSION to <%= full_version %>
-  * [ ] Commit: `git commit -m "Release <%= full_version %>"`
+  * [ ] Commit: `git commit -am "Release <%= full_version %>"`
   * [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
   * [ ] Push: `git push --follow-tags`
 * [ ] Run the Jenkins [Tarballs Release](https://ci.theforeman.org/job/tarballs-release/) to create tarballs
