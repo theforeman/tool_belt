@@ -32,7 +32,7 @@ module ToolBelt
           context = {
             is_rc: !extra.nil?,
             extra: extra,
-            branch: "#{major}.#{minor}", # 1.20
+            short_version: "#{major}.#{minor}", # 1.20
             debian_full_version: debian_full_version, # 1.20.0~rc1-1
             full_version: full_version, # 1.20.0-RC1
             version: version, # 1.20.0
