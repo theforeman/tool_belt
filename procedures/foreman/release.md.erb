@@ -7,7 +7,7 @@
   * [ ] Release notes: bullet point list by category of most changes, excluding bug fixes for issues introduced during the release cycle, include link to bug numbers. You can auto-generate changes using the 'changelog' command in [tool_belt](https://github.com/theforeman/tool_belt)
   * [ ] CLI release notes are taken from the hammer-cli and hammer-cli-foreman changelogs
   * [ ] Link to installer changelogs and note versions being used
-* [ ] Get the apipie doc and place it in [api](https://github.com/theforeman/theforeman.org/tree/gh-pages/api)/<%= branch %>
+* [ ] Get the apipie doc and place it in [api](https://github.com/theforeman/theforeman.org/tree/gh-pages/api)/<%= short_version %>
 
 # Preparing code
 
@@ -20,14 +20,14 @@
 <% unless is_rc %>* [ ] Change Redmine version <%= full_version %> state to Closed
 <% end %>* [ ] List all issues targeted at the release, order by Closed date ascending and use git cherry-pick -x to cherry pick from develop to <%= full_version %>-stable branch
 * [ ] Clone [tool_belt](https://github.com/theforeman/tool_belt) and run:
-  * [ ] `./tools.rb setup-environment configs/foreman/<%= branch %>.yaml`
-  * [ ] `./tools.rb cherry-picks --version <%= full_version %> configs/foreman/<%= branch %>.yaml`
+  * [ ] `./tools.rb setup-environment configs/foreman/<%= short_version %>.yaml`
+  * [ ] `./tools.rb cherry-picks --version <%= full_version %> configs/foreman/<%= short_version %>.yaml`
   * [ ] Verify tickets in the cherry_picks_<%= full_version %> file are accounted for or additional cherry pick them
 
 # Tagging a release
 
-* [ ] In foreman <%= branch %>-stable:
-  * [ ] Make sure [test_<%= branch.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_<%= branch.tr('.', '_') %>_stable/) is green
+* [ ] In foreman <%= short_version %>-stable:
+  * [ ] Make sure [test_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_<%= short_version.tr('.', '_') %>_stable/) is green
   * [ ] run `make -C locale tx-update` (if Transifex has not switched to the next major release yet, usually after .2)
   * [ ] run `script/sync_templates.sh`
   * [ ] update template snapshots with `rake snapshots:generate RAILS_ENV=test` and verify changes are expected
@@ -36,20 +36,20 @@
   * [ ] Commit: `git commit -am "Release <%= full_version %>"`
   * [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
   * [ ] Push: `git push --follow-tags`
-* [ ] In smart-proxy <%= branch %>-stable:
-  * [ ] Make sure [test_proxy_<%= branch.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_proxy_<%= branch.tr('.', '_') %>_stable/) is green
+* [ ] In smart-proxy <%= short_version %>-stable:
+  * [ ] Make sure [test_proxy_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_proxy_<%= short_version.tr('.', '_') %>_stable/) is green
   * [ ] change VERSION to <%= full_version %>
   * [ ] Run `extra/changelog`
   * [ ] Commit: `git commit -am "Release <%= full_version %>"`
   * [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
   * [ ] Push: `git push --follow-tags`
-* [ ] In foreman-selinux <%= branch %>-stable:
+* [ ] In foreman-selinux <%= short_version %>-stable:
   * [ ] change VERSION to <%= full_version %>
   * [ ] Run `extras/changelog`
   * [ ] Commit: `git commit -am "Release <%= full_version %>"`
   * [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
   * [ ] Push: `git push --follow-tags`
-* [ ] In foreman-installer <%= branch %>-stable:
+* [ ] In foreman-installer <%= short_version %>-stable:
   * [ ] change VERSION to <%= full_version %>
   * [ ] Commit: `git commit -am "Release <%= full_version %>"`
   * [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
@@ -62,7 +62,7 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 
 # Packaging a release
 
-* [ ] In foreman-packaging rpm/<%= branch %> branch, change foreman.spec, foreman-proxy.spec, foreman-selinux.spec, foreman-installer.spec:
+* [ ] In foreman-packaging rpm/<%= short_version %> branch, change foreman.spec, foreman-proxy.spec, foreman-selinux.spec, foreman-installer.spec:
   * [ ] Set version to `<%= version %>`
   * [ ] Set prerelease to `<%= extra %>`
 <% unless is_rc %>  * [ ] Reset release to `1`
