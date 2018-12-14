@@ -7,7 +7,7 @@
 :releases:
   :3.10.0:
     :redmine_version_id: 937
-:code_name:
+:code_name: Belgian Tripel
 :repos:
   :katello:
     :main: true
@@ -49,6 +49,14 @@
     :branch: 4.3.0
     :repo: https://github.com/theforeman/puppet-qpid
 :ignores:
+  - 24889 # closed, no PR
+  - 24732 # closed, no PR
+  - 25240 # fixed by another issue
+  - 25561 # closed, no PR
+  - 25545 # closed, no PR
+  - 24432 # closed, no PR
+  - 25571 # closed, no PR
+  - 24400 # tracker
 :strict_keys: true
 :gpg_key: '88287C2B'
 :mash_scripts:
