@@ -65,16 +65,8 @@
 
 * [ ] Create release schedule page for next version (<%= develop %>) linked from [Development_Resources](https://projects.theforeman.org/projects/foreman/wiki/Development_Resources)
 * Create Redmine versions
-  * [ ] Add next version number (<%= develop %>)
-    * [ ] [foreman](https://projects.theforeman.org/projects/foreman/settings/versions)
-    * [ ] [foreman-installer](https://projects.theforeman.org/projects/puppet-foreman/settings/versions)
-    * [ ] [foreman-selinux](https://projects.theforeman.org/projects/selinux/settings/versions)
-    * [ ] [smart-proxy](https://projects.theforeman.org/projects/smart-proxy/settings/versions)
-  * [ ] Add first patch release (<%= release %>.1)
-    * [ ] [foreman](https://projects.theforeman.org/projects/foreman/settings/versions)
-    * [ ] [foreman-installer](https://projects.theforeman.org/projects/puppet-foreman/settings/versions)
-    * [ ] [foreman-selinux](https://projects.theforeman.org/projects/selinux/settings/versions)
-    * [ ] [smart-proxy](https://projects.theforeman.org/projects/smart-proxy/settings/versions)
+  * [ ] Add next version number (<%= develop %>) and make sure it is shared with subprojects in [foreman](https://projects.theforeman.org/projects/foreman/settings/versions)
+  * [ ] Add first patch release (<%= release %>.1) and make sure it is shared with subprojects in [foreman](https://projects.theforeman.org/projects/foreman/settings/versions)
 * [ ] Update [foreman-dev](https://community.theforeman.org/c/development) with [translations status](https://www.transifex.com/projects/p/foreman/) to encourage 100% translations before release
 * [ ] Announce string freeze date on discourse and send announcement via https://www.transifex.com/foreman/foreman/announcements/
 * [ ] Create test_<%= release.tr('.', '_') %>_stable.yaml and test_proxy_<%= release.tr('.', '_') %>_stable.yaml for [JJB in foreman-infra](https://github.com/theforeman/foreman-infra/tree/master/puppet/modules/jenkins_job_builder/files/theforeman.org/yaml/jobs), remove the oldest version to keep last 3
