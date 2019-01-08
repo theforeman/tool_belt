@@ -17,7 +17,7 @@
     :repo: https://github.com/theforeman/foreman-packaging.git
 :ignores:
 :strict_keys: true
-:gpg_key: ''
+:gpg_key: '0A220E1C'
 :mash_scripts:
  - katello-3.11-thirdparty-candlepin-rhel7
  - katello-3.11-rhel7
