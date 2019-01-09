@@ -20,6 +20,11 @@
 * [ ] Add version <%= release %> to jobs in axes and/or combination filters, remove old ones (keep three)
 * [ ] Clone Debian nightly repos to <%= release %> using [copy/freight instructions](https://projects.theforeman.org/projects/foreman/wiki/Debian_Packaging#Project-sources)
 * [ ] Edit [foreman-packaging's PR template](https://github.com/theforeman/foreman-packaging/blob/master/.github/PULL_REQUEST_TEMPLATE.md) to add <%= release %> and remove the old release
+* [ ] Include Rails repository
+  * [ ] Add foreman-rails-<%= release %>-rhel7 tag entries to Foreman tool_belt config
+  * [ ] Add mash script config entry to tool_belt config: foreman-rails-<%= release %>-rhel7
+  * [ ] Copy mash script config to Koji
+  * [ ] Add foreman-rails-mash-split-<%= release %>.py to Koji /usr/local/bin
 
 # Main code repos
 
