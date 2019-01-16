@@ -17,6 +17,8 @@
 :repos: []
 :gpg_key: 19D72D85
 :tags:
+  - name: foreman-1.21-tfm-ror52-rhel7
+    based_off: tfm-ror52-rhel7
   - name: foreman-1.21-nonscl-rhel7
     based_off: foreman-nightly-nonscl-rhel7
     helper_tags:
@@ -46,7 +48,7 @@
     inherits:
       foreman-1.21-rhel7-build:
         foreman-1.21-rhel7-override: 0
-        tfm-ror52-rhel7: 2
+        foreman-rails-1.21-tfm-ror52-rhel7: 2
         foreman-1.21-nonscl-rhel7: 10
       foreman-1.21-rhel7-override:
         foreman-1.21-rhel7: 0
@@ -85,7 +87,7 @@
     inherits:
       foreman-plugins-1.21-rhel7-build:
         foreman-plugins-1.21-rhel7-override: 0
-        tfm-ror52-rhel7: 2
+        foreman-rails-1.21-tfm-ror52-rhel7: 2
         foreman-plugins-1.21-nonscl-rhel7: 5
         foreman-1.21-rhel7: 15
         foreman-1.21-nonscl-rhel7: 20
