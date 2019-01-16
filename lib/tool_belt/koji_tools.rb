@@ -154,7 +154,7 @@ module ToolBelt
 
     def koji_change(command)
       _, success = @systools.execute("#{KojiBuilder::KOJI_COMMAND} #{command}")
-      raise 'Failed to run koji command' unless success
+      raise "Failed to run koji command '#{command}'" unless success
     end
   end
 end
