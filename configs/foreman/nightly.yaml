@@ -229,6 +229,7 @@
       build:
         - bash
         - bzip2
+        - centos-release
         - coreutils
         - cpio
         - diffutils
@@ -241,7 +242,6 @@
         - info
         - make
         - patch
-        - redhat-release-server
         - redhat-rpm-config
         - rpm-build
         - sed
@@ -253,7 +253,7 @@
         - xz
       srpm-build:
         - bash
-        - redhat-release-server
+        - centos-release
         - redhat-rpm-config
         - rhpkg-simple
         - rpm-build
