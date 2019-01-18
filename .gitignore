@@ -40,6 +40,7 @@ routes.html
 routes.txt
 perm_coverage.log
 vendor/ruby
+vendor/bundle
 coverage
 public/assets
 bundler.d/local*.rb

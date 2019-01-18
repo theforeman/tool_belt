@@ -13,63 +13,67 @@ module ToolBelt
     end
 
     def self.parse(config)
-      self.new(
+      new(
         releases: parse_releases(config.options.releases),
         prior_releases: parse_releases(config.options.prior_releases),
         namespace: config.options.namespace,
-        project: config.options.project,
+        project: config.options.project
       )
-    end
-
-    def update_for_release
-      Dir.chdir("repos/#{namespace}") do
-        clone_docs_repo unless File.exist?(repo_name)
-        if project == 'katello'
-
-          # copy sidebar
-          katello_includes_path = "#{repo_name}/_includes/plugins/katello"
-          Dir.chdir(katello_includes_path) do
-            last_release_sidebar = "sidebar_#{last_release}.html"
-
-            releases.each do |release|
-              release_sidebar = "sidebar_#{release}.html"
-              unless File.exist?(release_sidebar)
-                if File.exist?(last_release_sidebar)
-                  FileUtils.copy_entry(last_release_sidebar, release_sidebar)
-                end
-              end
-            end
-          end
-
-          Dir.chdir("#{repo_name}/plugins/katello") do
-            releases.each do |release|
-              unless File.exist?(release)
-                if File.exist?(last_release)
-                  FileUtils.copy_entry(last_release, release)
-                end
-              end
-
-              docs_path = "repos/#{namespace}/#{repo_name}"
-              katello_docs_path = "#{docs_path}/plugins/katello/#{release}"
-              puts "Find all occurences of #{last_release} in the newly copied documentation:"
-              puts
-              puts "$ grep -R '#{last_release.gsub('.', '\.')}' #{katello_docs_path}"
-              puts
-              puts `grep -R '#{last_release.gsub('.', '\.')}' #{release}`
-              puts
-              puts "Don't forget to:"
-              puts " - Update the sidebar at repos/#{namespace}/#{katello_includes_path}"
-              puts " - Update the docs at #{katello_docs_path}."
-              puts " - Add a link to #{release} in #{docs_path}/_layouts/plugins/katello/documentation.html."
-            end
-          end
-        end
-      end
     end
 
     def self.parse_releases(releases)
       releases.map do |release|
         release.first.to_s[/^\d+\.\d+/] # only take X.Y from X.Y.Z
+      end
+    end
+
+    def release
+      releases.first
+    end
+
+    def source_release
+      'nightly'
+    end
+
+    def update_for_release
+      Dir.chdir("repos/#{namespace}") do
+        clone_docs_repo unless File.exist?(repo_name)
+
+        katello_includes_path = "#{repo_name}/_includes/plugins/katello"
+
+        # copy sidebar
+        Dir.chdir(katello_includes_path) do
+          release_sidebar = "sidebar_#{release}.html"
+          unless File.exist?(release_sidebar)
+            sidebar = "sidebar_#{source_release}.html"
+            if File.exist?(sidebar)
+              FileUtils.copy_entry(sidebar, release_sidebar)
+            end
+          end
+        end
+
+        Dir.chdir("#{repo_name}/plugins/katello") do
+          unless File.exist?(release)
+            if File.exist?(source_release)
+              FileUtils.copy_entry(source_release, release)
+            end
+          end
+        end
+
+        docs_repo_path = "repos/#{namespace}/#{repo_name}"
+        katello_docs_path = "#{docs_repo_path}/plugins/katello/#{release}"
+
+        puts "Find all occurences of #{source_release} in the newly copied documentation:"
+        puts
+        puts "$ grep -R '#{source_release.gsub('.', '\.')}' #{katello_docs_path}"
+        puts
+        puts `pwd`
+        puts `grep -R '#{source_release.gsub('.', '\.')}' #{repo_name}/plugins/katello/#{release}`
+        puts
+        puts "Don't forget to:"
+        puts " - Update the sidebar at repos/#{namespace}/#{katello_includes_path}"
+        puts " - Update the docs at #{katello_docs_path}"
+        puts " - Add a link to #{release} in #{docs_repo_path}/_layouts/plugins/katello/documentation.html"
       end
     end
 
@@ -79,28 +83,8 @@ module ToolBelt
       Git.clone("https://github.com/theforeman/#{repo_name}", repo_name)
     end
 
-    def docs_repo
-      logger = Logger.new(STDOUT)
-      logger.level = :warn
-
-      @docs_repo ||= Git.open(repo_name, log: logger)
-    end
-
     def repo_name
       'theforeman.org'
-    end
-
-    def last_release
-      @last_release ||= prior_releases.sort do |release1, release2|
-        x1,y1 = release1.split('.').map(&:to_i)
-        x2,y2 = release2.split('.').map(&:to_i)
-
-        if x1 == x2
-          y1 <=> y2
-        else
-          x1 <=> x2
-        end
-      end.last
     end
   end
 end
