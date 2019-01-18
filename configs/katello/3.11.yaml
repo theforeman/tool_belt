@@ -2,10 +2,12 @@
 :project: katello
 :github_org: katello
 :prior_releases:
+  :3.10.0:
+    :redmine_version_id: 937
 :releases:
   :3.11.0:
     :redmine_version_id: 946
-:code_name:
+:code_name: Beautiful Disaster
 :repos:
   :katello:
     :main: true
