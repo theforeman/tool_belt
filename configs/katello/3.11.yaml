@@ -2,8 +2,6 @@
 :project: katello
 :github_org: katello
 :prior_releases:
-  :3.10.0:
-    :redmine_version_id: 937
 :releases:
   :3.11.0:
     :redmine_version_id: 946
@@ -17,7 +15,27 @@
   :foreman-packaging:
     :branch: rpm/1.21
     :repo: https://github.com/theforeman/foreman-packaging.git
+  :katello-host-tools:
+    :branch: 3.4.1
+    :repo: https://github.com/Katello/katello-host-tools.git
+  :puppet-foreman_proxy_content:
+    :branch: 8.0.0
+    :repo: https://github.com/theforeman/puppet-foreman_proxy_content
+  :puppet-certs:
+    :branch: 5.0.0
+    :repo: https://github.com/theforeman/puppet-certs
+  :hammer-cli-katello:
+    :branch: 0.17.0
+    :repo: https://github.com/Katello/hammer-cli-katello.git
 :ignores:
+  - 24927 # katello-installer now foreman-installer
+  - 25625 # katello-installer now foreman-installer
+  - 25662 # katello-installer now foreman-installer
+  - 25665 # katello-installer now foreman-installer
+  - 25739 # puppet-certs, in 5.0.0
+  - 25429 # duplicate
+  - 24718 # duplicate
+  - 25232 # resolved, no PR
 :strict_keys: true
 :gpg_key: '0A220E1C'
 :mash_scripts:
