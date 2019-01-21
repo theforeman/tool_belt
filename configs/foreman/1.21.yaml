@@ -7,6 +7,7 @@
 :mash_scripts:
   - foreman-1.21-rhel7-dist
   - foreman-plugins-1.21-rhel7-dist
+  - foreman-rails-1.21-rhel7
   - foreman-client-1.21-rhel7
   - foreman-client-1.21-rhel6
   - foreman-client-1.21-rhel5
