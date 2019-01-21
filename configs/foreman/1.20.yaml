@@ -16,6 +16,7 @@
   - foreman-client-1.20-sles12
 :repos: []
 :gpg_key: 565EA533
+:strict_keys: true
 :tags:
   - name: foreman-1.20-nonscl-rhel7
     based_off: foreman-nightly-nonscl-rhel7
