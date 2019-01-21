@@ -16,6 +16,7 @@
   - foreman-client-1.21-sles12
 :repos: []
 :gpg_key: 19D72D85
+:strict_keys: true
 :tags:
   - name: foreman-rails-1.21-rhel7
     based_off: tfm-ror52-rhel7
