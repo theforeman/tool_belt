@@ -2,6 +2,39 @@
 :project: pulp
 :github_org: pulp
 :nightly: true
+:repos:
+  :pulp:
+    :main: true
+    :branch: 2.18-release
+    :repo: https://github.com/pulp/pulp
+    :version_branch: true
+  :pulp-rpm:
+    :branch: 2.18-release
+    :repo: https://github.com/pulp/pulp_rpm
+    :version_branch: true
+  :pulp-puppet:
+    :branch: 2.18-release
+    :repo: https://github.com/pulp/pulp_puppet
+    :version_branch: true
+  :pulp-docker:
+    :branch: 3.2.2
+    :repo: https://github.com/pulp/pulp_docker
+  :pulp-ostree:
+    :branch: 1.3.1
+    :repo: https://github.com/pulp/pulp_ostree
+  :pulp-python:
+    :branch: 2.0.3
+    :repo: https://github.com/pulp/pulp_python
+  :pulp-deb:
+    :branch: 1.8.0b2
+    :repo: https://github.com/pulp/pulp_deb
+    :version_branch: true
+  :pulp-packaging:
+    :branch: 2.18
+    :repo: https://github.com/pulp/pulp-packaging
+  :python-crane:
+    :branch: 3.3.0
+    :repo: https://github.com/pulp/crane
 :tags:
   - name: pulp-2.18-rhel7
     based_off: pulp-nightly-rhel7
