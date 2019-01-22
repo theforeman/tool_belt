@@ -44,11 +44,12 @@
 * [ ] Create <%= release %>-stable branches
   * [ ] [foreman](https://github.com/theforeman/foreman)
   * [ ] [foreman-installer](https://github.com/theforeman/foreman-installer)
+    * [ ] `bundle exec rake pin_modules && sed -i '/Puppetfile.lock/d' .gitignore && bundle exec librarian-puppet install && git add Puppetfile*`
   * [ ] [foreman-selinux](https://github.com/theforeman/foreman-selinux)
   * [ ] [smart-proxy](https://github.com/theforeman/smart-proxy)
 * [ ] Branch foreman-packaging
-  * [ ] RPMs
-  * [ ] debs
+  * [ ] Create rpm/<%= release %> and update `packages/foreman/foreman-release/foreman.gpg`, `mock/*.cfg`, `package_manifest.yaml`, `rel-eng/{releasers.conf,tito.props}`, `repoclosure/*.conf` and `.github/PULL_REQUEST_TEMPLATE.md`
+  * [ ] Create deb/<%= release %> and update `.github/PULL_REQUEST_TEMPLATE.md`
 * [ ] Bump versions to <%= develop %>-develop
   `echo <%= develop %>.0-develop > VERSION`
   * [ ] [foreman](https://github.com/theforeman/foreman)
@@ -56,6 +57,9 @@
   * [ ] [foreman-installer](https://github.com/theforeman/foreman-installer)
   * [ ] [foreman-selinux](https://github.com/theforeman/foreman-selinux)
   * [ ] [smart-proxy](https://github.com/theforeman/smart-proxy)
+* [ ] Update foreman-packaging:
+  * [ ] rpm/develop: Update `rel-eng/{releasers.conf,tito.props}`, `packages/foreman/foreman{,-{installer,proxy,release,selinux}}/*.spec` and `.github/PULL_REQUEST_TEMPLATE.md`
+  * [ ] deb/develop: `scripts/changelog.rb -v <%= develop %>.0-1 -m "Bump changelog to <%= develop %>.0 to match VERSION" debian/*/*/changelog` and update `.github/PULL_REQUEST_TEMPLATE.md`
 
 # Website
 
@@ -72,3 +76,5 @@
 * [ ] Create test_<%= release.tr('.', '_') %>_stable.yaml and test_proxy_<%= release.tr('.', '_') %>_stable.yaml for [JJB in foreman-infra](https://github.com/theforeman/foreman-infra/tree/master/puppet/modules/jenkins_job_builder/files/theforeman.org/yaml/jobs), remove the oldest version to keep last 3
 * [ ] Ensure current Foreman deprecations for the next release are removed in *develop*
 * [ ] Add <%= release %> to [Forklift versions config](https://github.com/theforeman/forklift/blob/master/vagrant/config/versions.yaml)
+
+This was based on the [wiki procedure](https://projects.theforeman.org/projects/foreman/wiki/Release_Process#Branching-for-series) and sometimes has a bit more info.
