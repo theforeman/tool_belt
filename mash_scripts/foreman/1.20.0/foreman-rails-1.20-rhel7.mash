@@ -1,11 +1,11 @@
-[foreman-plugins-1.20-rhel7-dist]
+[foreman-rails-1.20-rhel7]
 rpm_path = %(arch)s/os/Packages
 repodata_path = %(arch)s/os/
 source_path = source/SRPMS
 debuginfo = False
 multilib = False
 multilib_method = devel
-tag = foreman-plugins-1.20-rhel7-dist
+tag = foreman-rails-1.20-rhel7
 inherit = True
 strict_keys = True
 keys = 565EA533
