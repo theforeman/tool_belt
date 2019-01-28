@@ -18,6 +18,8 @@
 :gpg_key: 565EA533
 :strict_keys: true
 :tags:
+  - name: foreman-rails-1.20-rhel7
+    based_off: tfm-ror52-rhel7
   - name: foreman-1.20-nonscl-rhel7
     based_off: foreman-nightly-nonscl-rhel7
     helper_tags:
@@ -47,7 +49,7 @@
     inherits:
       foreman-1.20-rhel7-build:
         foreman-1.20-rhel7-override: 0
-        tfm-ror52-rhel7: 2
+        foreman-rails-1.20-rhel7: 2
         foreman-1.20-nonscl-rhel7: 10
       foreman-1.20-rhel7-override:
         foreman-1.20-rhel7: 0
@@ -87,7 +89,7 @@
     inherits:
       foreman-plugins-1.20-rhel7-build:
         foreman-plugins-1.20-rhel7-override: 0
-        tfm-ror52-rhel7: 2
+        foreman-rails-1.20-rhel7: 2
         foreman-plugins-1.20-nonscl-rhel7: 5
         foreman-1.20-rhel7: 15
         foreman-1.20-nonscl-rhel7: 20
