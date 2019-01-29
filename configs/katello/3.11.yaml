@@ -58,7 +58,7 @@
     inherits:
       katello-3.11-rhel7-build:
         katello-3.11-rhel7-override: 0
-        tfm-ror52-rhel7: 2
+        foreman-rails-1.21-rhel7: 2
         foreman-plugins-1.21-rhel7-override: 3
         foreman-1.21-rhel7: 10
       katello-3.11-rhel7-override:
