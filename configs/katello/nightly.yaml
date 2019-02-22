@@ -20,13 +20,13 @@
       katello-nightly-rhel7-build:
         katello-nightly-rhel7-override: 0
         tfm-ror52-rhel7: 2
-        foreman-plugins-nightly-rhel7-override: 3
-        foreman-nightly-rhel7: 10
+        foreman-plugins-nightly-rhel7: 3
+        foreman-nightly-rhel7: 4
+        foreman-nightly-nonscl-rhel7: 5
       katello-nightly-rhel7-override:
         katello-nightly-rhel7: 0
       katello-nightly-rhel7:
         katello-thirdparty-rhel7: 0
-        foreman-nightly-nonscl-rhel7: 1
     external_repos:
       - epel-7
       - centos-sclo-rh-rhel-7
