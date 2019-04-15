@@ -1,0 +1,53 @@
+---
+:project: katello
+:github_org: katello
+:prior_releases:
+:releases:
+  :3.12.0:
+    :redmine_version_id: 993
+:code_name:
+:repos:
+  :katello:
+    :main: true
+    :branch: KATELLO-3.12
+    :repo: https://github.com/Katello/katello.git
+    :version_branch: true
+  :foreman-packaging:
+    :branch: rpm/1.22
+    :repo: https://github.com/theforeman/foreman-packaging.git
+:ignores:
+:strict_keys: true
+:gpg_key: 'D4BFEBD8'
+:mash_scripts:
+ - katello-3.12-thirdparty-candlepin-rhel7
+ - katello-3.12-rhel7
+:tags:
+  - name: katello-thirdparty-candlepin-rhel7
+    based_off: null
+    arches:
+      - x86_64
+  - name: katello-3.12-rhel7
+    based_off: null
+    helper_tags:
+      katello-thirdparty-rhel7: null
+      katello-3.12-rhel7-override: null
+    build_target: katello-3.12-rhel7-build
+    build_package_group_source_tag: katello-3.12-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      katello-3.12-rhel7-build:
+        katello-3.12-rhel7-override: 0
+        tfm-ror52-rhel7: 2
+        foreman-plugins-1.22-rhel7: 3
+        foreman-1.22-rhel7: 4
+        foreman-1.22-nonscl-rhel7: 5
+      katello-3.12-rhel7-override:
+        katello-3.12-rhel7: 0
+      katello-3.12-rhel7:
+        katello-thirdparty-rhel7: 0
+    external_repos:
+      - epel-7
+      - centos-sclo-rh-rhel-7
+      - centos-7-server-updates
+      - centos-7-server
