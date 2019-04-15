@@ -8,8 +8,8 @@
   - foreman-client-nightly-rhel7
   - foreman-client-nightly-rhel6
   - foreman-client-nightly-rhel5
-  - foreman-client-nightly-fedora27
   - foreman-client-nightly-fedora28
+  - foreman-client-nightly-fedora29
   - foreman-client-nightly-sles11
   - foreman-client-nightly-sles12
 :tags:
@@ -258,23 +258,23 @@
         - rhpkg-simple
         - rpm-build
         - shadow-utils
-  - name: foreman-client-nightly-fedora27
+  - name: foreman-client-nightly-fedora28
     based_off: null
     helper_tags:
-      foreman-client-nightly-fedora27-override: null
-      foreman-client-nightly-fedora27: null
-    build_target: foreman-client-nightly-fedora27-build
+      foreman-client-nightly-fedora28-override: null
+      foreman-client-nightly-fedora28: null
+    build_target: foreman-client-nightly-fedora28-build
     arches:
       - x86_64
     inherits:
-      foreman-client-nightly-fedora27-build:
-        foreman-client-nightly-fedora27-override: 0
-      foreman-client-nightly-fedora27-override:
-        foreman-client-nightly-fedora27: 0
-      foreman-client-nightly-fedora27: {}
+      foreman-client-nightly-fedora28-build:
+        foreman-client-nightly-fedora28-override: 0
+      foreman-client-nightly-fedora28-override:
+        foreman-client-nightly-fedora28: 0
+      foreman-client-nightly-fedora28: {}
     external_repos:
-      - fedora-27-updates
-      - fedora-27
+      - fedora-28-updates
+      - fedora-28
     build_groups:
       build:
         - bash
@@ -308,23 +308,23 @@
         - rhpkg-simple
         - rpm-build
         - shadow-utils
-  - name: foreman-client-nightly-fedora28
+  - name: foreman-client-nightly-fedora29
     based_off: null
     helper_tags:
-      foreman-client-nightly-fedora28-override: null
-      foreman-client-nightly-fedora28: null
-    build_target: foreman-client-nightly-fedora28-build
+      foreman-client-nightly-fedora29-override: null
+      foreman-client-nightly-fedora29: null
+    build_target: foreman-client-nightly-fedora29-build
     arches:
       - x86_64
     inherits:
-      foreman-client-nightly-fedora28-build:
-        foreman-client-nightly-fedora28-override: 0
-      foreman-client-nightly-fedora28-override:
-        foreman-client-nightly-fedora28: 0
-      foreman-client-nightly-fedora28: {}
+      foreman-client-nightly-fedora29-build:
+        foreman-client-nightly-fedora29-override: 0
+      foreman-client-nightly-fedora29-override:
+        foreman-client-nightly-fedora29: 0
+      foreman-client-nightly-fedora29: {}
     external_repos:
-      - fedora-28-updates
-      - fedora-28
+      - fedora-29-updates
+      - fedora-29
     build_groups:
       build:
         - bash
