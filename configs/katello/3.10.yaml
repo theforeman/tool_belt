@@ -5,6 +5,8 @@
   :3.9.1:
     :redmine_version_id: 919
 :releases:
+  :3.10.1:
+    :redmine_version_id: 975
   :3.10.0:
     :redmine_version_id: 937
 :code_name: Belgian Tripel
@@ -22,10 +24,10 @@
     :branch: rpm/1.20
     :repo: https://github.com/theforeman/foreman-packaging.git
   :hammer-cli-katello:
-    :branch: 0.14.0
+    :branch: 0.16.1
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-host-tools:
-    :branch: 3.3.5
+    :branch: 3.4.2
     :repo: https://github.com/Katello/katello-host-tools.git
   :bastion:
     :branch: 6.1.12
@@ -57,6 +59,12 @@
   - 24432 # closed, no PR
   - 25571 # closed, no PR
   - 24400 # tracker
+  - 25527 # docs, closed
+  - 25632 # dup
+  - 25573 # closed, no repro
+  - 23512 # closed by others
+  - 25830 # dup
+
 :strict_keys: true
 :gpg_key: '88287C2B'
 :mash_scripts:
