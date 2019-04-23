@@ -58,8 +58,9 @@
   * [ ] [foreman-selinux](https://github.com/theforeman/foreman-selinux)
   * [ ] [smart-proxy](https://github.com/theforeman/smart-proxy)
 * [ ] Branch foreman-packaging
-  * [ ] Create rpm/<%= release %> and update `packages/foreman/foreman-release/foreman.gpg`, `mock/*.cfg`, `package_manifest.yaml`, `rel-eng/{releasers.conf,tito.props}`, `repoclosure/*.conf` and `.github/PULL_REQUEST_TEMPLATE.md`
-  * [ ] Create deb/<%= release %> and update `.github/PULL_REQUEST_TEMPLATE.md`
+  * [ ] Create rpm/<%= release %> and update `packages/foreman/foreman-release/foreman.gpg`, `mock/*.cfg`, `package_manifest.yaml`, `rel-eng/{releasers.conf,tito.props}` and `repoclosure/*.conf`
+  * [ ] Create deb/<%= release %>
+  * [ ] Update `.github/PULL_REQUEST_TEMPLATE.md` (by adding `[ ] <%= release %>` to it) in `master`
 * [ ] Bump versions to <%= develop %>-develop
   `echo <%= develop %>.0-develop > VERSION`
   * [ ] [foreman](https://github.com/theforeman/foreman)
