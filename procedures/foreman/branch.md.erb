@@ -19,7 +19,6 @@
 * [ ] Add new plugin tags to Koji plugins mash script (foreman-mash-split-plugins.py), remove old ones (keep three)
 * [ ] Add version <%= release %> to jobs in axes and/or combination filters, remove old ones (keep three)
 * [ ] Clone Debian nightly repos to <%= release %> using [copy/freight instructions](https://projects.theforeman.org/projects/foreman/wiki/Debian_Packaging#Project-sources)
-* [ ] Edit [foreman-packaging's PR template](https://github.com/theforeman/foreman-packaging/blob/master/.github/PULL_REQUEST_TEMPLATE.md) to add <%= release %> and remove the old release
 * [ ] Include Rails repository
   * [ ] Add foreman-rails-<%= release %>-rhel7 tag entries to Foreman tool_belt config
   * [ ] Add mash script config entry to tool_belt config: foreman-rails-<%= release %>-rhel7
@@ -69,8 +68,8 @@
   * [ ] [foreman-selinux](https://github.com/theforeman/foreman-selinux)
   * [ ] [smart-proxy](https://github.com/theforeman/smart-proxy)
 * [ ] Update foreman-packaging:
-  * [ ] rpm/develop: Update `rel-eng/{releasers.conf,tito.props}`, `packages/foreman/foreman{,-{installer,proxy,release,selinux}}/*.spec` and `.github/PULL_REQUEST_TEMPLATE.md`
-  * [ ] deb/develop: `scripts/changelog.rb -v <%= develop %>.0-1 -m "Bump changelog to <%= develop %>.0 to match VERSION" debian/*/*/changelog` and update `.github/PULL_REQUEST_TEMPLATE.md`
+  * [ ] rpm/develop: Update `rel-eng/{releasers.conf,tito.props}`, `packages/foreman/foreman{,-{installer,proxy,release,selinux}}/*.spec`
+  * [ ] deb/develop: `scripts/changelog.rb -v <%= develop %>.0-1 -m "Bump changelog to <%= develop %>.0 to match VERSION" debian/*/*/changelog`
 
 # Website
 
