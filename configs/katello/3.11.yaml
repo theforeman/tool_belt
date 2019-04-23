@@ -7,6 +7,8 @@
   :3.9.2:
     :redmine_version_id: 978
 :releases:
+  :3.11.1:
+    :redmine_version_id: 992
   :3.11.0:
     :redmine_version_id: 946
 :code_name: Beautiful Disaster
@@ -26,13 +28,13 @@
     :branch: 8.0.0
     :repo: https://github.com/theforeman/puppet-foreman_proxy_content
   :puppet-certs:
-    :branch: 5.0.0
+    :branch: 5.1.2
     :repo: https://github.com/theforeman/puppet-certs
   :puppet-candlepin:
     :branch: 6.0.0
     :repo: https://github.com/theforeman/puppet-candlepin
   :hammer-cli-katello:
-    :branch: 0.17.0
+    :branch: 0.17.1
     :repo: https://github.com/Katello/hammer-cli-katello.git
 :ignores:
   - 24927 # katello-installer now foreman-installer
