@@ -7,7 +7,7 @@
 :releases:
   :3.12.0:
     :redmine_version_id: 993
-:code_name:
+:code_name: Iron Stout
 :repos:
   :katello:
     :main: true
@@ -17,6 +17,9 @@
   :foreman-packaging:
     :branch: rpm/1.22
     :repo: https://github.com/theforeman/foreman-packaging.git
+  :hammer-cli-katello:
+    :branch: 0.18.0
+    :repo: https://github.com/Katello/hammer-cli-katello.git
 :ignores:
 :strict_keys: true
 :gpg_key: 'D4BFEBD8'
