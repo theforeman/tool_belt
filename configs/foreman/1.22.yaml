@@ -2,7 +2,7 @@
 :project: foreman
 :github_org: theforeman
 :releases:
-  :1.21.0:
+  :1.22.0:
     :redmine_version_id: 990
 :mash_scripts:
   - foreman-1.22-rhel7-dist
