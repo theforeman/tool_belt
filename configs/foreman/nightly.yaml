@@ -51,6 +51,25 @@
       - centos-sclo-rh-rhel-7
       - centos-7-server-updates
       - centos-7-server
+  - name: foreman-plugins-nightly-nonscl-rhel7
+    based_off: null
+    helper_tags:
+      foreman-plugins-nightly-nonscl-rhel7-override: null
+    build_target: foreman-plugins-nightly-nonscl-rhel7-build
+    build_package_group_source_tag: foreman-plugins-nightly-nonscl-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-plugins-nightly-nonscl-rhel7-build:
+        foreman-plugins-nightly-nonscl-rhel7-override: 0
+        foreman-nightly-rhel7: 15
+        foreman-nightly-nonscl-rhel7: 10
+      foreman-plugins-nightly-nonscl-rhel7-override:
+        foreman-plugins-nightly-nonscl-rhel7: 0
+    external_repos:
+      - epel-7
+      - centos-7-server-updates
+      - centos-7-server
   - name: foreman-plugins-nightly-rhel7
     based_off: null
     helper_tags:
@@ -71,25 +90,6 @@
     external_repos:
       - epel-7
       - centos-sclo-rh-rhel-7
-      - centos-7-server-updates
-      - centos-7-server
-  - name: foreman-plugins-nightly-nonscl-rhel7
-    based_off: null
-    helper_tags:
-      foreman-plugins-nightly-nonscl-rhel7-override: null
-    build_target: foreman-plugins-nightly-nonscl-rhel7-build
-    build_package_group_source_tag: foreman-plugins-nightly-nonscl-rhel7-build
-    arches:
-      - x86_64
-    inherits:
-      foreman-plugins-nightly-nonscl-rhel7-build:
-        foreman-plugins-nightly-nonscl-rhel7-override: 0
-        foreman-nightly-rhel7: 15
-        foreman-nightly-nonscl-rhel7: 10
-      foreman-plugins-nightly-nonscl-rhel7-override:
-        foreman-plugins-nightly-nonscl-rhel7: 0
-    external_repos:
-      - epel-7
       - centos-7-server-updates
       - centos-7-server
   - name: foreman-nightly-rhel7-dist
