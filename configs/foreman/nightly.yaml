@@ -93,6 +93,7 @@
         - cpio
         - diffutils
         - findutils
+        - foreman-build
         - gawk
         - gcc
         - gcc-c++
@@ -102,10 +103,14 @@
         - make
         - patch
         - redhat-rpm-config
+        - rh-ruby25-scldevel
         - rpm-build
+        - scl-utils-build
         - sed
         - shadow-utils
         - tar
+        - tfm-build
+        - tfm-ror52-scldevel
         - unzip
         - util-linux
         - which
@@ -113,10 +118,15 @@
       srpm-build:
         - bash
         - centos-release
+        - foreman-build
         - redhat-rpm-config
+        - rh-ruby25-scldevel
         - rhpkg-simple
         - rpm-build
+        - scl-utils-build
         - shadow-utils
+        - tfm-build
+        - tfm-ror52-scldevel
   - name: foreman-plugins-nightly-nonscl-rhel7
     based_off: null
     helper_tags:
@@ -200,6 +210,7 @@
         - cpio
         - diffutils
         - findutils
+        - foreman-build
         - gawk
         - gcc
         - gcc-c++
@@ -209,10 +220,14 @@
         - make
         - patch
         - redhat-rpm-config
+        - rh-ruby25-scldevel
         - rpm-build
+        - scl-utils-build
         - sed
         - shadow-utils
         - tar
+        - tfm-build
+        - tfm-ror52-scldevel
         - unzip
         - util-linux
         - which
@@ -220,10 +235,15 @@
       srpm-build:
         - bash
         - centos-release
+        - foreman-build
         - redhat-rpm-config
+        - rh-ruby25-scldevel
         - rhpkg-simple
         - rpm-build
+        - scl-utils-build
         - shadow-utils
+        - tfm-build
+        - tfm-ror52-scldevel
   - name: foreman-nightly-rhel7-dist
     based_off: null
     inherits:
