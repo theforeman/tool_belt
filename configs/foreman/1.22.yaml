@@ -38,6 +38,39 @@
       - puppetlabs-puppet6-rhel-7
       - centos-7-server-updates
       - centos-7-server
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - centos-release
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - centos-release
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
   - name: foreman-1.22-rhel7
     based_off: foreman-nightly-rhel7
     helper_tags:
@@ -58,6 +91,39 @@
       - centos-sclo-rh-rhel-7
       - centos-7-server-updates
       - centos-7-server
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - centos-release
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - centos-release
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
   - name: foreman-plugins-1.22-nonscl-rhel7
     based_off: foreman-plugins-nightly-nonscl-rhel7
     helper_tags:
@@ -77,6 +143,39 @@
       - epel-7
       - centos-7-server-updates
       - centos-7-server
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - centos-release
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - centos-release
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
   - name: foreman-plugins-1.22-rhel7
     based_off: foreman-plugins-nightly-rhel7
     helper_tags:
@@ -99,6 +198,39 @@
       - centos-sclo-rh-rhel-7
       - centos-7-server-updates
       - centos-7-server
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - centos-release
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - centos-release
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
   - name: foreman-1.22-rhel7-dist
     based_off: foreman-nightly-rhel7-dist
     inherits:
