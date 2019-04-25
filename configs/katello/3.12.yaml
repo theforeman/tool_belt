@@ -20,7 +20,17 @@
   :hammer-cli-katello:
     :branch: 0.18.0
     :repo: https://github.com/Katello/hammer-cli-katello.git
+  :puppet-certs:
+    :branch: 6.0.0
+    :repo: https://github.com/theforeman/puppet-certs
+  :katello-host-tools:
+    :branch: 3.5.0
+    :repo: https://github.com/Katello/katello-host-tools.git
 :ignores:
+  - 26227 # Duplicate Redmine issue
+  - 25114 # Already merged in
+  - 25115 # Closed out to have more discussion
+  - 25289 # Has already been merged/released in a prior release
 :strict_keys: true
 :gpg_key: 'D4BFEBD8'
 :mash_scripts:
