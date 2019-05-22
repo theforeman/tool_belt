@@ -27,6 +27,7 @@
     :branch: 3.5.0
     :repo: https://github.com/Katello/katello-host-tools.git
 :ignores:
+  - 25841 # Already brought into 3.12 docs
   - 26227 # Duplicate Redmine issue
   - 25114 # Already merged in
   - 25115 # Closed out to have more discussion
