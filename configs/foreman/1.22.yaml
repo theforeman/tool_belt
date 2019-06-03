@@ -243,6 +243,7 @@
       srpm-build:
         - bash
         - centos-release
+        - foreman-build
         - redhat-rpm-config
         - rh-ruby25-scldevel
         - rhpkg-simple
