@@ -163,6 +163,7 @@
         - cpio
         - diffutils
         - findutils
+        - foreman-build
         - gawk
         - gcc
         - gcc-c++
@@ -183,6 +184,7 @@
       srpm-build:
         - bash
         - centos-release
+        - foreman-build
         - redhat-rpm-config
         - rhpkg-simple
         - rpm-build
