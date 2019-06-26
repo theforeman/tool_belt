@@ -2,9 +2,13 @@
 :project: katello
 :github_org: katello
 :prior_releases:
+  :3.11.2:
+    :redmine_version_id: 1038
   :3.11.1:
     :redmine_version_id: 992
 :releases:
+  :3.12.1:
+    :redmine_version_id: 1031 
   :3.12.0:
     :redmine_version_id: 993
 :code_name: Iron Stout
