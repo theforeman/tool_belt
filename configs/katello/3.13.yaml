@@ -13,13 +13,13 @@
     :branch: rpm/1.23
     :repo: https://github.com/theforeman/foreman-packaging.git
   :hammer-cli-katello:
-    :branch: 0.18.0
+    :branch: 0.19.0
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :puppet-certs:
-    :branch: 6.0.0
+    :branch: 6.0.1
     :repo: https://github.com/theforeman/puppet-certs
   :katello-host-tools:
-    :branch: 3.5.0
+    :branch: 3.5.1
     :repo: https://github.com/Katello/katello-host-tools.git
 :ignores:
 :strict_keys: true
