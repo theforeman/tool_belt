@@ -8,5 +8,5 @@ multilib_method = devel
 tag = foreman-client-1.23-rhel6
 inherit = True
 strict_keys = True
-keys = 4674C97BD8C2A3EF63BCB20788BB5C467B5B366A
+keys = 7B5B366A
 arches = x86_64
