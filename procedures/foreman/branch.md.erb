@@ -42,21 +42,22 @@
 
 # Package build systems
 
-* [ ] Clone tags and create build targets in Koji
-* [ ] Create mash scripts and configuration on Koji
+* [ ] Create tool_belt config based on the previous release
+* [ ] Clone tags and create build targets in Koji: `bundle exec ./tools.rb koji --commit configs/foreman/<%= release %>.yaml`
+* [ ] Create mash configuration on Koji:
+  ```
+  bundle exec ./tools.rb mash-scripts configs/foreman/<%= release %>.yaml
+  scp mash_scripts/foreman/<%= release %>.0/*.mash root@koji.katello.org:/etc/mash/
+  ```
+  * [ ] Create mash scripts on Koji:
+  ```
+  ssh root@koji.katello.org
+  cd /usr/local/bin
+  # create foreman-client-mash-split-<%= release %>.py  foreman-mash-split-<%= release %>.py  foreman-rails-mash-split-<%= release %>.py based on the unversioned files
+  ```
 * [ ] Add new plugin tags to Koji plugins mash script (foreman-mash-split-plugins.py), remove old ones (keep three)
 * [ ] Add version <%= release %> to jobs in axes and/or combination filters, remove old ones (keep three)
 * [ ] Clone Debian nightly repos to <%= release %> using [copy/freight instructions](https://projects.theforeman.org/projects/foreman/wiki/Debian_Packaging#Branching-for-release)
-* [ ] Include Rails repository
-  * [ ] Add foreman-rails-<%= release %>-rhel7 tag entries to Foreman tool_belt config
-  * [ ] Add mash script config entry to tool_belt config: foreman-rails-<%= release %>-rhel7
-  * [ ] Copy mash script config to Koji
-  * [ ] Add foreman-rails-mash-split-<%= release %>.py to Koji /usr/local/bin
-* [ ] Add foreman-client
-  * [ ] Add client tag configuration to tool_belt config
-  * [ ] Clone tags and create build targets
-  * [ ] Create mash scripts and transfer to Koji
-  * [ ] Create release job in foreman-infra, [example](https://github.com/theforeman/foreman-infra/blob/master/puppet/modules/jenkins_job_builder/files/theforeman.org/yaml/jobs/pipeline/foreman-client-1.21-rpm-pipeline.yaml)
 
 # Branch main code repos
 
