@@ -1,15 +1,17 @@
-# Writing release notes
+# Manual updates
 
 * [ ] Update manual if applicable for any additional installation steps
-* [ ] Draft release notes in markdown ([example](https://gist.github.com/domcleal/5567450)), with these sections (and do not use personal pronouns):
-  * [ ] Headline features: half a dozen important features with a few sentences description each
-  * [ ] Upgrade notes: all important notices that users must be aware of before upgrading
+* Update [release notes section](gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md) in the manual:
   * [ ] Release notes: bullet point list by category of all changes, include link to bug numbers. You can auto-generate changes using the [release notes script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/release_notes.rb).
   * [ ] CLI release notes are taken from the hammer-cli and hammer-cli-foreman changelogs
   * [ ] Link to installer changelogs and note versions being used
-  * [ ] Update installer options section using the [get-params script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/installer/get-params)
-* [ ] Get the apipie doc and place it in [api](https://github.com/theforeman/theforeman.org/tree/gh-pages/api)/<%= short_version %>
-
+<% if (is_rc || full_version.end_with?('0')) %>  * [ ] Headline features: half a dozen important features with a few sentences description each
+  * [ ] Upgrade notes: all important notices that users must be aware of before upgrading
+* [ ] Update installer options section using the [get-params script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/installer/get-params) (Note: this step can only be done after packages are released)
+* [ ] [Generate](https://github.com/theforeman/theforeman.org#updating-api-auto-generated-docs-by-apipie) the apipie doc and place it in the api/<%= short_version %> directory
+<% else %>* [ ] Update installer options section using the [get-params script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/installer/get-params) if any changes were made in the installer or installer modules (after new packages have been released)
+* [ ] [Update](https://github.com/theforeman/theforeman.org#updating-api-auto-generated-docs-by-apipie) the apipie doc and place it in the api/<%= short_version %> directory if any changes were made to the API
+<% end %>
 # Preparing code
 
 * [ ] Request Hammer CLI releases from maintainers if desired
@@ -19,11 +21,7 @@
 <% unless is_rc %>* [ ] Add a new [Redmine version](https://projects.theforeman.org/projects/foreman/settings/versions) for the next minor, unless the series is EOL. Be sure the version is set to sharing with subprojects.
 <% end %>* [ ] Remove/change release field for any open Redmine tickets assigned to the release still (next minor, unset it or reject)
 <% unless is_rc %>* [ ] Change Redmine version <%= full_version %> state to Closed
-<% end %>* [ ] List all issues targeted at the release, order by Closed date ascending and use git cherry-pick -x to cherry pick from develop to <%= full_version %>-stable branch
-* [ ] Clone [tool_belt](https://github.com/theforeman/tool_belt) and run:
-  * [ ] `./tools.rb setup-environment configs/foreman/<%= short_version %>.yaml`
-  * [ ] `./tools.rb cherry-picks --version <%= full_version %> configs/foreman/<%= short_version %>.yaml`
-  * [ ] Verify tickets in the cherry_picks_<%= full_version %> file are accounted for or additional cherry pick them
+<% end %>* [ ] Ensure that code in git matches issues fixed in <%= full_version %> in redmine. [issues.rb](https://gist.github.com/tbrisker/3320097f1d8c9abfb2dbcf8d8e216bba) can be used to generate a comparison between the two.
 
 # Tagging a release
 
@@ -32,29 +30,18 @@
   * [ ] run `make -C locale tx-update` (if Transifex has not switched to the next major release yet, usually after .2)
   * [ ] run `script/sync_templates.sh`
   * [ ] update template snapshots with `rake snapshots:generate RAILS_ENV=test` and verify changes are expected
-  * [ ] change VERSION to <%= full_version %>
-  * [ ] Run `extras/changelog`
-  * [ ] Commit: `git commit -am "Release <%= full_version %>"`
-  * [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
-  * [ ] Push: `git push --follow-tags`
+  * [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
+  * [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
 * [ ] In smart-proxy <%= short_version %>-stable:
   * [ ] Make sure [test_proxy_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_proxy_<%= short_version.tr('.', '_') %>_stable/) is green
-  * [ ] change VERSION to <%= full_version %>
-  * [ ] Run `extra/changelog`
-  * [ ] Commit: `git commit -am "Release <%= full_version %>"`
-  * [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
-  * [ ] Push: `git push --follow-tags`
+  * [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
+  * [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
 * [ ] In foreman-selinux <%= short_version %>-stable:
-  * [ ] change VERSION to <%= full_version %>
-  * [ ] Run `extras/changelog`
-  * [ ] Commit: `git commit -am "Release <%= full_version %>"`
-  * [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
-  * [ ] Push: `git push --follow-tags`
+  * [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
+  * [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
 * [ ] In foreman-installer <%= short_version %>-stable:
-  * [ ] change VERSION to <%= full_version %>
-  * [ ] Commit: `git commit -am "Release <%= full_version %>"`
-  * [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
-  * [ ] Push: `git push --follow-tags`
+  * [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
+  * [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
 * [ ] Run the Jenkins [Tarballs Release](https://ci.theforeman.org/job/tarballs-release/) to create tarballs
 * [ ] [Download](https://github.com/ekohl/theforeman-rel-eng/blob/master/download_tarballs), [inspect](https://github.com/ekohl/theforeman-rel-eng/blob/master/inspect_tarballs), [sign and upload detached signatures](https://github.com/ekohl/theforeman-rel-eng/blob/master/sign_tarballs)
 
