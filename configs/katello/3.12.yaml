@@ -10,7 +10,7 @@
   :3.12.2:
     :redmine_version_id: 1053
   :3.12.1:
-    :redmine_version_id: 1031 
+    :redmine_version_id: 1031
   :3.12.0:
     :redmine_version_id: 993
 :code_name: Iron Stout
@@ -44,30 +44,30 @@
  - katello-3.12-thirdparty-candlepin-rhel7
  - katello-3.12-rhel7
 :tags:
-  - name: katello-thirdparty-candlepin-rhel7
-    based_off: null
+  - name: katello-3.12-thirdparty-candlepin-rhel7
+    based_off: katello-thirdparty-candlepin-rhel7
     arches:
       - x86_64
   - name: katello-3.12-rhel7
-    based_off: null
+    based_off: katello-nightly-rhel7
     helper_tags:
-      katello-thirdparty-rhel7: null
+      katello-3.12-thirdparty-rhel7: katello-thirdparty-rhel7
       katello-3.12-rhel7-override: null
     build_target: katello-3.12-rhel7-build
-    build_package_group_source_tag: katello-3.12-rhel7-build
+    build_package_group_source_tag: katello-nightly-rhel7-build
     arches:
       - x86_64
     inherits:
       katello-3.12-rhel7-build:
         katello-3.12-rhel7-override: 0
-        tfm-ror52-rhel7: 2
-        foreman-plugins-1.22-rhel7: 3
-        foreman-1.22-rhel7: 4
-        foreman-1.22-nonscl-rhel7: 5
+        foreman-rails-1.22-rhel7: 2
+        foreman-plugins-1.22-rhel7-override: 3
+        foreman-1.22-rhel7: 10
       katello-3.12-rhel7-override:
         katello-3.12-rhel7: 0
       katello-3.12-rhel7:
-        katello-thirdparty-rhel7: 0
+        katello-3.12-thirdparty-rhel7: 0
+        foreman-1.22-nonscl-rhel7: 1
     external_repos:
       - epel-7
       - centos-sclo-rh-rhel-7
