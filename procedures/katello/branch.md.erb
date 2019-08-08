@@ -43,7 +43,7 @@
       GITDIR=~/git  #directory containing theforeman.org git repo
 
       FOREMAN_APIPIE_LANGS=en rake apipie:cache
-      cp -rf public/apipie-cache $GITDIR/theforeman.org/plugins/katello/$VERSION/api
+      cp -rf public/apipie-cache/* $GITDIR/theforeman.org/plugins/katello/$VERSION/api
       # clear out json files
       find $GITDIR/theforeman.org/plugins/katello/$VERSION/api -name "*.json" -type f -delete
 
