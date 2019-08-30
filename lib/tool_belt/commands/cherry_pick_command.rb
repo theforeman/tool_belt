@@ -8,7 +8,7 @@ module ToolBelt
         config = ToolBelt::Config.new(config_file, version)
 
         issue_service = ToolBelt::IssueService.new(config.options)
-        issues = issue_service.load_issues(true)
+        issues = issue_service.load_issues(with_all_priors: true)
 
         release_environment = ToolBelt::ReleaseEnvironment.new(config.options.repos, config.options.namespace)
         release_environment.update_repos
