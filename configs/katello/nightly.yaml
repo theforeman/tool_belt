@@ -21,7 +21,7 @@
         katello-nightly-rhel7-override: 0
         tfm-ror52-rhel7: 2
         foreman-plugins-nightly-rhel7: 3
-        foreman-plugins-nonscl-nightly-rhel7: 4
+        foreman-plugins-nightly-nonscl-rhel7: 4
         foreman-nightly-rhel7: 5
         foreman-nightly-nonscl-rhel7: 6
       katello-nightly-rhel7-override:
