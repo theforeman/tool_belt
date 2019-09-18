@@ -1,0 +1,227 @@
+---
+:project: pulp
+:github_org: pulp
+:nightly: true
+:tags:
+  - name: pulp-2.21-rhel7
+    based_off: pulp-nightly-rhel7
+    build_target: pulp-2.21-rhel7-build
+    build_package_group_source_tag: pulp-2.21-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      pulp-2.21-rhel7-build:
+        pulp-2.21-rhel7: 0
+      pulp-2.21-rhel7: {}
+    external_repos:
+      - centos-7-server-updates
+      - centos-7-server
+      - epel-7
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - epel-release
+        - epel-rpm-macros
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-release
+        - redhat-release-everything
+        - redhat-release-server
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - util-linux-ng
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - epel-release
+        - epel-rpm-macros
+        - fedpkg-minimal
+        - git
+        - gnupg
+        - make
+        - redhat-release
+        - redhat-release-everything
+        - redhat-release-server
+        - redhat-rpm-config
+        - rpm-build
+        - shadow-utils
+  - name: pulp-2.21-rhel6
+    based_off: pulp-nightly-rhel6
+    build_target: pulp-2.21-rhel6-build
+    build_package_group_source_tag: pulp-2.21-rhel6-build
+    arches:
+      - x86_64
+    inherits:
+      pulp-2.21-rhel6-build:
+        pulp-2.21-rhel6: 0
+      pulp-2.21-rhel6: {}
+    external_repos:
+      - epel-6
+      - qpid-copr
+      - rhel-6.6-server
+      - rhel-6.6-server-optional
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - fedora-release
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - python-sphinx10
+        - redhat-release-server
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - curl
+        - cvs
+        - fedora-release
+        - fedpkg
+        - gnupg2
+        - make
+        - redhat-release-server
+        - redhat-rpm-config
+        - rpm-build
+        - sh
+        - shadow-utils
+  - name: pulp-2.21-rhel5
+    based_off: pulp-nightly-rhel5
+    build_target: pulp-2.21-rhel5-build
+    build_package_group_source_tag: pulp-2.21-rhel5-build
+    arches:
+      - x86_64
+    inherits:
+      pulp-2.21-rhel5-build:
+        pulp-2.21-rhel5: 0
+      pulp-2.21-rhel5: {}
+    external_repos:
+      - rhel-5.9-server
+      - epel-5
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - buildsys-macros
+        - coreutils
+        - cpio
+        - diffutils
+        - fedora-release
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - selinux-policy-devel
+        - shadow-utils
+        - tar
+        - unzip
+        - unziputil-linux-ng
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - buildsys-macros
+        - curl
+        - cvs
+        - fedora-release
+        - fedpkg
+        - gnupg
+        - gnupg2
+        - make
+        - redhat-release
+        - redhat-rpm-config
+        - rpm-build
+        - sh
+        - shadow-utils
+  - name: pulp-2.21-fedora28
+    based_off: pulp-nightly-fedora28
+    build_target: pulp-2.21-fedora28-build
+    build_package_group_source_tag: pulp-2.21-fedora28-build
+    arches:
+      - x86_64
+    inherits:
+      pulp-2.21-fedora28-build:
+        pulp-2.21-fedora28: 0
+      pulp-2.21-fedora28: {}
+    external_repos:
+      - fedora-28
+      - fedora-28-updates
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - fedora-release
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - curl
+        - cvs
+        - fedora-release
+        - fedpkg
+        - gnupg2
+        - make
+        - redhat-rpm-config
+        - rpm-build
+        - sh
+        - shadow-utils
