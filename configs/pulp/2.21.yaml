@@ -2,6 +2,8 @@
 :project: pulp
 :github_org: pulp
 :nightly: true
+:gpg_key: 2C7E5D9A
+:strict_keys: true
 :tags:
   - name: pulp-2.21-rhel7
     based_off: pulp-nightly-rhel7
