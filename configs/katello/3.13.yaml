@@ -7,6 +7,8 @@
   :3.12.2:
     :redmine_version_id: 1053
 :releases:
+  :3.13.1:
+    :redmine_version_id: 1083
   :3.13.0:
     :redmine_version_id: 1021
 :code_name: Baltic Porter
@@ -29,6 +31,8 @@
     :branch: 3.5.1
     :repo: https://github.com/Katello/katello-host-tools.git
 :ignores:
+  - 27198 # Duplicate issue
+  - 27455 # Marked as resolved
 :strict_keys: true
 :gpg_key: 7B5B366A
 :mash_scripts:
