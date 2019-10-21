@@ -27,8 +27,6 @@
   * [ ] Set prerelease to `<%= extra %>`
 <% unless is_rc %>  * [ ] Reset release to `1`
 <% end %>  * [ ] Fetch new source by running `obal source rubygem-katello`, then `git rm` the old source.
-  * [ ] Edit `katello-repos/katello.repo` to set `gpgcheck=1`
-  * [ ] Ensure `katello-repos/RPM-GPG-KEY-katello` has the right key for the release
   * [ ] Add changelog entries: `obal changelog katello rubygem-katello katello-repos` --message "- Release <%= full_version %>"
   * [ ] Commit with message "Release <%= full_version %>"
   * [ ] Submit a pull request
