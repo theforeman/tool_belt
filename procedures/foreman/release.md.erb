@@ -42,7 +42,7 @@
   * [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
   * [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
 * [ ] Run the Jenkins [Tarballs Release](https://ci.theforeman.org/job/tarballs-release/) to create tarballs
-* [ ] [Download](https://github.com/ekohl/theforeman-rel-eng/blob/master/download_tarballs), [inspect](https://github.com/ekohl/theforeman-rel-eng/blob/master/inspect_tarballs), [sign and upload detached signatures](https://github.com/ekohl/theforeman-rel-eng/blob/master/sign_tarballs)
+* [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_tarballs), [inspect](https://github.com/theforeman/theforeman-rel-eng/blob/master/inspect_tarballs), [sign and upload detached signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_tarballs)
 
 Note: If for some reason there was an issue with the tarballs that required uploading new tarballs, CDN cache should be invalidated so that the builders use the updated tarballs.
 
@@ -50,8 +50,8 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 
 [Background documentation](https://projects.theforeman.org/projects/foreman/wiki/Release_Process#Packaging-a-release)
 
-* [ ] Update [foreman-packaging](https://github.com/theforeman/foreman-packaging) [rpm/<%= short_version %>](https://github.com/ekohl/theforeman-rel-eng/blob/master/bump_rpm_packaging) and [deb/<%= short_version %>](https://github.com/ekohl/theforeman-rel-eng/blob/master/bump_deb_packaging) branches
-* [ ] Trigger [release_packages in Jenkins](https://ci.theforeman.org/job/release_packages/) by calling [release_packages](https://github.com/ekohl/theforeman-rel-eng/blob/master/release_packages)
-* [ ] [Download](https://github.com/ekohl/theforeman-rel-eng/blob/master/download_rpms), [sign](https://github.com/ekohl/theforeman-rel-eng/blob/master/sign_rpms), [upload RPM signatures](https://github.com/ekohl/theforeman-rel-eng/blob/master/upload_rpm_signatures) and [upload RPMs](https://github.com/ekohl/theforeman-rel-eng/blob/master/upload_rpms)
-<% if is_rc %>* [ ] [Download](https://github.com/ekohl/theforeman-rel-eng/blob/master/download_extras), [sign](https://github.com/ekohl/theforeman-rel-eng/blob/master/sign_extras) and [upload](https://github.com/ekohl/theforeman-rel-eng/blob/master/upload_extras) "extra" RPMs
-<% end %>* [ ] Kick off the [release pipeline](https://ci.theforeman.org/job/foreman-<%= short_version %>-release-pipeline/) by calling [release_pipeline](https://github.com/ekohl/theforeman-rel-eng/blob/master/release_pipeline)
+* [ ] Update [foreman-packaging](https://github.com/theforeman/foreman-packaging) [rpm/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_rpm_packaging) and [deb/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_deb_packaging) branches
+* [ ] Trigger [release_packages in Jenkins](https://ci.theforeman.org/job/release_packages/) by calling [release_packages](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_packages)
+* [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms), [upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures) and [upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms)
+<% if is_rc %>* [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_extras), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_extras) and [upload](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_extras) "extra" RPMs
+<% end %>* [ ] Kick off the [release pipeline](https://ci.theforeman.org/job/foreman-<%= short_version %>-release-pipeline/) by calling [release_pipeline](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_pipeline)
