@@ -2,8 +2,10 @@
 
 # Two weeks before branching
 
+## Installer Maintainer
+
 - [ ] Make releases of installer modules
-  * Tier 0 (no dependencies)
+  - Tier 0 (no dependencies)
     - [ ] [certs](https://github.com/theforeman/puppet-certs)
     - [ ] [dhcp](https://github.com/theforeman/puppet-dhcp)
     - [ ] [dns](https://github.com/theforeman/puppet-dns)
@@ -12,26 +14,31 @@
     - [ ] [puppet](https://github.com/theforeman/puppet-puppet)
     - [ ] [qpid](https://github.com/theforeman/puppet-qpid)
     - [ ] [tftp](https://github.com/theforeman/puppet-tftp)
-  * Tier 1 (Dependencies on Tier 0)
+  - Tier 1 (Dependencies on Tier 0)
     - [ ] [candlepin](https://github.com/theforeman/puppet-candlepin)
     - [ ] [foreman_proxy](https://github.com/theforeman/puppet-foreman_proxy)
     - [ ] [pulp](https://github.com/theforeman/puppet-pulp)
     - [ ] [pulpcore](https://github.com/theforeman/puppet-pulpcore)
-  * Tier 2 (Dependencies on Tier 1)
+  - Tier 2 (Dependencies on Tier 1)
     - [ ] [foreman_proxy_content](https://github.com/theforeman/puppet-foreman_proxy_content)
     - [ ] [katello](https://github.com/theforeman/puppet-katello)
+
+## Release Owner
+
 - [ ] Ensure headline features planned for the release have been merged or push them off to the next release.
-* Translations:
-  - [ ] Update locales in foreman **develop**: `make -C locale tx-update`
+- Translations:
+  - [ ] Update locales in foreman __develop__: `make -C locale tx-update`
   - [ ] Ask plugin authors to start extracting i18n strings and pushing the changes into develop/master git branches so Transiflex can pick it up
   - [ ] Announce string freeze date on discourse and send announcement via https://www.transifex.com/foreman/foreman/announcements/
   - [ ] Update [foreman-dev](https://community.theforeman.org/c/development) with [translations status](https://www.transifex.com/projects/p/foreman/) to encourage 100% translations before release
 
 # During the week before branching
 
+## Release Owner
+
 - [ ] Announce start of stabilization week to discourse [development category](https://community.theforeman.org/c/development).
 - [ ] Request new Hammer CLI release from maintainers if needed.
-* Prepare the manual for the new version:
+- Prepare the manual for the new version:
   - [ ] Change `$next` parameter on [web class](https://github.com/theforeman/foreman-infra/blob/master/puppet/modules/web/manifests/init.pp) to point to the new version number.
   - [ ] Copy [website manual content](https://github.com/theforeman/theforeman.org/tree/gh-pages/manuals) from nightly to <%= release %> and update version numbers mentioned in it.
   - [ ] Clean up deprecation and upgrade warnings from nightly manual.
@@ -39,72 +46,91 @@
   - [ ] Sync the community-templates to Foreman core, by running `script/sync_templates.sh`
   - [ ] Create a <%= @release %>-stable branch in [community-templates](https://github.com/theforeman/community-templates)
 - [ ] Add new languages that are at a [reasonable completion on Transifex](https://www.transifex.com/foreman/foreman/foreman/) to __develop__
-- [ ] Create new GPG key for release. See [GPG_Keys](https://projects.theforeman.org/projects/foreman/wiki/GPG_Keys) if needed.
+
+## Release Engineer
+
+- Create new GPG key for release. See [GPG_Keys](https://projects.theforeman.org/projects/foreman/wiki/GPG_Keys) if needed.
   - [ ] [Generate](https://github.com/theforeman/theforeman-rel-eng/blob/master/generate_gpg)
   - [ ] [Backup](https://github.com/theforeman/theforeman-rel-eng/blob/master/export_gpg_private)
   - [ ] [Sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_gpg)
   - [ ] [Upload](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_gpg)
 - [ ] Publish the key by [exporting](https://github.com/theforeman/theforeman-rel-eng/blob/master/export_gpg_public) the GPG key
-  - [ ] Update the website's [security.md](https://github.com/theforeman/theforeman.org/blob/gh-pages/security.md)
-  - [ ] Create a file in [static/keys](https://github.com/theforeman/theforeman.org/tree/gh-pages/static/keys)
-  - [ ] Create [releases/<%= release %>/RPM-GPG-KEY-foreman](https://yum.theforeman.org/releases/<%= release %>/RPM-GPG-KEY-foreman) on yum.theforeman.org under `/var/www/vhosts/yum/htdocs/releases/<%= release %>`
+  - [ ] Update the website's [security.md](https://github.com/theforeman/theforeman.org/blob/gh-pages/security.md) and create a file in [static/keys](https://github.com/theforeman/theforeman.org/tree/gh-pages/static/keys)
+  - [ ] Create [releases/<%= release %>/RPM-GPG-KEY-foreman](https://yum.theforeman.org/releases/<%= release %>/RPM-GPG-KEY-foreman) on yum.theforeman.org
   - [ ] Commit the [settings file](https://github.com/theforeman/theforeman-rel-eng/blob/master/releases/foreman/<%= release %>/settings) to the `theforeman-rel-eng` repository
 - [ ] Create new settings files for [client](https://github.com/theforeman/theforeman-rel-eng/blob/master/releases/client/<%= release %>/settings), ensure it has the rights `OSES` list and commit it too.
 
-# Package build systems
+# Branching
 
-- [ ] Create tool_belt config based on the previous release and the nightly config which might contain different tags/repos.
-- [ ] Clone tags and create build targets in Koji: `bundle exec ./tools.rb koji --commit configs/foreman/<%= release %>.yaml`
-- [ ] Make sure all nightly builds of packages are removed from the releases tags
-- [ ] Create mash configuration on Koji:
-  ```
-  bundle exec ./tools.rb mash-scripts configs/foreman/<%= release %>.yaml
-  sed -i '/strict_keys/ s/True/False/' mash_scripts/foreman/<%= release %>.0/foreman-plugins-<%= release %>-*.mash
-  scp mash_scripts/foreman/<%= release %>.0/*.mash root@koji.katello.org:/etc/mash/
-  ```
-- [ ] Update [mash scripts](https://github.com/theforeman/foreman-infra/tree/master/koji/) and deploy them to Koji:
-  - [ ] Verify main mash scripts (`foreman-mash-split.py`, `foreman-rails-mash-split.py` and `foreman-plugin-mash-split.py`) don't need any version-specific updates
-  - [ ] Update dists in client mash script (`foreman-client-mash-split.py`)
-- [ ] Add version <%= release %> to jobs in axes and/or combination filters, remove old ones (keep three)
-- [ ] Clone Debian nightly repos to <%= release %> using [copy/freight instructions](https://projects.theforeman.org/projects/foreman/wiki/Debian_Packaging#Branching-for-release)
+## Release Engineer
 
-# Branch main code repos
+- [ ] Branch RPM packaging using [tool_belt](https://github.com/theforeman/tool_belt)
+  - [ ] Create `configs/foreman/<%= release %>.yaml` based on the nightly and previous release
+  - [ ] Clone tags and create build targets in Koji: `bundle exec ./tools.rb koji --commit configs/foreman/<%= release %>.yaml`
+  - [ ] Create `rpm/<%= release %>` in [foreman-packaging](https://github.com/theforeman/foreman-packaging) based on `rpm/develop`
+- [ ] Branch Debian packaging
+  - [ ] Clone Debian nightly repos to <%= release %> using [copy/freight instructions](https://projects.theforeman.org/projects/foreman/wiki/Debian_Packaging#Branching-for-release)
+  - [ ] Create `deb/<%= release %>` in [foreman-packaging](https://github.com/theforeman/foreman-packaging) based on `deb/develop`
 
-- Create <%= release %>-stable branches:
+## Release Owner
+
+- [ ] Create <%= release %>-stable branches
   - [ ] [foreman](https://github.com/theforeman/foreman)
   - [ ] [foreman-installer](https://github.com/theforeman/foreman-installer)
     - [ ] `bundle exec rake pin_modules && sed -i '/Puppetfile.lock/d' .gitignore && bundle exec librarian-puppet install && git add Puppetfile*`
   - [ ] [foreman-selinux](https://github.com/theforeman/foreman-selinux)
   - [ ] [smart-proxy](https://github.com/theforeman/smart-proxy)
-- Branch foreman-packaging:
-  - [ ] Create rpm/<%= release %> and update `packages/foreman/foreman-release/foreman.gpg`, `mock/*.cfg`, `package_manifest.yaml`, `rel-eng/{releasers.conf,tito.props}` and `repoclosure/*.conf`
-  - [ ] Create deb/<%= release %>
-  - [ ] Update `.github/PULL_REQUEST_TEMPLATE.md` (by adding `[ ] <%= release %>` to it) in `master`
-- Bump versions to <%= develop %>-develop:
+  - [ ] [hammer-cli](https://github.com/theforeman/hammer-cli)
+  - [ ] [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman)
+
+The next step should only be done after all branching, including packaging, has completed.
+
+- [ ] Bump versions to <%= develop %>-develop
   `echo <%= develop %>.0-develop > VERSION`
   - [ ] [foreman](https://github.com/theforeman/foreman)
   Also change package.json version field to <%= develop %>.0
   - [ ] [foreman-installer](https://github.com/theforeman/foreman-installer)
   - [ ] [foreman-selinux](https://github.com/theforeman/foreman-selinux)
   - [ ] [smart-proxy](https://github.com/theforeman/smart-proxy)
-- Update foreman-packaging to <%= develop %>:
+  - [ ] [hammer-cli](https://github.com/theforeman/hammer-cli)
+  - [ ] [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman)
+
+# Preparing build systems
+
+## Release engineer
+
+- [ ] Update foreman-packaging rpm/develop to ensure nightlies build:
   - [ ] rpm/develop:
     - [ ] Update the build tag: `sed -i 's/fm<%= release.tr('.', '_') %>/fm<%= develop.tr('.', '_') %>/g' rel-eng/{releasers.conf,tito.props}`
     - [ ] Set to version `<%= develop %>.0`, reset release to `1` in `packages/foreman/foreman{,-{installer,proxy,release,selinux}}/*.spec` and create a changelog using `obal changelog --message '- Bump version to <%= develop %>-develop' foreman{,-{installer,proxy,release,selinux}}`
   - [ ] deb/develop: `scripts/changelog.rb -v <%= develop %>.0-1 -m "Bump changelog to <%= develop %>.0 to match VERSION" debian/*/*/changelog`
+- [ ] Prepare build systems for <%= release %> release:
+  - [ ] foreman-packaging's rpm/<%= release %>
+    - [ ] Update `packages/foreman/foreman-release/foreman.gpg`, `mock/*.cfg`, `package_manifest.yaml`, `rel-eng/{releasers.conf,tito.props}` and `repoclosure/*.conf`
+  - [ ] Create mash configuration on Koji:
+    ```
+    bundle exec ./tools.rb mash-scripts configs/foreman/<%= release %>.yaml
+    sed -i '/strict_keys/ s/True/False/' mash_scripts/foreman/<%= release %>.0/foreman-plugins-<%= release %>-*.mash
+    scp mash_scripts/foreman/<%= release %>.0/*.mash root@koji.katello.org:/etc/mash/
+    ```
+  - [ ] Update [mash scripts](https://github.com/theforeman/foreman-infra/tree/master/koji/) and deploy them to Koji:
+    - [ ] Verify main mash scripts (`foreman-mash-split.py`, `foreman-rails-mash-split.py` and `foreman-plugin-mash-split.py`) don't need any version-specific updates
+    - [ ] Update dists in client mash script (`foreman-client-mash-split.py`)
+  - [ ] Add the new release to the JJB job definitions in [foreman-infra](https://github.com/theforeman/foreman-infra/tree/master/puppet/modules/jenkins_job_builder/files/theforeman.org/)
+    - [ ] Create a `<%= release %>.groovy` in `pipelines/vars/foreman/` describing the operating systems the release supports
+    - [ ] Add `<%= release %>` to the version list in `yaml/jobs/pipeline/foreman-release.yaml`
+    - [ ] Create `test_<%= release.tr('.', '_') %>_stable.yaml` and `test_proxy_<%= release.tr('.', '_') %>_stable.yaml` in `yaml/jobs/`
+    - [ ] Remove the oldest version to keep last 3 from the files/directories in the previous steps
+- [ ] Add <%= release %> to [Forklift versions config](https://github.com/theforeman/forklift/blob/master/vagrant/config/versions.yaml)
 
 # Other systems
 
+## Release Owner
+
 - [ ] Create release schedule page for next version (<%= develop %>) linked from [Development_Resources](https://projects.theforeman.org/projects/foreman/wiki/Development_Resources) and post planned schedule on Discourse.
-* Create Redmine versions
-  - [ ] Add next version number (<%= develop %>) and make sure it is shared with subprojects in [foreman](https://projects.theforeman.org/projects/foreman/settings/versions)
+- Create Redmine versions
+  - [ ] Add next version number (<%= develop %>.0) and make sure it is shared with subprojects in [foreman](https://projects.theforeman.org/projects/foreman/settings/versions)
   - [ ] Add first patch release (<%= release %>.1) and make sure it is shared with subprojects in [foreman](https://projects.theforeman.org/projects/foreman/settings/versions)
-- [ ] Add the new release to the JJB job definitions in [foreman-infra](https://github.com/theforeman/foreman-infra/tree/master/puppet/modules/jenkins_job_builder/files/theforeman.org/)
-  - [ ] Create a `<%= release %>.groovy` in `pipelines/vars/foreman/` describing the operating systems the release supports
-  - [ ] Add `<%= release %>` to the version list in `yaml/jobs/pipeline/foreman-release.yaml`
-  - [ ] Create `test_<%= release.tr('.', '_') %>_stable.yaml` and `test_proxy_<%= release.tr('.', '_') %>_stable.yaml` in `yaml/jobs/`
-  - [ ] Remove the oldest version to keep last 3 from the files/directories in the previous steps
-- [ ] Ensure current Foreman deprecations for the next release are removed in *develop*
-- [ ] Add <%= release %> to [Forklift versions config](https://github.com/theforeman/forklift/blob/master/vagrant/config/versions.yaml)
+- [ ] Ensure current Foreman deprecations for the next release are removed in __develop__
 
 This was based on the [wiki procedure](https://projects.theforeman.org/projects/foreman/wiki/Release_Process#Branching-for-series) and sometimes has a bit more info.
