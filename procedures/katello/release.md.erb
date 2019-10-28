@@ -22,16 +22,8 @@
 
 ## Release Packager
 
-* [ ] In foreman-packaging rpm/<%= short_version %> branch, change katello.spec, katello-repos.spec, rubygem-katello.spec:
-  * [ ] Set version to `<%= version %>`
-  * [ ] Set prerelease to `<%= extra %>`
-<% unless is_rc %>  * [ ] Reset release to `1`
-<% end %>  * [ ] In each package dir, remove the old tarball, run `spectool -g *.spec` and `git annex add *.tar.gz` or `git annex add *.gem`
-  * [ ] Edit `katello-repos/katello.repo` to set `gpgcheck=1`
-  * [ ] Commit with message "Release <%= full_version %>"
-  * [ ] Add changelog entries: `obal changelog katello rubygem-katello katello-repos` --message "- Release <%= full_version %>"
-  * [ ] Submit a pull request
+* [ ] Update `katello`, `katello-repos` and `rubygem-katello` in [foreman-packaging](https://github.com/theforeman/foreman-packaging) [rpm/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_rpm_packaging) branch.
 * [ ] Merge packaging PR once job is green
 * [ ] Release all packages: `obal release katello katello-repos rubygem-katello`
-* [ ] Sign RPMs
-* [ ] Trigger release job: `https://ci.theforeman.org/job/katello-<%= short_version %>-rpm-pipeline/`
+* [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms), [upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures) and [upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms)
+* [ ] Kick off the [release pipeline](https://ci.theforeman.org/job/katello-<%= short_version %>-rpm-pipeline/) by calling [release_pipeline](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_pipeline)
