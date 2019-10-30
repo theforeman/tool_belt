@@ -79,8 +79,8 @@
   * [ ] [foreman-installer](https://github.com/theforeman/foreman-installer)
   * [ ] [foreman-selinux](https://github.com/theforeman/foreman-selinux)
   * [ ] [smart-proxy](https://github.com/theforeman/smart-proxy)
-* [ ] Update foreman-packaging:
-  * [ ] rpm/develop: Update `rel-eng/{releasers.conf,tito.props}`, `packages/foreman/foreman{,-{installer,proxy,release,selinux}}/*.spec`
+* [ ] Update foreman-packaging to <%= develop %>:
+  * [ ] rpm/develop: `sed -i 's/fm<%= release.tr('.', '_') %>/fm<%= develop.tr('.', '_') %>/g' rel-eng/{releasers.conf,tito.props} && obal update --version <%= develop %>.0 --release 1 --prerelease develop --changelog '- Bump version to <%= develop %>-develop' foreman{,-{installer,proxy,release,selinux}}`
   * [ ] deb/develop: `scripts/changelog.rb -v <%= develop %>.0-1 -m "Bump changelog to <%= develop %>.0 to match VERSION" debian/*/*/changelog`
 
 # Other systems
