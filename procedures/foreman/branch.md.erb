@@ -79,7 +79,9 @@
   * [ ] [foreman-selinux](https://github.com/theforeman/foreman-selinux)
   * [ ] [smart-proxy](https://github.com/theforeman/smart-proxy)
 * [ ] Update foreman-packaging to <%= develop %>:
-  * [ ] rpm/develop: `sed -i 's/fm<%= release.tr('.', '_') %>/fm<%= develop.tr('.', '_') %>/g' rel-eng/{releasers.conf,tito.props} && obal update --version <%= develop %>.0 --release 1 --prerelease develop --changelog '- Bump version to <%= develop %>-develop' foreman{,-{installer,proxy,release,selinux}}`
+  * [ ] rpm/develop:
+    * [ ] Update the build tag: `sed -i 's/fm<%= release.tr('.', '_') %>/fm<%= develop.tr('.', '_') %>/g' rel-eng/{releasers.conf,tito.props}`
+    * [ ] Set to version `<%= develop %>.0`, reset release to `1` in `packages/foreman/foreman{,-{installer,proxy,release,selinux}}/*.spec` and create a changelog using `obal changelog --message '- Bump version to <%= develop %>-develop' foreman{,-{installer,proxy,release,selinux}}`
   * [ ] deb/develop: `scripts/changelog.rb -v <%= develop %>.0-1 -m "Bump changelog to <%= develop %>.0 to match VERSION" debian/*/*/changelog`
 
 # Other systems
