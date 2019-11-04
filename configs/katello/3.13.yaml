@@ -7,6 +7,8 @@
   :3.12.2:
     :redmine_version_id: 1053
 :releases:
+  :3.13.2:
+    :redmine_version_id: 1130
   :3.13.1:
     :redmine_version_id: 1083
   :3.13.0:
