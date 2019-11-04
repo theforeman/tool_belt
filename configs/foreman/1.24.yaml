@@ -15,7 +15,7 @@
   - foreman-client-1.24-sles11
   - foreman-client-1.24-sles12
 :repos: []
-:gpg_key: 7B5B366A
+:gpg_key: 5AA9BCAD
 :strict_keys: true
 :tags:
   - name: foreman-rails-1.24-rhel7
