@@ -1,11 +1,13 @@
 ---
 :project: katello
 :github_org: katello
-:prior_releases: []
+:prior_releases:
+  :3.13.2:
+    :redmine_version_id: 1130
 :releases:
   :3.14.0:
     :redmine_version_id: 1048
-:code_name: Baltic Porter
+:code_name: Pecan Pie
 :repos:
   :katello:
     :main: true
@@ -16,11 +18,8 @@
     :branch: rpm/1.24
     :repo: https://github.com/theforeman/foreman-packaging.git
   :hammer-cli-katello:
-    :branch: 0.19.0
+    :branch: 0.20.0
     :repo: https://github.com/Katello/hammer-cli-katello.git
-  :puppet-certs:
-    :branch: 6.1.0
-    :repo: https://github.com/theforeman/puppet-certs
   :katello-host-tools:
     :branch: 3.5.1
     :repo: https://github.com/Katello/katello-host-tools.git
