@@ -52,9 +52,9 @@
   bundle exec ./tools.rb mash-scripts configs/foreman/<%= release %>.yaml
   scp mash_scripts/foreman/<%= release %>.0/*.mash root@koji.katello.org:/etc/mash/
   ```
-* [ ] Verify main mash scripts (`foreman-mash-split.py` and `foreman-rails-mash-split.py`) on Koji don't need any version-specific updates
-* [ ] Update dists in client mash script (`foreman-client-mash-split.py`)
-* [ ] Add new plugin tags to Koji plugins mash script (`foreman-mash-split-plugins.py`), remove old ones (keep three)
+* [ ] Update [mash scripts](https://github.com/theforeman/foreman-infra/tree/master/koji/) and deploy them to Koji:
+  * [ ] Verify main mash scripts (`foreman-mash-split.py`, `foreman-rails-mash-split.py` and `foreman-plugin-mash-split.py`) don't need any version-specific updates
+  * [ ] Update dists in client mash script (`foreman-client-mash-split.py`)
 * [ ] Add version <%= release %> to jobs in axes and/or combination filters, remove old ones (keep three)
 * [ ] Clone Debian nightly repos to <%= release %> using [copy/freight instructions](https://projects.theforeman.org/projects/foreman/wiki/Debian_Packaging#Branching-for-release)
 
