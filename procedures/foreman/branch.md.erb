@@ -90,7 +90,6 @@
 * [ ] Add the new release to the JJB job definitions in [foreman-infra](https://github.com/theforeman/foreman-infra/tree/master/puppet/modules/jenkins_job_builder/files/theforeman.org/)
   * [ ] Create a `<%= release %>.groovy` in `pipelines/vars/foreman/` describing the operating systems the release supports
   * [ ] Add `<%= release %>` to the version list in `yaml/jobs/pipeline/foreman-release.yaml`
-  * [ ] Add `<%= release %>` to the version list in `pipelines/release/foremanPluginsRelease.groovy`
   * [ ] Create `test_<%= release.tr('.', '_') %>_stable.yaml` and `test_proxy_<%= release.tr('.', '_') %>_stable.yaml` in `yaml/jobs/`
   * [ ] Remove the oldest version to keep last 3 from the files/directories in the previous steps
 * [ ] Ensure current Foreman deprecations for the next release are removed in *develop*
