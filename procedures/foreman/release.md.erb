@@ -52,10 +52,7 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 
 * [ ] Update [foreman-packaging](https://github.com/theforeman/foreman-packaging) [rpm/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_rpm_packaging) and [deb/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_deb_packaging) branches
 * [ ] Trigger [release_packages in Jenkins](https://ci.theforeman.org/job/release_packages/) by calling [release_packages](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_packages)
-* [ ] Tag `foreman-release` into `client-rhel7`, as this doesn't happen automatically for that one tag:
-```
-koji tag-build foreman-client-<%= short_version %>-rhel7 foreman-release-VERSION.el7
-```
+* [ ] Tag `foreman-release` into `foreman-client-<%= short_version %>-rhel7`, as this doesn't happen automatically for that one tag: `koji tag-build foreman-client-<%= short_version %>-rhel7 foreman-release-<%= version %>-1.el7` (make sure the build matches the release)
 * [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms), [upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures) and [upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms)
 * [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms), [upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures) and [upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms) for client repos (call scripts with `PROJECT=client`)
 <% if is_rc %>* [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_extras), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_extras) and [upload](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_extras) "extra" RPMs
