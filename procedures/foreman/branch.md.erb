@@ -47,9 +47,10 @@
 
 * [ ] Create tool_belt config based on the previous release
 * [ ] Clone tags and create build targets in Koji: `bundle exec ./tools.rb koji --commit configs/foreman/<%= release %>.yaml`
-* [ ] Create mash configuration on Koji (make sure the plugins script has `strict_keys = False`):
+* [ ] Create mash configuration on Koji:
   ```
   bundle exec ./tools.rb mash-scripts configs/foreman/<%= release %>.yaml
+  sed -i '/strict_keys/ s/True/False/' mash_scripts/foreman/<%= release %>.0/foreman-plugins-<%= release %>-*.mash
   scp mash_scripts/foreman/<%= release %>.0/*.mash root@koji.katello.org:/etc/mash/
   ```
 * [ ] Update [mash scripts](https://github.com/theforeman/foreman-infra/tree/master/koji/) and deploy them to Koji:
