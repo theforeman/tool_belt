@@ -33,3 +33,46 @@
       - centos-sclo-rh-rhel-7
       - centos-7-server-updates
       - centos-7-server
+  - name: katello-nightly-pulpcore-el7
+    based_off: null
+    arches:
+      - x86_64
+    build_target: katello-nightly-pulpcore-el7-build
+    external_repos:
+      - centos7-os
+      - centos7-updates
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - python3-rpm-macros
+        - redhat-release
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - python3-rpm-macros
+        - redhat-release
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
