@@ -59,7 +59,6 @@
 * [ ] Run `./tools mash-scripts configs/katello/<%= release %>.yaml` from [tool_belt](https://github.com/theforeman/tool_belt) to create Koji mash configs and open PR to tool_belt to commit
 * [ ] Copy mash configs to Koji (`/etc/mash`)
 * [ ] Update the branch map in the [mash script](https://github.com/theforeman/foreman-infra/blob/master/koji/katello-mash-split.py) and deploy it to Koji
-* [ ] Create an install and upgrade pipeline playbook in [forklift](https://github.com/theforeman/forklift/tree/master/pipelines) and open PR
 * [ ] Add <%= release %> to [Forklift versions config](https://github.com/theforeman/forklift/blob/master/vagrant/config/versions.yaml)
 * [ ] Add new Katello release job to [foreman-infra](https://github.com/theforeman/foreman-infra/tree/master/puppet/modules/jenkins_job_builder/files/theforeman.org/yaml/jobs/pipeline)
 * [ ] Update Katello PR pipeline with new version [pipeline](https://github.com/theforeman/foreman-infra/blob/master/puppet/modules/jenkins_job_builder/files/theforeman.org/pipelines/test/testKatello.groovy#L1)
