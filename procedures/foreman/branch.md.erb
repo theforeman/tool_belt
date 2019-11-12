@@ -36,10 +36,12 @@
   * [ ] Sync the community-templates to Foreman core, by running `script/sync_templates.sh`
   * [ ] Create a <%= @release %>-stable branch in [community-templates](https://github.com/theforeman/community-templates)
 * [ ] Add new languages that are at a [reasonable completion on Transifex](https://www.transifex.com/foreman/foreman/foreman/) to **develop**
-* [ ] [Generate](https://github.com/ekohl/theforeman-rel-eng/blob/master/generate_gpg), [backup](https://github.com/ekohl/theforeman-rel-eng/blob/master/export_gpg_private), [sign](https://github.com/ekohl/theforeman-rel-eng/blob/master/sign_gpg) and [upload](https://github.com/ekohl/theforeman-rel-eng/blob/master/upload_gpg) a GPG key. See [GPG_Keys](https://projects.theforeman.org/projects/foreman/wiki/GPG_Keys) if needed.
-* [ ] Publish the key by [exporting](https://github.com/ekohl/theforeman-rel-eng/blob/master/export_gpg_public) the GPG key
+* [ ] [Generate](https://github.com/theforeman/theforeman-rel-eng/blob/master/generate_gpg), [backup](https://github.com/theforeman/theforeman-rel-eng/blob/master/export_gpg_private), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_gpg) and [upload](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_gpg) a GPG key. See [GPG_Keys](https://projects.theforeman.org/projects/foreman/wiki/GPG_Keys) if needed.
+* [ ] Publish the key by [exporting](https://github.com/theforeman/theforeman-rel-eng/blob/master/export_gpg_public) the GPG key
   * [ ] Update the website's [security.md](https://github.com/theforeman/theforeman.org/blob/gh-pages/security.md) and create a file in [static/keys](https://github.com/theforeman/theforeman.org/tree/gh-pages/static/keys)
   * [ ] Create [releases/<%= release %>/RPM-GPG-KEY-foreman](https://yum.theforeman.org/releases/<%= release %>/RPM-GPG-KEY-foreman) on yum.theforeman.org
+  * [ ] Commit the [settings file](https://github.com/theforeman/theforeman-rel-eng/blob/master/releases/foreman/<%= release %>/settings) to the `theforeman-rel-eng` repository
+* [ ] Create new settings files for [client](https://github.com/theforeman/theforeman-rel-eng/blob/master/releases/client/<%= release %>/settings), ensure it has the rights `OSES` list and commit it too.
 
 # Package build systems
 
@@ -48,15 +50,12 @@
 * [ ] Create mash configuration on Koji:
   ```
   bundle exec ./tools.rb mash-scripts configs/foreman/<%= release %>.yaml
+  sed -i '/strict_keys/ s/True/False/' mash_scripts/foreman/<%= release %>.0/foreman-plugins-<%= release %>-*.mash
   scp mash_scripts/foreman/<%= release %>.0/*.mash root@koji.katello.org:/etc/mash/
   ```
-  * [ ] Create mash scripts on Koji:
-  ```
-  ssh root@koji.katello.org
-  cd /usr/local/bin
-  # create foreman-client-mash-split-<%= release %>.py  foreman-mash-split-<%= release %>.py  foreman-rails-mash-split-<%= release %>.py based on the unversioned files
-  ```
-* [ ] Add new plugin tags to Koji plugins mash script (foreman-mash-split-plugins.py), remove old ones (keep three)
+* [ ] Update [mash scripts](https://github.com/theforeman/foreman-infra/tree/master/koji/) and deploy them to Koji:
+  * [ ] Verify main mash scripts (`foreman-mash-split.py`, `foreman-rails-mash-split.py` and `foreman-plugin-mash-split.py`) don't need any version-specific updates
+  * [ ] Update dists in client mash script (`foreman-client-mash-split.py`)
 * [ ] Add version <%= release %> to jobs in axes and/or combination filters, remove old ones (keep three)
 * [ ] Clone Debian nightly repos to <%= release %> using [copy/freight instructions](https://projects.theforeman.org/projects/foreman/wiki/Debian_Packaging#Branching-for-release)
 
@@ -92,7 +91,6 @@
 * [ ] Add the new release to the JJB job definitions in [foreman-infra](https://github.com/theforeman/foreman-infra/tree/master/puppet/modules/jenkins_job_builder/files/theforeman.org/)
   * [ ] Create a `<%= release %>.groovy` in `pipelines/vars/foreman/` describing the operating systems the release supports
   * [ ] Add `<%= release %>` to the version list in `yaml/jobs/pipeline/foreman-release.yaml`
-  * [ ] Add `<%= release %>` to the version list in `pipelines/release/foremanPluginsRelease.groovy`
   * [ ] Create `test_<%= release.tr('.', '_') %>_stable.yaml` and `test_proxy_<%= release.tr('.', '_') %>_stable.yaml` in `yaml/jobs/`
   * [ ] Remove the oldest version to keep last 3 from the files/directories in the previous steps
 * [ ] Ensure current Foreman deprecations for the next release are removed in *develop*
