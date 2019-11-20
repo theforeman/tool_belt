@@ -24,6 +24,15 @@
     :branch: 3.5.1
     :repo: https://github.com/Katello/katello-host-tools.git
 :ignores:
+  - 26992 # resolved dup
+  - 26993 # resolved dup
+  - 26996 # resolved dup
+  - 26997 # resolved dup
+  - 26998 # resolved dup
+  - 27579 # resolved dup
+  - 27542 # resolved dup
+  - 28101 # empty pick, already fixed in 3.14 (this is 3.13 targetted)
+  - 27796 # duplicate
 :strict_keys: true
 :gpg_key: 5AA9BCAD
 :mash_scripts:
