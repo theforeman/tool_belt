@@ -2,6 +2,8 @@
 :project: katello
 :github_org: katello
 :nightly: true
+:mash_scripts:
+  - katello-nightly-pulpcore-el7
 :tags:
   - name: katello-thirdparty-candlepin-rhel7
     based_off: null
