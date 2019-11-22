@@ -3,7 +3,7 @@
 :github_org: katello
 :nightly: true
 :mash_scripts:
-  - katello-nightly-pulpcore-el7
+  - katello-pulpcore-nightly-el7
 :tags:
   - name: katello-thirdparty-candlepin-rhel7
     based_off: null
@@ -35,11 +35,11 @@
       - centos-sclo-rh-rhel-7
       - centos-7-server-updates
       - centos-7-server
-  - name: katello-nightly-pulpcore-el7
+  - name: katello-pulpcore-nightly-el7
     based_off: null
     arches:
       - x86_64
-    build_target: katello-nightly-pulpcore-el7-build
+    build_target: katello-pulpcore-nightly-el7-build
     external_repos:
       - centos7-os
       - centos7-updates
