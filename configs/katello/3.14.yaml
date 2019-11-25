@@ -18,7 +18,7 @@
     :branch: rpm/1.24
     :repo: https://github.com/theforeman/foreman-packaging.git
   :hammer-cli-katello:
-    :branch: 0.20.0
+    :branch: 0.20.1
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-host-tools:
     :branch: 3.5.1
