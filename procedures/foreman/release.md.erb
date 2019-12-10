@@ -1,3 +1,5 @@
+[ ] Make this post a wiki
+
 # Manual updates
 
 * [ ] Update manual if applicable for any additional installation steps
@@ -49,7 +51,6 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 # Packaging a release
 
 [Background documentation](https://projects.theforeman.org/projects/foreman/wiki/Release_Process#Packaging-a-release)
-
 * [ ] Update [foreman-packaging](https://github.com/theforeman/foreman-packaging) [rpm/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_rpm_packaging) and [deb/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_deb_packaging) branches
 * [ ] Trigger [release_packages in Jenkins](https://ci.theforeman.org/job/release_packages/) by calling [release_packages](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_packages)
 * [ ] Tag `foreman-release` into `foreman-client-<%= short_version %>-rhel7`, as this doesn't happen automatically for that one tag: `koji tag-build foreman-client-<%= short_version %>-rhel7 foreman-release-<%= version %>-1.el7`<% if is_rc %> (make sure the build matches the release)<% end %>
