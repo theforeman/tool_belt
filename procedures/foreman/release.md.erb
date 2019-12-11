@@ -44,15 +44,22 @@
   * [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
   * [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
 * [ ] Run the Jenkins [Tarballs Release](https://ci.theforeman.org/job/tarballs-release/) to create tarballs
-* [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_tarballs), [inspect](https://github.com/theforeman/theforeman-rel-eng/blob/master/inspect_tarballs), [sign and upload detached signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_tarballs)
+* [ ] Update release version similar to [here](https://github.com/theforeman/theforeman-rel-eng/commit/2029a9688da00d9c385c3438dd71b594ba5f728e)
+* [ ] Sign Tarballs
+  * [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_tarballs)
+  * [ ] [Inspect](https://github.com/theforeman/theforeman-rel-eng/blob/master/inspect_tarballs)
+  * [ ] [Sign and upload detached signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_tarballs)
 
 Note: If for some reason there was an issue with the tarballs that required uploading new tarballs, CDN cache should be invalidated so that the builders use the updated tarballs.
 
 # Packaging a release
 
 [Background documentation](https://projects.theforeman.org/projects/foreman/wiki/Release_Process#Packaging-a-release)
-* [ ] Update [foreman-packaging](https://github.com/theforeman/foreman-packaging) [rpm/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_rpm_packaging) and [deb/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_deb_packaging) branches
-* [ ] Trigger [release_packages in Jenkins](https://ci.theforeman.org/job/release_packages/) by calling [release_packages](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_packages)
+
+* [ ] Update [foreman-packaging](https://github.com/theforeman/foreman-packaging)
+  * [ ] [rpm/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_rpm_packaging)
+  * [ ] [deb/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_deb_packaging) branches
+* [ ] Trigger [release_packages in Jenkins](https://ci.theforeman.org/job/release_packages/) by calling [release_packages script](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_packages).
 * [ ] Tag `foreman-release` into `foreman-client-<%= short_version %>-rhel7`, as this doesn't happen automatically for that one tag: `koji tag-build foreman-client-<%= short_version %>-rhel7 foreman-release-<%= version %>-1.el7`<% if is_rc %> (make sure the build matches the release)<% end %>
 * [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms), [upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures) and [upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms)
 * [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms), [upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures) and [upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms) for client repos (call scripts with `PROJECT=client`)
