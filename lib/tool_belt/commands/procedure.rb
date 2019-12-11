@@ -42,6 +42,14 @@ module ToolBelt
         end
       end
 
+      subcommand "update", "Update procedure for project" do
+        parameter "project", "Project to generate procedure for"
+
+        def execute
+          render(project, 'update', {})
+        end
+      end
+
       private
 
       def render(project, procedure, context)
