@@ -1,0 +1,17 @@
+# Collect list of Python packages
+
+* [ ] Execute the following script in an empty EL7 container:
+```bash
+yum install -y postgresql-devel gcc python3 python3-devel python3-pip
+pip3 install pulpcore pulp-file pulp-container
+pip3 freeze |sed '/certifi/d'
+```
+* [ ] Save the `pip` output to a file
+
+# Update `foreman-packaging`
+
+* [ ] Use the list of Python packages and update their RPM packages:
+```bash
+while read line; do pkg=${line%==*}; version=${line#*==}; ./add_pypi_package.sh ${pkg} ${version} katello-nightly-pulpcore-el7 pulpcore ./pyp2rpm/pulpcore.spec; done < THE_PIP_LIST_FILE
+```
+* [ ] Open a PR with the changes
