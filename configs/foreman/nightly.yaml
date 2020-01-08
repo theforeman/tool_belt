@@ -359,6 +359,61 @@
         - rhpkg-simple
         - rpm-build
         - shadow-utils
+  - name: foreman-client-nightly-el8
+    based_off: null
+    helper_tags:
+      foreman-client-nightly-el8-override: null
+      foreman-client-nightly-el8: null
+    build_target: foreman-client-nightly-el8-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-client-nightly-el8-build:
+        foreman-client-nightly-el8-override: 0
+      foreman-client-nightly-el8-override:
+        foreman-client-nightly-el8: 0
+      foreman-client-nightly-el8: {}
+    external_repos:
+      - centos8-baseos
+      - centos8-appstream
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - platform-python
+        - python3-rpm-macros
+        - redhat-
+        - redhat-release
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - platform-python
+        - python3-rpm-macros
+        - redhat-release
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
   - name: foreman-client-nightly-rhel7
     based_off: null
     helper_tags:
