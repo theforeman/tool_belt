@@ -64,21 +64,26 @@ module ToolBelt
     end
 
     def format_entries
-      entry_string = "\n## Features\n"
-      @features.each do |category, entries|
-        if category != 'Other'
-          entry_string += "\n### #{category}\n"
+      entry_string = ''
 
-          entries.each do |entry|
-            entry_string += "#{entry}\n"
+      unless @features.empty?
+        entry_string += "\n## Features\n"
+
+        @features.each do |category, entries|
+          if category != 'Other'
+            entry_string += "\n### #{category}\n"
+
+            entries.each do |entry|
+              entry_string += "#{entry}\n"
+            end
           end
         end
-      end
 
-      if @features.key?('Other')
-        entry_string += "\n### Other\n"
-        @features['Other'].each do |entry|
-          entry_string += "#{entry}\n"
+        if @features.key?('Other')
+          entry_string += "\n### Other\n"
+          @features['Other'].each do |entry|
+            entry_string += "#{entry}\n"
+          end
         end
       end
 
