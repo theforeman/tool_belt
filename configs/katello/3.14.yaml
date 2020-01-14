@@ -2,9 +2,15 @@
 :project: katello
 :github_org: katello
 :prior_releases:
+  :3.13.4:
+    :redmine_version_id: 1187
+  :3.13.3:
+    :redmine_version_id: 1147
   :3.13.2:
     :redmine_version_id: 1130
 :releases:
+  :3.14.1:
+    :redmine_version_id: 1174
   :3.14.0:
     :redmine_version_id: 1048
 :code_name: Pecan Pie
@@ -21,7 +27,7 @@
     :branch: 0.20.1
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-host-tools:
-    :branch: 3.5.1
+    :branch: 3.5.2
     :repo: https://github.com/Katello/katello-host-tools.git
 :ignores:
   - 26992 # resolved dup
