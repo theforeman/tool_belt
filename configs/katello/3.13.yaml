@@ -7,6 +7,8 @@
   :3.12.2:
     :redmine_version_id: 1053
 :releases:
+  :3.13.4:
+    :redmine_version_id: 1187
   :3.13.3:
     :redmine_version_id: 1147
   :3.13.2:
@@ -37,6 +39,7 @@
 :ignores:
   - 27198 # Duplicate issue
   - 27455 # Marked as resolved
+  - 27255 # Already included 
 :strict_keys: true
 :gpg_key: 7B5B366A
 :mash_scripts:
