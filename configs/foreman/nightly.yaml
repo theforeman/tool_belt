@@ -5,6 +5,7 @@
 :mash_scripts:
   - foreman-nightly-rhel7-dist
   - foreman-plugins-nightly-rhel7-dist
+  - foreman-client-nightly-el8
   - foreman-client-nightly-rhel7
   - foreman-client-nightly-rhel6
   - foreman-client-nightly-rhel5
