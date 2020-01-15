@@ -15,6 +15,8 @@ module ToolBelt
         elsif valid_redmine?(configs)
           configs = add_redmine_release(configs, version)
         end
+      else
+        configs[:namespace] = "#{configs[:project]}/nightly"
       end
       self.options = OpenStruct.new(configs)
     end
