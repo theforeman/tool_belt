@@ -2,28 +2,28 @@
 
 ## Release Owner
 
-* [ ] Request Hammer CLI Katello release from maintainers
-<% unless is_rc %>* [ ] Change Redmine version <%= full_version %> state to Closed
+- [ ] Request Hammer CLI Katello release from maintainers
+<% unless is_rc %>- [ ] Change Redmine version <%= full_version %> state to Closed
 <% end %>
-* [ ] Clone [tool_belt](https://github.com/theforeman/tool_belt) and run:
-  * [ ] `./tools.rb setup-environment configs/katello/<%= short_version %>.yaml`
-  * [ ] `./tools.rb cherry-picks --version <%= full_version %> configs/katello/<%= short_version %>.yaml`
-  * [ ] Verify tickets in the cherry_picks_<%= full_version %> file are accounted for or additional cherry pick them
+- [ ] Clone [tool_belt](https://github.com/theforeman/tool_belt) and run:
+  - [ ] `./tools.rb setup-environment configs/katello/<%= short_version %>.yaml`
+  - [ ] `./tools.rb cherry-picks --version <%= full_version %> configs/katello/<%= short_version %>.yaml`
+  - [ ] Verify tickets in the cherry_picks_<%= full_version %> file are accounted for or additional cherry pick them
 
-* [ ] In katello release branch:
-  * [ ] Update `lib/katello/version.rb` to <%= full_version %>
-  * [ ] Commit: `git commit -m "Release <%= full_version %>"`
-  * [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
-  * [ ] Push: `git push --follow-tags`
-  * [ ] Generate source gem: `gem build katello.gemspec`
-  * [ ] Push gem: `gem push katello-<%= full_version %>.gem`
+- [ ] In katello release branch:
+  - [ ] Update `lib/katello/version.rb` to <%= full_version %>
+  - [ ] Commit: `git commit -m "Release <%= full_version %>"`
+  - [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
+  - [ ] Push: `git push --follow-tags`
+  - [ ] Generate source gem: `gem build katello.gemspec`
+  - [ ] Push gem: `gem push katello-<%= full_version %>.gem`
 
 # Once Source is Available
 
 ## Release Packager
 
-* [ ] Update `katello`, `katello-repos` and `rubygem-katello` in [foreman-packaging](https://github.com/theforeman/foreman-packaging) [rpm/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_rpm_packaging) branch.
-* [ ] Merge packaging PR once job is green
-* [ ] Release all packages: `obal release katello katello-repos rubygem-katello`
-* [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms), [upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures) and [upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms)
-* [ ] Kick off the [release pipeline](https://ci.theforeman.org/job/katello-<%= short_version %>-rpm-pipeline/) by calling [release_pipeline](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_pipeline)
+- [ ] Update `katello`, `katello-repos` and `rubygem-katello` in [foreman-packaging](https://github.com/theforeman/foreman-packaging) [rpm/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_rpm_packaging) branch.
+- [ ] Merge packaging PR once job is green
+- [ ] Release all packages: `obal release katello katello-repos rubygem-katello`
+- [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms), [upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures) and [upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms)
+- [ ] Kick off the [release pipeline](https://ci.theforeman.org/job/katello-<%= short_version %>-rpm-pipeline/) by calling [release_pipeline](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_pipeline)
