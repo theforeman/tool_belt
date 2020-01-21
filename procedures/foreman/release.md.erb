@@ -2,53 +2,53 @@
 
 # Manual updates
 
-* [ ] Update manual if applicable for any additional installation steps
+- [ ] Update manual if applicable for any additional installation steps
 * Update [release notes section](gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md) in the manual:
-  * [ ] Release notes: bullet point list by category of all changes, include link to bug numbers. You can auto-generate changes using the [release notes script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/release_notes.rb).
-  * [ ] CLI release notes are taken from the hammer-cli and hammer-cli-foreman changelogs
-  * [ ] Link to installer changelogs and note versions being used
-<% if (is_rc || full_version.end_with?('0')) %>  * [ ] Headline features: half a dozen important features with a few sentences description each
-  * [ ] Upgrade notes: all important notices that users must be aware of before upgrading
-* [ ] Update installer options section using the [get-params script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/installer/get-params) (Note: this step can only be done after packages are released)
-* [ ] [Generate](https://github.com/theforeman/theforeman.org#updating-api-auto-generated-docs-by-apipie) the apipie doc and place it in the api/<%= short_version %> directory
-<% else %>* [ ] Update installer options section using the [get-params script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/installer/get-params) if any changes were made in the installer or installer modules (after new packages have been released)
-* [ ] [Update](https://github.com/theforeman/theforeman.org#updating-api-auto-generated-docs-by-apipie) the apipie doc and place it in the api/<%= short_version %> directory if any changes were made to the API
+  - [ ] Release notes: bullet point list by category of all changes, include link to bug numbers. You can auto-generate changes using the [release notes script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/release_notes.rb).
+  - [ ] CLI release notes are taken from the hammer-cli and hammer-cli-foreman changelogs
+  - [ ] Link to installer changelogs and note versions being used
+<% if (is_rc || full_version.end_with?('0')) %>  - [ ] Headline features: half a dozen important features with a few sentences description each
+  - [ ] Upgrade notes: all important notices that users must be aware of before upgrading
+- [ ] Update installer options section using the [get-params script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/installer/get-params) (Note: this step can only be done after packages are released)
+- [ ] [Generate](https://github.com/theforeman/theforeman.org#updating-api-auto-generated-docs-by-apipie) the apipie doc and place it in the api/<%= short_version %> directory
+<% else %>- [ ] Update installer options section using the [get-params script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/installer/get-params) if any changes were made in the installer or installer modules (after new packages have been released)
+- [ ] [Update](https://github.com/theforeman/theforeman.org#updating-api-auto-generated-docs-by-apipie) the apipie doc and place it in the api/<%= short_version %> directory if any changes were made to the API
 <% end %>
 # Preparing code
 
-* [ ] Make patch releases of installer modules that have important changes
-  * [ ] Branch to MAJ.MIN-stable if recent changes to the module aren't suitable for patch (x.y.z) release
-* [ ] Compare tagged packages in nightly vs. release koji tag and re-tag any updated dependencies that are required
-<% unless is_rc %>* [ ] Add a new [Redmine version](https://projects.theforeman.org/projects/foreman/settings/versions) for the next minor, unless the series is EOL. Be sure the version is set to sharing with subprojects.
-<% end %>* [ ] Remove/change release field for any open Redmine tickets assigned to the release still (next minor, unset it or reject)
-<% unless is_rc %>* [ ] Change Redmine version <%= full_version %> state to Closed
-<% end %>* [ ] Ensure that code in git matches issues fixed in <%= full_version %> in redmine. [issues.rb](https://gist.github.com/tbrisker/3320097f1d8c9abfb2dbcf8d8e216bba) can be used to generate a comparison between the two.
+- [ ] Make patch releases of installer modules that have important changes
+  - [ ] Branch to MAJ.MIN-stable if recent changes to the module aren't suitable for patch (x.y.z) release
+- [ ] Compare tagged packages in nightly vs. release koji tag and re-tag any updated dependencies that are required
+<% unless is_rc %>- [ ] Add a new [Redmine version](https://projects.theforeman.org/projects/foreman/settings/versions) for the next minor, unless the series is EOL. Be sure the version is set to sharing with subprojects.
+<% end %>- [ ] Remove/change release field for any open Redmine tickets assigned to the release still (next minor, unset it or reject)
+<% unless is_rc %>- [ ] Change Redmine version <%= full_version %> state to Closed
+<% end %>- [ ] Ensure that code in git matches issues fixed in <%= full_version %> in redmine. [issues.rb](https://gist.github.com/tbrisker/3320097f1d8c9abfb2dbcf8d8e216bba) can be used to generate a comparison between the two.
 
 # Tagging a release
 
-* [ ] In foreman <%= short_version %>-stable:
-  * [ ] Make sure [test_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_<%= short_version.tr('.', '_') %>_stable/) is green
-  * [ ] run `make -C locale tx-update` (if Transifex has not switched to the next major release yet, usually after .2)
-  * [ ] run `script/sync_templates.sh`
-  * [ ] update template snapshots with `rake snapshots:generate RAILS_ENV=test` and verify changes are expected
-  * [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
-  * [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
-* [ ] In smart-proxy <%= short_version %>-stable:
-  * [ ] Make sure [test_proxy_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_proxy_<%= short_version.tr('.', '_') %>_stable/) is green
-  * [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
-  * [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
-* [ ] In foreman-selinux <%= short_version %>-stable:
-  * [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
-  * [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
-* [ ] In foreman-installer <%= short_version %>-stable:
-  * [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
-  * [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
-* [ ] Run the Jenkins [Tarballs Release](https://ci.theforeman.org/job/tarballs-release/) to create tarballs
-* [ ] Update release version similar to [here](https://github.com/theforeman/theforeman-rel-eng/commit/2029a9688da00d9c385c3438dd71b594ba5f728e)
-* [ ] Sign Tarballs
-  * [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_tarballs)
-  * [ ] [Inspect](https://github.com/theforeman/theforeman-rel-eng/blob/master/inspect_tarballs)
-  * [ ] [Sign and upload detached signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_tarballs)
+- [ ] In foreman <%= short_version %>-stable:
+  - [ ] Make sure [test_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_<%= short_version.tr('.', '_') %>_stable/) is green
+  - [ ] run `make -C locale tx-update` (if Transifex has not switched to the next major release yet, usually after .2)
+  - [ ] run `script/sync_templates.sh`
+  - [ ] update template snapshots with `rake snapshots:generate RAILS_ENV=test` and verify changes are expected
+  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
+  - [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
+- [ ] In smart-proxy <%= short_version %>-stable:
+  - [ ] Make sure [test_proxy_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_proxy_<%= short_version.tr('.', '_') %>_stable/) is green
+  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
+  - [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
+- [ ] In foreman-selinux <%= short_version %>-stable:
+  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
+  - [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
+- [ ] In foreman-installer <%= short_version %>-stable:
+  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
+  - [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
+- [ ] Run the Jenkins [Tarballs Release](https://ci.theforeman.org/job/tarballs-release/) to create tarballs
+- [ ] Update release version similar to [here](https://github.com/theforeman/theforeman-rel-eng/commit/2029a9688da00d9c385c3438dd71b594ba5f728e)
+- [ ] Sign Tarballs
+  - [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_tarballs)
+  - [ ] [Inspect](https://github.com/theforeman/theforeman-rel-eng/blob/master/inspect_tarballs)
+  - [ ] [Sign and upload detached signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_tarballs)
 
 Note: If for some reason there was an issue with the tarballs that required uploading new tarballs, CDN cache should be invalidated so that the builders use the updated tarballs.
 
@@ -56,14 +56,14 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 
 [Background documentation](https://projects.theforeman.org/projects/foreman/wiki/Release_Process#Packaging-a-release)
 
-* [ ] Update [foreman-packaging](https://github.com/theforeman/foreman-packaging)
-  * [ ] [rpm/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_rpm_packaging)
-  * [ ] [deb/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_deb_packaging) branches
-* [ ] Trigger [release_packages in Jenkins](https://ci.theforeman.org/job/release_packages/) by calling [release_packages script](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_packages).
-* [ ] Tag `foreman-release` into `foreman-client-<%= short_version %>-rhel7`, as this doesn't happen automatically for that one tag: `koji tag-build foreman-client-<%= short_version %>-rhel7 foreman-release-<%= version %>-1.el7`<% if is_rc %> (make sure the build matches the release)<% end %>
-* [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms), [upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures) and [upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms)
-* [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms), [upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures) and [upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms) for client repos (call scripts with `PROJECT=client`)
-<% if is_rc %>* [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_extras), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_extras) and [upload](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_extras) "extra" RPMs
-<% end %>* [ ] Kick off the [release pipeline](https://ci.theforeman.org/job/foreman-<%= short_version %>-release-pipeline/) by calling [`release_pipeline`](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_pipeline)
-* [ ] Kick off the [client pipeline](https://ci.theforeman.org/job/foreman-client-<%= short_version %>-rpm-pipeline/) by calling [`PROJECT=client release_pipeline`](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_pipeline)
-* [ ] Kick off the [plugins pipeline](https://ci.theforeman.org/job/foreman-plugins-<%= short_version %>-rpm-pipeline/) by calling [plugins_pipeline](https://github.com/theforeman/theforeman-rel-eng/blob/master/plugins_pipeline)
+- [ ] Update [foreman-packaging](https://github.com/theforeman/foreman-packaging)
+  - [ ] [rpm/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_rpm_packaging)
+  - [ ] [deb/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_deb_packaging) branches
+- [ ] Trigger [release_packages in Jenkins](https://ci.theforeman.org/job/release_packages/) by calling [release_packages script](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_packages).
+- [ ] Tag `foreman-release` into `foreman-client-<%= short_version %>-rhel7`, as this doesn't happen automatically for that one tag: `koji tag-build foreman-client-<%= short_version %>-rhel7 foreman-release-<%= version %>-1.el7`<% if is_rc %> (make sure the build matches the release)<% end %>
+- [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms), [upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures) and [upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms)
+- [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms), [upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures) and [upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms) for client repos (call scripts with `PROJECT=client`)
+<% if is_rc %>- [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_extras), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_extras) and [upload](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_extras) "extra" RPMs
+<% end %>- [ ] Kick off the [release pipeline](https://ci.theforeman.org/job/foreman-<%= short_version %>-release-pipeline/) by calling [`release_pipeline`](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_pipeline)
+- [ ] Kick off the [client pipeline](https://ci.theforeman.org/job/foreman-client-<%= short_version %>-rpm-pipeline/) by calling [`PROJECT=client release_pipeline`](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_pipeline)
+- [ ] Kick off the [plugins pipeline](https://ci.theforeman.org/job/foreman-plugins-<%= short_version %>-rpm-pipeline/) by calling [plugins_pipeline](https://github.com/theforeman/theforeman-rel-eng/blob/master/plugins_pipeline)
