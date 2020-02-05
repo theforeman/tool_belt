@@ -35,6 +35,66 @@
       - centos-sclo-rh-rhel-7
       - centos-7-server-updates
       - centos-7-server
+  - name: katello-nightly-el8
+    based_off: null
+    helper_tags:
+      katello-thirdparty-el8: null
+      katello-nightly-el8-override: null
+    build_target: katello-nightly-el8-build
+    build_package_group_source_tag: katello-nightly-el8-build
+    arches:
+      - x86_64
+    inherits:
+      katello-nightly-el8-build:
+        katello-nightly-el8-override: 0
+        foreman-plugins-nightly-el8: 3
+        foreman-nightly-el8: 5
+      katello-nightly-el8-override:
+        katello-nightly-el8: 0
+      katello-nightly-el8:
+        katello-thirdparty-el8: 0
+    external_repos:
+      - centos8-baseos
+      - centos8-appstream
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - centos-release
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - foreman-build
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - platform-python
+        - python3-rpm-macros
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - centos-release
+        - foreman-build
+        - platform-python
+        - python3-rpm-macros
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
   - name: katello-pulpcore-nightly-el7
     based_off: null
     arches:
@@ -78,3 +138,47 @@
         - rhpkg-simple
         - rpm-build
         - shadow-utils
+  - name: katello-pulpcore-nightly-el8
+    based_off: null
+    arches:
+     - x86_64
+    build_target: katello-pulpcore-nightly-el8-build
+    external_repos:
+      - centos8-baseos
+      - centos8-appstream
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - python3-rpm-macros
+        - redhat-release
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - python3-rpm-macros
+        - redhat-release
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
+    
