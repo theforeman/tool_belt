@@ -9,6 +9,7 @@
   - [ ] `./tools.rb setup-environment configs/katello/<%= short_version %>.yaml`
   - [ ] `./tools.rb cherry-picks --version <%= full_version %> configs/katello/<%= short_version %>.yaml`
   - [ ] Verify tickets in the cherry_picks_<%= full_version %> file are accounted for or additional cherry pick them
+  - [ ] Check for outdated deprecation warnings in the current and next release with `./tools check-deprecation-warnings --version <%= short_version %> repos/katello/<%= full_version %>/katello`. Follow the instructions in the output of the command.
 
 - [ ] In katello release branch:
   - [ ] Update `lib/katello/version.rb` to <%= full_version %>
