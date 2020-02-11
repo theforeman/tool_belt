@@ -26,15 +26,15 @@
 :gpg_key: 5AA9BCAD
 :mash_scripts:
 :tags:
-  - name: katello-3.14-thirdparty-candlepin-rhel7
+  - name: katello-3.15-thirdparty-candlepin-rhel7
     based_off: katello-thirdparty-candlepin-rhel7
     arches:
       - x86_64
   - name: katello-3.15-rhel7
     based_off: katello-nightly-rhel7
     helper_tags:
-      katello-3.14-thirdparty-rhel7: katello-thirdparty-rhel7
-      katello-3.14-rhel7-override: null
+      katello-3.15-thirdparty-rhel7: katello-thirdparty-rhel7
+      katello-3.15-rhel7-override: null
     build_target: katello-3.15-rhel7-build
     build_package_group_source_tag: katello-nightly-rhel7-build
     arches:
