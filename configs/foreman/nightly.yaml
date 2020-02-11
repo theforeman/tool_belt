@@ -75,7 +75,6 @@
     inherits:
       foreman-nightly-rhel7-build:
         foreman-nightly-rhel7-override: 0
-        tfm-ror52-rhel7: 2
         foreman-nightly-nonscl-rhel7: 10
       foreman-nightly-rhel7-override:
         foreman-nightly-rhel7: 0
@@ -110,7 +109,6 @@
         - shadow-utils
         - tar
         - tfm-build
-        - tfm-ror52-scldevel
         - unzip
         - util-linux
         - which
@@ -126,7 +124,6 @@
         - scl-utils-build
         - shadow-utils
         - tfm-build
-        - tfm-ror52-scldevel
   - name: foreman-nightly-el8
     based_off: null
     helper_tags:
@@ -245,7 +242,6 @@
     inherits:
       foreman-plugins-nightly-rhel7-build:
         foreman-plugins-nightly-rhel7-override: 0
-        tfm-ror52-rhel7: 2
         foreman-plugins-nightly-nonscl-rhel7: 5
         foreman-nightly-rhel7: 15
         foreman-nightly-nonscl-rhel7: 20
@@ -282,7 +278,6 @@
         - shadow-utils
         - tar
         - tfm-build
-        - tfm-ror52-scldevel
         - unzip
         - util-linux
         - which
@@ -298,7 +293,6 @@
         - scl-utils-build
         - shadow-utils
         - tfm-build
-        - tfm-ror52-scldevel
   - name: foreman-plugins-nightly-el8
     based_off: null
     helper_tags:
