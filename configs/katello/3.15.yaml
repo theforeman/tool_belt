@@ -19,7 +19,7 @@
     :branch: 0.20.1
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-host-tools:
-    :branch: 3.5.2
+    :branch: 3.5.3
     :repo: https://github.com/Katello/katello-host-tools.git
 :ignores:
 :strict_keys: true
