@@ -37,7 +37,7 @@
 - [ ] Refresh unattended templates
   - [ ] Sync the community-templates to Foreman core, by running `script/sync_templates.sh`
   - [ ] Create a <%= @release %>-stable branch in [community-templates](https://github.com/theforeman/community-templates)
-- [ ] Add new languages that are at a [reasonable completion on Transifex](https://www.transifex.com/foreman/foreman/foreman/) to **develop**
+- [ ] Add new languages that are at a [reasonable completion on Transifex](https://www.transifex.com/foreman/foreman/foreman/) to __develop__
 - [ ] [Generate](https://github.com/theforeman/theforeman-rel-eng/blob/master/generate_gpg), [backup](https://github.com/theforeman/theforeman-rel-eng/blob/master/export_gpg_private), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_gpg) and [upload](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_gpg) a GPG key. See [GPG_Keys](https://projects.theforeman.org/projects/foreman/wiki/GPG_Keys) if needed.
 - [ ] Publish the key by [exporting](https://github.com/theforeman/theforeman-rel-eng/blob/master/export_gpg_public) the GPG key
   - [ ] Update the website's [security.md](https://github.com/theforeman/theforeman.org/blob/gh-pages/security.md) and create a file in [static/keys](https://github.com/theforeman/theforeman.org/tree/gh-pages/static/keys)
@@ -64,24 +64,24 @@
 
 # Branch main code repos
 
-- [ ] Create <%= release %>-stable branches
+- Create <%= release %>-stable branches:
   - [ ] [foreman](https://github.com/theforeman/foreman)
   - [ ] [foreman-installer](https://github.com/theforeman/foreman-installer)
     - [ ] `bundle exec rake pin_modules && sed -i '/Puppetfile.lock/d' .gitignore && bundle exec librarian-puppet install && git add Puppetfile*`
   - [ ] [foreman-selinux](https://github.com/theforeman/foreman-selinux)
   - [ ] [smart-proxy](https://github.com/theforeman/smart-proxy)
-- [ ] Branch foreman-packaging
+- Branch foreman-packaging:
   - [ ] Create rpm/<%= release %> and update `packages/foreman/foreman-release/foreman.gpg`, `mock/*.cfg`, `package_manifest.yaml`, `rel-eng/{releasers.conf,tito.props}` and `repoclosure/*.conf`
   - [ ] Create deb/<%= release %>
   - [ ] Update `.github/PULL_REQUEST_TEMPLATE.md` (by adding `[ ] <%= release %>` to it) in `master`
-- [ ] Bump versions to <%= develop %>-develop
+- Bump versions to <%= develop %>-develop:
   `echo <%= develop %>.0-develop > VERSION`
   - [ ] [foreman](https://github.com/theforeman/foreman)
   Also change package.json version field to <%= develop %>.0
   - [ ] [foreman-installer](https://github.com/theforeman/foreman-installer)
   - [ ] [foreman-selinux](https://github.com/theforeman/foreman-selinux)
   - [ ] [smart-proxy](https://github.com/theforeman/smart-proxy)
-- [ ] Update foreman-packaging to <%= develop %>:
+- Update foreman-packaging to <%= develop %>:
   - [ ] rpm/develop:
     - [ ] Update the build tag: `sed -i 's/fm<%= release.tr('.', '_') %>/fm<%= develop.tr('.', '_') %>/g' rel-eng/{releasers.conf,tito.props}`
     - [ ] Set to version `<%= develop %>.0`, reset release to `1` in `packages/foreman/foreman{,-{installer,proxy,release,selinux}}/*.spec` and create a changelog using `obal changelog --message '- Bump version to <%= develop %>-develop' foreman{,-{installer,proxy,release,selinux}}`
