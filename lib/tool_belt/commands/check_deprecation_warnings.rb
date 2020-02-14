@@ -1,20 +1,22 @@
 module ToolBelt
   module Command
     class CheckDeprecationWarningsCommand < Clamp::Command
-      parameter 'repo_path', 'Path (relative to tool_belt) of repository to check'
-      option '--version', 'VERSION', 'Release version to check for in x.y format', required: true
+      parameter 'config_file', 'Release configuration file'
       option '--paths', 'PATHS',
              'Patterns within the repository to search, separated by a comma.',
              default: 'app/**/*.rb,lib/**/*.rb'
 
       def execute
-        root_path = File.expand_path("../../../../#{repo_path}", __FILE__)
-        globs_to_scan = paths.split(',').map { |path| File.expand_path(path, root_path) }
-        puts "\nScanning for deprecation warnings in #{globs_to_scan.join(', ')}\n\n"
+        config = ToolBelt::Config.new(config_file)
+        options = config.options
+        repo_path = "repos/#{options.namespace}/#{options.project}/"
+        raise "Repo path #{repo_path} not found!" unless File.exist?(repo_path)
+
+        globs_to_scan = paths.split(',').map { |path| File.expand_path(path, repo_path) }
         paths_to_scan = Dir.glob(globs_to_scan)
 
-        finder = ToolBelt::OutdatedDeprecationWarningFinder.new(paths_to_scan, version)
-        finder.scan_for_deprecations
+        puts "\nScanning for deprecation warnings in #{globs_to_scan.join(', ')}\n\n"
+        finder = ToolBelt::OutdatedDeprecationWarningFinder.new(paths_to_scan, options.release)
         current_outdated = finder.deprecations.select { |dep| dep[:outdated] == true }
         next_outdated = finder.deprecations.select { |dep| dep[:outdated_next_version] == true }
 
@@ -27,7 +29,7 @@ module ToolBelt
 
         if next_outdated.any?
           puts next_outdated_found(finder.next_minor_version)
-          next_outdated.each { |outdated_dep| puts next_outdated_message(outdated_dep, finder.next_minor_version) }
+          next_outdated.each { |outdated_dep| puts next_outdated_message(outdated_dep) }
         else
           puts "No deprecation warnings found that will be outdated in the next version!\n".green
         end
@@ -55,7 +57,7 @@ module ToolBelt
         "version of #{version}.\n\n"
       end
 
-      def next_outdated_message(outdated_dep, _version)
+      def next_outdated_message(outdated_dep)
         "Deprecation warning at #{outdated_dep[:file]} line #{outdated_dep[:line]} is marked for " \
         "removal in version #{outdated_dep[:version]}, which is the *next* release version.\n\n"
       end

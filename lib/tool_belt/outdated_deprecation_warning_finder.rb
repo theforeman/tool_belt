@@ -1,19 +1,16 @@
 module ToolBelt
   class OutdatedDeprecationWarningFinder
     attr_accessor :deprecations
-    attr_accessor :current_version
-    attr_accessor :next_minor_version
 
     def initialize(paths, version)
       @paths = paths
       @version = version
       @deprecations = []
       error_if_empty(paths)
+      scan_for_deprecations
     end
 
     def scan_for_deprecations
-      outdated_deprecations = []
-
       @paths.select do |file|
         ast = ::Parser::CurrentRuby.parse(File.read(file))
         processor = ToolBelt::DeprecationWarningParser.new(file)
@@ -55,7 +52,7 @@ module ToolBelt
     def bump_minor_version(version)
       version_segments = version.segments
       version_segments[1] += 1
-      Gem::Version.new(version_segments.join('.'))
+      Gem::Version.new(version_segments[0, 2].join('.'))
     end
   end
 end

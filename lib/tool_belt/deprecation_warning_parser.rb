@@ -2,7 +2,7 @@ require 'parser/current'
 
 module ToolBelt
   class DeprecationWarningParser < ::Parser::AST::Processor
-    attr_accessor :versions_found
+    attr_reader :versions_found
 
     def initialize(file)
       super()
