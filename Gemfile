@@ -7,6 +7,7 @@ gem 'minitest'
 gem 'mocha'
 gem 'octokit'
 gem 'git'
+gem 'parser'
 
 group :development do
   gem 'byebug'
