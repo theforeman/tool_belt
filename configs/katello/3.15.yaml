@@ -13,17 +13,17 @@
     :repo: https://github.com/Katello/katello.git
     :version_branch: true
   :foreman-packaging:
-    :branch: rpm/1.24
+    :branch: rpm/2.0
     :repo: https://github.com/theforeman/foreman-packaging.git
   :hammer-cli-katello:
-    :branch: 0.20.1
+    :branch: 0.21.1
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-host-tools:
     :branch: 3.5.3
     :repo: https://github.com/Katello/katello-host-tools.git
 :ignores:
 :strict_keys: true
-:gpg_key: 5AA9BCAD
+:gpg_key: 06ABEFE2
 :mash_scripts:
 :tags:
   - name: katello-3.15-thirdparty-candlepin-rhel7
