@@ -15,7 +15,7 @@
   - foreman-client-2.0-sles11
   - foreman-client-2.0-sles12
 :repos: []
-:gpg_key: 06ABEFE2
+:gpg_key: 0579baee
 :strict_keys: true
 :tags:
   - name: foreman-2.0-nonscl-rhel7

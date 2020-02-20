@@ -23,7 +23,7 @@
     :repo: https://github.com/Katello/katello-host-tools.git
 :ignores:
 :strict_keys: true
-:gpg_key: 06ABEFE2
+:gpg_key: 0579baee
 :mash_scripts:
   - katello-3.15-rhel7
   - katello-3.15-thirdparty-candlepin-rhel7
