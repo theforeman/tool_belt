@@ -8,5 +8,5 @@ multilib_method = devel
 tag = katello-3.15-thirdparty-candlepin-rhel7
 inherit = True
 strict_keys = True
-keys = 06ABEFE2
+keys = 0579baee
 arches = x86_64
