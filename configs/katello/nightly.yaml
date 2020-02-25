@@ -101,6 +101,11 @@
     arches:
       - x86_64
     build_target: katello-pulpcore-nightly-el7-build
+    inherits:
+      katello-pulpcore-nightly-el7-build:
+        katello-pulpcore-nightly-el7-override: 0
+      katello-pulpcore-nightly-el7-override:
+        katello-pulpcore-nightly-el7: 0
     external_repos:
       - centos7-os
       - centos7-updates
@@ -144,6 +149,12 @@
     arches:
      - x86_64
     build_target: katello-pulpcore-nightly-el8-build
+    inherits:
+      katello-pulpcore-nightly-el8-build:
+        katello-pulpcore-nightly-el8-override: 0
+      katello-pulpcore-nightly-el8-override:
+        katello-pulpcore-nightly-el8: 0
+    external_repos:
     external_repos:
       - centos8-baseos
       - centos8-appstream
