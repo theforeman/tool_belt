@@ -147,6 +147,7 @@
     external_repos:
       - centos8-baseos
       - centos8-appstream
+      - centos8-powertools
     build_groups:
       build:
         - bash
