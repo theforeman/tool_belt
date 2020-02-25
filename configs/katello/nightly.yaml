@@ -98,6 +98,8 @@
         - shadow-utils
   - name: katello-pulpcore-nightly-el7
     based_off: null
+    helper_tags:
+      katello-pulpcore-nightly-el7-override: null
     arches:
       - x86_64
     build_target: katello-pulpcore-nightly-el7-build
@@ -148,6 +150,8 @@
         - shadow-utils
   - name: katello-pulpcore-nightly-el8
     based_off: null
+    helper_tags:
+      katello-pulpcore-nightly-el8-override: null
     arches:
      - x86_64
     build_target: katello-pulpcore-nightly-el8-build
