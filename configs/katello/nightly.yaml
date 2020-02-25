@@ -134,6 +134,8 @@
       srpm-build:
         - bash
         - python3-rpm-macros
+        - rh-postgresql12-scldevel
+        - scl-utils-build
         - redhat-release
         - redhat-rpm-config
         - rhpkg-simple
