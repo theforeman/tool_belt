@@ -22,6 +22,8 @@
     :branch: 3.5.3
     :repo: https://github.com/Katello/katello-host-tools.git
 :ignores:
+  - 28292 # already on the branch
+  - 29073 # already on branch
 :strict_keys: true
 :gpg_key: 0579baee
 :mash_scripts:
