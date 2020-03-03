@@ -24,7 +24,7 @@ module ToolBelt
           args.select! { |arg| arg.to_s =~ version_regex }
           if args.any?
             found_version = args.first.children.first
-            extracted_version = found_version.scan(version_regex).first
+            extracted_version = found_version.to_s.scan(version_regex).first
             @versions_found << {
               version: extracted_version,
               file: @file,
