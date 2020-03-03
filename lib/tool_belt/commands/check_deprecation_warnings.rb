@@ -10,7 +10,9 @@ module ToolBelt
         config = ToolBelt::Config.new(config_file)
         options = config.options
         repo_path = "repos/#{options.namespace}/#{options.project}/"
-        raise "Repo path #{repo_path} not found!" unless File.exist?(repo_path)
+        unless File.exist?(repo_path)
+          raise "Repo path #{repo_path} not found! Did you forget to run './tools.rb setup-environment #{config_file}' ?"
+        end
 
         globs_to_scan = paths.split(',').map { |path| File.expand_path(path, repo_path) }
         paths_to_scan = Dir.glob(globs_to_scan)
