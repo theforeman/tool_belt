@@ -1,5 +1,4 @@
 require 'rubygems'
-require 'json'
 require 'rest_client'
 
 # Issue model on the client side
