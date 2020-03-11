@@ -4,6 +4,7 @@
 :nightly: true
 :mash_scripts:
   - foreman-nightly-rhel7-dist
+  - foreman-nightly-el8
   - foreman-plugins-nightly-rhel7-dist
   - foreman-client-nightly-el8
   - foreman-client-nightly-rhel7
