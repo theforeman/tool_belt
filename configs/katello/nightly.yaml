@@ -7,6 +7,12 @@
 :tags:
   - name: katello-thirdparty-candlepin-rhel7
     based_off: null
+    build_target: katello-nightly-rhel7-build
+    arches:
+      - x86_64
+  - name: katello-thirdparty-candlepin-el8
+    based_off: null
+    build_target: katello-nightly-el8-build
     arches:
       - x86_64
   - name: katello-nightly-rhel7
