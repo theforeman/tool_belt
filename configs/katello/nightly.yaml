@@ -4,13 +4,14 @@
 :nightly: true
 :mash_scripts:
   - katello-pulpcore-nightly-el7
+  - katello-candlepin-nightly-el8
 :tags:
   - name: katello-thirdparty-candlepin-rhel7
     based_off: null
     build_target: katello-nightly-rhel7-build
     arches:
       - x86_64
-  - name: katello-thirdparty-candlepin-el8
+  - name: katello-candlepin-nightly-el8
     based_off: null
     build_target: katello-nightly-el8-build
     arches:
@@ -206,4 +207,4 @@
         - rhpkg-simple
         - rpm-build
         - shadow-utils
-    
+
