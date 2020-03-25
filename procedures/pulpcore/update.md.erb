@@ -12,3 +12,11 @@ podman run --rm --volume $(pwd)/foreman-packaging/:/app/foreman-packaging/:Z  --
 ```
 * [ ] Inspect the generated RPM specs, adjust them if needed
 * [ ] Open a PR with the changes
+
+## Update python-pulp_2to3_migration
+
+The `python-pulp_2to3_migration` package is named differently due to a tito bug (the PyPI name uses dashes, not underscores). Due to this, the regular process of updating it cannot be used.
+
+* [ ] Have a regular `foreman-packaging` clone
+* [ ] Run `obal update python-pulp_2to3_migration --version X.Y.Z`
+* [ ] As `obal` does not update dependencies, verify those are in sync with `setup.py`
