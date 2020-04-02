@@ -84,6 +84,7 @@
       - centos-sclo-rh-rhel-7
       - centos-7-server-updates
       - centos-7-server
+      - puppetlabs-puppet6-rhel-7
     build_groups:
       build:
         - bash
