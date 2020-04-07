@@ -6,6 +6,7 @@
   - foreman-nightly-rhel7-dist
   - foreman-nightly-el8
   - foreman-plugins-nightly-rhel7-dist
+  - foreman-plugins-nightly-el8
   - foreman-client-nightly-el8
   - foreman-client-nightly-rhel7
   - foreman-client-nightly-rhel6
