@@ -143,6 +143,7 @@
     external_repos:
       - centos8-baseos
       - centos8-appstream
+      - puppetlabs-puppet6-rhel-8
     build_groups:
       build:
         - bash
