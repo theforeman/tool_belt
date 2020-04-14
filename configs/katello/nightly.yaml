@@ -118,6 +118,7 @@
     external_repos:
       - centos7-os
       - centos7-updates
+      - centos-sclo-rh-rhel-7
     build_groups:
       build:
         - bash
