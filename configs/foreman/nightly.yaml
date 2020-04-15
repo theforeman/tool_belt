@@ -141,8 +141,8 @@
       foreman-nightly-el8-override:
         foreman-nightly-el8: 0
     external_repos:
-      - centos8-baseos
-      - centos8-appstream
+      - test-flat-el8
+      - centos8-devel
       - puppetlabs-puppet6-rhel-8
     build_groups:
       build:

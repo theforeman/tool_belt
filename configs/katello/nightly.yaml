@@ -119,6 +119,7 @@
       - centos7-os
       - centos7-updates
       - centos-sclo-rh-rhel-7
+      - epel-7
     build_groups:
       build:
         - bash
@@ -173,6 +174,7 @@
       - centos8-baseos
       - centos8-appstream
       - centos8-powertools
+      - centos8-devel
     build_groups:
       build:
         - bash
