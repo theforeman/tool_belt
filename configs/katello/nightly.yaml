@@ -3,6 +3,8 @@
 :github_org: katello
 :nightly: true
 :mash_scripts:
+  - katello-nightly-rhel7
+  - katello-nightly-el8
   - katello-pulpcore-nightly-el7
   - katello-candlepin-nightly-el8
 :tags:
