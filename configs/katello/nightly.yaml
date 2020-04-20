@@ -61,9 +61,9 @@
       katello-nightly-el8:
         katello-thirdparty-el8: 0
     external_repos:
-      - centos8-baseos
-      - centos8-appstream
-      - centos8-powertools
+      - test-flat-el8
+      - centos8-devel
+      - puppetlabs-puppet6-rhel-8
     build_groups:
       build:
         - bash
