@@ -3,7 +3,7 @@
 # Manual updates
 
 - [ ] Update manual if applicable for any additional installation steps
-* Update [release notes section](gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md) in the manual:
+- Update [release notes section](gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md) in the manual:
   - [ ] Release notes: bullet point list by category of all changes, include link to bug numbers. You can auto-generate changes using the [release notes script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/release_notes.rb).
   - [ ] CLI release notes are taken from the hammer-cli and hammer-cli-foreman changelogs
   - [ ] Link to installer changelogs and note versions being used
@@ -26,21 +26,21 @@
 
 # Tagging a release
 
-- [ ] In foreman <%= short_version %>-stable:
+- In foreman <%= short_version %>-stable:
   - [ ] Make sure [test_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_<%= short_version.tr('.', '_') %>_stable/) is green
   - [ ] run `make -C locale tx-update` (if Transifex has not switched to the next major release yet, usually after .2)
   - [ ] run `script/sync_templates.sh`
   - [ ] update template snapshots with `rake snapshots:generate RAILS_ENV=test` and verify changes are expected
   - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
   - [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
-- [ ] In smart-proxy <%= short_version %>-stable:
+- In smart-proxy <%= short_version %>-stable:
   - [ ] Make sure [test_proxy_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_proxy_<%= short_version.tr('.', '_') %>_stable/) is green
   - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
   - [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
-- [ ] In foreman-selinux <%= short_version %>-stable:
+- In foreman-selinux <%= short_version %>-stable:
   - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
   - [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
-- [ ] In foreman-installer <%= short_version %>-stable:
+- In foreman-installer <%= short_version %>-stable:
   - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
   - [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
 - [ ] Run the Jenkins [Tarballs Release](https://ci.theforeman.org/job/tarballs-release/) to create tarballs
