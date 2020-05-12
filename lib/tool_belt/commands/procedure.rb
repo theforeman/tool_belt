@@ -20,8 +20,8 @@ module ToolBelt
 
       subcommand "release", "Release procedures for project" do
         parameter "project", "Project to generate procedure for"
-        parameter "full-version", "Version that the branch will have - like 1.20.0-RC1" do |value|
-          raise ArgumentError.new('Release must be in major.minor.patch or major.minor.patch-RCx, like 1.20.0 or 1.20.0-RC1') unless value =~ /^\d+\.\d+\.\d+(-RC\d+)?$/
+        parameter "full-version", "Version that the branch will have - like 1.20.0-rc1" do |value|
+          raise ArgumentError.new('Release must be in major.minor.patch or major.minor.patch-rcx, like 1.20.0 or 1.20.0-rc1') unless value =~ /^\d+\.\d+\.\d+(-rc\d+)?$/
           value
         end
 
@@ -34,7 +34,7 @@ module ToolBelt
             extra: extra,
             short_version: "#{major}.#{minor}", # 1.20
             debian_full_version: debian_full_version, # 1.20.0~rc1-1
-            full_version: full_version, # 1.20.0-RC1
+            full_version: full_version, # 1.20.0-rc1
             version: version, # 1.20.0
           }
 
