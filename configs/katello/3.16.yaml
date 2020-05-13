@@ -13,7 +13,21 @@
   - katello-pulpcore-3.16-el8
   - katello-3.16-thirdparty-candlepin-rhel7
   - katello-candlepin-3.16-el8
-:repos: []
+:repos:
+  :katello:
+    :main: true
+    :branch: KATELLO-3.16
+    :repo: https://github.com/Katello/katello.git
+    :version_branch: true
+  :foreman-packaging:
+    :branch: rpm/2.1
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :hammer-cli-katello:
+    :branch: 0.22.0
+    :repo: https://github.com/Katello/hammer-cli-katello.git
+  :katello-host-tools:
+    :branch: 3.5.3
+    :repo: https://github.com/Katello/katello-host-tools.git
 :strict_keys: true
 :gpg_key: B6F08CCF
 :tags:
