@@ -65,12 +65,18 @@
 ## Release Engineer
 
 - [ ] Branch RPM packaging using [tool_belt](https://github.com/theforeman/tool_belt)
-  - [ ] Create `configs/foreman/<%= release %>.yaml` based on the nightly and previous release
+  - [ ] Create `configs/foreman/<%= release %>.yaml` based on the nightly and previous release. Ensure that any `based_on` entries are filled out and pointing to nightly version of tag.
+    - [ ] Generate mash configs
+      ```
+      bundle exec ./tools.rb mash-scripts configs/foreman/<%= release %>.yaml
+      sed -i '/strict_keys/ s/True/False/' mash_scripts/foreman/<%= release %>.0/foreman-plugins-<%= release %>-*.mash
+      ```
+    - [ ] Open PR with new config and mash scripts for review
   - [ ] Clone tags and create build targets in Koji: `bundle exec ./tools.rb koji --commit configs/foreman/<%= release %>.yaml`
-  - [ ] Create `rpm/<%= release %>` in [foreman-packaging](https://github.com/theforeman/foreman-packaging) based on `rpm/develop`
+  - [ ] Create a `rpm/<%= release %>` branch in [foreman-packaging](https://github.com/theforeman/foreman-packaging) based on `rpm/develop`
 - [ ] Branch Debian packaging
   - [ ] Clone Debian nightly repos to <%= release %> using [copy/freight instructions](https://projects.theforeman.org/projects/foreman/wiki/Debian_Packaging#Branching-for-release)
-  - [ ] Create `deb/<%= release %>` in [foreman-packaging](https://github.com/theforeman/foreman-packaging) based on `deb/develop`
+  - [ ] Create a `deb/<%= release %>` branch in [foreman-packaging](https://github.com/theforeman/foreman-packaging) based on `deb/develop`
 
 ## Release Owner
 
@@ -107,15 +113,11 @@ The next step should only be done after all branching, including packaging, has 
 - [ ] Prepare build systems for <%= release %> release:
   - [ ] foreman-packaging's rpm/<%= release %>
     - [ ] Update `packages/foreman/foreman-release/foreman.gpg`, `mock/*.cfg`, `package_manifest.yaml`, `rel-eng/{releasers.conf,tito.props}` and `repoclosure/*.conf`
-  - [ ] Create mash configuration on Koji:
+  - [ ] Create mash configuration on Koji, from tool_belt checkout:
     ```
-    bundle exec ./tools.rb mash-scripts configs/foreman/<%= release %>.yaml
-    sed -i '/strict_keys/ s/True/False/' mash_scripts/foreman/<%= release %>.0/foreman-plugins-<%= release %>-*.mash
     scp mash_scripts/foreman/<%= release %>.0/*.mash root@koji.katello.org:/etc/mash/
     ```
-  - [ ] Update [mash scripts](https://github.com/theforeman/foreman-infra/tree/master/koji/) and deploy them to Koji:
-    - [ ] Verify main mash scripts (`foreman-mash-split.py`, `foreman-rails-mash-split.py` and `foreman-plugin-mash-split.py`) don't need any version-specific updates
-    - [ ] Update dists in client mash script (`foreman-client-mash-split.py`)
+  - [ ] Update mash script if needed - [collection-mash-split.py](https://github.com/theforeman/foreman-infra/blob/master/koji/collection-mash-split.py)
   - [ ] Add the new release to the JJB job definitions in [foreman-infra](https://github.com/theforeman/foreman-infra/tree/master/puppet/modules/jenkins_job_builder/files/theforeman.org/)
     - [ ] Create a `<%= release %>.groovy` in `pipelines/vars/foreman/` describing the operating systems the release supports
     - [ ] Add `<%= release %>` to the version list in `yaml/jobs/pipeline/foreman-release.yaml`
