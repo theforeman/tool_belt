@@ -31,20 +31,20 @@
 :strict_keys: true
 :gpg_key: B6F08CCF
 :tags:
-  - name: katello-thirdparty-candlepin-rhel7
-    based_off: null
+  - name: katello-3.16-thirdparty-candlepin-rhel7
+    based_off: katello-thirdparty-candlepin-rhel7
     build_target: katello-3.16-rhel7-build
     arches:
       - x86_64
   - name: katello-candlepin-3.16-el8
-    based_off: null
+    based_off: katello-candlepin-nightly-el8
     build_target: katello-3.16-el8-build
     arches:
       - x86_64
   - name: katello-3.16-rhel7
-    based_off: null
+    based_off: katello-nightly-rhel7
     helper_tags:
-      katello-thirdparty-rhel7: null
+      katello-3.16-thirdparty-rhel7: null
       katello-3.16-rhel7-override: null
     build_target: katello-3.16-rhel7-build
     build_package_group_source_tag: katello-3.16-rhel7-build
@@ -53,23 +53,23 @@
     inherits:
       katello-3.16-rhel7-build:
         katello-3.16-rhel7-override: 0
-        foreman-plugins-3.16-rhel7: 3
-        foreman-plugins-3.16-nonscl-rhel7: 4
-        foreman-3.16-rhel7: 5
-        foreman-3.16-nonscl-rhel7: 6
+        foreman-plugins-2.1-rhel7: 3
+        foreman-plugins-2.1-nonscl-rhel7: 4
+        foreman-2.1-rhel7: 5
+        foreman-2.1-nonscl-rhel7: 6
       katello-3.16-rhel7-override:
         katello-3.16-rhel7: 0
       katello-3.16-rhel7:
-        katello-thirdparty-rhel7: 0
+        katello-3.16-thirdparty-rhel7: 0
     external_repos:
       - epel-7
       - centos-sclo-rh-rhel-7
       - centos-7-server-updates
       - centos-7-server
   - name: katello-3.16-el8
-    based_off: null
+    based_off: katello-nightly-el8
     helper_tags:
-      katello-thirdparty-el8: null
+      katello-3.16-thirdparty-el8: null
       katello-3.16-el8-override: null
     build_target: katello-3.16-el8-build
     build_package_group_source_tag: katello-3.16-el8-build
@@ -78,12 +78,12 @@
     inherits:
       katello-3.16-el8-build:
         katello-3.16-el8-override: 0
-        foreman-plugins-3.16-el8: 3
-        foreman-3.16-el8: 5
+        foreman-plugins-2.1-el8: 3
+        foreman-2.1-el8: 5
       katello-3.16-el8-override:
         katello-3.16-el8: 0
       katello-3.16-el8:
-        katello-thirdparty-el8: 0
+        katello-3.16-thirdparty-el8: 0
     external_repos:
       - test-flat-el8
       - centos8-devel
@@ -128,7 +128,7 @@
         - rpm-build
         - shadow-utils
   - name: katello-pulpcore-3.16-el7
-    based_off: null
+    based_off: katello-pulpcore-nightly-el7
     helper_tags:
       katello-pulpcore-3.16-el7-override: null
     arches:
@@ -182,7 +182,7 @@
         - rpm-build
         - shadow-utils
   - name: katello-pulpcore-3.16-el8
-    based_off: null
+    based_off: katello-pulpcore-nightly-el8
     helper_tags:
       katello-pulpcore-3.16-el8-override: null
     arches:

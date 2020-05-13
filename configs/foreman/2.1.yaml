@@ -71,7 +71,7 @@
         - rpm-build
         - shadow-utils
   - name: foreman-2.1-rhel7
-    based_off: null
+    based_off: foreman-nightly-rhel7
     helper_tags:
       foreman-2.1-rhel7-override: null
     build_target: foreman-2.1-rhel7-build
@@ -132,7 +132,7 @@
         - shadow-utils
         - tfm-build
   - name: foreman-2.1-el8
-    based_off: null
+    based_off: foreman-nightly-el8
     helper_tags:
       foreman-2.1-el8-override: null
     build_target: foreman-2.1-el8-build
@@ -188,7 +188,7 @@
         - rpm-build
         - shadow-utils
   - name: foreman-plugins-2.1-nonscl-rhel7
-    based_off: null
+    based_off: foreman-plugins-nightly-nonscl-rhel7
     helper_tags:
       foreman-plugins-2.1-nonscl-rhel7-override: null
     build_target: foreman-plugins-2.1-nonscl-rhel7-build
@@ -240,7 +240,7 @@
         - rpm-build
         - shadow-utils
   - name: foreman-plugins-2.1-rhel7
-    based_off: null
+    based_off: foreman-plugins-nightly-rhel7
     helper_tags:
       foreman-plugins-2.1-rhel7-override: null
     build_target: foreman-plugins-2.1-rhel7-build
@@ -302,7 +302,7 @@
         - shadow-utils
         - tfm-build
   - name: foreman-plugins-2.1-el8
-    based_off: null
+    based_off: foreman-plugins-nightly-el8
     helper_tags:
       foreman-plugins-2.1-el8-override: null
     build_target: foreman-plugins-2.1-el8-build
@@ -358,19 +358,19 @@
         - rpm-build
         - shadow-utils
   - name: foreman-2.1-rhel7-dist
-    based_off: null
+    based_off: foreman-nightly-rhel7-dist
     inherits:
       foreman-2.1-rhel7-dist:
         foreman-2.1-rhel7: 20
         foreman-2.1-nonscl-rhel7: 10
   - name: foreman-plugins-2.1-rhel7-dist
-    based_off: null
+    based_off: foreman-plugins-nightly-rhel7-dist
     inherits:
       foreman-plugins-2.1-rhel7-dist:
         foreman-plugins-2.1-rhel7: 2
         foreman-plugins-2.1-nonscl-rhel7: 0
   - name: foreman-client-2.1-rhel5
-    based_off: null
+    based_off: foreman-client-nightly-rhel5
     helper_tags:
       foreman-client-2.1-rhel5-override: null
       foreman-client-2.1-rhel5: null
@@ -422,7 +422,7 @@
         - rpm-build
         - shadow-utils
   - name: foreman-client-2.1-rhel6
-    based_off: null
+    based_off: foreman-client-nightly-rhel6
     helper_tags:
       foreman-client-2.1-rhel6-override: null
       foreman-client-2.1-rhel6: null
@@ -473,7 +473,7 @@
         - rpm-build
         - shadow-utils
   - name: foreman-client-2.1-el8
-    based_off: null
+    based_off: foreman-client-nightly-el8
     helper_tags:
       foreman-client-2.1-el8-override: null
       foreman-client-2.1-el8: null
@@ -527,7 +527,7 @@
         - rpm-build
         - shadow-utils
   - name: foreman-client-2.1-rhel7
-    based_off: null
+    based_off: foreman-client-nightly-rhel7
     helper_tags:
       foreman-client-2.1-rhel7-override: null
       foreman-client-2.1-rhel7: null
@@ -578,7 +578,7 @@
         - rpm-build
         - shadow-utils
   - name: foreman-client-2.1-sles12
-    based_off: null
+    based_off: foreman-client-nightly-sles12
     arches:
       - x86_64
     helper_tags:
@@ -586,7 +586,7 @@
     inherits:
       foreman-client-2.1-sles12: {}
   - name: foreman-client-2.1-sles11
-    based_off: null
+    based_off: foreman-client-nightly-sles11
     arches:
       - x86_64
     helper_tags:
