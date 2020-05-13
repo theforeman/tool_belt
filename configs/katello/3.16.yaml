@@ -1,67 +1,74 @@
 ---
 :project: katello
 :github_org: katello
-:nightly: true
+:releases:
+  :3.16.0:
+    :redmine_version_id: 1184
+:prior_releases: []
+:code_name:
 :mash_scripts:
-  - katello-nightly-rhel7
-  - katello-nightly-el8
-  - katello-pulpcore-nightly-el7
-  - katello-pulpcore-nightly-el8
-  - katello-thirdparty-candlepin-rhel7
-  - katello-candlepin-nightly-el8
+  - katello-3.16-rhel7
+  - katello-3.16-el8
+  - katello-pulpcore-3.16-el7
+  - katello-pulpcore-3.16-el8
+  - katello-3.16-thirdparty-candlepin-rhel7
+  - katello-candlepin-3.16-el8
+:repos: []
+:strict_keys: true
+:gpg_key: B6F08CCF
 :tags:
   - name: katello-thirdparty-candlepin-rhel7
     based_off: null
-    build_target: katello-nightly-rhel7-build
+    build_target: katello-3.16-rhel7-build
     arches:
       - x86_64
-  - name: katello-candlepin-nightly-el8
+  - name: katello-candlepin-3.16-el8
     based_off: null
-    build_target: katello-nightly-el8-build
+    build_target: katello-3.16-el8-build
     arches:
       - x86_64
-  - name: katello-nightly-rhel7
+  - name: katello-3.16-rhel7
     based_off: null
     helper_tags:
       katello-thirdparty-rhel7: null
-      katello-nightly-rhel7-override: null
-    build_target: katello-nightly-rhel7-build
-    build_package_group_source_tag: katello-nightly-rhel7-build
+      katello-3.16-rhel7-override: null
+    build_target: katello-3.16-rhel7-build
+    build_package_group_source_tag: katello-3.16-rhel7-build
     arches:
       - x86_64
     inherits:
-      katello-nightly-rhel7-build:
-        katello-nightly-rhel7-override: 0
-        foreman-plugins-nightly-rhel7: 3
-        foreman-plugins-nightly-nonscl-rhel7: 4
-        foreman-nightly-rhel7: 5
-        foreman-nightly-nonscl-rhel7: 6
-      katello-nightly-rhel7-override:
-        katello-nightly-rhel7: 0
-      katello-nightly-rhel7:
+      katello-3.16-rhel7-build:
+        katello-3.16-rhel7-override: 0
+        foreman-plugins-3.16-rhel7: 3
+        foreman-plugins-3.16-nonscl-rhel7: 4
+        foreman-3.16-rhel7: 5
+        foreman-3.16-nonscl-rhel7: 6
+      katello-3.16-rhel7-override:
+        katello-3.16-rhel7: 0
+      katello-3.16-rhel7:
         katello-thirdparty-rhel7: 0
     external_repos:
       - epel-7
       - centos-sclo-rh-rhel-7
       - centos-7-server-updates
       - centos-7-server
-  - name: katello-nightly-el8
+  - name: katello-3.16-el8
     based_off: null
     helper_tags:
       katello-thirdparty-el8: null
-      katello-nightly-el8-override: null
-    build_target: katello-nightly-el8-build
-    build_package_group_source_tag: katello-nightly-el8-build
+      katello-3.16-el8-override: null
+    build_target: katello-3.16-el8-build
+    build_package_group_source_tag: katello-3.16-el8-build
     arches:
       - x86_64
     inherits:
-      katello-nightly-el8-build:
-        katello-nightly-el8-override: 0
-        foreman-plugins-nightly-el8: 3
-        foreman-nightly-el8: 5
-      katello-nightly-el8-override:
-        katello-nightly-el8: 0
-      katello-nightly-el8:
+      katello-3.16-el8-build:
+        katello-3.16-el8-override: 0
+        foreman-plugins-3.16-el8: 3
+        foreman-3.16-el8: 5
+      katello-3.16-el8-override:
+        katello-3.16-el8: 0
+      katello-3.16-el8:
         katello-thirdparty-el8: 0
     external_repos:
       - test-flat-el8
@@ -106,18 +113,18 @@
         - rhpkg-simple
         - rpm-build
         - shadow-utils
-  - name: katello-pulpcore-nightly-el7
+  - name: katello-pulpcore-3.16-el7
     based_off: null
     helper_tags:
-      katello-pulpcore-nightly-el7-override: null
+      katello-pulpcore-3.16-el7-override: null
     arches:
       - x86_64
-    build_target: katello-pulpcore-nightly-el7-build
+    build_target: katello-pulpcore-3.16-el7-build
     inherits:
-      katello-pulpcore-nightly-el7-build:
-        katello-pulpcore-nightly-el7-override: 0
-      katello-pulpcore-nightly-el7-override:
-        katello-pulpcore-nightly-el7: 0
+      katello-pulpcore-3.16-el7-build:
+        katello-pulpcore-3.16-el7-override: 0
+      katello-pulpcore-3.16-el7-override:
+        katello-pulpcore-3.16-el7: 0
     external_repos:
       - centos7-os
       - centos7-updates
@@ -160,18 +167,18 @@
         - rhpkg-simple
         - rpm-build
         - shadow-utils
-  - name: katello-pulpcore-nightly-el8
+  - name: katello-pulpcore-3.16-el8
     based_off: null
     helper_tags:
-      katello-pulpcore-nightly-el8-override: null
+      katello-pulpcore-3.16-el8-override: null
     arches:
      - x86_64
-    build_target: katello-pulpcore-nightly-el8-build
+    build_target: katello-pulpcore-3.16-el8-build
     inherits:
-      katello-pulpcore-nightly-el8-build:
-        katello-pulpcore-nightly-el8-override: 0
-      katello-pulpcore-nightly-el8-override:
-        katello-pulpcore-nightly-el8: 0
+      katello-pulpcore-3.16-el8-build:
+        katello-pulpcore-3.16-el8-override: 0
+      katello-pulpcore-3.16-el8-override:
+        katello-pulpcore-3.16-el8: 0
     external_repos:
     external_repos:
       - centos8-baseos
