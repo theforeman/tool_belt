@@ -156,5 +156,9 @@ module ToolBelt
       _, success = @systools.execute("#{KojiBuilder::KOJI_COMMAND} #{command}")
       raise "Failed to run koji command '#{command}'" unless success
     end
+
+    def add_module_hotfixes(tag)
+      koji_change("edit-tag #{tag} -x mock.yum.module_hotfixes=1")
+    end
   end
 end

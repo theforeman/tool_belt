@@ -32,6 +32,8 @@ module ToolBelt
         end
 
         tools.ensure_external_repos(build_target, external_repos) if external_repos && external_repos.any?
+
+        tools.add_module_hotfixes(build_target) if build_target.include?('el8')
       end
 
       if helper_tags
