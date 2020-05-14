@@ -20,7 +20,7 @@
 :repos: []
 :tags:
   - name: foreman-2.1-nonscl-rhel7
-    based_off: null
+    based_off: foreman-nightly-nonscl-rhel7
     helper_tags:
       foreman-2.1-nonscl-rhel7-override: null
     build_target: foreman-2.1-nonscl-rhel7-build
