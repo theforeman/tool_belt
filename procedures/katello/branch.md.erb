@@ -3,7 +3,14 @@
 ## Release Owner
 
 - [ ] Announce upcoming branching to discourse development category a month before
-- [ ] Start extracting i18n strings and pushing the changes into master git branches so Transiflex can pick it up
+- [ ] Start extracting i18n strings and pushing the changes into master git branches so Transifex can pick it up
+- [ ] Update Katello Transifex translations:
+  - [ ] Create a Transifex account and join the Foreman team
+  - [ ] [Install and configure the Transifex client](https://projects.theforeman.org/projects/foreman/wiki/Translating#How-to-pull-translations)
+  - [ ] Spin up a Foreman and Katello installation
+  - [ ] `make -C locale tx-update` in the katello directory
+  - [ ] `bundle exec rake plugin:gettext[katello]` in the foreman directory
+  - [ ] Commit the resulting files in the katello directory with a message like "i18n - pulling from tx"
 
 # Two Weeks Prior to Branch Date
 
