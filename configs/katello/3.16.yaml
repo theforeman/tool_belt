@@ -5,7 +5,7 @@
   :3.16.0:
     :redmine_version_id: 1184
 :prior_releases: []
-:code_name:
+:code_name: Tasty Taiyaki
 :mash_scripts:
   - katello-3.16-rhel7
   - katello-3.16-el8
@@ -28,6 +28,17 @@
   :katello-host-tools:
     :branch: 3.5.3
     :repo: https://github.com/Katello/katello-host-tools.git
+:ignores:
+  - 28719 # Closed
+  - 21508 # Fixed outside of Katello repo
+  - 29435 # Fixed outside of Katello repo
+  - 29449 # Fixed outside of Katello repo
+  - 29436 # Fixed outside of Katello repo
+  - 29340 # Closed
+  - 28918 # Tracker
+  - 28795 # Duplicate
+  - 29603 # Fixed outside of Katello repo
+  - 28968 # Tracker
 :strict_keys: true
 :gpg_key: B6F08CCF
 :tags:
