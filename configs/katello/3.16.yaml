@@ -39,6 +39,7 @@
   - 28795 # Duplicate
   - 29603 # Fixed outside of Katello repo
   - 28968 # Tracker
+  - 27501 # Already in branch
 :strict_keys: true
 :gpg_key: B6F08CCF
 :tags:
