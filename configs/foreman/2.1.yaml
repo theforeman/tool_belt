@@ -316,8 +316,7 @@
       foreman-plugins-2.1-el8-override:
         foreman-plugins-2.1-el8: 0
     external_repos:
-      - centos8-baseos
-      - centos8-appstream
+      - test-flat-el8
     build_groups:
       build:
         - bash

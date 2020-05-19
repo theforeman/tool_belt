@@ -312,8 +312,7 @@
       foreman-plugins-nightly-el8-override:
         foreman-plugins-nightly-el8: 0
     external_repos:
-      - centos8-baseos
-      - centos8-appstream
+      - test-flat-el8
     build_groups:
       build:
         - bash
