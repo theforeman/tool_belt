@@ -3,6 +3,8 @@
 :github_org: katello
 :prior_releases: []
 :releases:
+  :3.15.1:
+    :redmine_version_id: 1211
   :3.15.0:
     :redmine_version_id: 1131
 :code_name: Rocky Road
@@ -24,6 +26,7 @@
 :ignores:
   - 28292 # already on the branch
   - 29073 # already on branch
+  - 29638 # documentation update
 :strict_keys: true
 :gpg_key: 0579baee
 :mash_scripts:
