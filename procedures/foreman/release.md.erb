@@ -60,7 +60,9 @@ Note: If for some reason there was an issue with the tarballs that required uplo
   - [ ] [rpm/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_rpm_packaging)
   - [ ] [deb/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_deb_packaging) branches
 - [ ] Trigger [release_packages in Jenkins](https://ci.theforeman.org/job/release_packages/) by calling [release_packages script](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_packages).
-- [ ] Tag `foreman-release` into `foreman-client-<%= short_version %>-rhel7`, as this doesn't happen automatically for that one tag: `koji tag-build foreman-client-<%= short_version %>-rhel7 foreman-release-<%= version %>-1.el7`<% if is_rc %> (make sure the build matches the release)<% end %>
+- [ ] Tag `foreman-release` into `foreman-client-<%= short_version %>-rhel7` and `foreman-client-<%= short_version %>-el8`, as this doesn't happen automatically for those tags. <% if is_rc %>Make sure the build matches the release.<% end %>
+  - [ ] `koji tag-build foreman-client-<%= short_version %>-rhel7 foreman-release-<%= version %>-1.el7`
+  - [ ] `koji tag-build foreman-client-<%= short_version %>-el8 foreman-release-<%= version %>-1.el8`
 - [ ] Sign the RPMs in the release
   - [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms)
   - [ ] [Sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms)
