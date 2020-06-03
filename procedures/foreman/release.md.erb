@@ -73,12 +73,10 @@ Note: If for some reason there was an issue with the tarballs that required uplo
   - [ ] [Sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms)
   - [ ] [Upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures)
   - [ ] [Upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms)
-<% if is_rc %>
-- [ ] Sign "extra" RPMs
+<% if is_rc %>- [ ] Sign "extra" RPMs
   - [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_extras)
   - [ ] [Sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_extras)
   - [ ] [Upload](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_extras)
-<% end %>
-- [ ] Kick off the [release pipeline](https://ci.theforeman.org/job/foreman-<%= short_version %>-release-pipeline/) by calling [`release_pipeline`](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_pipeline)
+<% end %>- [ ] Kick off the [release pipeline](https://ci.theforeman.org/job/foreman-<%= short_version %>-release-pipeline/) by calling [`release_pipeline`](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_pipeline)
 - [ ] Kick off the [client pipeline](https://ci.theforeman.org/job/foreman-client-<%= short_version %>-rpm-pipeline/) by calling [`PROJECT=client release_pipeline`](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_pipeline)
 - [ ] Kick off the [plugins pipeline](https://ci.theforeman.org/job/foreman-plugins-<%= short_version %>-rpm-pipeline/) by calling [plugins_pipeline](https://github.com/theforeman/theforeman-rel-eng/blob/master/plugins_pipeline)
