@@ -23,7 +23,7 @@
     :branch: rpm/2.1
     :repo: https://github.com/theforeman/foreman-packaging.git
   :hammer-cli-katello:
-    :branch: 0.22.1
+    :branch: 0.22.2
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-host-tools:
     :branch: 3.5.4
@@ -40,6 +40,8 @@
   - 29603 # Fixed outside of Katello repo
   - 28968 # Tracker
   - 27501 # Already in branch
+  - 28719 # Support issue
+  - 29603 # Fixed outside of Katello repo
 :strict_keys: true
 :gpg_key: B6F08CCF
 :tags:
