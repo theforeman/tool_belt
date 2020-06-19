@@ -1,0 +1,119 @@
+---
+:project: pulpcore
+:github_org: pulp
+:nightly: true
+:mash_scripts:
+  - pulpcore-nightly-el7
+  - pulpcore-nightly-el8
+:tags:
+  - name: pulpcore-nightly-el7
+    based_off: null
+    helper_tags:
+      pulpcore-nightly-el7-override: null
+    arches:
+      - x86_64
+    build_target: pulpcore-nightly-el7-build
+    inherits:
+      pulpcore-nightly-el7-build:
+        pulpcore-nightly-el7-override: 0
+      pulpcore-nightly-el7-override:
+        pulpcore-nightly-el7: 0
+    external_repos:
+      - centos7-os
+      - centos7-updates
+      - centos-sclo-rh-rhel-7
+      - epel-7
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - python3-rpm-macros
+        - redhat-release
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - python3-rpm-macros
+        - rh-postgresql12-scldevel
+        - scl-utils-build
+        - redhat-release
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
+  - name: pulpcore-nightly-el8
+    based_off: null
+    helper_tags:
+      pulpcore-nightly-el8-override: null
+    build_target: pulpcore-nightly-el8-build
+    build_package_group_source_tag: pulpcore-nightly-el8-build
+    arches:
+      - x86_64
+    inherits:
+      pulpcore-nightly-el8-build:
+        pulpcore-nightly-el8-override: 0
+      pulpcore-nightly-el8-override:
+        pulpcore-nightly-el8: 0
+    external_repos:
+      - name: centos8-baseos
+        mode: bare
+      - name: centos8-appstream
+        mode: bare
+      - name: centos8-powertools
+        mode: bare
+      - name: centos8-devel
+        mode: bare
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - python3-rpm-macros
+        - redhat-release
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - python3-rpm-macros
+        - redhat-release
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
