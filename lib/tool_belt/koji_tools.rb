@@ -14,13 +14,27 @@ module ToolBelt
       end
     end
 
-    def ensure_external_repos(tag_name, external_repo_names)
+    def ensure_external_repos(tag_name, external_repos)
+      external_repos_is_hash = external_repos[0].is_a?(Hash)
+      if external_repos_is_hash
+        external_repo_names = external_repos.map{|x| x['name']}
+      else
+        external_repo_names = external_repos
+      end
       existing = get_external_repo_names(tag_name)
       needed = external_repo_names - existing
       unneeded = existing - external_repo_names
 
-      needed.each do |repo_name|
-        koji_change("add-external-repo --tag=#{tag_name} #{repo_name}")
+      if external_repos_is_hash
+        needed_repos = external_repos.select{ |x| needed.include? x['name'] }
+
+        needed_repos.each do |repo|
+          koji_change("add-external-repo --tag=#{tag_name} --mode=#{repo['mode']} #{repo['name']}")
+        end
+      else
+        needed.each do |repo_name|
+          koji_change("add-external-repo --tag=#{tag_name} #{repo_name}")
+        end
       end
       unneeded.each do |repo_name|
         koji_change("remove-external-repo #{repo_name} #{tag_name}")
