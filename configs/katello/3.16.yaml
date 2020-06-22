@@ -4,7 +4,11 @@
 :releases:
   :3.16.0:
     :redmine_version_id: 1184
-:prior_releases: []
+:prior_releases:
+  :3.15.2:
+    :redmine_version_id: 1238
+  :3.15.3:
+    :redmine_version_id: 1257
 :code_name: Tasty Taiyaki
 :mash_scripts:
   - katello-3.16-rhel7
