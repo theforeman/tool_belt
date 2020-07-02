@@ -3,6 +3,10 @@
 :github_org: katello
 :prior_releases: []
 :releases:
+  :3.15.3:
+    :redmine_version_id: 1257
+  :3.15.2:
+    :redmine_version_id: 1238 
   :3.15.1:
     :redmine_version_id: 1211
   :3.15.0:
