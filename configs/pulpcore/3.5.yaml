@@ -1,23 +1,27 @@
 ---
 :project: pulpcore
 :github_org: pulp
-:nightly: true
+:nightly: false
+:repos: []
+:releases:
+  :3.5:
+    :redmine_version_id: -1
 :mash_scripts:
-  - pulpcore-nightly-el7
-  - pulpcore-nightly-el8
+  - pulpcore-3.5-el7
+  - pulpcore-3.5-el8
 :tags:
-  - name: pulpcore-nightly-el7
-    based_off: null
+  - name: pulpcore-3.5-el7
+    based_off: pulpcore-3.4-el7
     helper_tags:
-      pulpcore-nightly-el7-override: null
+      pulpcore-3.5-el7-override: null
     arches:
       - x86_64
-    build_target: pulpcore-nightly-el7-build
+    build_target: pulpcore-3.5-el7-build
     inherits:
-      pulpcore-nightly-el7-build:
-        pulpcore-nightly-el7-override: 0
-      pulpcore-nightly-el7-override:
-        pulpcore-nightly-el7: 0
+      pulpcore-3.5-el7-build:
+        pulpcore-3.5-el7-override: 0
+      pulpcore-3.5-el7-override:
+        pulpcore-3.5-el7: 0
     external_repos:
       - centos7-os
       - centos7-updates
@@ -60,19 +64,19 @@
         - rhpkg-simple
         - rpm-build
         - shadow-utils
-  - name: pulpcore-nightly-el8
-    based_off: null
+  - name: pulpcore-3.5-el8
+    based_off: pulpcore-3.4-el8
     helper_tags:
-      pulpcore-nightly-el8-override: null
-    build_target: pulpcore-nightly-el8-build
-    build_package_group_source_tag: pulpcore-nightly-el8-build
+      pulpcore-3.5-el8-override: null
+    build_target: pulpcore-3.5-el8-build
+    build_package_group_source_tag: pulpcore-3.5-el8-build
     arches:
       - x86_64
     inherits:
-      pulpcore-nightly-el8-build:
-        pulpcore-nightly-el8-override: 0
-      pulpcore-nightly-el8-override:
-        pulpcore-nightly-el8: 0
+      pulpcore-3.5-el8-build:
+        pulpcore-3.5-el8-override: 0
+      pulpcore-3.5-el8-override:
+        pulpcore-3.5-el8: 0
     external_repos:
       - name: test-flat-el8
         mode: bare
