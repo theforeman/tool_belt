@@ -29,8 +29,6 @@
 - In foreman <%= short_version %>-stable:
   - [ ] Make sure [test_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_<%= short_version.tr('.', '_') %>_stable/) is green
   - [ ] run `make -C locale tx-update` (if Transifex has not switched to the next major release yet, usually after .2)
-  - [ ] run `script/sync_templates.sh`
-  - [ ] update template snapshots with `rake snapshots:generate RAILS_ENV=test` and verify changes are expected
   - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
   - [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
 - In smart-proxy <%= short_version %>-stable:
