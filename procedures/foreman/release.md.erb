@@ -14,33 +14,30 @@
 <% else %>- [ ] Update installer options section using the [get-params script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/installer/get-params) if any changes were made in the installer or installer modules (after new packages have been released)
 - [ ] [Update](https://github.com/theforeman/theforeman.org#updating-api-auto-generated-docs-by-apipie) the apipie doc and place it in the api/<%= short_version %> directory if any changes were made to the API
 <% end %>
+
 # Preparing code
 
 - [ ] Make patch releases of installer modules that have important changes
   - [ ] Branch to MAJ.MIN-stable if recent changes to the module aren't suitable for patch (x.y.z) release
-- [ ] Compare tagged packages in nightly vs. release koji tag and re-tag any updated dependencies that are required
 <% unless is_rc %>- [ ] Add a new [Redmine version](https://projects.theforeman.org/projects/foreman/settings/versions) for the next minor, unless the series is EOL. Be sure the version is set to sharing with subprojects.
-<% end %>- [ ] Remove/change release field for any open Redmine tickets assigned to the release still (next minor, unset it or reject)
+<% end %>- [ ] Remove/change target version field for any open Redmine tickets assigned to the release still (next minor, unset it or reject)
+- [ ] Ensure that code in git matches issues fixed in <%= full_version %> in redmine. [issues.rb](https://gist.github.com/tbrisker/3320097f1d8c9abfb2dbcf8d8e216bba) can be used to generate a comparison between the two.
 <% unless is_rc %>- [ ] Change Redmine version <%= full_version %> state to Closed
-<% end %>- [ ] Ensure that code in git matches issues fixed in <%= full_version %> in redmine. [issues.rb](https://gist.github.com/tbrisker/3320097f1d8c9abfb2dbcf8d8e216bba) can be used to generate a comparison between the two.
+<% end %>
 
 # Tagging a release
 
 - In foreman <%= short_version %>-stable:
   - [ ] Make sure [test_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_<%= short_version.tr('.', '_') %>_stable/) is green
-  - [ ] run `make -C locale tx-update` (if Transifex has not switched to the next major release yet, usually after .2)
-  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
-  - [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
+<% if (is_rc || full_version.end_with?('0')) %>  - [ ] run `make -C locale tx-update`
+<% end %>  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %> && git push upstream <%= short_version %>-stable --follow-tags`
 - In smart-proxy <%= short_version %>-stable:
   - [ ] Make sure [test_proxy_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_proxy_<%= short_version.tr('.', '_') %>_stable/) is green
-  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
-  - [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
+  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %> && git push upstream <%= short_version %>-stable --follow-tags`
 - In foreman-selinux <%= short_version %>-stable:
-  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
-  - [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
+  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %> && git push upstream <%= short_version %>-stable --follow-tags`
 - In foreman-installer <%= short_version %>-stable:
-  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %>`
-  - [ ] Push: `git push upstream <%= short_version %>-stable --follow-tags`
+  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %> && git push upstream <%= short_version %>-stable --follow-tags`
 - [ ] Run the Jenkins [Tarballs Release](https://ci.theforeman.org/job/tarballs-release/) to create tarballs
 - [ ] Update release version similar to [here](https://github.com/theforeman/theforeman-rel-eng/commit/2029a9688da00d9c385c3438dd71b594ba5f728e)
 - [ ] Sign Tarballs
@@ -74,3 +71,12 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 - [ ] Kick off the [release pipeline](https://ci.theforeman.org/job/foreman-<%= short_version %>-release-pipeline/) by calling [`release_pipeline`](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_pipeline)
 - [ ] Kick off the [client pipeline](https://ci.theforeman.org/job/foreman-client-<%= short_version %>-rpm-pipeline/) by calling [`PROJECT=client release_pipeline`](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_pipeline)
 - [ ] Kick off the [plugins pipeline](https://ci.theforeman.org/job/foreman-plugins-<%= short_version %>-rpm-pipeline/) by calling [plugins_pipeline](https://github.com/theforeman/theforeman-rel-eng/blob/master/plugins_pipeline)
+
+# After the packages have been released
+
+<% unless is_rc %>- [ ] Update the versions on the website in [version](https://github.com/theforeman/theforeman.org/blob/gh-pages/_includes/version.html) and [latest news](https://github.com/theforeman/theforeman.org/blob/gh-pages/_includes/latest_news.html)
+<% end %>- [ ] Announce the release on [Discourse](https://community.theforeman.org/c/release-announcements/8)
+- [ ] Update the topic in #theforeman channel on Freenode
+- [ ] Share the release announcement on twitter
+<% if full_version.end_with?('0') %>- [ ] After about a week, update `stable` version in [foreman-infra](https://github.com/theforeman/foreman-infra/blob/master/puppet/modules/profiles/manifests/web.pp#L24)
+<% end %>- [ ]
