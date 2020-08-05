@@ -1,3 +1,5 @@
+require 'date'
+
 module ToolBelt
   module Command
     class ProcedureCommand < Clamp::Command
@@ -7,11 +9,17 @@ module ToolBelt
           raise ArgumentError.new('Release must be in major.minor, like 1.20') unless value =~ /^\d+\.\d+$/
           value
         end
+        parameter "target-date", "Target date that the procedure should be completed on"
 
         def execute
+          parsed_date = Date.parse(target_date)
+
           context = {
             release: release,
             develop: bump_last(release),
+            target_date: parsed_date,
+            two_weeks_before: parsed_date - 14,
+            one_week_before: parsed_date - 7,
           }
 
           render(project, 'branch', context)
@@ -24,11 +32,15 @@ module ToolBelt
           raise ArgumentError.new('Release must be in major.minor.patch or major.minor.patch-rcx, like 1.20.0 or 1.20.0-rc1') unless value =~ /^\d+\.\d+\.\d+(-rc\d+)?$/
           value
         end
+        parameter "target-date", "Target date that the procedure should be completed on"
 
         def execute
           version, extra = full_version.split('-', 2)
           major, minor, _ = version.split('.', 3)
           debian_full_version = version + (extra ? "~#{extra.downcase}" : '') + '-1'
+
+          parsed_date = Date.parse(target_date)
+
           context = {
             is_rc: !extra.nil?,
             extra: extra,
@@ -36,6 +48,9 @@ module ToolBelt
             debian_full_version: debian_full_version, # 1.20.0~rc1-1
             full_version: full_version, # 1.20.0-rc1
             version: version, # 1.20.0
+            target_date: parsed_date,
+            two_weeks_before: parsed_date - 14,
+            one_week_before: parsed_date - 7,
           }
 
           render(project, 'release', context)
