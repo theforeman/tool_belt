@@ -1,6 +1,6 @@
 [ ] Make this post a wiki
 
-# Two weeks before branching
+# Prep Week: <%= two_weeks_before %> to <%= two_weeks_before + 4 %>
 
 ## Installer Maintainer
 
@@ -32,7 +32,7 @@
   - [ ] Announce string freeze date on discourse and send announcement via https://www.transifex.com/foreman/foreman/announcements/
   - [ ] Update [foreman-dev](https://community.theforeman.org/c/development) with [translations status](https://www.transifex.com/projects/p/foreman/) to encourage 100% translations before release
 
-# During the week before branching
+# Stabilization Week: <%= one_week_before %> to <%= one_week_before + 4 %>
 
 ## Release Owner
 
@@ -76,7 +76,7 @@
 - [ ] Open PR to remove any jobs that are related to end of life versions
 - [ ] Open PR to add <%= release %> to [Forklift versions config](https://github.com/theforeman/forklift/blob/master/vagrant/config/versions.yaml). Once the PR is merged, upgrade pipelines will fail, so do not merge it before packaging has been branched.
 
-# Branching
+# Branching: <%= target_date %>
 
 ## Release Engineer
 
@@ -110,7 +110,7 @@ The next step should only be done after all branching, including packaging, has 
   - [ ] [hammer-cli](https://github.com/theforeman/hammer-cli)
   - [ ] [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman)
 
-# Preparing build systems
+# Preparing build systems: <%= target_date %>
 
 ## Release engineer
 
@@ -123,7 +123,7 @@ The next step should only be done after all branching, including packaging, has 
   - [ ] foreman-packaging's rpm/<%= release %>
     - [ ] Update `packages/foreman/foreman-release/foreman.gpg`, `mock/*.cfg`, `package_manifest.yaml`, `rel-eng/{releasers.conf,tito.props}` and `repoclosure/*.conf`
 
-# Other systems
+# Other systems: <%= target_date %>
 
 ## Release Owner
 
