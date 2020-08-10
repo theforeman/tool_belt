@@ -173,11 +173,18 @@
       katello-pulpcore-nightly-el8-override:
         katello-pulpcore-nightly-el8: 0
     external_repos:
-    external_repos:
-      - centos8-baseos
-      - centos8-appstream
-      - centos8-powertools
-      - centos8-devel
+      - name: test-flat-el8
+        mode: bare
+      - name: centos8-baseos
+        mode: bare
+      - name: centos8-appstream
+        mode: bare
+      - name: centos8-powertools
+        mode: bare
+      - name: centos8-devel
+        mode: bare
+      - name: centos8-configmanagement-ansible-29
+        mode: bare
     build_groups:
       build:
         - bash
