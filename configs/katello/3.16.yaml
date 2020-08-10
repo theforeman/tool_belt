@@ -46,6 +46,11 @@
   - 27501 # Already in branch
   - 28719 # Support issue
   - 29603 # Fixed outside of Katello repo
+  - 30021 # Merged in a separate PR
+  - 30088 # Fixed outside of Katello repo
+  - 29312 # Tracker
+  - 30283 # Already in branch
+  - 30472 # Duplicate
 :strict_keys: true
 :gpg_key: B6F08CCF
 :tags:
