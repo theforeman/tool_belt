@@ -105,7 +105,7 @@ The next step should only be done after all branching, including packaging, has 
 - [ ] Update foreman-packaging rpm/develop to ensure nightlies build:
   - [ ] rpm/develop:
     - [ ] Update the build tag: `sed -i 's/fm<%= release.tr('.', '_') %>/fm<%= develop.tr('.', '_') %>/g' rel-eng/{releasers.conf,tito.props}`
-    - [ ] Set to version `<%= develop %>.0`, reset release to `1` in `packages/foreman/foreman{,-{installer,proxy,release,selinux}}/*.spec` and create a changelog using `obal changelog --message '- Bump version to <%= develop %>-develop' foreman{,-{installer,proxy,release,selinux}}`
+    - [ ] Set to version `<%= develop %>.0`, reset release to `1` in `packages/foreman/foreman{,-{installer,proxy,release,selinux}}/*.spec` and `packages/foreman/rubygem-hammer_cli{,_foreman}/*.spec`. Then create a changelog using `obal changelog --message '- Bump version to <%= develop %>-develop' foreman{,-{installer,proxy,release,selinux}} rubygem-hammer_cli{,_foreman}`
   - [ ] deb/develop: `scripts/changelog.rb -v <%= develop %>.0-1 -m "Bump changelog to <%= develop %>.0 to match VERSION" debian/*/*/changelog`
 - [ ] Prepare build systems for <%= release %> release:
   - [ ] foreman-packaging's rpm/<%= release %>
