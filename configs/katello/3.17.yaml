@@ -29,6 +29,9 @@
   :katello-host-tools:
     :branch: 3.5.4
     :repo: https://github.com/Katello/katello-host-tools.git
+  :foreman_virt_who_configure:
+    :branch: 0.5.3
+    :repo: https://github.com/theforeman/foreman_virt_who_configure.git
 :ignores:
 :strict_keys: true
 :gpg_key: C7C509FA
