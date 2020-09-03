@@ -6,8 +6,10 @@
 - [ ] Start extracting i18n strings and pushing the changes into master git branches so Transifex can pick it up
 - [ ] Update Katello Transifex translations:
   - [ ] Create a Transifex account and join the Foreman team
-  - [ ] [Install and configure the Transifex client](https://projects.theforeman.org/projects/foreman/wiki/Translating#How-to-pull-translations)
+  - [ ] Install Transifex client `pip install transifex-client`
+  - [ ] [Configure the Transifex client](https://projects.theforeman.org/projects/foreman/wiki/Translating#How-to-pull-translations)
   - [ ] Spin up a Foreman and Katello installation
+  - [ ] [Install grunt](https://github.com/Katello/katello/blob/master/engines/bastion_katello/README.md)
   - [ ] `grunt i18n:extract` in the katello/engines/bastion_katello directory
   - [ ] `make -C locale tx-update` in the katello directory
   - [ ] `grunt i18n:compile` in the katello/engines/bastion_katello directory
