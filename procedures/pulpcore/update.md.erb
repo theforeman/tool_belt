@@ -1,14 +1,14 @@
 # Prepare the build environment
 
-* [ ] Clone https://github.com/evgeni/pulpcore-packaging
-* [ ] [Configure](https://github.com/evgeni/pulpcore-packaging#configure) the build environment
-* [ ] [Build](https://github.com/evgeni/pulpcore-packaging#build) the container
+* [ ] Clone https://github.com/theforeman/pulpcore-packaging
+* [ ] [Configure](https://github.com/theforeman/pulpcore-packaging/automation#configure) the build environment
+* [ ] [Build](https://github.com/theforeman/pulpcore-packaging/automation#build) the container
 
-# Create/update packages in `foreman-packaging`
+# Create/update packages in `pulpcore-packaging`
 
-* [ ] [Run](https://github.com/evgeni/pulpcore-packaging#run) the container, passing in the configuration and an empty folder that shall contain the results
+* [ ] [Run](https://github.com/theforeman/pulpcore-packaging/automation#run) the container, passing in the configuration and an empty folder that shall contain the results
 ```
-podman run --rm --volume $(pwd)/foreman-packaging/:/app/foreman-packaging/:Z  --env-file packaging.env tfm-pulpcore-builder
+podman run --rm --volume $(pwd)/packaging/:/app/packaging/:Z  --env-file packaging.env tfm-pulpcore-builder
 ```
 * [ ] Inspect the generated RPM specs, adjust them if needed
 * [ ] Open a PR with the changes
@@ -17,6 +17,14 @@ podman run --rm --volume $(pwd)/foreman-packaging/:/app/foreman-packaging/:Z  --
 
 The `python-pulp_2to3_migration` package is named differently due to a tito bug (the PyPI name uses dashes, not underscores). Due to this, the regular process of updating it cannot be used.
 
-* [ ] Have a regular `foreman-packaging` clone
+* [ ] Have a regular `pulpcore-packaging` clone
 * [ ] Run `obal update python-pulp_2to3_migration --version X.Y.Z`
 * [ ] As `obal` does not update dependencies, verify those are in sync with `setup.py`
+
+# Update to a new pulpcore release
+
+* [ ] Create a new `rpm/3.X` branch in `pulpcore-packaging` by using the previous release branch as a base
+* [ ] Set that branch as the new default branch in GitHub
+* [ ] Update `package_manifest.yaml`, `rel-eng/releasers.conf`, `rel-eng/tito.props`, `repoclosure/yum.conf`, `automation/_generate_deps.sh` to use the new 3.X release (a simple `sed -i 's/3\.6/3.7/g' …` is usually sufficient)
+* [ ] Update `automation/requirements.txt` to the new required versions
+* [ ] Run normal "create/update" procedure above
