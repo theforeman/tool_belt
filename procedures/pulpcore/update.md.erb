@@ -23,8 +23,8 @@ The `python-pulp_2to3_migration` package is named differently due to a tito bug 
 
 # Update to a new pulpcore release
 
-* [ ] Create a new `rpm/3.X` branch in `pulpcore-packaging` by using the previous release branch as a base
+* [ ] Create a new `rpm/<%= release %>` branch in `pulpcore-packaging` by using the previous release branch as a base
 * [ ] Set that branch as the new default branch in GitHub
-* [ ] Update `package_manifest.yaml`, `rel-eng/releasers.conf`, `rel-eng/tito.props`, `repoclosure/yum.conf`, `automation/_generate_deps.sh` to use the new 3.X release (a simple `sed -i 's/3\.6/3.7/g' …` is usually sufficient)
+* [ ] Update `package_manifest.yaml`, `rel-eng/releasers.conf`, `rel-eng/tito.props`, `repoclosure/yum.conf`, `automation/_generate_deps.sh` to use the new <%= release %> release (a simple `sed -i 's/<%= previous.sub('.', '\\.') %>/<%= release %>/g' …` is usually sufficient)
 * [ ] Update `automation/requirements.txt` to the new required versions
 * [ ] Run normal "create/update" procedure above
