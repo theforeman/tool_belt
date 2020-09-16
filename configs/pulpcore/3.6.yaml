@@ -9,6 +9,8 @@
 :mash_scripts:
   - pulpcore-3.6-el7
   - pulpcore-3.6-el8
+:strict_keys: true
+:gpg_key: CB80D80
 :tags:
   - name: pulpcore-3.6-el7
     based_off: pulpcore-3.5-el7

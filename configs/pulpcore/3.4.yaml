@@ -9,6 +9,8 @@
 :mash_scripts:
   - pulpcore-3.4-el7
   - pulpcore-3.4-el8
+:strict_keys: true
+:gpg_key: 1090EC44
 :tags:
   - name: pulpcore-3.4-el7
     based_off: katello-pulpcore-nightly-el7
