@@ -10,7 +10,7 @@
   - pulpcore-3.6-el7
   - pulpcore-3.6-el8
 :strict_keys: true
-:gpg_key: CB80D80
+:gpg_key: CB80D806
 :tags:
   - name: pulpcore-3.6-el7
     based_off: pulpcore-3.5-el7
