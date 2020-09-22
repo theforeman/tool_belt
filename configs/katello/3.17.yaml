@@ -5,8 +5,6 @@
   :3.17.0:
     :redmine_version_id: 1282
 :prior_releases:
-  :3.16.0:
-    :redmine_version_id: 1184
   :3.16.1:
     :redmine_version_id: 1226
 :code_name:
@@ -24,7 +22,7 @@
     :branch: rpm/2.2
     :repo: https://github.com/theforeman/foreman-packaging.git
   :hammer-cli-katello:
-    :branch: 0.22.2
+    :branch: 0.23.1
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-host-tools:
     :branch: 3.5.4
@@ -33,6 +31,9 @@
     :branch: 0.5.3
     :repo: https://github.com/theforeman/foreman_virt_who_configure.git
 :ignores:
+   - 15932 # Fixed outside of Katello
+   - 30253 # Tracker Redmine
+   - 30087 # Fixed outside of Katello
 :strict_keys: true
 :gpg_key: C7C509FA
 :tags:
