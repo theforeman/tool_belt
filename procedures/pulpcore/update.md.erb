@@ -6,10 +6,11 @@
 
 # Create/update packages in `pulpcore-packaging`
 
-* [ ] [Run](https://github.com/theforeman/pulpcore-packaging/automation#run) the container, passing in the configuration and an empty folder that shall contain the results
-```
-podman run --rm --volume $(pwd)/packaging/:/app/packaging/:Z  --env-file packaging.env tfm-pulpcore-builder
-```
+* [ ] [Run](https://github.com/theforeman/pulpcore-packaging/automation#run) the container:
+  ```
+  ./update_packaging.sh
+  ```
+  This will place the results in a newly created directory `./packaging`.
 * [ ] Inspect the generated RPM specs, adjust them if needed
 * [ ] Open a PR with the changes
 
@@ -28,3 +29,13 @@ The `python-pulp_2to3_migration` package is named differently due to a tito bug 
 * [ ] Update `package_manifest.yaml`, `rel-eng/releasers.conf`, `rel-eng/tito.props`, `repoclosure/yum.conf`, `automation/_generate_deps.sh` to use the new <%= release %> release (a simple `sed -i 's/<%= previous.sub('.', '\\.') %>/<%= release %>/g' …` is usually sufficient)
 * [ ] Update `automation/requirements.txt` to the new required versions
 * [ ] Run normal "create/update" procedure above
+
+# Signing packages
+
+Any change to packaging requires signing, as otherwise the repo can't be published.
+
+* [ ] Sign the RPMs in the release, pass `PROJECT=pulpcore` and `VERSION=<%= release %>` to every invocation.
+  * [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms)
+  * [ ] [Sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms)
+  * [ ] [Upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures)
+  * [ ] [Upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms)
