@@ -44,9 +44,18 @@ module ToolBelt
 
       subcommand "update", "Update procedure for project" do
         parameter "project", "Project to generate procedure for"
+        parameter "release", "Version that's currently in nightly in the major.minor format, like 1.20." do |value|
+          raise ArgumentError.new('Release must be in major.minor, like 1.20') unless value =~ /^\d+\.\d+$/
+          value
+        end
 
         def execute
-          render(project, 'update', {})
+          context = {
+            previous: previous_release(release),
+            release: release,
+          }
+
+          render(project, 'update', context)
         end
       end
 
@@ -64,6 +73,11 @@ module ToolBelt
       def bump_last(version)
         parts = version.split('.')
         (parts[0..-2] + [(parts.last.to_i + 1).to_s]).join('.')
+      end
+
+      def previous_release(version)
+        parts = version.split('.')
+        (parts[0..-2] + [(parts.last.to_i - 1).to_s]).join('.')
       end
     end
   end
