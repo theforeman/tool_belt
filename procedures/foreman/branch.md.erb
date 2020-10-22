@@ -123,6 +123,24 @@ The next step should only be done after all branching, including packaging, has 
   - [ ] foreman-packaging's rpm/<%= release %>
     - [ ] Update `packages/foreman/foreman-release/foreman.gpg`, `mock/*.cfg`, `package_manifest.yaml`, `rel-eng/{releasers.conf,tito.props}` and `repoclosure/*.conf`
 
+# Prepare Staging Repositories
+
+## Release engineer
+
+- [ ] Sign the initial RPMs for the release
+  - [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms)
+  - [ ] [Sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms)
+  - [ ] [Upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures)
+  - [ ] [Upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms)
+- [ ] Sign RPMs for client repos (call scripts with `PROJECT=client`)
+  - [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms)
+  - [ ] [Sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms)
+  - [ ] [Upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures)
+  - [ ] [Upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms)
+- [ ] Kick off the [release pipeline](https://ci.theforeman.org/job/foreman-<%= short_version %>-release-pipeline/) by calling [`release_pipeline`](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_pipeline)
+- [ ] Kick off the [client pipeline](https://ci.theforeman.org/job/foreman-client-<%= short_version %>-rpm-pipeline/) by calling [`PROJECT=client release_pipeline`](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_pipeline)
+- [ ] Kick off the [plugins pipeline](https://ci.theforeman.org/job/foreman-plugins-<%= short_version %>-rpm-pipeline/) by calling [plugins_pipeline](https://github.com/theforeman/theforeman-rel-eng/blob/master/plugins_pipeline)
+
 # Other systems
 
 ## Release Owner
