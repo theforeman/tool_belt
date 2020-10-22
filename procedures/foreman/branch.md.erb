@@ -74,7 +74,7 @@
   - [ ] Add `<%= release %>` to the version list in `centos.org/jobs/foreman-pipelines.yml`
   - [ ] Create `test_<%= release.tr('.', '_') %>_stable.yaml` and `test_proxy_<%= release.tr('.', '_') %>_stable.yaml` in `yaml/jobs/`
 - [ ] Open PR to remove any jobs that are related to end of life versions
-- [ ] Open PR to add <%= release %> to [Forklift versions config](https://github.com/theforeman/forklift/blob/master/vagrant/config/versions.yaml)
+- [ ] Open PR to add <%= release %> to [Forklift versions config](https://github.com/theforeman/forklift/blob/master/vagrant/config/versions.yaml). Once the PR is merged, upgrade pipelines will fail, so do not merge it before packaging has been branched.
 
 # Branching
 
