@@ -5,8 +5,16 @@
   :3.17.0:
     :redmine_version_id: 1282
 :prior_releases:
+  :3.16.2:
+    :redmine_version_id: 1308
+  :3.16.1.2:
+    :redmine_version_id: 1313
+  :3.16.1.1:
+    :redmine_version_id: 1312
   :3.16.1:
     :redmine_version_id: 1226
+  :3.16.0:
+    :redmine_version_id: 1184
 :code_name:
 :mash_scripts:
   - katello-3.17-rhel7
