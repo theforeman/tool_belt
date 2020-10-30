@@ -1,6 +1,6 @@
 [ ] Make this post a wiki
 
-# Manual updates
+# Manual updates: <%= target_date %>
 
 - [ ] Update manual if applicable for any additional installation steps
 - Update [release notes section](gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md) in the manual:
@@ -15,7 +15,7 @@
 - [ ] [Update](https://github.com/theforeman/theforeman.org#updating-api-auto-generated-docs-by-apipie) the apipie doc and place it in the api/<%= short_version %> directory if any changes were made to the API
 <% end %>
 
-# Preparing code
+# Preparing code: <%= target_date %>
 
 - [ ] Make patch releases of installer modules that have important changes
   - [ ] Branch to MAJ.MIN-stable if recent changes to the module aren't suitable for patch (x.y.z) release
@@ -25,7 +25,7 @@
 <% unless is_rc %>- [ ] Change Redmine version <%= full_version %> state to Closed
 <% end %>
 
-# Tagging a release
+# Tagging a release: <%= target_date %>
 
 - In foreman <%= short_version %>-stable:
   - [ ] Make sure [test_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_<%= short_version.tr('.', '_') %>_stable/) is green
@@ -47,7 +47,7 @@
 
 Note: If for some reason there was an issue with the tarballs that required uploading new tarballs, CDN cache should be invalidated so that the builders use the updated tarballs.
 
-# Packaging a release
+# Packaging a release: <%= target_date %>
 
 [Background documentation](https://projects.theforeman.org/projects/foreman/wiki/Release_Process#Packaging-a-release)
 
