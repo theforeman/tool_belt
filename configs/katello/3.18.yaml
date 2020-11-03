@@ -1,0 +1,85 @@
+---
+:project: katello
+:github_org: katello
+:releases:
+  :3.18.0:
+    :redmine_version_id: 1272
+:prior_releases:
+  :3.17.0:
+    :redmine_version_id: 1282
+  :3.16.2:
+    :redmine_version_id: 1308
+:code_name:
+:mash_scripts:
+  - katello-3.18-rhel7
+  - katello-pulpcore-3.18-el7
+  - katello-3.18-thirdparty-candlepin-rhel7
+:repos:
+  :katello:
+    :main: true
+    :branch: KATELLO-3.18
+    :repo: https://github.com/Katello/katello.git
+    :version_branch: true
+  :foreman-packaging:
+    :branch: rpm/2.3
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :hammer-cli-katello:
+    :branch: 0.24.0
+    :repo: https://github.com/Katello/hammer-cli-katello.git
+  :katello-host-tools:
+    :branch: 3.5.4
+    :repo: https://github.com/Katello/katello-host-tools.git
+  :foreman_virt_who_configure:
+    :branch: 0.5.3
+    :repo: https://github.com/theforeman/foreman_virt_who_configure.git
+:ignores:
+:strict_keys: true
+:gpg_key: E0745924
+:tags:
+  - name: katello-3.18-thirdparty-candlepin-rhel7
+    based_off: katello-thirdparty-candlepin-rhel7
+    build_target: katello-3.18-rhel7-build
+    arches:
+      - x86_64
+  - name: katello-3.18-rhel7
+    based_off: katello-nightly-rhel7
+    helper_tags:
+      katello-3.18-thirdparty-rhel7: katello-thirdparty-rhel7
+      katello-3.18-rhel7-override: null
+    build_target: katello-3.18-rhel7-build
+    build_package_group_source_tag: katello-nightly-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      katello-3.18-rhel7-build:
+        katello-3.18-rhel7-override: 0
+        foreman-plugins-2.1-rhel7-override: 3
+        foreman-2.1-rhel7: 10
+      katello-3.18-rhel7-override:
+        katello-3.18-rhel7: 0
+      katello-3.18-rhel7:
+        katello-3.18-thirdparty-rhel7: 0
+        foreman-2.1-nonscl-rhel7: 1
+    external_repos:
+      - epel-7
+      - centos-sclo-rh-rhel-7
+      - centos-7-server-updates
+      - centos-7-server
+  - name: katello-pulpcore-3.18-el7
+    based_off: katello-pulpcore-nightly-el7
+    helper_tags:
+      katello-pulpcore-3.18-el7-override: null
+    arches:
+      - x86_64
+    build_target: katello-pulpcore-3.18-el7-build
+    inherits:
+      katello-pulpcore-3.18-el7-build:
+        katello-pulpcore-3.18-el7-override: 0
+      katello-pulpcore-3.18-el7-override:
+        katello-pulpcore-3.18-el7: 0
+    build_package_group_source_tag: katello-pulpcore-nightly-el7-build
+    external_repos:
+      - centos7-os
+      - centos7-updates
+      - centos-sclo-rh-rhel-7
+      - epel-7
