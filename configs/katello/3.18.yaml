@@ -12,7 +12,6 @@
 :code_name:
 :mash_scripts:
   - katello-3.18-rhel7
-  - katello-pulpcore-3.18-el7
   - katello-3.18-thirdparty-candlepin-rhel7
 :repos:
   :katello:
