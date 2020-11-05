@@ -58,7 +58,7 @@
         katello-3.18-rhel7: 0
       katello-3.18-rhel7:
         katello-3.18-thirdparty-rhel7: 0
-        foreman-2.1-nonscl-rhel7: 1
+        foreman-2.3-nonscl-rhel7: 1
     external_repos:
       - epel-7
       - centos-sclo-rh-rhel-7
