@@ -13,6 +13,8 @@
 :mash_scripts:
   - katello-3.18-rhel7
   - katello-3.18-thirdparty-candlepin-rhel7
+  - katello-3.18-el8
+  - katello-candlepin-3.18-el8
 :repos:
   :katello:
     :main: true
@@ -40,6 +42,11 @@
     build_target: katello-3.18-rhel7-build
     arches:
       - x86_64
+  - name: katello-candlepin-3.18-el8
+    based_off: katello-candlepin-nightly-el8
+    build_target: katello-3.18-el8-build
+    arches:
+      - x86_64
   - name: katello-3.18-rhel7
     based_off: katello-nightly-rhel7
     helper_tags:
@@ -64,3 +71,25 @@
       - centos-sclo-rh-rhel-7
       - centos-7-server-updates
       - centos-7-server
+  - name: katello-3.18-el8
+    based_off: katello-nightly-el8
+    helper_tags:
+      katello-thirdparty-el8: null
+      katello-3.18-el8-override: null
+    build_target: katello-3.18-el8-build
+    build_package_group_source_tag: katello-nightly-el8-build
+    arches:
+      - x86_64
+    inherits:
+      katello-3.18-el8-build:
+        katello-3.18-el8-override: 0
+        foreman-plugins-2.3-el8: 3
+        foreman-2.3-el8: 5
+      katello-3.18-el8-override:
+        katello-3.18-el8: 0
+      katello-3.18-el8:
+        katello-thirdparty-el8: 0
+    external_repos:
+      - test-flat-el8
+      - centos8-devel
+      - puppetlabs-puppet6-rhel-8
