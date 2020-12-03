@@ -2,6 +2,8 @@
 :project: katello
 :github_org: katello
 :releases:
+  :3.16.3:
+    :redmine_version_id: 1341
   :3.16.2: 
     :redmine_version_id: 1308
   :3.16.1.2:
@@ -35,7 +37,7 @@
     :branch: rpm/2.1
     :repo: https://github.com/theforeman/foreman-packaging.git
   :hammer-cli-katello:
-    :branch: 0.22.2
+    :branch: 0.22.3
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-host-tools:
     :branch: 3.5.4
