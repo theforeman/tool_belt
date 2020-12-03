@@ -7,6 +7,8 @@
 :prior_releases:
   :3.17.0:
     :redmine_version_id: 1282
+  :3.16.3:
+    :redmine_version_id: 1341
   :3.16.2:
     :redmine_version_id: 1308
 :code_name:
