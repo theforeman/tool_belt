@@ -6,7 +6,7 @@ require 'rest_client'
 class RedmineResource
 
   attr_reader :resource
-  attr_accessor :base_path, :raw_data
+  attr_accessor :raw_data
 
   def initialize(path = nil, params = {})
     site = 'https://projects.theforeman.org'

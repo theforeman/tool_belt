@@ -40,7 +40,7 @@ module ToolBelt
     end
 
     def cherry_pick(issue, revision)
-      pick = {
+      {
         'id' => issue.id,
         'closed_on' => issue.closed_on,
         'subject' => issue.subject,

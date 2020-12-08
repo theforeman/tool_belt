@@ -84,10 +84,6 @@ module ToolBelt
       end
     end
 
-    def repos
-      @repos
-    end
-
     def release_directory
       "repos/#{@release}"
     end
@@ -107,7 +103,7 @@ module ToolBelt
 
     def commit_in_repo?(repo_name, hash)
       Dir.chdir(repo_location(repo_name)) do
-        output, success = @systools.execute("git branch --contains #{hash}")
+        _, success = @systools.execute("git branch --contains #{hash}")
         success
       end
     end
