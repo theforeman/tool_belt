@@ -1,9 +1,9 @@
 require 'minitest/autorun'
 require 'minitest/mock'
 require 'tool_belt'
-require 'mocha/setup'
+require 'mocha/minitest'
 
-class KojiToolsTest < MiniTest::Unit::TestCase
+class KojiToolsTest < MiniTest::Test
 
   def setup
     @tools = ToolBelt::KojiTools.new
