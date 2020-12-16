@@ -71,9 +71,8 @@ module ToolBelt
         puts `grep -R '#{source_release.gsub('.', '\.')}' #{repo_name}/plugins/katello/#{release}`
         puts
         puts "Don't forget to:"
-        puts " - Update the sidebar at repos/#{namespace}/#{katello_includes_path}"
-        puts " - Update the docs at #{katello_docs_path}"
-        puts " - Add a link to #{release} in #{docs_repo_path}/_layouts/plugins/katello/documentation.html"
+        puts " - Review the docs at #{katello_docs_path} for correctness"
+        puts " - Include latest API docs per tool_belt branch procedure #{katello_docs_path}"
       end
     end
 
