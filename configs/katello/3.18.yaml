@@ -5,10 +5,12 @@
   :3.18.0:
     :redmine_version_id: 1272
 :prior_releases:
+  :3.17.2:
+    :redmine_version_id: 1342
+  :3.17.1:
+    :redmine_version_id: 1337
   :3.17.0:
     :redmine_version_id: 1282
-  :3.16.3:
-    :redmine_version_id: 1341
   :3.16.2:
     :redmine_version_id: 1308
 :code_name:
