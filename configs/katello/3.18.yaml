@@ -29,15 +29,22 @@
     :branch: rpm/2.3
     :repo: https://github.com/theforeman/foreman-packaging.git
   :hammer-cli-katello:
-    :branch: 0.24.0
+    :branch: 0.24.1
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-host-tools:
     :branch: 3.5.4
     :repo: https://github.com/Katello/katello-host-tools.git
+  :katello-certs-tools:
+    :branch: 2.7.3
+    :repo: https://github.com/Katello/katello-certs-tools.git
   :foreman_virt_who_configure:
     :branch: 0.5.3
     :repo: https://github.com/theforeman/foreman_virt_who_configure.git
 :ignores:
+ - 29924 # SCA tracker, closed
+ - 30253 # docs
+ - 30087 # its there in katello-selinux
+ - 30579 # bad commit name
 :strict_keys: true
 :gpg_key: E0745924
 :tags:
