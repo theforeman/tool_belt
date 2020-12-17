@@ -29,3 +29,9 @@
 - [ ] Release all packages: `obal release katello katello-repos rubygem-katello`
 - [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms), [upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures) and [upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms)
 - [ ] Kick off the [release pipeline](https://ci.theforeman.org/job/katello-<%= short_version %>-rpm-pipeline/) by calling [release_pipeline](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_pipeline)
+
+# Once release is out
+## Release Owner
+
+- [ ] Create and upload [release specific developer stable box](https://github.com/theforeman/forklift/blob/master/packer/README.md#creating-version-specific-katello-devel-boxes)
+
