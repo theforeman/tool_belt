@@ -10,7 +10,7 @@
   - pulpcore-3.9-el7
   - pulpcore-3.9-el8
 :strict_keys: true
-:gpg_key: 3599352A
+:gpg_key: F1502FE9
 :tags:
   - name: pulpcore-3.9-el7
     based_off: pulpcore-3.8-el7
