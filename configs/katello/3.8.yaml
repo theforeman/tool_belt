@@ -211,7 +211,7 @@
         katello-3.8-rhel7: 0
         katello-3.8-thirdparty-pulp-rhel7: 2
     external_repos:
-      - epel-7
+      - epel7
       - centos-sclo-rh-rhel-7
       - centos-sclo-sclo-rhel-7
       - centos-7-server

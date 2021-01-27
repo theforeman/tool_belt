@@ -87,7 +87,7 @@
       katello-3.9-rhel7:
         katello-3.9-thirdparty-rhel7: 0
     external_repos:
-      - epel-7
+      - epel7
       - centos-sclo-rh-rhel-7
       - centos-7-server-updates
       - centos-7-server

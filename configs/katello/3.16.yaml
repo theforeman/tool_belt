@@ -92,7 +92,7 @@
         katello-3.16-thirdparty-rhel7: 0
         foreman-2.1-nonscl-rhel7: 1
     external_repos:
-      - epel-7
+      - epel7
       - centos-sclo-rh-rhel-7
       - centos-7-server-updates
       - centos-7-server
@@ -135,7 +135,7 @@
       - centos7-os
       - centos7-updates
       - centos-sclo-rh-rhel-7
-      - epel-7
+      - epel7
   - name: katello-pulpcore-3.16-el8
     based_off: katello-pulpcore-nightly-el8
     helper_tags:

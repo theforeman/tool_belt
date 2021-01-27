@@ -18,7 +18,7 @@
     external_repos:
       - centos-7-server-updates
       - centos-7-server
-      - epel-7
+      - epel7
     build_groups:
       build:
         - bash

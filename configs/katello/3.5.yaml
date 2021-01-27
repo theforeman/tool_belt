@@ -121,7 +121,7 @@
     :external_repos:
       - rhel-7.0-server
       - rhel-7.0-server-optional
-      - epel-7
+      - epel7
       - centos-sclo-rh-rhel-7
       - centos-sclo-sclo-rhel-7
   - name: katello-3.5-rhel6

@@ -52,7 +52,7 @@
     external_repos:
       - rhel-7.0-server
       - rhel-7.0-server-optional
-      - epel-7
+      - epel7
   - name: pulp-2.16-rhel6
     based_off: pulp-nightly-rhel6
     build_target: pulp-2.16-rhel6-build
