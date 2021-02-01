@@ -1,0 +1,12 @@
+[foreman-client-2.4-sles11]
+rpm_path = %(arch)s/os/Packages
+repodata_path = %(arch)s/os/
+source_path = source/SRPMS
+debuginfo = False
+multilib = False
+multilib_method = devel
+tag = foreman-client-2.4-sles11
+inherit = True
+strict_keys = True
+keys = AC2AD9F1
+arches = x86_64
