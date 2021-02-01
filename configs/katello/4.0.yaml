@@ -5,6 +5,8 @@
   :4.0.0:
     :redmine_version_id: 1177
 :prior_releases:
+  :3.17.3:
+    :redmine_version_id: 1365
   :3.18.0:
     :redmine_version_id: 1272
   :3.18.1:
