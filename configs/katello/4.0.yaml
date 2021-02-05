@@ -7,10 +7,6 @@
 :prior_releases:
   :3.17.3:
     :redmine_version_id: 1365
-  :3.18.0:
-    :redmine_version_id: 1272
-  :3.18.1:
-    :redmine_version_id: 1338
   :3.18.2:
     :redmine_version_id: 1353
 :code_name:
@@ -38,7 +34,7 @@
     :branch: 2.7.3
     :repo: https://github.com/Katello/katello-certs-tools.git
   :foreman_virt_who_configure:
-    :branch: 0.5.3
+    :branch: 0.5.5
     :repo: https://github.com/theforeman/foreman_virt_who_configure.git
 :ignores: []
 :strict_keys: true
