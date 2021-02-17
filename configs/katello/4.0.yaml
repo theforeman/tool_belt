@@ -36,7 +36,8 @@
   :foreman_virt_who_configure:
     :branch: 0.5.5
     :repo: https://github.com/theforeman/foreman_virt_who_configure.git
-:ignores: []
+:ignores:
+  - 31308 # already in
 :strict_keys: true
 :gpg_key: AC2AD9F1
 :tags:
