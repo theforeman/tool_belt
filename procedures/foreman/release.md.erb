@@ -27,20 +27,19 @@
 
 # Tagging a release: <%= target_date %>
 
-- In foreman <%= short_version %>-stable:
-  - [ ] Make sure [test_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_<%= short_version.tr('.', '_') %>_stable/) is green
-<% if (is_rc || full_version.end_with?('0')) %>  - [ ] run `make -C locale tx-update`
-<% end %>  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %> && git push upstream <%= short_version %>-stable --follow-tags`
-- In smart-proxy <%= short_version %>-stable:
-  - [ ] Make sure [test_proxy_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_proxy_<%= short_version.tr('.', '_') %>_stable/) is green
-  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %> && git push upstream <%= short_version %>-stable --follow-tags`
-- In foreman-selinux <%= short_version %>-stable:
-  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %> && git push upstream <%= short_version %>-stable --follow-tags`
-- In foreman-installer <%= short_version %>-stable:
-  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %> && git push upstream <%= short_version %>-stable --follow-tags`
-- [ ] Run the Jenkins [Tarballs Release](https://ci.theforeman.org/job/tarballs-release/) to create tarballs
-- [ ] Update release version similar to [here](https://github.com/theforeman/theforeman-rel-eng/commit/2029a9688da00d9c385c3438dd71b594ba5f728e)
-- [ ] Sign Tarballs
+<% if is_rc || full_version.end_with?('0') %>- [ ] In foreman <%= short_version %>-stable run `make -C locale tx-update`
+<% end %>- Make sure stable CI branches are green
+  - [ ] [test_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_<%= short_version.tr('.', '_') %>_stable/)
+  - [ ] [test_proxy_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_proxy_<%= short_version.tr('.', '_') %>_stable/)
+- [ ] Update [release version](https://github.com/theforeman/theforeman-rel-eng/blob/master/releases/foreman/<%= short_version %>/settings) similar to [here](https://github.com/theforeman/theforeman-rel-eng/commit/2029a9688da00d9c385c3438dd71b594ba5f728e)
+- Tag projects
+  - [ ] Run [tag_project](https://github.com/theforeman/theforeman-rel-eng/blob/master/tag_project)
+  - [ ] In foreman <%= short_version %>-stable review commit(s) and `git push upstream <%= short_version %>-stable --follow-tags`
+  - [ ] In smart-proxy <%= short_version %>-stable review commit(s) and `git push upstream <%= short_version %>-stable --follow-tags`
+  - [ ] In foreman-installer <%= short_version %>-stable review commit(s) and `git push upstream <%= short_version %>-stable --follow-tags`
+  - [ ] In foreman-selinux <%= short_version %>-stable review commit(s) and `git push upstream <%= short_version %>-stable --follow-tags`
+- [ ] [Release Tarballs](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_tarballs) using [Jenkins](https://ci.theforeman.org/job/tarballs-release/)
+- Sign Tarballs
   - [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_tarballs)
   - [ ] [Inspect](https://github.com/theforeman/theforeman-rel-eng/blob/master/inspect_tarballs)
   - [ ] [Sign and upload detached signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_tarballs)
