@@ -35,7 +35,7 @@
     :branch: rpm/2.3
     :repo: https://github.com/theforeman/foreman-packaging.git
   :hammer-cli-katello:
-    :branch: 0.24.2
+    :branch: 0.24.3
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-host-tools:
     :branch: 3.5.4
@@ -51,6 +51,10 @@
  - 30253 # docs
  - 30087 # its there in katello-selinux
  - 30579 # bad commit name
+ - 31785 # handled by another issue (31902)
+ - 31810 # dup
+ - 31336 # dup
+ - 31437 # it's there
 :strict_keys: true
 :gpg_key: E0745924
 :tags:
