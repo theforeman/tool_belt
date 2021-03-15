@@ -9,6 +9,8 @@
     :redmine_version_id: 1365
   :3.18.2:
     :redmine_version_id: 1353
+  :3.18.2.1:
+    :redmine_version_id: 1384
 :code_name:
 :mash_scripts:
   - katello-4.0-rhel7
@@ -38,6 +40,9 @@
     :repo: https://github.com/theforeman/foreman_virt_who_configure.git
 :ignores:
   - 31308 # already in
+  - 31967 # for katello 3.18
+  - 31636 # migration fixes for katello 3.18
+  - 31712 # not yet included in Foreman 2.4-stable
 :strict_keys: true
 :gpg_key: AC2AD9F1
 :tags:
