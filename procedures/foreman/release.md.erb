@@ -19,7 +19,7 @@
 
 - [ ] Make patch releases of installer modules that have important changes
   - [ ] Branch to MAJ.MIN-stable if recent changes to the module aren't suitable for patch (x.y.z) release
-<% unless is_rc %>- [ ] Add a new [Redmine version](https://projects.theforeman.org/projects/foreman/settings/versions) for the next minor, unless the series is EOL. Be sure the version is set to sharing with subprojects.
+<% unless (is_rc || full_version.end_with?('0')) %>- [ ] Add a new [Redmine version](https://projects.theforeman.org/projects/foreman/settings/versions) for the next minor, unless the series is EOL. Be sure the version is set to sharing with subprojects.
 <% end %>- [ ] Remove/change target version field for any open Redmine tickets assigned to the release still (next minor, unset it or reject)
 - [ ] Ensure that code in git matches issues fixed in <%= full_version %> in redmine. [issues.rb](https://gist.github.com/tbrisker/3320097f1d8c9abfb2dbcf8d8e216bba) can be used to generate a comparison between the two.
 <% unless is_rc %>- [ ] Change Redmine version <%= full_version %> state to Closed
