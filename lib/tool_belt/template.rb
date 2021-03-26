@@ -4,7 +4,7 @@ require 'ostruct'
 module ToolBelt
   module Template
     def self.render(template, vars)
-      ERB.new(template).result(OpenStruct.new(vars).instance_eval { binding })
+      ERB.new(template, trim_mode: '-').result(OpenStruct.new(vars).instance_eval { binding })
     end
 
     def self.render_file(filename, context)
