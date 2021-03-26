@@ -11,6 +11,8 @@
     :redmine_version_id: 1353
   :3.18.2.1:
     :redmine_version_id: 1384
+  :3.18.3:
+    :redmine_version_id: 1370
 :code_name:
 :mash_scripts:
   - katello-4.0-rhel7
