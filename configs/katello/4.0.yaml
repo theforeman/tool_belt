@@ -40,9 +40,14 @@
     :repo: https://github.com/theforeman/foreman_virt_who_configure.git
 :ignores:
   - 31308 # already in
+  - 31712 # not merged into 2.4-stable
   - 31967 # for katello 3.18
   - 31636 # migration fixes for katello 3.18
-  - 31712 # not yet included in Foreman 2.4-stable
+  - 31902 # for katello 3.17, 3.18
+  - 31974 # for katello 3.18
+  - 32060 # for katello 3.18
+  - 32062 # for katello 3.18
+  - 32066 # for migration/3.18
 :strict_keys: true
 :gpg_key: AC2AD9F1
 :tags:
