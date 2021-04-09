@@ -29,6 +29,12 @@
 ## Release Packager
 
 - [ ] Ensure tool_belt config is merged and output from `./tools.rb koji configs/katello/<%= release %>.yaml` matches expectations
+- [ ] Ensure releases of installer modules, this is typically done as part of Foreman module release workflow
+    - [ ] [candlepin](https://github.com/theforeman/puppet-candlepin)
+    - [ ] [pulp](https://github.com/theforeman/puppet-pulp)
+    - [ ] [pulpcore](https://github.com/theforeman/puppet-pulpcore)
+    - [ ] [foreman_proxy_content](https://github.com/theforeman/puppet-foreman_proxy_content)
+    - [ ] [katello](https://github.com/theforeman/puppet-katello)
 
 # On Branch Date
 
@@ -69,10 +75,3 @@
 - [ ] Add <%= release %> to [Forklift versions config](https://github.com/theforeman/forklift/blob/master/vagrant/config/versions.yaml)
 - [ ] Add new Katello release job to [foreman-infra](https://github.com/theforeman/foreman-infra/tree/master/puppet/modules/jenkins_job_builder/files/theforeman.org/yaml/jobs/pipeline)
 - [ ] Update Katello PR pipeline with new version [pipeline](https://github.com/theforeman/foreman-infra/blob/master/puppet/modules/jenkins_job_builder/files/theforeman.org/pipelines/test/testKatello.groovy#L1)
-
-- [ ] Ensure releases of installer modules, this is typically done as part of Foreman module release workflow
-    - [ ] [candlepin](https://github.com/theforeman/puppet-candlepin)
-    - [ ] [pulp](https://github.com/theforeman/puppet-pulp)
-    - [ ] [pulpcore](https://github.com/theforeman/puppet-pulpcore)
-    - [ ] [foreman_proxy_content](https://github.com/theforeman/puppet-foreman_proxy_content)
-    - [ ] [katello](https://github.com/theforeman/puppet-katello)
