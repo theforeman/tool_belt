@@ -25,11 +25,16 @@
 - [ ] Ensure stable Pulp release
   - [ ] Update the [katello-repos](https://github.com/theforeman/foreman-packaging/blob/rpm/develop/packages/katello/katello-repos/katello-repos.spec#L1-L2)
   - [ ] Update [forklift](https://github.com/theforeman/forklift/blob/master/roles/katello_repositories/defaults/main.yml#L4-L5)
+- [ ] Coordinate with Release Packager that expected changes to associated installer modules are completed.
 
 ## Release Packager
 
 - [ ] Ensure tool_belt config is merged and output from `./tools.rb koji configs/katello/<%= release %>.yaml` matches expectations
-- [ ] Ensure major changes to Foreman installer modules are completed
+- [ ] Confirm with release owner that all expected changes are present before performing an installer modules release.
+    - [ ] [candlepin](https://github.com/theforeman/puppet-candlepin)
+    - [ ] [pulpcore](https://github.com/theforeman/puppet-pulpcore)
+    - [ ] [foreman_proxy_content](https://github.com/theforeman/puppet-foreman_proxy_content)
+    - [ ] [katello](https://github.com/theforeman/puppet-katello)
 
 # On Branch Date
 
