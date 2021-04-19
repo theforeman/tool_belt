@@ -10,18 +10,26 @@
 ## Release Owner
 
 - [ ] Announce upcoming branching to discourse development category a month before
-- [ ] Start extracting i18n strings and pushing the changes into master git branches so Transifex can pick it up
 - [ ] Update Katello Transifex translations:
   - [ ] Create a Transifex account and join the Foreman team
   - [ ] Spin up a Foreman and Katello installation
-  - [ ] Install Transifex client `pip3 install transifex-client --user`
-  - [ ] [Configure the Transifex client](https://projects.theforeman.org/projects/foreman/wiki/Translating#How-to-pull-translations)
+  - [ ] Install Transifex client: `pip3 install transifex-client --user` (make sure to pass `--user` flag!)
+  - [ ] Configure `~/.transifexrc` [as outlined here](https://projects.theforeman.org/projects/foreman/wiki/Translating#How-to-pull-translations)
   - [ ] [Install grunt](https://github.com/Katello/katello/blob/master/engines/bastion_katello/README.md)
   - [ ] `grunt i18n:extract` in the katello/engines/bastion_katello directory
   - [ ] `make -C locale tx-update` in the katello directory
   - [ ] `grunt i18n:compile` in the katello/engines/bastion_katello directory
   - [ ] `bundle exec rake plugin:gettext[katello]` in the foreman directory
   - [ ] Commit the resulting files in the katello directory with a message like "i18n - pulling from tx"
+  - [ ] Open a PR to Katello (no Redmine issue needed)
+  - [ ] Determine which issues require installer changes and make sure those are merged by 3 weeks prior to branch date
+- [ ] Start attending upstream release sync meetings and giving updates
+
+# Three Weeks Prior to Branch Date
+
+## Release Owner
+
+- [ ] Ensure that issues requiring installer changes are merged
 
 # Two Weeks Prior to Branch Date
 
