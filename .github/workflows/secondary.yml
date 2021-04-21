@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - id: set-matrix
-      run: echo "::set-output name=matrix::$(ls configs/katello/ | sed '/-/!{s/$/_/}' | sort -rV | sed 's/_$//' | grep yaml | grep -v nightly | head -n 3 | jq -cRs 'split("\n")[:-1]')"
+      run: echo "::set-output name=matrix::$(basename --suffix=.yaml configs/katello/*.yaml | grep -v 'nightly' | sort --version-sort | tail -n 3 | jq -cRs 'split("\n")[:-1]')"
   build:
     needs: prepare
     runs-on: ubuntu-latest
