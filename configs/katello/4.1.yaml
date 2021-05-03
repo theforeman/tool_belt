@@ -1,0 +1,102 @@
+---
+:project: katello
+:github_org: katello
+:releases:
+  :4.1.0:
+    :redmine_version_id: 1351
+:prior_releases:
+  :4.0.1:
+    :redmine_version_id: 1369
+  :4.0.0:
+    :redmine_version_id: 1177
+  :3.18.4:
+    :redmine_version_id: 1396
+  :3.18.3:
+    :redmine_version_id: 1370
+:code_name:
+:mash_scripts:
+  - katello-4.1-rhel7
+  - katello-4.1-thirdparty-candlepin-rhel7
+  - katello-4.1-el8
+  - katello-candlepin-4.1-el8
+:repos:
+  :katello:
+    :main: true
+    :branch: KATELLO-4.1
+    :repo: https://github.com/Katello/katello.git
+    :version_branch: true
+  :foreman-packaging:
+    :branch: rpm/2.5
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :hammer-cli-katello:
+    :branch: 1.1.z
+    :repo: https://github.com/Katello/hammer-cli-katello.git
+  :katello-host-tools:
+    :branch: 3.5.4
+    :repo: https://github.com/Katello/katello-host-tools.git
+  :katello-certs-tools:
+    :branch: 2.7.3
+    :repo: https://github.com/Katello/katello-certs-tools.git
+  :foreman_virt_who_configure:
+    :branch: 0.5.6
+    :repo: https://github.com/theforeman/foreman_virt_who_configure.git
+:ignores:
+:strict_keys: true
+:gpg_key: 7522CC3F
+:tags:
+  - name: katello-4.1-thirdparty-candlepin-rhel7
+    based_off: katello-thirdparty-candlepin-rhel7
+    build_target: katello-4.1-rhel7-build
+    arches:
+      - x86_64
+  - name: katello-candlepin-4.1-el8
+    based_off: katello-candlepin-nightly-el8
+    build_target: katello-4.1-el8-build
+    arches:
+      - x86_64
+  - name: katello-4.1-rhel7
+    based_off: katello-nightly-rhel7
+    helper_tags:
+      katello-4.1-thirdparty-rhel7: katello-thirdparty-rhel7
+      katello-4.1-rhel7-override: null
+    build_target: katello-4.1-rhel7-build
+    build_package_group_source_tag: katello-nightly-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      katello-4.1-rhel7-build:
+        katello-4.1-rhel7-override: 0
+        foreman-plugins-2.5-rhel7-override: 3
+        foreman-2.5-rhel7: 10
+      katello-4.1-rhel7-override:
+        katello-4.1-rhel7: 0
+      katello-4.1-rhel7:
+        katello-4.1-thirdparty-rhel7: 0
+        foreman-2.5-nonscl-rhel7: 1
+    external_repos:
+      - epel-7
+      - centos-sclo-rh-rhel-7
+      - centos-7-server-updates
+      - centos-7-server
+  - name: katello-4.1-el8
+    based_off: katello-nightly-el8
+    helper_tags:
+      katello-thirdparty-el8: null
+      katello-4.1-el8-override: null
+    build_target: katello-4.1-el8-build
+    build_package_group_source_tag: katello-nightly-el8-build
+    arches:
+      - x86_64
+    inherits:
+      katello-4.1-el8-build:
+        katello-4.1-el8-override: 0
+        foreman-plugins-2.5-el8: 3
+        foreman-2.5-el8: 5
+      katello-4.1-el8-override:
+        katello-4.1-el8: 0
+      katello-4.1-el8:
+        katello-thirdparty-el8: 0
+    external_repos:
+      - test-flat-el8
+      - centos8-devel
+      - puppetlabs-puppet6-rhel-8
