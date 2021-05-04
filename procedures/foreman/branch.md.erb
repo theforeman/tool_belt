@@ -71,7 +71,7 @@
     scp mash_scripts/foreman/<%= release %>.0/*.mash root@koji.katello.org:/etc/mash/
     ```
 - [ ] Update mash script if needed - [collection-mash-split.py](https://github.com/theforeman/foreman-infra/blob/master/koji/collection-mash-split.py)
-- [ ] Add the new release to the JJB job definitions in [foreman-infra](https://github.com/theforeman/foreman-infra/tree/master/puppet/modules/jenkins_job_builder/files/theforeman.org/)
+- [ ] Add the new release to the JJB job definitions in [jenkins-jobs](https://github.com/theforeman/jenkins-jobs)
   - [ ] Create a `<%= release %>.groovy` in `pipelines/vars/foreman/` describing the operating systems the release supports
   - [ ] Add `<%= release %>` to the version list in `theforeman.org/yaml/includes/foreman_versions.yaml.inc`
   - [ ] Add `<%= release %>` to the version list in `centos.org/jobs/foreman-pipelines.yml`
