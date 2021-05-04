@@ -22,7 +22,6 @@
   - [ ] `bundle exec rake plugin:gettext[katello]` in the foreman directory
   - [ ] Commit the resulting files in the katello directory with a message like "i18n - pulling from tx"
   - [ ] Open a PR to Katello (no Redmine issue needed)
-  - [ ] Determine which issues require installer changes and make sure those are merged by 3 weeks prior to branch date
 - [ ] Start attending upstream release sync meetings and giving updates
 
 # Three Weeks Prior to Branch Date
@@ -58,7 +57,7 @@
   - [ ] [katello](https://github.com/katello/katello)
 - [ ] Bump versions to <%= develop %>-master
   - [ ] [katello](https://github.com/katello/katello)
-- [ ] Create PR to foreman-infra to add a mapping between the current Foreman and Katello release branches. Also remove the oldest mapping from the config. See [this example](https://github.com/theforeman/foreman-infra/pull/1491).
+- [ ] Create PR to theforeman/jenkins-jobs to add a mapping between the current Foreman and Katello release branches. Also remove the oldest mapping from the config. See [this example](https://github.com/theforeman/jenkins-jobs/pull/54).
 - [ ] Branch docs
   * Use `./tools branch-docs config/katello/<%= release %>.yaml` to branch automatically or by hand:
     - [ ] Copy [nightly manual content](https://github.com/theforeman/theforeman.org/tree/gh-pages/plugins/katello/nightly) to <%= release %>
