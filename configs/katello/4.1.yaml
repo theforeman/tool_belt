@@ -97,6 +97,7 @@
       katello-4.1-el8:
         katello-thirdparty-el8: 0
     external_repos:
+      - flat-ruby27-el8
       - test-flat-el8
       - centos8-devel
       - puppetlabs-puppet6-rhel-8

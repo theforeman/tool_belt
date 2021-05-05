@@ -144,8 +144,8 @@
       foreman-2.5-el8-override:
         foreman-2.5-el8: 0
     external_repos:
-      - test-flat-el8
       - flat-ruby27-el8
+      - test-flat-el8
       - centos8-devel
       - puppetlabs-puppet6-rhel-8
     build_groups:
@@ -316,8 +316,8 @@
       foreman-plugins-2.5-el8-override:
         foreman-plugins-2.5-el8: 0
     external_repos:
-      - test-flat-el8
       - flat-ruby27-el8
+      - test-flat-el8
     build_groups:
       build:
         - bash
