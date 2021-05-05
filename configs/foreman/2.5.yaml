@@ -108,7 +108,7 @@
         - make
         - patch
         - redhat-rpm-config
-        - rh-ruby25-scldevel
+        - rh-ruby27-scldevel
         - rpm-build
         - scl-utils-build
         - sed
@@ -124,7 +124,7 @@
         - centos-release
         - foreman-build
         - redhat-rpm-config
-        - rh-ruby25-scldevel
+        - rh-ruby27-scldevel
         - rhpkg-simple
         - rpm-build
         - scl-utils-build
@@ -279,7 +279,7 @@
         - make
         - patch
         - redhat-rpm-config
-        - rh-ruby25-scldevel
+        - rh-ruby27-scldevel
         - rpm-build
         - scl-utils-build
         - sed
@@ -295,7 +295,7 @@
         - centos-release
         - foreman-build
         - redhat-rpm-config
-        - rh-ruby25-scldevel
+        - rh-ruby27-scldevel
         - rhpkg-simple
         - rpm-build
         - scl-utils-build
