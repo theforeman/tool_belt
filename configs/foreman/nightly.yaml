@@ -37,7 +37,6 @@
       build:
         - bash
         - bzip2
-        - centos-release
         - coreutils
         - cpio
         - diffutils
@@ -50,6 +49,7 @@
         - info
         - make
         - patch
+        - redhat-release-server
         - redhat-rpm-config
         - rpm-build
         - sed
@@ -61,7 +61,7 @@
         - xz
       srpm-build:
         - bash
-        - centos-release
+        - redhat-release-server
         - redhat-rpm-config
         - rhpkg-simple
         - rpm-build
@@ -90,7 +90,6 @@
       build:
         - bash
         - bzip2
-        - centos-release
         - coreutils
         - cpio
         - diffutils
@@ -104,8 +103,8 @@
         - info
         - make
         - patch
+        - redhat-release-server
         - redhat-rpm-config
-        - rh-ruby27-scldevel
         - rpm-build
         - scl-utils-build
         - sed
@@ -118,10 +117,9 @@
         - xz
       srpm-build:
         - bash
-        - centos-release
         - foreman-build
+        - redhat-release-server
         - redhat-rpm-config
-        - rh-ruby27-scldevel
         - rhpkg-simple
         - rpm-build
         - scl-utils-build
@@ -207,7 +205,6 @@
       build:
         - bash
         - bzip2
-        - centos-release
         - coreutils
         - cpio
         - diffutils
@@ -220,6 +217,7 @@
         - info
         - make
         - patch
+        - redhat-release-server
         - redhat-rpm-config
         - rpm-build
         - sed
@@ -231,7 +229,7 @@
         - xz
       srpm-build:
         - bash
-        - centos-release
+        - redhat-release-server
         - redhat-rpm-config
         - rhpkg-simple
         - rpm-build
@@ -261,7 +259,6 @@
       build:
         - bash
         - bzip2
-        - centos-release
         - coreutils
         - cpio
         - diffutils
@@ -275,8 +272,8 @@
         - info
         - make
         - patch
+        - redhat-release-server
         - redhat-rpm-config
-        - rh-ruby27-scldevel
         - rpm-build
         - scl-utils-build
         - sed
@@ -289,10 +286,9 @@
         - xz
       srpm-build:
         - bash
-        - centos-release
         - foreman-build
+        - redhat-release-server
         - redhat-rpm-config
-        - rh-ruby27-scldevel
         - rhpkg-simple
         - rpm-build
         - scl-utils-build
@@ -558,6 +554,7 @@
         - info
         - make
         - patch
+        - redhat-release-server
         - redhat-rpm-config
         - rpm-build
         - sed
@@ -570,6 +567,7 @@
       srpm-build:
         - bash
         - centos-release
+        - redhat-release-server
         - redhat-rpm-config
         - rhpkg-simple
         - rpm-build
