@@ -59,16 +59,14 @@
   - [ ] [katello](https://github.com/katello/katello)
 - [ ] Create PR to theforeman/jenkins-jobs to add a mapping between the current Foreman and Katello release branches. Also remove the oldest mapping from the config. See [this example](https://github.com/theforeman/jenkins-jobs/pull/54).
 - [ ] Branch docs
-  * Use `./tools branch-docs config/katello/<%= release %>.yaml` to branch automatically or by hand:
-    - [ ] Copy [nightly manual content](https://github.com/theforeman/theforeman.org/tree/gh-pages/plugins/katello/nightly) to <%= release %>
-    - [ ] Create sidebar from [nightly](https://github.com/theforeman/theforeman.org/tree/gh-pages/_includes/plugins/katello/sidebar_nightly.html) to `sidebar_<%= release %>.html`
-    - [ ] Add <%= release %> to [layout](https://github.com/theforeman/theforeman.org/blob/gh-pages/_layouts/plugins/katello/documentation.html#L3) and set `display` to include `-RC`
-    - [ ] Add <%= release %> to [_config.yml]() mirroring other entries
   - [ ] Draft release notes in markdown ([example](https://gist.github.com/domcleal/5567450)), with these sections (and do not use personal pronouns):
     - [ ] Headline features: half a dozen important features with a few sentences description each
     - [ ] Upgrade notes: all important notices that users must be aware of before upgrading
-    - [ ] Release notes: bullet point list by category of most changes, excluding bug fixes for issues introduced during the release cycle, include link to bug numbers. You can auto-generate changes using the 'changelog' command in [tool_belt](https://github.com/theforeman/tool_belt)
-    - [ ] Add contributor list on release notes page ex `git shortlog -s KATELLO-3.17..KATELLO-3.18`
+    - [ ] Release notes: bullet point list by category of most changes, excluding bug fixes for issues introduced during the release cycle, include link to bug numbers. You can auto-generate changes using the `changelog` command in [tool_belt](https://github.com/theforeman/tool_belt) (make sure to run the `setup-environment` command first)
+    - [ ] Add contributor list on release notes page: `git shortlog -s KATELLO-4.0..KATELLO-4.1`
+  - [ ] Create a pull request to `theforeman/foreman-documentation`:
+    - [ ] Locate the Foreman documentation PR for the current version - [example here](https://github.com/theforeman/foreman-documentation/pull/515)
+    - [ ] Add Katello-related content in the same file and base the PR off of the Foreman PR
 - [ ] Update API docs and open a PR with the changes:
 
       VERSION=<%= short_version %>
