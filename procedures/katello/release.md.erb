@@ -19,9 +19,10 @@
   - [ ] Verify tickets in the cherry_picks_<%= full_version %> file are accounted for or additional cherry pick them
   - [ ] Check for outdated deprecation warnings in the current and next release with `./tools check-deprecation-warnings configs/katello/<%= short_version %>.yaml`. Follow the instructions in the output of the command.
 
-- [ ] In katello release branch:
-  - [ ] Update `lib/katello/version.rb` to <%= full_version %>
+- [ ] Bump version:
+  - [ ] Open a PR which updates `lib/katello/version.rb` to <%= full_version %>
   - [ ] Commit: `git commit -m "Release <%= full_version %>"`
+- [ ] In katello release branch, once PR is merged:
   - [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
   - [ ] Push: `git push --follow-tags`
   - [ ] Generate source gem: `gem build katello.gemspec`
@@ -47,4 +48,3 @@
 ## Release Owner
 
 - [ ] Create and upload [release specific developer stable box](https://github.com/theforeman/forklift/blob/master/packer/README.md#creating-version-specific-katello-devel-boxes)
-
