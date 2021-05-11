@@ -13,16 +13,17 @@
 - [ ] Request Virt Who Configure release from maintainers
 <% unless is_rc %>- [ ] Change Redmine version <%= full_version %> state to Closed
 <% end %>
-- [ ] Clone [tool_belt](https://github.com/theforeman/tool_belt) and run:
+- [ ] Do Cherry-picks: Clone [tool_belt](https://github.com/theforeman/tool_belt) and run:
   - [ ] `./tools.rb setup-environment configs/katello/<%= short_version %>.yaml`
   - [ ] `./tools.rb cherry-picks --version <%= full_version %> configs/katello/<%= short_version %>.yaml`
-  - [ ] Verify tickets in the cherry_picks_<%= full_version %> file are accounted for or additional cherry pick them
-  - [ ] Check for outdated deprecation warnings in the current and next release with `./tools check-deprecation-warnings configs/katello/<%= short_version %>.yaml`. Follow the instructions in the output of the command.
+  - [ ] Open a PR in Katello release branch.  Make sure the PR name starts with [CP]
+  - [ ] Using `git cherry-pick` as needed, verify tickets in the cherry_picks_<%= full_version %> file are accounted for or additionally cherry pick them
+- [ ] Check for outdated deprecation warnings in the current and next release with `./tools check-deprecation-warnings configs/katello/<%= short_version %>.yaml`. Follow the instructions in the output of the command.
 
 - [ ] Bump version:
-  - [ ] Open a PR which updates `lib/katello/version.rb` to <%= full_version %>
+  - [ ] Open a PR (or use cherry-pick PR) which updates `lib/katello/version.rb` to <%= full_version %>
   - [ ] Commit: `git commit -m "Release <%= full_version %>"`
-- [ ] In katello release branch, once PR is merged:
+- [ ] In Katello release branch, once PR is merged:
   - [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
   - [ ] Push: `git push --follow-tags`
   - [ ] Generate source gem: `gem build katello.gemspec`
