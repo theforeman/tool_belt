@@ -2,6 +2,8 @@
 :project: katello
 :github_org: katello
 :releases:
+  :4.0.1:
+    :redmine_version_id: 1369
   :4.0.0:
     :redmine_version_id: 1177
 :prior_releases:
@@ -50,6 +52,14 @@
   - 32060 # for katello 3.18
   - 32062 # for katello 3.18
   - 32066 # for migration/3.18
+  - 32058 # for migration/3.18
+  - 32109 # for migraiton/3.18
+  - 32210 # for migration/3.18
+  - 32226 # for migration/3.18
+  - 32301 # for migration/3.18
+  - 32420 # for migration/3.18
+  - 32256 # for migration/3.18
+  - 32449 # for migration/3.18
 :strict_keys: true
 :gpg_key: AC2AD9F1
 :tags:
