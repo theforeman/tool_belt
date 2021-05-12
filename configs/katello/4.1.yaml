@@ -32,7 +32,7 @@
     :branch: 1.1.z
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-host-tools:
-    :branch: 3.5.4
+    :branch: 3.5.5
     :repo: https://github.com/Katello/katello-host-tools.git
   :katello-certs-tools:
     :branch: 2.7.3
