@@ -48,6 +48,9 @@ module ToolBelt
           Dir.chdir(name.to_s) do
             @systools.execute("git fetch --all")
           end
+        rescue Errno::ENOENT => e
+          new_message = e.message + ". Do you need to re-run setup-environment?"
+          raise Errno::ENOENT, new_message
         end
       end
     end
