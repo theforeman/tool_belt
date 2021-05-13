@@ -44,6 +44,8 @@
   - 32155 # tracker
   - 30872 # tracker
   - 29552 # tracker
+  - 32089 # 4.0 only per Toledo
+  - 32129 # ignore per Toledo
   - 32210 # ignoring all pulp3 migration and switchover related commits per jsherrill - may also need to do this next release
   - 32109 # switchover
   - 32142 # pulp3 migration
