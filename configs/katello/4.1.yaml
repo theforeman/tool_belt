@@ -40,10 +40,17 @@
   :foreman_virt_who_configure:
     :branch: 0.5.6
     :repo: https://github.com/theforeman/foreman_virt_who_configure.git
+  :smart_proxy_container_gateway:
+    :branch: 1.0.4
+    :repo: https://github.com/Katello/smart_proxy_container_gateway.git
+  :katello-selinux:
+    :branch: 4.0.0
+    :repo: https://github.com/Katello/katello-selinux.git
 :ignores:
   - 32155 # tracker
   - 30872 # tracker
   - 29552 # tracker
+  - 29977 # tracker
   - 32089 # 4.0 only per Toledo
   - 32129 # ignore per Toledo
   - 32210 # ignoring all pulp3 migration and switchover related commits per jsherrill - may also need to do this next release
@@ -56,6 +63,7 @@
   - 32449 # pulp3 migration
   - 32301 # pulp3 migration
   - 32471 # pulp3 migration
+  - 29124 # duplicate
 
 :strict_keys: true
 :gpg_key: 7522CC3F
