@@ -44,6 +44,17 @@
   - 32155 # tracker
   - 30872 # tracker
   - 29552 # tracker
+  - 32210 # ignoring all pulp3 migration and switchover related commits per jsherrill - may also need to do this next release
+  - 32109 # switchover
+  - 32142 # pulp3 migration
+  - 32302 # switchover
+  - 32420 # pulp3 migration
+  - 32062 # pulp3 migration
+  - 32256 # pulp3 migration, switchover
+  - 32449 # pulp3 migration
+  - 32301 # pulp3 migration
+  - 32471 # pulp3 migration
+
 :strict_keys: true
 :gpg_key: 7522CC3F
 :tags:
