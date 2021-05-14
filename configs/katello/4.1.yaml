@@ -64,6 +64,12 @@
   - 32301 # pulp3 migration
   - 32471 # pulp3 migration
   - 29124 # duplicate
+  - 32172 # documentation-related, already in their respective repos
+  - 32169 # docs
+  - 32171 # docs
+  - 31618 # docs
+  - 32165 # docs
+  - 31880 # squashed, already in release branch
 
 :strict_keys: true
 :gpg_key: 7522CC3F
