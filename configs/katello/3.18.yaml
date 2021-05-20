@@ -10,6 +10,8 @@
     :redmine_version_id: 1353
   :3.18.2.1:
     :redmine_version_id: 1384
+  :3.18.3:
+    :redmine_version_id: 1370
 :prior_releases:
   :3.17.3:
     :redmine_version_id: 1365
@@ -37,7 +39,7 @@
     :branch: rpm/2.3
     :repo: https://github.com/theforeman/foreman-packaging.git
   :hammer-cli-katello:
-    :branch: 0.24.3
+    :branch: 0.24.4
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-host-tools:
     :branch: 3.5.4
@@ -57,6 +59,11 @@
  - 31810 # dup
  - 31336 # dup
  - 31437 # it's there
+ - 31902 # it's there
+ - 31559 # pulp 3.10+
+ - 32062 # it's there
+ - 32165 # docs
+ - 32210 # it's there
 :strict_keys: true
 :gpg_key: E0745924
 :tags:
