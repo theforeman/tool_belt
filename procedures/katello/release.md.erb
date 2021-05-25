@@ -31,7 +31,6 @@
   - [ ] Ensure you have a working login and password at rubygems.org
   - [ ] Push gem: `gem push katello-<%= full_version %>.gem`
 - [ ] Email the delivery team informing them that the gem is published
-- [ ] Confirm response that the build succeeded (or if necessary, do more cherry-picks and version bumps repeating the steps above)
 
 # Once Source is Available
 <% unless is_rc -%>
@@ -52,5 +51,6 @@
 # Once release is out
 ## Release Owner
 
+- [ ] Confirm response that the build succeeded (or if necessary, do more cherry-picks and version bumps repeating the steps above)
 - [ ] Post a [release announcement](https://community.theforeman.org/c/release-announcements/8)
 - [ ] (GA release only) Create and upload [release specific developer stable box](https://github.com/theforeman/forklift/blob/master/packer/README.md#creating-version-specific-katello-devel-boxes)
