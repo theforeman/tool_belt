@@ -378,7 +378,6 @@
     external_repos:
       - rhel-6.6-server
       - rhel-6.6-server-optional
-      - epel-6
     build_groups:
       build:
         - bash
