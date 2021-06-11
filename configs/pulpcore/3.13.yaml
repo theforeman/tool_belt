@@ -1,0 +1,129 @@
+---
+:project: pulpcore
+:github_org: pulp
+:nightly: false
+:repos: []
+:releases:
+  :3.13:
+    :redmine_version_id: -1
+:mash_scripts:
+  - pulpcore-3.13-el7
+  - pulpcore-3.13-el8
+:strict_keys: true
+:gpg_key: 92E68432
+:tags:
+  - name: pulpcore-3.13-el7
+    based_off: pulpcore-3.11-el7
+    helper_tags:
+      pulpcore-3.13-el7-override: null
+    arches:
+      - x86_64
+    build_target: pulpcore-3.13-el7-build
+    inherits:
+      pulpcore-3.13-el7-build:
+        pulpcore-3.13-el7-override: 0
+      pulpcore-3.13-el7-override:
+        pulpcore-3.13-el7: 0
+    external_repos:
+      - centos7-os
+      - centos7-updates
+      - centos-sclo-rh-rhel-7
+      - epel-7
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - python3-rpm-macros
+        - redhat-release
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - python3-rpm-macros
+        - rh-postgresql12-scldevel
+        - scl-utils-build
+        - redhat-release
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
+  - name: pulpcore-3.13-el8
+    based_off: pulpcore-3.11-el8
+    helper_tags:
+      pulpcore-3.13-el8-override: null
+    build_target: pulpcore-3.13-el8-build
+    build_package_group_source_tag: pulpcore-3.13-el8-build
+    arches:
+      - x86_64
+    inherits:
+      pulpcore-3.13-el8-build:
+        pulpcore-3.13-el8-override: 0
+      pulpcore-3.13-el8-override:
+        pulpcore-3.13-el8: 0
+    external_repos:
+      - name: test-flat-el8
+        mode: bare
+      - name: centos8-baseos
+        mode: bare
+      - name: centos8-appstream
+        mode: bare
+      - name: centos8-powertools
+        mode: bare
+      - name: centos8-devel
+        mode: bare
+      - name: centos8-configmanagement-ansible-29
+        mode: bare
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - python3-rpm-macros
+        - redhat-release
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - python3-rpm-macros
+        - redhat-release
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
