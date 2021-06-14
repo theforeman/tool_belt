@@ -25,8 +25,8 @@
       pulpcore-3.8-el7-override:
         pulpcore-3.8-el7: 0
     external_repos:
-      - centos7-os
-      - centos7-updates
+      - centos-7-server
+      - centos-7-server-updates
       - centos-sclo-rh-rhel-7
       - epel-7
     build_groups:

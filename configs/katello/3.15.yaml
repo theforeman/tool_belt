@@ -6,7 +6,7 @@
   :3.15.3:
     :redmine_version_id: 1257
   :3.15.2:
-    :redmine_version_id: 1238 
+    :redmine_version_id: 1238
   :3.15.1:
     :redmine_version_id: 1211
   :3.15.0:
@@ -80,5 +80,5 @@
         katello-pulpcore-3.15-el7: 0
     build_package_group_source_tag: katello-pulpcore-nightly-el7-build
     external_repos:
-      - centos7-os
-      - centos7-updates
+      - centos-7-server
+      - centos-7-server-updates

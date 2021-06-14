@@ -92,7 +92,7 @@
         katello-pulpcore-3.17-el7: 0
     build_package_group_source_tag: katello-pulpcore-nightly-el7-build
     external_repos:
-      - centos7-os
-      - centos7-updates
+      - centos-7-server
+      - centos-7-server-updates
       - centos-sclo-rh-rhel-7
       - epel-7

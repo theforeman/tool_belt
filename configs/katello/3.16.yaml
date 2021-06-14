@@ -2,7 +2,7 @@
 :project: katello
 :github_org: katello
 :releases:
-  :3.16.2: 
+  :3.16.2:
     :redmine_version_id: 1308
   :3.16.1.2:
     :redmine_version_id: 1313
@@ -132,8 +132,8 @@
         katello-pulpcore-3.16-el7: 0
     build_package_group_source_tag: katello-pulpcore-nightly-el7-build
     external_repos:
-      - centos7-os
-      - centos7-updates
+      - centos-7-server
+      - centos-7-server-updates
       - centos-sclo-rh-rhel-7
       - epel-7
   - name: katello-pulpcore-3.16-el8
