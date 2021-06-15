@@ -1,3 +1,10 @@
+[ ] Make this post a wiki
+
+## Roles
+
+* Release Owner: <%= owner %>
+* Release Engineer: <%= engineer %>
+
 # When Ready to Release
 
 ## Release Owner
@@ -22,7 +29,7 @@
 
 # Once Source is Available
 
-## Release Packager
+## Release Engineer
 
 - [ ] Update `katello`, `katello-repos` and `rubygem-katello` in [foreman-packaging](https://github.com/theforeman/foreman-packaging) [rpm/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_rpm_packaging) branch (replace <%= short_version %> with the matching Foreman version):
   - [ ] `obal update katello katello-repos rubygem-katello --version <%= version %><% if is_rc %> --prerelease <%= extra %> --release keep<% end %>`
