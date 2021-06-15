@@ -10,6 +10,8 @@ module ToolBelt
           value
         end
         parameter "target-date", "Target date that the procedure should be completed on"
+        parameter "owner", "The release owner's username on Discourse"
+        parameter "engineer", "The release engineer's username on Discourse"
 
         def execute
           parsed_date = Date.parse(target_date)
@@ -20,6 +22,8 @@ module ToolBelt
             target_date: parsed_date,
             two_weeks_before: parsed_date - 14,
             one_week_before: parsed_date - 7,
+            owner: discourse_username(owner),
+            engineer: discourse_username(engineer),
           }
 
           render(project, 'branch', context)
@@ -33,6 +37,8 @@ module ToolBelt
           value
         end
         parameter "target-date", "Target date that the procedure should be completed on"
+        parameter "owner", "The release owner's username on Discourse"
+        parameter "engineer", "The release engineer's username on Discourse"
 
         def execute
           version, extra = full_version.split('-', 2)
@@ -51,6 +57,8 @@ module ToolBelt
             target_date: parsed_date,
             two_weeks_before: parsed_date - 14,
             one_week_before: parsed_date - 7,
+            owner: discourse_username(owner),
+            engineer: discourse_username(engineer),
           }
 
           render(project, 'release', context)
@@ -93,6 +101,10 @@ module ToolBelt
       def previous_release(version)
         parts = version.split('.')
         (parts[0..-2] + [(parts.last.to_i - 1).to_s]).join('.')
+      end
+
+      def discourse_username(name)
+        name.start_with?('@') ? name : "@#{name}"
       end
     end
   end

@@ -1,6 +1,14 @@
 [ ] Make this post a wiki
 
+## Roles
+
+* Release Owner: <%= owner %>
+* Release Engineer: <%= engineer %>
+* Installer Maintainer: @
+
 # Manual updates: <%= target_date %>
+
+## Release Engineer
 
 - [ ] Update manual if applicable for any additional installation steps
 - Update [release notes section](gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md) in the manual:
@@ -17,8 +25,13 @@
 
 # Preparing code: <%= target_date %>
 
+## Installer Maintainer
+
 - [ ] Make patch releases of installer modules that have important changes
   - [ ] Branch to MAJ.MIN-stable if recent changes to the module aren't suitable for patch (x.y.z) release
+
+## Release Owner
+
 <% unless (is_rc || full_version.end_with?('0')) %>- [ ] Add a new [Redmine version](https://projects.theforeman.org/projects/foreman/settings/versions) for the next minor, unless the series is EOL. Be sure the version is set to sharing with subprojects.
 <% end %>- [ ] Remove/change target version field for any open Redmine tickets assigned to the release still (next minor, unset it or reject)
 - [ ] Ensure that code in git matches issues fixed in <%= full_version %> in redmine. [issues.rb](https://gist.github.com/tbrisker/3320097f1d8c9abfb2dbcf8d8e216bba) can be used to generate a comparison between the two.
@@ -26,6 +39,8 @@
 <% end %>
 
 # Tagging a release: <%= target_date %>
+
+## Release Owner
 
 - In foreman <%= short_version %>-stable:
   - [ ] Make sure [test_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_<%= short_version.tr('.', '_') %>_stable/) is green
@@ -39,6 +54,9 @@
 - In foreman-installer <%= short_version %>-stable:
   - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %> && git push upstream <%= short_version %>-stable --follow-tags`
 - [ ] Run the Jenkins [Tarballs Release](https://ci.theforeman.org/job/tarballs-release/) to create tarballs
+
+## Release Engineer
+
 - [ ] Update release version similar to [here](https://github.com/theforeman/theforeman-rel-eng/commit/2029a9688da00d9c385c3438dd71b594ba5f728e)
 - [ ] Sign Tarballs
   - [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_tarballs)
@@ -48,6 +66,8 @@
 Note: If for some reason there was an issue with the tarballs that required uploading new tarballs, CDN cache should be invalidated so that the builders use the updated tarballs.
 
 # Packaging a release: <%= target_date %>
+
+## Release Engineer
 
 [Background documentation](https://projects.theforeman.org/projects/foreman/wiki/Release_Process#Packaging-a-release)
 
@@ -76,6 +96,8 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 - [ ] Kick off the [plugins pipeline](https://ci.theforeman.org/job/foreman-plugins-<%= short_version %>-rpm-pipeline/) by calling [plugins_pipeline](https://github.com/theforeman/theforeman-rel-eng/blob/master/plugins_pipeline)
 
 # After the packages have been released
+
+# Release Owner
 
 <% unless is_rc %>- [ ] Update the versions on the website in [version](https://github.com/theforeman/theforeman.org/blob/gh-pages/_includes/version.html) and [latest news](https://github.com/theforeman/theforeman.org/blob/gh-pages/_includes/latest_news.html)
 <% end -%>

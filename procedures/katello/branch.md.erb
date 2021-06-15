@@ -1,3 +1,10 @@
+[ ] Make this post a wiki
+
+## Roles
+
+* Release Owner: <%= owner %>
+* Release Engineer: <%= engineer %>
+
 # One Month Prior to Branch Date
 
 ## Release Owner
@@ -31,7 +38,7 @@
   - [ ] [foreman_proxy_content](https://github.com/theforeman/puppet-foreman_proxy_content)
   - [ ] [katello](https://github.com/theforeman/puppet-katello)
 
-## Release Packager
+## Release Engineer
 
 - [ ] Ensure tool_belt config is merged and output from `./tools.rb koji configs/katello/<%= release %>.yaml` matches expectations
 
@@ -65,7 +72,7 @@
       find $GITDIR/theforeman.org/plugins/katello/$VERSION/api -name "*.json" -type f -delete
       sed -i "/layout: /d" $GITDIR/theforeman.org/plugins/katello/$VERSION/api/index.md
 
-## Release Packager
+## Release Engineer
 
 - [ ] Run `./tools koji configs/katello/<%= release %>.yaml` from [tool_belt](https://github.com/theforeman/tool_belt) to create Koji tags
 - [ ] Run `./tools mash-scripts configs/katello/<%= release %>.yaml` from [tool_belt](https://github.com/theforeman/tool_belt) to create Koji mash configs and open PR to tool_belt to commit
