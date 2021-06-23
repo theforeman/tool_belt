@@ -52,24 +52,18 @@
 
 ## Release Owner
 
-- In foreman <%= short_version %>-stable:
-  - [ ] Make sure [test_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_<%= short_version.tr('.', '_') %>_stable/) is green
+- [ ] Make sure [test_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_<%= short_version.tr('.', '_') %>_stable/) and [test_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_proxy_<%= short_version.tr('.', '_') %>_stable/) are green using [verify_green_jobs](https://github.com/theforeman/theforeman-rel-eng/blob/master/verify_green_jobs)
 <% if (is_rc || full_version.end_with?('0')) -%>
-  - [ ] run `make -C locale tx-update`
+- [ ] Run `make -C locale tx-update` in foreman <%= short_version %>-stable
 <% end -%>
-  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %> && git push upstream <%= short_version %>-stable --follow-tags`
-- In smart-proxy <%= short_version %>-stable:
-  - [ ] Make sure [test_proxy_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_proxy_<%= short_version.tr('.', '_') %>_stable/) is green
-  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %> && git push upstream <%= short_version %>-stable --follow-tags`
-- In foreman-selinux <%= short_version %>-stable:
-  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %> && git push upstream <%= short_version %>-stable --follow-tags`
-- In foreman-installer <%= short_version %>-stable:
-  - [ ] Tag the release using [tag.sh](https://gist.github.com/tbrisker/d51cedea51ccbcca00e72c1fc61550fe) `tag.sh <%= full_version %> && git push upstream <%= short_version %>-stable --follow-tags`
-- [ ] Run the Jenkins [Tarballs Release](https://ci.theforeman.org/job/tarballs-release/) to create tarballs
+- [ ] Update release version similar to [here](https://github.com/theforeman/theforeman-rel-eng/commit/2029a9688da00d9c385c3438dd71b594ba5f728e)
+- [ ] Tag the projects
+  - [ ] Create tags [tag_project](https://github.com/theforeman/theforeman-rel-eng/blob/master/tag_project)
+  - [ ] Push tags [tag_push](https://github.com/theforeman/theforeman-rel-eng/blob/master/tag_push)
+- [ ] Run the Jenkins [Tarballs Release](https://ci.theforeman.org/job/tarballs-release/) using [release_tarballs](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_tarballs) to create tarballs
 
 ## Release Engineer
 
-- [ ] Update release version similar to [here](https://github.com/theforeman/theforeman-rel-eng/commit/2029a9688da00d9c385c3438dd71b594ba5f728e)
 - [ ] Sign Tarballs
   - [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_tarballs)
   - [ ] [Inspect](https://github.com/theforeman/theforeman-rel-eng/blob/master/inspect_tarballs)
