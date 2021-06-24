@@ -9,11 +9,12 @@
 
 ## Release Owner
 
-- [ ] Announce upcoming branching to discourse development category a month before
+- [ ] Start attending upstream release sync meetings and giving updates
+- [ ] Announce upcoming branching to [Discourse development category](https://community.theforeman.org/c/development/9) a month before
 - [ ] Update Katello Transifex translations:
   - [ ] Create a Transifex account and join the Foreman team
   - [ ] Spin up a Foreman and Katello installation
-  - [ ] Configure `~/.transifexrc` [as outlined here](https://projects.theforeman.org/projects/foreman/wiki/Translating#How-to-pull-translations)
+  - [ ] [Configure the Transifex client](https://projects.theforeman.org/projects/foreman/wiki/Translating#How-to-pull-translations)
   - [ ] [Install grunt](https://github.com/Katello/katello/blob/master/engines/bastion_katello/README.md)
   - [ ] `grunt i18n:extract` in the katello/engines/bastion_katello directory
   - [ ] `make -C locale tx-update` in the katello directory
@@ -21,7 +22,6 @@
   - [ ] `bundle exec rake plugin:gettext[katello]` in the foreman directory
   - [ ] Commit the resulting files in the katello directory with a message like "i18n - pulling from tx"
   - [ ] Open a PR to Katello (no Redmine issue needed)
-- [ ] Start attending upstream release sync meetings and giving updates
 
 # Three Weeks Prior to Branch Date
 
