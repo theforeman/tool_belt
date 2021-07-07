@@ -33,7 +33,14 @@ module ToolBelt
       subcommand "release", "Release procedures for project" do
         parameter "project", "Project to generate procedure for"
         parameter "full-version", "Version that the branch will have - like 1.20.0-rc1" do |value|
-          raise ArgumentError.new('Release must be in major.minor.patch or major.minor.patch-rcx, like 1.20.0 or 1.20.0-rc1') unless value =~ /^\d+\.\d+\.\d+(-rc\d+)?$/
+          unless value.match?(/^\d+\.\d+\.\d+([-.]rc\d+)?$/)
+            raise ArgumentError, <<~HEREDOC.gsub(/\n/, ' ').strip
+              Release must be in major.minor.patch (like 1.20.0),
+              major.minor.patch-rcx (like 1.20.0-rc1),
+              or major.minor.patch.rcx (like 1.20.0.rc1)
+            HEREDOC
+          end
+
           value
         end
         parameter "target-date", "Target date that the procedure should be completed on"
