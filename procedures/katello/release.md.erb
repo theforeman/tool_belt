@@ -5,7 +5,7 @@
 - [ ] Request Hammer CLI Katello release from maintainers
 - [ ] Request Virt Who Configure release from maintainers
 - [ ] Request any other releases as needed from the release owners (consult the `:repos:` section of `configs/katello/<%= short_version %>.yaml`)
-<% unless is_rc %>
+<% unless is_rc -%>
 - [ ] Change Redmine version <%= full_version %> state to Closed
 <% end %>
 - [ ] Do Cherry-picks: Clone [tool_belt](https://github.com/theforeman/tool_belt)
