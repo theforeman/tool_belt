@@ -2,6 +2,8 @@
 :project: katello
 :github_org: katello
 :releases:
+  :4.1.1:
+    :redmine_version_id: 1437
   :4.1.0:
     :redmine_version_id: 1351
 :prior_releases:
@@ -63,6 +65,8 @@
   - 32449 # pulp3 migration
   - 32301 # pulp3 migration
   - 32471 # pulp3 migration
+  - 32831 # pulp3 migration
+  - 32869 # pulp3 migration
   - 29124 # duplicate
   - 32172 # documentation-related, already in their respective repos
   - 32169 # docs
@@ -71,6 +75,8 @@
   - 32165 # docs
   - 31880 # squashed, already in release branch
   - 32787 # per jsherrill
+  - 32933 # iballou is submitting a PR directly to release branch
+  - 32472 # 3.18.4 only
 
 
 
