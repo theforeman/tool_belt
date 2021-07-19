@@ -28,6 +28,10 @@
   - [ ] Push gem: `gem push katello-<%= full_version %>.gem`
 
 # Once Source is Available
+<% unless is_rc -%>
+
+**Note** it is considered good practice to release on a day when the next day is a working day. This means no releases on Fridays or on the day before a holiday.
+<% end -%>
 
 ## Release Engineer
 
