@@ -66,6 +66,10 @@
 Note: If for some reason there was an issue with the tarballs that required uploading new tarballs, CDN cache should be invalidated so that the builders use the updated tarballs.
 
 # Packaging a release: <%= target_date %>
+<% unless is_rc -%>
+
+**Note** it is considered good practice to release on a day when the next day is a working day. This means no releases on Fridays or on the day before a holiday.
+<% end -%>
 
 ## Release Engineer
 
