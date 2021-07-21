@@ -65,6 +65,14 @@
   - 32420 # for migration/3.18
   - 32256 # for migration/3.18
   - 32449 # for migration/3.18
+  - 32472 # for migration/3.18
+  - 32663 # for migration/3.18
+  - 32831 # for migration/3.18
+  - 32869 # for migration/3.18
+  - 32786 # for migration/3.18
+  - 32887 # for migration/3.18
+  - 32888 # for migration/3.18
+
 :strict_keys: true
 :gpg_key: AC2AD9F1
 :tags:
