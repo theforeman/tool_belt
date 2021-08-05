@@ -369,57 +369,6 @@
       foreman-plugins-3.0-rhel7-dist:
         foreman-plugins-3.0-rhel7: 2
         foreman-plugins-3.0-nonscl-rhel7: 0
-  - name: foreman-client-3.0-rhel6
-    based_off: foreman-client-nightly-rhel6
-    helper_tags:
-      foreman-client-3.0-rhel6-override: null
-      foreman-client-3.0-rhel6: null
-    build_target: foreman-client-3.0-rhel6-build
-    arches:
-      - x86_64
-    inherits:
-      foreman-client-3.0-rhel6-build:
-        foreman-client-3.0-rhel6-override: 0
-      foreman-client-3.0-rhel6-override:
-        foreman-client-3.0-rhel6: 0
-      foreman-client-3.0-rhel6: {}
-    external_repos:
-      - rhel-6.6-server
-      - rhel-6.6-server-optional
-      - epel-6
-    build_groups:
-      build:
-        - bash
-        - bzip2
-        - coreutils
-        - cpio
-        - diffutils
-        - findutils
-        - gawk
-        - gcc
-        - gcc-c++
-        - grep
-        - gzip
-        - info
-        - make
-        - patch
-        - redhat-release-server
-        - redhat-rpm-config
-        - rpm-build
-        - sed
-        - shadow-utils
-        - tar
-        - unzip
-        - util-linux
-        - which
-        - xz
-      srpm-build:
-        - bash
-        - redhat-release-server
-        - redhat-rpm-config
-        - rhpkg-simple
-        - rpm-build
-        - shadow-utils
   - name: foreman-client-3.0-el8
     based_off: foreman-client-nightly-el8
     helper_tags:
