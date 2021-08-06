@@ -29,7 +29,7 @@
         foreman-nightly-nonscl-rhel7: 0
     external_repos:
       - epel-7
-      - puppetlabs-puppet6-rhel-7
+      - puppetlabs-puppet7-rhel-7
       - centos-7-server-updates
       - centos-7-server
     build_groups:
@@ -84,7 +84,7 @@
       - centos-sclo-rh-rhel-7
       - centos-7-server-updates
       - centos-7-server
-      - puppetlabs-puppet6-rhel-7
+      - puppetlabs-puppet7-rhel-7
     build_groups:
       build:
         - bash
@@ -141,7 +141,7 @@
       - flat-ruby27-el8
       - test-flat-el8
       - centos8-devel
-      - puppetlabs-puppet6-rhel-8
+      - puppetlabs-puppet7-rhel-8
     build_groups:
       build:
         - bash
