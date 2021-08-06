@@ -4,7 +4,9 @@
 
 * Release Owner: <%= owner %>
 * Release Engineer: <%= engineer %>
+<% unless is_rc -%>
 * Installer Maintainer: @
+<% end -%>
 
 # Manual updates: <%= target_date %>
 
@@ -24,11 +26,13 @@
 <% end %>
 
 # Preparing code: <%= target_date %>
+<% unless is_rc -%>
 
 ## Installer Maintainer
 
 - [ ] Make patch releases of installer modules that have important changes
   - [ ] Branch to MAJ.MIN-stable if recent changes to the module aren't suitable for patch (x.y.z) release
+<% end -%>
 
 ## Release Owner
 
