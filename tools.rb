@@ -4,6 +4,8 @@ require 'clamp'
 
 require File.join(File.dirname(__FILE__), 'lib/tool_belt')
 
+Clamp.allow_options_after_parameters = true
+
 class MainCommand < Clamp::Command
 
   subcommand "cherry-picks", "Calculate needed cherry picks for a given release configuration", ToolBelt::Command::CherryPickCommand
