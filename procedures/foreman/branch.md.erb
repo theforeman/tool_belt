@@ -47,6 +47,7 @@
 - Prepare the manual for the new version:
   - [ ] Change `$next` parameter on [web class](https://github.com/theforeman/foreman-infra/blob/master/puppet/modules/profiles/manifests/web.pp) to point to the new version number.
   - [ ] Copy [website manual content](https://github.com/theforeman/theforeman.org/tree/gh-pages/manuals) from nightly to <%= release %> and update version numbers mentioned in it.
+  - [ ] Update installer options section of nightly manual using the [get-params script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/installer/get-params)
   - [ ] Clean up deprecation and upgrade warnings from nightly manual.
 - Branch foreman-documentation git repository:
   - [ ] Branch the [github repository](https://github.com/theforeman/foreman-documentation#branching-new-release).
