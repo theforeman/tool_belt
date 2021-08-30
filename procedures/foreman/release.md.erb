@@ -109,7 +109,9 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 
 <% unless is_rc %>- [ ] Update the versions on the website in [version](https://github.com/theforeman/theforeman.org/blob/gh-pages/_includes/version.html) and [latest news](https://github.com/theforeman/theforeman.org/blob/gh-pages/_includes/latest_news.html)
 <% end -%>
-<% if full_version.end_with?('0') %>- [ ] Update the `foreman_version` to <%= short_version %> and add the <%= short_version %> in `foreman_versions` list in website's [`_config.yml`](https://github.com/theforeman/theforeman.org/blob/gh-pages/_config.yml) file
+<% if is_rc && full_version.end_with?('1') %>- [ ] Add the <%= short_version %> in `foreman_versions` list in website's [`_config.yml`](https://github.com/theforeman/theforeman.org/blob/gh-pages/_config.yml) file
+<% end -%>
+<% if full_version.end_with?('0') %>- [ ] Update the `foreman_version` to <%= short_version %> in website's [`_config.yml`](https://github.com/theforeman/theforeman.org/blob/gh-pages/_config.yml) file
 <% end -%>
 - [ ] Announce the release on [Discourse](https://community.theforeman.org/c/release-announcements/8)
 - [ ] Update the topic in #theforeman channel on Freenode
