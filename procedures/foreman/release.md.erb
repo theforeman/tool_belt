@@ -4,7 +4,7 @@
 
 * Release Owner: <%= owner %>
 * Release Engineer: <%= engineer %>
-<% unless is_rc -%>
+<% unless is_rc && full_version.end_with?('1') -%>
 * Installer Maintainer: @
 <% end -%>
 
@@ -26,7 +26,7 @@
 <% end %>
 
 # Preparing code: <%= target_date %>
-<% unless is_rc -%>
+<% unless is_rc && full_version.end_with?('1') -%>
 
 ## Installer Maintainer
 
