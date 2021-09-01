@@ -27,6 +27,8 @@ The `python-pulp_2to3_migration` package is named differently due to a tito bug 
 * [ ] Create a new `rpm/<%= release %>` branch in `pulpcore-packaging` by using the previous release branch as a base: `git checkout -b rpm/<%= release %> rpm/<%= previous %>`
 * [ ] Set that branch as the new default branch in GitHub
 * [ ] Update `package_manifest.yaml`, `rel-eng/releasers.conf`, `rel-eng/tito.props`, `repoclosure/yum.conf`, `automation/_generate_deps.sh` to use the new <%= release %> release (a simple `sed -i 's/<%= previous.sub('.', '\\.') %>/<%= release %>/g' …` is usually sufficient)
+* [ ] Add <%= release %> to `theforeman.org/yaml/includes/pulpcore_versions.yaml.inc` in [jenkins-jobs](https://github.com/theforeman/jenkins-jobs).
+* [ ] Trigger the [`pulpcore-packaging-rpm-<%= release %>`](https://ci.theforeman.org/job/pulpcore-packaging-rpm-<%= release %>-release/) job once, so that GitHub hooks are properly set up.
 * [ ] Update `automation/requirements.txt` to the new required versions
 * [ ] Run normal "create/update" procedure above
 
