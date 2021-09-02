@@ -50,6 +50,8 @@
         - redhat-rpm-config
         - rpm-build
         - rh-python38-scldevel
+        - rh-python38-python-rpm-macros
+        - tfm-pulpcore-build
         - scl-utils-build
         - sed
         - shadow-utils
@@ -63,6 +65,8 @@
         - python3-rpm-macros
         - rh-postgresql12-scldevel
         - rh-python38-scldevel
+        - rh-python38-python-rpm-macros
+        - tfm-pulpcore-build
         - scl-utils-build
         - redhat-release
         - redhat-rpm-config
