@@ -35,8 +35,9 @@
 
 ## Release Engineer
 
-- [ ] Update `katello`, `katello-repos` and `rubygem-katello` in [foreman-packaging](https://github.com/theforeman/foreman-packaging) [rpm/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_rpm_packaging) branch (replace <%= short_version %> with the matching Foreman version):
-  - [ ] `obal update katello katello-repos rubygem-katello --version <%= version %><% if is_rc %> --prerelease <%= extra %> --release keep<% end %>`
+- [ ] Update release version similar to [here](https://github.com/theforeman/theforeman-rel-eng/commit/2029a9688da00d9c385c3438dd71b594ba5f728e)
+- [ ] Update `katello`, `katello-repos` and `rubygem-katello` 
+  - [ ] [`PROJECT=katello VERSION=<%= short_version %> ./bump_rpm_packaging`](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_rpm_packaging)
 - [ ] Merge packaging PR once job is green
 - [ ] Wait for [Jenkins to build the packages](https://ci.theforeman.org/job/foreman-packaging-rpm-<%= short_version %>-release/) (replace <%= short_version %> with the matching Foreman version)
 - [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms), [sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms), [upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures) and [upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms)
