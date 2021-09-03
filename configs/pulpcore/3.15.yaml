@@ -45,7 +45,6 @@
         - info
         - make
         - patch
-        - python3-rpm-macros
         - redhat-release
         - redhat-rpm-config
         - rpm-build
@@ -62,7 +61,6 @@
         - xz
       srpm-build:
         - bash
-        - python3-rpm-macros
         - rh-postgresql12-scldevel
         - rh-python38-scldevel
         - rh-python38-python-rpm-macros
