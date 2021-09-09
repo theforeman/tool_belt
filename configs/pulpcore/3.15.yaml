@@ -10,7 +10,7 @@
   - pulpcore-3.15-el7
   - pulpcore-3.15-el8
 :strict_keys: true
-:gpg_key: F7D3B452
+:gpg_key: B60DF7D6
 :tags:
   - name: pulpcore-3.15-el7
     based_off: pulpcore-3.14-el7
