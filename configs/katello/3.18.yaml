@@ -12,6 +12,10 @@
     :redmine_version_id: 1384
   :3.18.3:
     :redmine_version_id: 1370
+  :3.18.4:
+    :redmine_version_id: 1396
+  :3.18.5:
+    :redmine_version_id: 1463
 :prior_releases:
   :3.17.3:
     :redmine_version_id: 1365
