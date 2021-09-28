@@ -91,6 +91,10 @@
         mode: bare
       - name: flat-python38-devel-el8
         mode: bare
+      - name: flat-ruby27-el8
+        mode: bare
+      - name: flat-swig30-el8
+        mode: bare
       - name: centos8-devel
         mode: bare
       - name: centos8-configmanagement-ansible-29
