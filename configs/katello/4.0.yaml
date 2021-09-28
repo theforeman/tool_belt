@@ -21,8 +21,6 @@
     :redmine_version_id: 1370
   :3.18.4:
     :redmine_version_id: 1396
-  :3.18.5:
-    :redmine_version_id: 1463
 :code_name:
 :mash_scripts:
   - katello-4.0-rhel7
@@ -59,6 +57,7 @@
   - 31974 # for katello 3.18
   - 32060 # for katello 3.18
   - 32062 # for katello 3.18
+  - 33220 # for katello 3.18
   - 32066 # for migration/3.18
   - 32058 # for migration/3.18
   - 32109 # for migraiton/3.18
@@ -76,6 +75,17 @@
   - 32786 # for migration/3.18
   - 32887 # for migration/3.18
   - 32888 # for migration/3.18
+  - 33131 # for migration/3.18
+  - 33192 # for migration/3.18
+  - 33028 # for migration/3.18
+  - 33206 # for migraiton/3.18
+  - 33278 # for migration/3.18
+  - 33304 # for migration/3.18
+  - 33207 # for migration/3.18
+  - 33187 # for migration/3.18
+  - 33173 # for migration/3.18
+  - 33045 # for migration/3.18
+
 
 :strict_keys: true
 :gpg_key: AC2AD9F1
