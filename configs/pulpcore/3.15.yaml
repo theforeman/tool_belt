@@ -87,6 +87,8 @@
     external_repos:
       - name: flat-base-el8
         mode: bare
+      - name: flat-python36-el8
+        mode: bare
       - name: flat-python38-el8
         mode: bare
       - name: flat-python38-devel-el8
