@@ -70,7 +70,7 @@
 - [ ] Generate and post the release procedure, if not already posted:
   - [ ] (Note that Katello uses dots instead of dashes for release candidates, e.g. 4.1.1.rc1 not 4.1.1-rc1)
   - [ ] Make sure to run `./tools.rb setup-environment` first
-  - [ ] Run `./tools.rb procedure release katello <%= release %>.rc1 <rc_release_date>` in [tool_belt](https://github.com/theforeman/tool_belt)
+  - [ ] Run `./tools.rb procedure release katello <%= release %>.0.rc1 <%= target_date %> <%= owner %> <%= engineer %>` in [tool_belt](https://github.com/theforeman/tool_belt)
   - [ ] Post the output in [Development](https://community.theforeman.org/c/development/9) with a "Releases" tag
 - [ ] Branch docs
   - [ ] Draft release notes in markdown ([example](https://gist.github.com/domcleal/5567450)), with these sections (and do not use personal pronouns):
