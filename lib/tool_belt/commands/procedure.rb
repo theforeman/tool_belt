@@ -33,10 +33,18 @@ module ToolBelt
       subcommand "release", "Release procedures for project" do
         parameter "project", "Project to generate procedure for"
         parameter "full-version", "Version that the branch will have - like 1.20.0-rc1" do |value|
-          raise ArgumentError.new('Release must be in major.minor.patch or major.minor.patch-rcx, like 1.20.0 or 1.20.0-rc1') unless value =~ /^\d+\.\d+\.\d+(-rc\d+)?$/
+          unless value =~ /^\d+\.\d+\.\d+([-.]rc\d+)?$/
+            raise ArgumentError, <<~HEREDOC
+              Release must be in one of the following formats:
+              major.minor.patch       4.2.1
+              major.minor.patch-rcx   4.2.1-rc1
+              major.minor.patch.rcx   4.2.1.rc1
+            HEREDOC
+          end
+
           value
         end
-        parameter "target-date", "Target date that the procedure should be completed on"
+        parameter "target-date", "Target date by which the procedure should be completed (YYYY-MM-DD)"
         parameter "owner", "The release owner's username on Discourse"
         parameter "engineer", "The release engineer's username on Discourse"
 

@@ -9,12 +9,11 @@
 
 ## Release Owner
 
-- [ ] Announce upcoming branching to discourse development category a month before
-- [ ] Start extracting i18n strings and pushing the changes into master git branches so Transifex can pick it up
+- [ ] Start attending upstream release sync meetings and giving updates
+- [ ] Announce upcoming branching to [Discourse development category](https://community.theforeman.org/c/development/9) a month before
 - [ ] Update Katello Transifex translations:
   - [ ] Create a Transifex account and join the Foreman team
   - [ ] Spin up a Foreman and Katello installation
-  - [ ] Install Transifex client `pip3 install transifex-client --user`
   - [ ] [Configure the Transifex client](https://projects.theforeman.org/projects/foreman/wiki/Translating#How-to-pull-translations)
   - [ ] [Install grunt](https://github.com/Katello/katello/blob/master/engines/bastion_katello/README.md)
   - [ ] `grunt i18n:extract` in the katello/engines/bastion_katello directory
@@ -22,13 +21,29 @@
   - [ ] `grunt i18n:compile` in the katello/engines/bastion_katello directory
   - [ ] `bundle exec rake plugin:gettext[katello]` in the foreman directory
   - [ ] Commit the resulting files in the katello directory with a message like "i18n - pulling from tx"
+  - [ ] Open a PR to Katello (no Redmine issue needed)
+
+# Three Weeks Prior to Branch Date
+
+## Release Owner
+
+- [ ] Ensure that issues requiring installer changes are merged
 
 # Two Weeks Prior to Branch Date
 
 ## Release Owner
 
-- [ ] Add tool_belt config for new release [tool_belt configs](https://github.com/theforeman/tool_belt/tree/master/configs/katello)
-  - [ ] Check the nightly config file if any repos/tags need to be updated in the newly created config.
+- [ ] Add tool_belt config for new release:
+  - [ ] Create a new yaml file using the nightly Katello config as a template: [tool_belt configs](https://github.com/theforeman/tool_belt/tree/master/configs/katello)
+  - [ ] Manually update the following sections:
+    - [ ] releases: update to current release.  Move the previous 'current' release to prior_releases below.
+    - [ ] prior_releases: Remove the oldest prior_release (check with that release owner first to see if there's a reason it should stay)
+    - [ ] mash_scripts: update Katello version number in all values
+    - [ ] repos: Update branch names to current versions, including any new releases that need to happen
+    - [ ] ignores: Delete all items from this list and start fresh (this will be used for cherry-picks later)
+    - [ ] gpg-key: When it becomes available, get the new Foreman GPG key for the corresponding Foreman version ([example here](https://github.com/theforeman/theforeman-rel-eng/blob/master/releases/foreman/2.5/settings) and put the last 8 characters here
+    - [ ] tags: update Katello version number in all values.  Check the nightly config to see if any tags/repos need to be updated
+  - [ ] Open a PR to [tool_belt](https://github.com/theforeman/tool_belt) with the new config file
 - [ ] Ensure stable Pulp release
   - [ ] Update the [katello-repos](https://github.com/theforeman/foreman-packaging/blob/rpm/develop/packages/katello/katello-repos/katello-repos.spec#L1-L2)
   - [ ] Update [forklift](https://github.com/theforeman/forklift/blob/master/roles/katello_repositories/defaults/main.yml#L4-L5)
@@ -50,18 +65,22 @@
   - [ ] [katello](https://github.com/katello/katello)
 - [ ] Bump versions to <%= develop %>-master
   - [ ] [katello](https://github.com/katello/katello)
-- [ ] Create PR to foreman-infra to add a mapping between the current Foreman and Katello release branches. Also remove the oldest mapping from the config. See [this example](https://github.com/theforeman/foreman-infra/pull/1491).
+- [ ] Create PR to [jenkins-jobs](https://github.com/theforeman/jenkins-jobs) to add a mapping between the current Foreman and Katello release branches. Also remove the oldest mapping from the config. See [this example](https://github.com/theforeman/jenkins-jobs/pull/54).
+- [ ] Review the Foreman schedule and planning ([example](https://community.theforeman.org/t/foreman-2-5-schedule-and-planning/22219)) and note the date of the first scheduled release candidate.
+- [ ] Generate and post the release procedure, if not already posted:
+  - [ ] (Note that Katello uses dots instead of dashes for release candidates, e.g. 4.1.1.rc1 not 4.1.1-rc1)
+  - [ ] Make sure to run `./tools.rb setup-environment` first
+  - [ ] Run `./tools.rb procedure release katello <%= release %>.0.rc1 <%= target_date %> <%= owner %> <%= engineer %>` in [tool_belt](https://github.com/theforeman/tool_belt)
+  - [ ] Post the output in [Development](https://community.theforeman.org/c/development/9) with a "Releases" tag
 - [ ] Branch docs
-  * Use `./tools branch-docs config/katello/<%= release %>.yaml` to branch automatically or by hand:
-    - [ ] Copy [nightly manual content](https://github.com/theforeman/theforeman.org/tree/gh-pages/plugins/katello/nightly) to <%= release %>
-    - [ ] Create sidebar from [nightly](https://github.com/theforeman/theforeman.org/tree/gh-pages/_includes/plugins/katello/sidebar_nightly.html) to `sidebar_<%= release %>.html`
-    - [ ] Add <%= release %> to [layout](https://github.com/theforeman/theforeman.org/blob/gh-pages/_layouts/plugins/katello/documentation.html#L3) and set `display` to include `-RC`
-    - [ ] Add <%= release %> to [_config.yml]() mirroring other entries
   - [ ] Draft release notes in markdown ([example](https://gist.github.com/domcleal/5567450)), with these sections (and do not use personal pronouns):
     - [ ] Headline features: half a dozen important features with a few sentences description each
     - [ ] Upgrade notes: all important notices that users must be aware of before upgrading
-    - [ ] Release notes: bullet point list by category of most changes, excluding bug fixes for issues introduced during the release cycle, include link to bug numbers. You can auto-generate changes using the 'changelog' command in [tool_belt](https://github.com/theforeman/tool_belt)
-    - [ ] Add contributor list on release notes page ex `git shortlog -s KATELLO-3.17..KATELLO-3.18`
+    - [ ] Release notes: bullet point list by category of most changes, excluding bug fixes for issues introduced during the release cycle, include link to bug numbers. You can auto-generate changes using the `changelog` command in [tool_belt](https://github.com/theforeman/tool_belt) (make sure to run the `setup-environment` command first)
+    - [ ] Add contributor list on release notes page: `git shortlog -s KATELLO-4.0..KATELLO-4.1`
+  - [ ] Create a pull request to `theforeman/foreman-documentation`:
+    - [ ] Locate the Foreman documentation PR for the current version - [example here](https://github.com/theforeman/foreman-documentation/pull/515)
+    - [ ] Add Katello-related content in the same file and base the PR off of the Foreman PR
 - [ ] Update API docs and open a PR with the changes:
 
       VERSION=<%= short_version %>
