@@ -25,7 +25,7 @@
     :branch: rpm/3.0
     :repo: https://github.com/theforeman/foreman-packaging.git
   :hammer-cli-katello:
-    :branch: 1.1.z
+    :branch: 1.2.z
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-host-tools:
     :branch: 3.5.5
@@ -43,6 +43,15 @@
     :branch: 4.0.2
     :repo: https://github.com/Katello/katello-selinux.git
 :ignores:
+  - 33199
+  - 33167
+  - 32527
+  - 32221
+  - 30881
+  - 31983
+  - 20854
+  - 32229
+  - 30334
 :strict_keys: true
 :gpg_key: 9B776908
 :tags:
