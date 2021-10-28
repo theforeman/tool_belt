@@ -79,10 +79,12 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 
 [Background documentation](https://projects.theforeman.org/projects/foreman/wiki/Release_Process#Packaging-a-release)
 
-- [ ] Update [foreman-packaging](https://github.com/theforeman/foreman-packaging)
+- [ ] Update [foreman-packaging](https://github.com/theforeman/foreman-packaging) branches
   - [ ] [rpm/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_rpm_packaging)
-  - [ ] [deb/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_deb_packaging) branches
-- [ ] Trigger [release_packages in Jenkins](https://ci.theforeman.org/job/release_packages/) by calling [release_packages script](https://github.com/theforeman/theforeman-rel-eng/blob/master/release_packages).
+  - [ ] [deb/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_deb_packaging)
+- [ ] Wait for packages to be built
+  - [ ] [rpm/<%= short_version %>](https://ci.theforeman.org/job/foreman-packaging-rpm-<%= short_version %>-release/)
+  - [ ] [deb/<%= short_version %>](https://ci.theforeman.org/job/foreman-packaging-deb-<%= short_version %>-release/)
 - [ ] Tag `foreman-release` into `foreman-client-<%= short_version %>-rhel7` and `foreman-client-<%= short_version %>-el8`, as this doesn't happen automatically for those tags. <% if is_rc %>Make sure the build matches the release.<% end %>
   - [ ] `koji tag-build foreman-client-<%= short_version %>-rhel7 foreman-release-<%= version %>-1.el7`
   - [ ] `koji tag-build foreman-client-<%= short_version %>-el8 foreman-release-<%= version %>-1.el8`
