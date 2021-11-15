@@ -133,6 +133,7 @@ The next step should only be done after all branching, including packaging, has 
   - [ ] foreman-packaging's rpm/<%= release %>
     - [ ] Update `packages/foreman/foreman-release/foreman.gpg`, `mock/*.cfg`, `package_manifest.yaml`, `rel-eng/{releasers.conf,tito.props}` and `repoclosure/*.conf`
 - [ ] Trigger the [`foreman-packaging-rpm-<%= release %>`](https://ci.theforeman.org/job/foreman-packaging-rpm-<%= release %>-release/) job once, so that GitHub hooks are properly set up.
+- [ ] Trigger the [`foreman-packaging-deb-<%= release %>`](https://ci.theforeman.org/job/foreman-packaging-deb-<%= release %>-release/) job once, so that GitHub hooks are properly set up.
 
 # Other systems: <%= target_date %>
 
