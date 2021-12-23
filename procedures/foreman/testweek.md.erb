@@ -1,0 +1,100 @@
+Foreman <%= full_version %> has been announced. **We need your help!** It's easy to get your hands dirty and help us with testing:
+
+1. Install Foreman RC version (the most up to date one)
+1. Pick a scenario from this post or add your own scenario
+1. If you find an issue, file it in the RedMine and **make a comment in this thread** linking the issue
+1. Mark the scenario as checked in this OP (this is an editable wiki post), here is syntax of checked and unchecked lines (you can click on checkboxes directly with mouse):
+   - [ ] Unchecked
+   - [x] Checked
+
+**Installation**
+* Install Foreman using existing script/forklift/beaker
+  * [ ] Forklift
+  * [ ] My own install script
+* Install Foreman *manually* by following our [installation guide](https://theforeman.org/manuals/latest/index.html)
+  * [ ] RHEL / CentOS stable
+  * [ ] Debian / Ubuntu stable
+* Install Foreman *manually* by following our new [installation guide](https://docs.theforeman.org)
+  * [ ] RHEL / CentOS
+  * [ ] Debian / Ubuntu
+* Upgrade existing Foreman deployment (advertise in RedMine it was an upgraded instance if you encounter bug)
+  * [ ] RHEL / CentOS
+  * [ ] Debian / Ubuntu
+* Sanity checks
+  * [ ] Installation on Red Hat distro with SELinux turned on
+  * [ ] Logging in with a user that has limited permissions works properly
+
+**Provisioning**
+* Bare-metal or virtualized PXE provisioning (host exits build mode and reboots)
+  * [ ] BIOS host with CentOS 8
+  * [ ] BIOS host with CentOS 7
+  * [ ] UEFI host with CentOS
+  * [ ] BIOS host with Debian or Ubuntu
+  * [ ] UEFI host with Debian or Ubuntu
+  * [ ] BIOS host with Atomic OS
+* Compute Resources (VM is successfully created, finish or cloud-init is executed)
+  * [ ] Create VMware host (Image Based/Network Based)
+  * [ ] Create OpenStack host (Image Based)
+  * [ ] Create Ovirt host (Image Based/Network Based)
+  * [ ] Create Libvirt host (Image Based/Network Based)
+  * [ ] Creare AWS host (Image Based)
+  * [ ] Create GCE host
+  * [ ] Create Azure host
+* [ ] Puppet manifest import (classes are imported, parameters recognized)
+* [ ] Puppet configuration (class is assigned to a host, agent performs changes, reports and facts appears correctly)
+* [ ] Log in using user from LDAP (user account is created from LDAP)
+* [ ] Log in using user from FreeIPA (user account is created from FreeIPA)
+
+**Foreman Discovery**
+* Bare-metal or virtualized provisioning via Provision - Customize Host (host exits build mode and reboots)
+  * [ ] BIOS with discovery from PXE
+  * [ ] UEFI with discovery from PXE
+  * [ ] BIOS with discovery PXE-less
+  * [ ] UEFI with discovery PXE-less
+* [ ] Provision a host via discovery rule
+* [ ] Provision a host via Customize UI button
+* [ ] Provision a host without hostgroup via Customize UI button
+* [ ] Provision a host via hammer via hostgroup
+* [ ] Provision a host via hammer via auto provisioning rule
+
+**Foreman Bootdisk**
+* Bootdisk basic provisioning (host exits build mode and reboots)
+  * [ ] Full host image BIOS
+  * [ ] Host image BIOS
+  * [ ] Generic image BIOS
+  * [ ] Full host image EFI
+  * [ ] Host image EFI
+  * [ ] Generic image EFI
+
+**Foreman Ansible**
+* Import Roles
+  * [ ] With/From Smart-Proxy
+* Assign Roles
+  * [ ] Hostgroup
+  * [ ] Hosts
+* Play Roles
+  * [ ] Hostgroup
+  * [ ] Hosts
+* [ ] Run shipped Ansible playbook (job), e.g. to install ansible role from galaxy
+
+**Foreman Remote Execution**
+* [ ] Run some job, e.g. ‘ls /etc’ on a system that was provisioned from Foreman, it should work out of the box
+* [ ] Run some job against the Foreman host itself, only key configuration should be needed
+
+**Foreman Puppet run**
+* [ ] Trigger Puppet run on host through SSH
+
+**Foreman Openscap**
+* [ ] Create new content file, define a policy, assign it to a host and deploy the foreman_scap_client using puppet
+* [ ] Verify ARF report gets uploaded upon foreman_scap_client run and full version of it can be rendered
+* [ ] Create tailoring file, assign it to the policy and rerun client with the tailoring file
+
+**Foreman Virt Who Configure**
+* [ ] Create a configuration definition and run it e.g. through REX on some provisioned host. It should succeed as long as it has access to sat tools repo on RHEL, epel (I think) on centos.
+**note**: plugin works, the configuration requires new virt-who that is currently in fedora 30, not in epel
+
+**Foreman Templates**
+* [ ] hammer import-templates --lock true # sync newest templates from community-templates repo, see audits
+* [ ] mkdir /repo; chown foreman /repo; hammer export-templates --repo /repo # may need setenforce 0
+
+This page is a wiki, feel free to update it and add new scenarios as you test them. If you do, please send a patch to [tool_belt](https://github.com/theforeman/tool_belt/blob/master/procedures/foreman/testweek.md.erb). Thanks for your help!

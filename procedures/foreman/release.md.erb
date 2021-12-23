@@ -115,6 +115,9 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 <% end -%>
 <% if full_version.end_with?('0') %>- [ ] Update the `foreman_version` to <%= short_version %> in website's [`_config.yml`](https://github.com/theforeman/theforeman.org/blob/gh-pages/_config.yml) file
 <% end -%>
+<% if is_rc && full_version.end_with?('1') -%>
+- [ ] Create a testweek post on [Discourse](https://community.theforeman.org/c/development/9) with the tag `testweek` using the tool_belt procedure: `bundle exec ./tools.rb procedure testweek foreman <%= full_version %>`
+<% end -%>
 - [ ] Announce the release on [Discourse](https://community.theforeman.org/c/release-announcements/8)
 - [ ] Update the topic in #theforeman channel on Freenode
 - [ ] Share the release announcement on twitter

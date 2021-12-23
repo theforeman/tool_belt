@@ -90,6 +90,30 @@ module ToolBelt
         end
       end
 
+      subcommand "testweek", "Testweek post for project" do
+        parameter "project", "Project to generate procedure for"
+        parameter "full-version", "Version that the branch will have - like 1.20.0-rc1" do |value|
+          unless value =~ /^\d+\.\d+\.\d+([-.]rc\d+)?$/
+            raise ArgumentError, <<~HEREDOC
+              Release must be in one of the following formats:
+              major.minor.patch       4.2.1
+              major.minor.patch-rcx   4.2.1-rc1
+              major.minor.patch.rcx   4.2.1.rc1
+            HEREDOC
+          end
+
+          value
+        end
+
+        def execute
+          context = {
+            full_version: full_version,
+          }
+
+          render(project, 'testweek', context)
+        end
+      end
+
       private
 
       def render(project, procedure, context)
