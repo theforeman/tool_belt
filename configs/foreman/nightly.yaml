@@ -9,7 +9,6 @@
   - foreman-plugins-nightly-el8
   - foreman-client-nightly-el8
   - foreman-client-nightly-rhel7
-  - foreman-client-nightly-rhel6
   - foreman-client-nightly-fedora29
   - foreman-client-nightly-sles11
   - foreman-client-nightly-sles12
@@ -361,56 +360,6 @@
       foreman-plugins-nightly-rhel7-dist:
         foreman-plugins-nightly-rhel7: 2
         foreman-plugins-nightly-nonscl-rhel7: 0
-  - name: foreman-client-nightly-rhel6
-    based_off: null
-    helper_tags:
-      foreman-client-nightly-rhel6-override: null
-      foreman-client-nightly-rhel6: null
-    build_target: foreman-client-nightly-rhel6-build
-    arches:
-      - x86_64
-    inherits:
-      foreman-client-nightly-rhel6-build:
-        foreman-client-nightly-rhel6-override: 0
-      foreman-client-nightly-rhel6-override:
-        foreman-client-nightly-rhel6: 0
-      foreman-client-nightly-rhel6: {}
-    external_repos:
-      - rhel-6.6-server
-      - rhel-6.6-server-optional
-    build_groups:
-      build:
-        - bash
-        - bzip2
-        - coreutils
-        - cpio
-        - diffutils
-        - findutils
-        - gawk
-        - gcc
-        - gcc-c++
-        - grep
-        - gzip
-        - info
-        - make
-        - patch
-        - redhat-release-server
-        - redhat-rpm-config
-        - rpm-build
-        - sed
-        - shadow-utils
-        - tar
-        - unzip
-        - util-linux
-        - which
-        - xz
-      srpm-build:
-        - bash
-        - redhat-release-server
-        - redhat-rpm-config
-        - rhpkg-simple
-        - rpm-build
-        - shadow-utils
   - name: foreman-client-nightly-el8
     based_off: null
     helper_tags:
