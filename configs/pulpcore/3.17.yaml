@@ -15,7 +15,7 @@
   - name: pulpcore-3.17-el7
     based_off: pulpcore-3.16-el7
     helper_tags:
-      pulpcore-3.16-el7-override: null
+      pulpcore-3.17-el7-override: null
     arches:
       - x86_64
     build_target: pulpcore-3.17-el7-build
@@ -74,7 +74,7 @@
   - name: pulpcore-3.17-el8
     based_off: pulpcore-3.16-el8
     helper_tags:
-      pulpcore-3.16-el8-override: null
+      pulpcore-3.17-el8-override: null
     build_target: pulpcore-3.17-el8-build
     build_package_group_source_tag: pulpcore-3.17-el8-build
     arches:
