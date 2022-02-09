@@ -8,5 +8,5 @@ multilib_method = devel
 tag = pulpcore-3.17-el7
 inherit = True
 strict_keys = True
-keys = 4300F189
+keys = E694ABDA
 arches = x86_64
