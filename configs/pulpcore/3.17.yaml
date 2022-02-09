@@ -10,7 +10,7 @@
   - pulpcore-3.17-el7
   - pulpcore-3.17-el8
 :strict_keys: true
-:gpg_key: 4300F189
+:gpg_key: E694ABDA
 :tags:
   - name: pulpcore-3.17-el7
     based_off: pulpcore-3.16-el7
