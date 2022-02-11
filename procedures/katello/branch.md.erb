@@ -52,7 +52,9 @@
   - [ ] [pulpcore](https://github.com/theforeman/puppet-pulpcore)
   - [ ] [foreman_proxy_content](https://github.com/theforeman/puppet-foreman_proxy_content)
   - [ ] [katello](https://github.com/theforeman/puppet-katello)
-- [ ] Create PR to [jenkins-jobs](https://github.com/theforeman/jenkins-jobs) to add a mapping between the current Foreman and Katello release branches. Also remove the oldest mapping from the config. See [this example](https://github.com/theforeman/jenkins-jobs/pull/54).
+- [ ] Create PRs to [jenkins-jobs](https://github.com/theforeman/jenkins-jobs) to add a mapping between the current Foreman and Katello release branches and update pipelines. See [this test mapping PR example](https://github.com/theforeman/jenkins-jobs/pull/179) and [this pipeline PR example](https://github.com/theforeman/jenkins-jobs/pull/178).
+- [ ] Files to edit: [testKatello.groovy](https://github.com/theforeman/jenkins-jobs/blob/master/theforeman.org/pipelines/test/testKatello.groovy), [katello-pipelines.yml](https://github.com/theforeman/jenkins-jobs/blob/master/centos.org/jobs/katello-pipelines.yml), and [katello-rpm-pipeline.yaml](https://github.com/theforeman/jenkins-jobs/blob/master/theforeman.org/yaml/jobs/pipeline/katello-rpm-pipeline.yaml).
+  - [ ] File to create: [<%= release %>.groovy](https://github.com/theforeman/jenkins-jobs/blob/master/theforeman.org/pipelines/vars/katello/<%= release %>.groovy).  Copy [nightly.groovy](https://github.com/theforeman/jenkins-jobs/blob/master/theforeman.org/pipelines/vars/katello/nightly.groovy) and replace the Foreman and Katello versions in the file accordingly.
 - [ ] Review the Foreman schedule and planning ([example](https://community.theforeman.org/t/foreman-2-5-schedule-and-planning/22219)) and note the date of the first scheduled release candidate.
 
 ## Release Engineer
@@ -81,15 +83,7 @@
   - [ ] Create a pull request to `theforeman/foreman-documentation`:
     - [ ] Locate the Foreman documentation PR for the current version - [example here](https://github.com/theforeman/foreman-documentation/pull/515)
     - [ ] Add Katello-related content in the same file and base the PR off of the Foreman PR
-- [ ] Update API docs and open a PR with the changes:
-
-      VERSION=<%= short_version %>
-      GITDIR=~/git  #directory containing theforeman.org git repo
-
-      FOREMAN_APIPIE_LANGS=en rake apipie:cache
-      cp -rf public/apipie-cache/* $GITDIR/theforeman.org/plugins/katello/$VERSION/api
-      find $GITDIR/theforeman.org/plugins/katello/$VERSION/api -name "*.json" -type f -delete
-      sed -i "/layout: /d" $GITDIR/theforeman.org/plugins/katello/$VERSION/api/index.md
+  - [ ] Clone https://github.com/theforeman/apidocs and follow the Katello README section to update the API documentation.
 - [ ] Prepare "Katello Next" and future redmine versions
   - [ ] Rename the "Katello Next" release to Katello <%= develop %>.0
   - [ ] Recreate the "Katello Next" release and indicate that it is a placeholder for issues belonging to the next version of Katello
