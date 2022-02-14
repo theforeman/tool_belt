@@ -7,6 +7,8 @@
 :prior_releases:
   :4.3.1:
     :redmine_version_id: 1535
+  :4.3.2:
+    :redmine_version_id: 1554
 :code_name: Habanero
 :mash_scripts:
   - katello-4.4-rhel7
