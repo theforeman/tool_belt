@@ -43,6 +43,11 @@
     :branch: 4.0.2
     :repo: https://github.com/Katello/katello-selinux.git
 :ignores:
+  - 33083
+  - 33067
+  - 33291
+  - 34182 # merged before branching
+  - 34449 # duplicate
 :strict_keys: true
 :gpg_key: 6DA7EB32
 :tags:
