@@ -47,17 +47,17 @@
 :gpg_key: 6DA7EB32
 :tags:
   - name: katello-4.4-thirdparty-candlepin-rhel7
-    based_off: null
+    based_off: katello-thirdparty-candlepin-rhel7
     build_target: katello-4.4-rhel7-build
     arches:
       - x86_64
   - name: katello-candlepin-4.4-el8
-    based_off: null
+    based_off: katello-candlepin-nightly-el8
     build_target: katello-4.4-el8-build
     arches:
       - x86_64
   - name: katello-4.4-rhel7
-    based_off: null
+    based_off: katello-nightly-rhel7
     helper_tags:
       katello-thirdparty-rhel7: null
       katello-4.4-rhel7-override: null
@@ -82,7 +82,7 @@
       - centos-7-server-updates
       - centos-7-server
   - name: katello-4.4-el8
-    based_off: null
+    based_off: katello-nightly-el8
     helper_tags:
       katello-thirdparty-el8: null
       katello-4.4-el8-override: null
