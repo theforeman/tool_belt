@@ -16,7 +16,7 @@
         pulp-2.20-rhel7: 0
       pulp-2.20-rhel7: {}
     external_repos:
-      - centos-7-server-updates
+      - centos7-updates
       - centos-7-server
       - epel-7
     build_groups:

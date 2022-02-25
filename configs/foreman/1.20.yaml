@@ -37,7 +37,7 @@
     external_repos:
       - epel-7
       - puppetlabs-pc1-rhel-7
-      - centos-7-server-updates
+      - centos7-updates
       - centos-7-server
   - name: foreman-1.20-rhel7
     based_off: foreman-nightly-rhel7
@@ -57,7 +57,7 @@
     external_repos:
       - epel-7
       - centos-sclo-rh-rhel-7
-      - centos-7-server-updates
+      - centos7-updates
       - centos-7-server
   - name: foreman-plugins-1.20-nonscl-rhel7
     based_off: foreman-plugins-nightly-nonscl-rhel7
@@ -76,7 +76,7 @@
         foreman-plugins-1.20-nonscl-rhel7: 0
     external_repos:
       - epel-7
-      - centos-7-server-updates
+      - centos7-updates
       - centos-7-server
       - rhel-7.0-server-optional
   - name: foreman-plugins-1.20-rhel7
@@ -99,7 +99,7 @@
     external_repos:
       - epel-7
       - centos-sclo-rh-rhel-7
-      - centos-7-server-updates
+      - centos7-updates
       - centos-7-server
   - name: foreman-1.20-rhel7-dist
     based_off: foreman-nightly-rhel7-dist
@@ -234,7 +234,7 @@
       - rhel-7.0-server
       - rhel-7.0-server-optional
       - epel-7
-      - centos-7-server-updates
+      - centos7-updates
       - centos-7-server
     build_groups:
       build:
