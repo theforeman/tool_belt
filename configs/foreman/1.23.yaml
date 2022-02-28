@@ -37,7 +37,7 @@
     external_repos:
       - epel-7
       - puppetlabs-puppet6-rhel-7
-      - centos-7-server-updates
+      - centos7-updates
       - centos-7-server
     build_groups:
       build:
@@ -90,7 +90,7 @@
     external_repos:
       - epel-7
       - centos-sclo-rh-rhel-7
-      - centos-7-server-updates
+      - centos7-updates
       - centos-7-server
     build_groups:
       build:
@@ -152,7 +152,7 @@
         foreman-plugins-1.23-nonscl-rhel7: 0
     external_repos:
       - epel-7
-      - centos-7-server-updates
+      - centos7-updates
       - centos-7-server
     build_groups:
       build:
@@ -207,7 +207,7 @@
     external_repos:
       - epel-7
       - centos-sclo-rh-rhel-7
-      - centos-7-server-updates
+      - centos7-updates
       - centos-7-server
     build_groups:
       build:
@@ -383,7 +383,7 @@
       foreman-client-1.23-rhel7: {}
     external_repos:
       - epel-7
-      - centos-7-server-updates
+      - centos7-updates
       - centos-7-server
     build_groups:
       build:

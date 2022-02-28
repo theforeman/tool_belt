@@ -64,7 +64,7 @@
     external_repos:
       - epel-7
       - centos-sclo-rh-rhel-7
-      - centos-7-server-updates
+      - centos7-updates
       - centos-7-server
   - name: katello-pulpcore-3.15-el7
     based_off: katello-pulpcore-nightly-el7

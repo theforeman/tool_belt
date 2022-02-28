@@ -96,7 +96,7 @@
     external_repos:
       - epel-7
       - centos-sclo-rh-rhel-7
-      - centos-7-server-updates
+      - centos7-updates
       - centos-7-server
   - name: katello-4.2-el8
     based_off: katello-nightly-el8
