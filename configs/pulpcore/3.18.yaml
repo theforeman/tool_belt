@@ -27,11 +27,9 @@
     external_repos:
       - name: flat-base-el8
         mode: bare
-      - name: flat-python36-el8
+      - name: flat-python39-el8
         mode: bare
-      - name: flat-python38-el8
-        mode: bare
-      - name: flat-python38-devel-el8
+      - name: flat-python39-devel-el8
         mode: bare
       - name: flat-ruby27-el8
         mode: bare
@@ -57,7 +55,7 @@
         - info
         - make
         - patch
-        - python38-rpm-macros
+        - python39-rpm-macros
         - redhat-release
         - redhat-rpm-config
         - rpm-build
@@ -70,7 +68,61 @@
         - xz
       srpm-build:
         - bash
-        - python38-rpm-macros
+        - python39-rpm-macros
+        - redhat-release
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
+  - name: pulpcore-3.18-el9
+    helper_tags:
+      pulpcore-3.18-el9-override: null
+    build_target: pulpcore-3.18-el9-build
+    build_package_group_source_tag: pulpcore-3.18-el9-build
+    arches:
+      - x86_64
+    inherits:
+      pulpcore-3.18-el9-build:
+        pulpcore-3.18-el9-override: 0
+      pulpcore-3.18-el9-override:
+        pulpcore-3.18-el9: 0
+    external_repos:
+      - name: centos9stream-baseos
+        mode: bare
+      - name: centos9stream-appstream
+        mode: bare
+      - name: centos9stream-crb-web
+        mode: bare
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - python39-rpm-macros
+        - redhat-release
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - python39-rpm-macros
         - redhat-release
         - redhat-rpm-config
         - rhpkg-simple
