@@ -91,7 +91,7 @@
         mode: bare
       - name: centos9stream-appstream
         mode: bare
-      - name: centos9stream-crb-web
+      - name: centos9stream-crb
         mode: bare
     build_groups:
       build:
