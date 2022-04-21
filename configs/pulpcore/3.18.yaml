@@ -8,6 +8,7 @@
     :redmine_version_id: -1
 :mash_scripts:
   - pulpcore-3.18-el8
+  - pulpcore-3.18-el9
 :strict_keys: true
 :gpg_key: C9308E1F
 :tags:
