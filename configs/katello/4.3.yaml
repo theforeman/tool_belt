@@ -2,9 +2,11 @@
 :project: katello
 :github_org: katello
 :releases:
+  :4.3.2:
+    :redmine_version_id: 1554
+:prior_releases:
   :4.3.1:
     :redmine_version_id: 1535
-:prior_releases:
   :4.3.0:
     :redmine_version_id: 1473
   :4.2.1:
