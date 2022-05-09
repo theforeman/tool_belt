@@ -1,0 +1,489 @@
+---
+:project: foreman
+:github_org: theforeman
+:releases:
+  :3.3.0:
+    :redmine_version_id: 1564
+:mash_scripts:
+  - foreman-3.3-rhel7-dist
+  - foreman-3.3-el8
+  - foreman-plugins-3.3-rhel7-dist
+  - foreman-plugins-3.3-el8
+  - foreman-client-3.3-el8
+  - foreman-client-3.3-rhel7
+  - foreman-client-3.3-sles11
+  - foreman-client-3.3-sles12
+:strict_keys: true
+:gpg_key: 2A6A4BAA
+:repos: []
+:tags:
+  - name: foreman-3.3-nonscl-rhel7
+    based_off: foreman-nightly-nonscl-rhel7
+    helper_tags:
+      foreman-3.3-nonscl-rhel7-override: null
+    build_target: foreman-3.3-nonscl-rhel7-build
+    build_package_group_source_tag: foreman-3.3-nonscl-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-3.3-nonscl-rhel7-build:
+        foreman-3.3-nonscl-rhel7-override: 0
+      foreman-3.3-nonscl-rhel7-override:
+        foreman-3.3-nonscl-rhel7: 0
+    external_repos:
+      - epel-7
+      - puppetlabs-puppet7-rhel-7
+      - centos7-updates
+      - centos-7-server
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-release-server
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - redhat-release-server
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
+  - name: foreman-3.3-rhel7
+    based_off: null
+    helper_tags:
+      foreman-3.3-rhel7-override: foreman-nigthly-rhel7
+    build_target: foreman-3.3-rhel7-build
+    build_package_group_source_tag: foreman-3.3-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-3.3-rhel7-build:
+        foreman-3.3-rhel7-override: 0
+        foreman-3.3-nonscl-rhel7: 10
+      foreman-3.3-rhel7-override:
+        foreman-3.3-rhel7: 0
+    external_repos:
+      - epel-7
+      - centos-sclo-rh-rhel-7
+      - centos7-updates
+      - centos-7-server
+      - puppetlabs-puppet7-rhel-7
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - foreman-build
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-release-server
+        - redhat-rpm-config
+        - rpm-build
+        - scl-utils-build
+        - sed
+        - shadow-utils
+        - tar
+        - tfm-build
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - foreman-build
+        - redhat-release-server
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - scl-utils-build
+        - shadow-utils
+        - tfm-build
+  - name: foreman-3.3-el8
+    based_off: null
+    helper_tags:
+      foreman-3.3-el8-override: foreman-nigtly-el8
+    build_target: foreman-3.3-el8-build
+    build_package_group_source_tag: foreman-3.3-el8-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-3.3-el8-build:
+        foreman-3.3-el8-override: 0
+      foreman-3.3-el8-override:
+        foreman-3.3-el8: 0
+    external_repos:
+      - flat-ruby27-el8
+      - test-flat-el8
+      - centos8-devel
+      - puppetlabs-puppet7-rhel-8
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - centos-release
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - foreman-build
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - platform-python
+        - python3-rpm-macros
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - centos-release
+        - foreman-build
+        - platform-python
+        - python3-rpm-macros
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
+  - name: foreman-plugins-3.3-nonscl-rhel7
+    based_off: foreman-plugins-nigthly-nonscl-rhel7
+    helper_tags:
+      foreman-plugins-3.3-nonscl-rhel7-override: null
+    build_target: foreman-plugins-3.3-nonscl-rhel7-build
+    build_package_group_source_tag: foreman-plugins-3.3-nonscl-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-plugins-3.3-nonscl-rhel7-build:
+        foreman-plugins-3.3-nonscl-rhel7-override: 0
+        foreman-3.3-rhel7: 15
+        foreman-3.3-nonscl-rhel7: 10
+      foreman-plugins-3.3-nonscl-rhel7-override:
+        foreman-plugins-3.3-nonscl-rhel7: 0
+    external_repos:
+      - epel-7
+      - centos7-updates
+      - centos-7-server
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-release-server
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - redhat-release-server
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
+  - name: foreman-plugins-3.3-rhel7
+    based_off: foreman-plugins-nightly-rhel7
+    helper_tags:
+      foreman-plugins-3.3-rhel7-override: null
+    build_target: foreman-plugins-3.3-rhel7-build
+    build_package_group_source_tag: foreman-plugins-3.3-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-plugins-3.3-rhel7-build:
+        foreman-plugins-3.3-rhel7-override: 0
+        foreman-plugins-3.3-nonscl-rhel7: 5
+        foreman-3.3-rhel7: 15
+        foreman-3.3-nonscl-rhel7: 20
+      foreman-plugins-3.3-rhel7-override:
+        foreman-plugins-3.3-rhel7: 0
+    external_repos:
+      - epel-7
+      - centos-sclo-rh-rhel-7
+      - centos7-updates
+      - centos-7-server
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - foreman-build
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-release-server
+        - redhat-rpm-config
+        - rpm-build
+        - scl-utils-build
+        - sed
+        - shadow-utils
+        - tar
+        - tfm-build
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - foreman-build
+        - redhat-release-server
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - scl-utils-build
+        - shadow-utils
+        - tfm-build
+  - name: foreman-plugins-3.3-el8
+    based_off: foreman-plugins-nightly-el8
+    helper_tags:
+      foreman-plugins-3.3-el8-override: null
+    build_target: foreman-plugins-3.3-el8-build
+    build_package_group_source_tag: foreman-plugins-3.3-el8-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-plugins-3.3-el8-build:
+        foreman-plugins-3.3-el8-override: 0
+        foreman-3.3-el8: 15
+      foreman-plugins-3.3-el8-override:
+        foreman-plugins-3.3-el8: 0
+    external_repos:
+      - flat-ruby27-el8
+      - test-flat-el8
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - centos-release
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - foreman-build
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - platform-python
+        - python3-rpm-macros
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - centos-release
+        - foreman-build
+        - platform-python
+        - python3-rpm-macros
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
+  - name: foreman-3.3-rhel7-dist
+    based_off: null
+    inherits:
+      foreman-3.3-rhel7-dist:
+        foreman-3.3-rhel7: 20
+        foreman-3.3-nonscl-rhel7: 10
+  - name: foreman-plugins-3.3-rhel7-dist
+    based_off: foreman-plugins-nigthly-rhel7-dist
+    inherits:
+      foreman-plugins-3.3-rhel7-dist:
+        foreman-plugins-3.3-rhel7: 2
+        foreman-plugins-3.3-nonscl-rhel7: 0
+  - name: foreman-client-3.3-el8
+    based_off: foreman-client-nightly-el8
+    helper_tags:
+      foreman-client-3.3-el8-override: null
+      foreman-client-3.3-el8: null
+    build_target: foreman-client-3.3-el8-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-client-3.3-el8-build:
+        foreman-client-3.3-el8-override: 0
+      foreman-client-3.3-el8-override:
+        foreman-client-3.3-el8: 0
+      foreman-client-3.3-el8: {}
+    external_repos:
+      - centos8-baseos
+      - centos8-appstream
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - platform-python
+        - python3-rpm-macros
+        - redhat-release
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - platform-python
+        - python3-rpm-macros
+        - redhat-release
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
+  - name: foreman-client-3.3-rhel7
+    based_off: foreman-client-nigthly-rhel7
+    helper_tags:
+      foreman-client-3.3-rhel7-override: null
+      foreman-client-3.3-rhel7: null
+    build_target: foreman-client-3.3-rhel7-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-client-3.3-rhel7-build:
+        foreman-client-3.3-rhel7-override: 0
+      foreman-client-3.3-rhel7-override:
+        foreman-client-3.3-rhel7: 0
+      foreman-client-3.3-rhel7: {}
+    external_repos:
+      - epel-7
+      - centos7-updates
+      - centos-7-server
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - centos-release
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - redhat-release-server
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - centos-release
+        - redhat-release-server
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
+  - name: foreman-client-3.3-sles12
+    based_off: foreman-client-nigthly-sles12
+    arches:
+      - x86_64
+    helper_tags:
+      foreman-client-3.3-sles12: null
+    inherits:
+      foreman-client-3.3-sles12: {}
+  - name: foreman-client-3.3-sles11
+    based_off: null
+    arches:
+      - x86_64
+    helper_tags:
+      foreman-client-3.3-sles11: null
+    inherits:
+      foreman-client-3.3-sles11: {}
