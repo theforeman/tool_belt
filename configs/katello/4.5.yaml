@@ -46,7 +46,7 @@
     :repo: https://github.com/Katello/katello-selinux.git
 :ignores:
 :strict_keys: true
-:gpg_key: 6DA7EB32
+:gpg_key: 2A6A4BAA
 :tags:
   - name: katello-4.5-thirdparty-candlepin-rhel7
     based_off: katello-thirdparty-candlepin-rhel7
