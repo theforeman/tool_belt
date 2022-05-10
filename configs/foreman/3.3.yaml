@@ -71,7 +71,7 @@
   - name: foreman-3.3-rhel7
     based_off: null
     helper_tags:
-      foreman-3.3-rhel7-override: foreman-nigthly-rhel7
+      foreman-3.3-rhel7-override: null
     build_target: foreman-3.3-rhel7-build
     build_package_group_source_tag: foreman-3.3-rhel7-build
     arches:
@@ -130,7 +130,7 @@
   - name: foreman-3.3-el8
     based_off: null
     helper_tags:
-      foreman-3.3-el8-override: foreman-nigtly-el8
+      foreman-3.3-el8-override: null
     build_target: foreman-3.3-el8-build
     build_package_group_source_tag: foreman-3.3-el8-build
     arches:
@@ -353,7 +353,7 @@
         - rpm-build
         - shadow-utils
   - name: foreman-3.3-rhel7-dist
-    based_off: null
+    based_off: foreman-nightly-rhel7-dist
     inherits:
       foreman-3.3-rhel7-dist:
         foreman-3.3-rhel7: 20
