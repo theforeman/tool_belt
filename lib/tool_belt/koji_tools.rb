@@ -74,7 +74,7 @@ module ToolBelt
 
     def packages_for_group(tag, group)
       output, success = koji_info("list-groups #{tag} #{group}")
-      if success
+      if success && !output.nil?
         output.split("\n")[1..-1].map{|line| line.split(':')[0].strip}
       else
         []
