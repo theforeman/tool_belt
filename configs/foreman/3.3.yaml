@@ -69,7 +69,7 @@
         - rpm-build
         - shadow-utils
   - name: foreman-3.3-rhel7
-    based_off: null
+    based_off: foreman-nightly-rhel7
     helper_tags:
       foreman-3.3-rhel7-override: null
     build_target: foreman-3.3-rhel7-build
@@ -128,7 +128,7 @@
         - shadow-utils
         - tfm-build
   - name: foreman-3.3-el8
-    based_off: null
+    based_off: foreman-nightly-el8
     helper_tags:
       foreman-3.3-el8-override: null
     build_target: foreman-3.3-el8-build
@@ -185,7 +185,7 @@
         - rpm-build
         - shadow-utils
   - name: foreman-plugins-3.3-nonscl-rhel7
-    based_off: foreman-plugins-nigthly-nonscl-rhel7
+    based_off: foreman-plugins-nightly-nonscl-rhel7
     helper_tags:
       foreman-plugins-3.3-nonscl-rhel7-override: null
     build_target: foreman-plugins-3.3-nonscl-rhel7-build
@@ -359,7 +359,7 @@
         foreman-3.3-rhel7: 20
         foreman-3.3-nonscl-rhel7: 10
   - name: foreman-plugins-3.3-rhel7-dist
-    based_off: foreman-plugins-nigthly-rhel7-dist
+    based_off: foreman-plugins-nightly-rhel7-dist
     inherits:
       foreman-plugins-3.3-rhel7-dist:
         foreman-plugins-3.3-rhel7: 2
@@ -419,7 +419,7 @@
         - rpm-build
         - shadow-utils
   - name: foreman-client-3.3-rhel7
-    based_off: foreman-client-nigthly-rhel7
+    based_off: foreman-client-nightly-rhel7
     helper_tags:
       foreman-client-3.3-rhel7-override: null
       foreman-client-3.3-rhel7: null
@@ -472,7 +472,7 @@
         - rpm-build
         - shadow-utils
   - name: foreman-client-3.3-sles12
-    based_off: foreman-client-nigthly-sles12
+    based_off: foreman-client-nightly-sles12
     arches:
       - x86_64
     helper_tags:
@@ -480,7 +480,7 @@
     inherits:
       foreman-client-3.3-sles12: {}
   - name: foreman-client-3.3-sles11
-    based_off: null
+    based_off: foreman-client-nightly-sles11
     arches:
       - x86_64
     helper_tags:
