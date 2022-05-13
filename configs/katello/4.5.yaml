@@ -70,8 +70,8 @@
     inherits:
       katello-4.5-rhel7-build:
         katello-4.5-rhel7-override: 0
-        foreman-plugins-3.1-rhel7: 3
-        foreman-plugins-3.1-nonscl-rhel7: 4
+        foreman-plugins-3.3-rhel7: 3
+        foreman-plugins-3.3-nonscl-rhel7: 4
         foreman-3.3-rhel7: 5
         foreman-3.3-nonscl-rhel7: 6
       katello-4.5-rhel7-override:
@@ -95,7 +95,7 @@
     inherits:
       katello-4.5-el8-build:
         katello-4.5-el8-override: 0
-        foreman-plugins-3.1-el8: 3
+        foreman-plugins-3.3-el8: 3
         foreman-3.3-el8: 5
       katello-4.5-el8-override:
         katello-4.5-el8: 0
