@@ -62,7 +62,7 @@
     based_off: katello-nightly-rhel7
     helper_tags:
       katello-thirdparty-rhel7: null
-      katello-4.4-rhel7-override: null
+      katello-4.5-rhel7-override: null
     build_target: katello-4.5-rhel7-build
     build_package_group_source_tag: katello-4.5-rhel7-build
     arches:
@@ -87,7 +87,7 @@
     based_off: katello-nightly-el8
     helper_tags:
       katello-thirdparty-el8: null
-      katello-4.4-el8-override: null
+      katello-4.5-el8-override: null
     build_target: katello-4.5-el8-build
     build_package_group_source_tag: katello-4.5-el8-build
     arches:
