@@ -64,7 +64,7 @@
       katello-thirdparty-rhel7: null
       katello-4.5-rhel7-override: null
     build_target: katello-4.5-rhel7-build
-    build_package_group_source_tag: katello-4.5-rhel7-build
+    build_package_group_source_tag: katello-nightly-rhel7-build
     arches:
       - x86_64
     inherits:
@@ -89,7 +89,7 @@
       katello-thirdparty-el8: null
       katello-4.5-el8-override: null
     build_target: katello-4.5-el8-build
-    build_package_group_source_tag: katello-4.5-el8-build
+    build_package_group_source_tag: katello-nightly-el8-build
     arches:
       - x86_64
     inherits:
