@@ -1,0 +1,12 @@
+[katello-4.5-rhel7]
+rpm_path = %(arch)s/os/Packages
+repodata_path = %(arch)s/os/
+source_path = source/SRPMS
+debuginfo = False
+multilib = False
+multilib_method = devel
+tag = katello-4.5-rhel7
+inherit = True
+strict_keys = True
+keys = 2A6A4BAA
+arches = x86_64
