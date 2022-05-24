@@ -14,12 +14,14 @@
 
 - [ ] Update manual if applicable for any additional installation steps
 - Update [release notes section](https://github.com/theforeman/theforeman.org/tree/gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md) in the manual:
-  - [ ] Release notes: bullet point list by category of all changes, include link to bug numbers. You can auto-generate changes using the [release notes script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/release_notes.rb).
-  - [ ] CLI release notes are taken from the hammer-cli and hammer-cli-foreman changelogs
+  - [ ] Release notes: bullet point list by category of all changes, include link to bug numbers. 
+    - [ ] For [theforeman.org](https://github.com/theforeman/theforeman.org): You can auto-generate changes using the [release notes script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/release_notes.rb).
+    - [ ] For [docs.theforeman.org](https://github.com/theforeman/foreman-documentation): You can auto-generate changes using [redmine_release_notes](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_notes/redmine_release_notes) script, more details are available in [README](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_notes/README.md).
+  - [ ] Append CLI release notes taken from the [hammer-cli](https://github.com/theforeman/hammer-cli/blob/<%= short_version %>-stable/doc/release_notes.md) and [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman/blob/<%= short_version %>-stable/doc/release_notes.md) changelogs, in [theforeman.org](https://github.com/theforeman/theforeman.org/trees/gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md) and [docs.theforeman.org](https://github.com/theforeman/foreman-documentation/tree/<%= short_version %>/guides/doc-Release_notes/topics/foreman-<%= full_version %>.adoc) websites release notes.
   - [ ] Link to installer changelogs and note versions being used
 <% if (is_rc || full_version.end_with?('0')) -%>
   - [ ] Headline features: half a dozen important features with a few sentences description each
-  - [ ] Upgrade notes: all important notices that users must be aware of before upgrading
+  - [ ] Upgrade notes on [theforeman.org](https://github.com/theforeman/theforeman.org) and [docs.theforeman.org](https://github.com/theforeman/foreman-documentation): all important notices that users must be aware of before upgrading
 - [ ] Update installer options section using the [get-params script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/installer/get-params) (Note: this step can only be done after packages are released)
 [ ] [Generate](https://github.com/theforeman/apidocs#adding-new-version) the apipie docs and raise pull request in [apidocs](https://github.com/theforeman/apidocs) repository
 <% else -%>
