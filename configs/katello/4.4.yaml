@@ -8,6 +8,8 @@
     :redmine_version_id: 1586
   :4.4.0:
     :redmine_version_id: 1517
+  :4.4.1:
+    :redmine_version_id: 1591
 :prior_releases:
   :4.3.1:
     :redmine_version_id: 1535
