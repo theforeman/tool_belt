@@ -7,6 +7,7 @@
   - foreman-nightly-el8
   - foreman-plugins-nightly-rhel7-dist
   - foreman-plugins-nightly-el8
+  - foreman-client-nightly-el9
   - foreman-client-nightly-el8
   - foreman-client-nightly-rhel7
   - foreman-client-nightly-fedora29
@@ -360,6 +361,62 @@
       foreman-plugins-nightly-rhel7-dist:
         foreman-plugins-nightly-rhel7: 2
         foreman-plugins-nightly-nonscl-rhel7: 0
+  - name: foreman-client-nightly-el9
+    based_off: null
+    helper_tags:
+      foreman-client-nightly-el9-override: null
+      foreman-client-nightly-el9: null
+    build_target: foreman-client-nightly-el9-build
+    arches:
+      - x86_64
+    inherits:
+      foreman-client-nightly-el9-build:
+        foreman-client-nightly-el9-override: 0
+      foreman-client-nightly-el9-override:
+        foreman-client-nightly-el9: 0
+      foreman-client-nightly-el9: {}
+    external_repos:
+      - name: centos9stream-baseos
+        mode: bare
+      - name: centos9stream-appstream
+        mode: bare
+      - name: centos9stream-crb
+        mode: bare
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - python3-rpm-macros
+        - redhat-release
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - python3-rpm-macros
+        - redhat-release
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
   - name: foreman-client-nightly-el8
     based_off: null
     helper_tags:
