@@ -5,6 +5,8 @@
   :4.5:
     :redmine_version_id: 1543
 :prior_releases:
+  :4.4.1:
+    :redmine_version_id: 1591
   :4.4.0.2:
     :redmine_version_id: 1590
   :4.4.0.1:
@@ -45,6 +47,10 @@
     :branch: 4.0.2
     :repo: https://github.com/Katello/katello-selinux.git
 :ignores:
+  - 34709
+  - 34749
+  - 34818
+  - 34865
 :strict_keys: true
 :gpg_key: 2A6A4BAA
 :tags:
