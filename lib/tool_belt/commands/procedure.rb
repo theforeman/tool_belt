@@ -67,6 +67,7 @@ module ToolBelt
             one_week_before: parsed_date - 7,
             owner: discourse_username(owner),
             engineer: discourse_username(engineer),
+            short_version_minus_two: "#{major}.#{minor.to_i - 2}"
           }
 
           render(project, 'release', context)

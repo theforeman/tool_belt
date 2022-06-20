@@ -128,6 +128,9 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 <% end -%>
 <% if full_version.end_with?('.0') %>
 - [ ] Update the `foreman_version` to <%= short_version %> in website's [`_config.yml`](https://github.com/theforeman/theforeman.org/blob/gh-pages/_config.yml) file
+- [ ] Update the [docs.theforeman.org](https://github.com/theforeman/foreman-documentation) [index page](https://github.com/theforeman/foreman-documentation/blob/master/web/content/index.adoc) and [versions](https://github.com/theforeman/foreman-documentation/blob/master/web/content/js/versions.js),
+  - [ ] Update <%= short_version %> as `supported`
+  - [ ] Update <%= short_version_minus_two %> as `unsupported`
 <% end -%>
 - [ ] Announce the release on [Discourse](https://community.theforeman.org/c/release-announcements/8)
 - [ ] Update the topic in #theforeman channel on Freenode
