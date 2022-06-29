@@ -14,7 +14,7 @@
 
 - [ ] Update manual if applicable for any additional installation steps
 - Update [release notes section](https://github.com/theforeman/theforeman.org/tree/gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md) in the manual:
-  - [ ] Release notes: bullet point list by category of all changes, include link to bug numbers. 
+  - [ ] Release notes: bullet point list by category of all changes, include link to bug numbers.
     - [ ] For [theforeman.org](https://github.com/theforeman/theforeman.org): You can auto-generate changes using the [release notes script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/release_notes.rb).
     - [ ] For [docs.theforeman.org](https://github.com/theforeman/foreman-documentation): You can auto-generate changes using [redmine_release_notes](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_notes/redmine_release_notes) script, more details are available in [README](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_notes/README.md).
   - [ ] Append CLI release notes taken from the [hammer-cli](https://github.com/theforeman/hammer-cli/blob/<%= short_version %>-stable/doc/release_notes.md) and [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman/blob/<%= short_version %>-stable/doc/release_notes.md) changelogs, in [theforeman.org](https://github.com/theforeman/theforeman.org/trees/gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md) and [docs.theforeman.org](https://github.com/theforeman/foreman-documentation/tree/<%= short_version %>/guides/doc-Release_notes/topics/foreman-<%= full_version %>.adoc) websites release notes.
@@ -97,7 +97,6 @@ Note: If for some reason there was an issue with the tarballs that required uplo
   - [ ] `koji tag-build foreman-client-<%= short_version %>-rhel7 foreman-release-<%= version %>-1.el7`
   - [ ] `koji tag-build foreman-client-<%= short_version %>-el8 foreman-release-<%= version %>-1.el8`
 - [ ] Tag `yggdrasil` into `foreman-plugins-<%= short_version %>-nonscl-rhel7` and `foreman-plugins-<%= short_version %>-el8`, as this doesn't happen automatically for those tags.
-  - [ ] `koji tag-build foreman-plugins-<%= short_version %>-nonscl-rhel7 yggdrasil-VERSION.el7`
   - [ ] `koji tag-build foreman-plugins-<%= short_version %>-el8 yggdrasil-VERSION.el8`
 - [ ] Check for outstanding PRs against <%= short_version %> packaging, and merge if possible:
   - [ ] [rpm/<%= short_version%>](https://github.com/theforeman/foreman-packaging/pulls?q=is%3Apr+is%3Aopen+base%3Arpm%2F<%= short_version %>)
