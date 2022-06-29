@@ -3,46 +3,14 @@
 :github_org: katello
 :nightly: true
 :mash_scripts:
-  - katello-nightly-rhel7
   - katello-nightly-el8
-  - katello-thirdparty-candlepin-rhel7
   - katello-candlepin-nightly-el8
 :tags:
-  - name: katello-thirdparty-candlepin-rhel7
-    based_off: null
-    build_target: katello-nightly-rhel7-build
-    arches:
-      - x86_64
   - name: katello-candlepin-nightly-el8
     based_off: null
     build_target: katello-nightly-el8-build
     arches:
       - x86_64
-  - name: katello-nightly-rhel7
-    based_off: null
-    helper_tags:
-      katello-thirdparty-rhel7: null
-      katello-nightly-rhel7-override: null
-    build_target: katello-nightly-rhel7-build
-    build_package_group_source_tag: katello-nightly-rhel7-build
-    arches:
-      - x86_64
-    inherits:
-      katello-nightly-rhel7-build:
-        katello-nightly-rhel7-override: 0
-        foreman-plugins-nightly-rhel7: 3
-        foreman-plugins-nightly-nonscl-rhel7: 4
-        foreman-nightly-rhel7: 5
-        foreman-nightly-nonscl-rhel7: 6
-      katello-nightly-rhel7-override:
-        katello-nightly-rhel7: 0
-      katello-nightly-rhel7:
-        katello-thirdparty-rhel7: 0
-    external_repos:
-      - epel-7
-      - centos-sclo-rh-rhel-7
-      - centos7-updates
-      - centos-7-server
   - name: katello-nightly-el8
     based_off: null
     helper_tags:
