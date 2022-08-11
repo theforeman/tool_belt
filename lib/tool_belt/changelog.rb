@@ -25,7 +25,7 @@ module ToolBelt
     end
 
     def generate_entry(issue)
-      links = ["[##{issue.id}](#{issue.html_url})"] + commit_urls(issue)
+      links = ["#{issue.html_url}[##{issue.id}]"] + commit_urls(issue)
       list_item = " * #{issue.subject} (#{links.join(', ')})"
 
       tracker = (issue && issue.tracker) ? issue.tracker['name'] : 'Bug'
@@ -53,8 +53,8 @@ module ToolBelt
         end
 
         if repo_name
-          url = "#{@release_environment.repos[repo_name][:repo]}/commit/#{commit}"
-          urls << "[#{changeset['revision'][0...8]}](#{url})"
+          url = "#{@release_environment.repos[repo_name][:repo][0...-4]}/commit/#{commit}"
+          urls << "#{url}[#{changeset['revision'][0...8]}]"
         else
           puts "Repo for commit #{commit} from #{issue.id} not found"
         end
