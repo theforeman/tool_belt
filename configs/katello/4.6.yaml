@@ -24,7 +24,7 @@
     :branch: 1.6.z
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-host-tools:
-    :branch: 4.2.0
+    :branch: 4.2.1
     :repo: https://github.com/Katello/katello-host-tools.git
   :katello-certs-tools:
     :branch: 2.9.0
@@ -39,6 +39,9 @@
     :branch: 4.0.2
     :repo: https://github.com/Katello/katello-selinux.git
 :ignores:
+  - 33448 #Tracker
+  - 34931 #Documentation, no changes in katello
+  - 33074 #Tracker
 :strict_keys: true
 :gpg_key: F120E13E
 :tags:
