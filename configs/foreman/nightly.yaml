@@ -27,6 +27,7 @@
         foreman-nightly-el8: 0
     external_repos:
       - flat-ruby27-el8
+      - flat-python39-el8
       - test-flat-el8
       - centos8-devel
       - puppetlabs-puppet7-rhel-8
@@ -85,6 +86,7 @@
         foreman-plugins-nightly-el8: 0
     external_repos:
       - flat-ruby27-el8
+      - flat-python39-el8
       - test-flat-el8
     build_groups:
       build:
