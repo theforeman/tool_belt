@@ -50,7 +50,7 @@
         - make
         - patch
         - platform-python
-        - python3-rpm-macros
+        - python39-rpm-macros
         - redhat-rpm-config
         - rpm-build
         - sed
@@ -65,7 +65,7 @@
         - centos-release
         - foreman-build
         - platform-python
-        - python3-rpm-macros
+        - python39-rpm-macros
         - redhat-rpm-config
         - rhpkg-simple
         - rpm-build
@@ -107,7 +107,7 @@
         - make
         - patch
         - platform-python
-        - python3-rpm-macros
+        - python39-rpm-macros
         - redhat-rpm-config
         - rpm-build
         - sed
@@ -122,7 +122,7 @@
         - centos-release
         - foreman-build
         - platform-python
-        - python3-rpm-macros
+        - python39-rpm-macros
         - redhat-rpm-config
         - rhpkg-simple
         - rpm-build
