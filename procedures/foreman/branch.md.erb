@@ -80,6 +80,7 @@
 - [ ] Update mash script if needed - [collection-mash-split.py](https://github.com/theforeman/foreman-infra/blob/master/koji/collection-mash-split.py)
 - [ ] Add the new release to the JJB job definitions in [jenkins-jobs](https://github.com/theforeman/jenkins-jobs)
   - [ ] Create a `<%= release %>.groovy` in `pipelines/vars/foreman/` describing the operating systems the release supports
+  - [ ] Add the release to the list in `theforeman.org/yaml/views/release.yml`
   - [ ] Add `<%= release %>` to the version list in `theforeman.org/yaml/includes/foreman_versions.yaml.inc`
   - [ ] Add `<%= release %>` to the version list in `centos.org/jobs/foreman-pipelines.yml`
   - [ ] Create `test_<%= release.tr('.', '_') %>_stable.yaml` and `test_proxy_<%= release.tr('.', '_') %>_stable.yaml` in `yaml/jobs/`
