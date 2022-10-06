@@ -25,6 +25,13 @@
 - [ ] Change Redmine version <%= full_version %> state to Closed
 <% end -%>
 - [ ] Check for outdated deprecation warnings in the current and next release with `./tools check-deprecation-warnings configs/katello/<%= short_version %>.yaml`. Follow the instructions in the output of the command. Don't forget to create any Redmine issues needed!
+- [ ] Update [docs.theforeman.org](https://github.com/theforeman/foreman-documentation)
+  - Using [redmine_release_notes](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_Notes/redmine_release_notes) script (see [README](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_Notes/README.md) as well): `./guides/doc-Release_Notes/redmine_release_notes katello <%= version %> > ./guides/doc-Release_Notes/topics/katello-<%= version %>.adoc`
+<% unless is_rc && !full_version.end_with?('1') -%>
+  - Add `topics/katello-<%= version %>.adoc` to `guides/doc-Release_Notes/master.adoc`: `sed '/x.y.z releases here/a include::topics/katello-<%= version %>.adoc[leveloffset=+1]' master.adoc`
+<% end -%>
+  - Make sure [katello-contributors.adoc](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_Notes/topics/katello-contributors.adoc) is updated
+  - Submit this as a PR
 
 - [ ] Open a PR (or use cherry-pick PR) against the release branch which updates `lib/katello/version.rb` to <%= full_version %>:
   - [ ] `git pull` to make sure you have the latest changes
