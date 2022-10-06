@@ -127,12 +127,12 @@ The next step should only be done after all branching, including packaging, has 
 
 - [ ] Update foreman-packaging rpm/develop to ensure nightlies build:
   - [ ] rpm/develop:
-    - [ ] Update the build tag: `sed -i 's/fm<%= release.tr('.', '_') %>/fm<%= develop.tr('.', '_') %>/g' rel-eng/{releasers.conf,tito.props} package_manifest.yaml`
+    - [ ] Update the build tag: `sed -i 's/fm<%= release.tr('.', '_') %>/fm<%= develop.tr('.', '_') %>/g' package_manifest.yaml`
     - [ ] Set to version `<%= develop %>.0`, reset release to `1` in `packages/foreman/foreman{,-{installer,proxy,release,selinux}}/*.spec` and `packages/foreman/rubygem-hammer_cli{,_foreman}/*.spec`. Then create a changelog using `obal changelog --message '- Bump version to <%= develop %>-develop' foreman{,-{installer,proxy,release,selinux}} rubygem-hammer_cli{,_foreman}`
   - [ ] deb/develop: `scripts/changelog.rb -v <%= develop %>.0-1 -m "Bump changelog to <%= develop %>.0 to match VERSION" debian/*/*/changelog`
 - [ ] Prepare build systems for <%= release %> release:
   - [ ] foreman-packaging's rpm/<%= release %>
-    - [ ] Update `packages/foreman/foreman-release/foreman.gpg`, `mock/*.cfg`, `package_manifest.yaml`, `rel-eng/{releasers.conf,tito.props}` and `repoclosure/*.conf`
+    - [ ] Update `packages/foreman/foreman-release/foreman.gpg`, `mock/*.cfg`, `package_manifest.yaml` and `repoclosure/*.conf`
   - [ ] foreman-packaging's deb/<%= release %>
     - [ ] Update `debian/*/foreman-release/theforeman-archive-keyring.asc` from https://deb.theforeman.org/foreman.asc, you will only see changes if the key was recently updated.
 - [ ] Trigger the [`foreman-packaging-rpm-<%= release %>`](https://ci.theforeman.org/job/foreman-packaging-rpm-<%= release %>-release/) job once, so that GitHub hooks are properly set up.
