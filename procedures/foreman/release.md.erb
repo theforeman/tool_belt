@@ -13,18 +13,27 @@
 ## Release Owner
 
 - [ ] Update manual if applicable for any additional installation steps
-- Update [release notes section](https://github.com/theforeman/theforeman.org/tree/gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md) in the manual:
-  - [ ] Release notes: bullet point list by category of all changes, include link to bug numbers.
-    - [ ] For [theforeman.org](https://github.com/theforeman/theforeman.org): You can auto-generate changes using the [release notes script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/release_notes.rb).
-    - [ ] For [docs.theforeman.org](https://github.com/theforeman/foreman-documentation): You can auto-generate changes using [redmine_release_notes](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_notes/redmine_release_notes) script, more details are available in [README](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_notes/README.md).
-  - [ ] Append CLI release notes taken from the [hammer-cli](https://github.com/theforeman/hammer-cli/blob/<%= short_version %>-stable/doc/release_notes.md) and [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman/blob/<%= short_version %>-stable/doc/release_notes.md) changelogs, in [theforeman.org](https://github.com/theforeman/theforeman.org/trees/gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md) and [docs.theforeman.org](https://github.com/theforeman/foreman-documentation/tree/<%= short_version %>/guides/doc-Release_notes/topics/foreman-<%= full_version %>.adoc) websites release notes.
+- [ ] Update the [website's release notes section](https://github.com/theforeman/theforeman.org/tree/gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md) in the manual
+  - Using the [release notes script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/release_notes.rb): `./scripts/release_notes foreman <%= version %>`
+  - Append CLI release notes taken from the [hammer-cli](https://github.com/theforeman/hammer-cli/blob/<%= short_version %>-stable/doc/release_notes.md) and [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman/blob/<%= short_version %>-stable/doc/release_notes.md) changelogs, in [theforeman.org](https://github.com/theforeman/theforeman.org/trees/gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md) and [docs.theforeman.org](https://github.com/theforeman/foreman-documentation/tree/<%= short_version %>/guides/doc-Release_Notes/topics/foreman-<%= full_version %>.adoc) websites release notes.
 <% if (is_rc || full_version.end_with?('0')) -%>
-  - [ ] Headline features: half a dozen important features with a few sentences description each
-  - [ ] Upgrade notes on [theforeman.org](https://github.com/theforeman/theforeman.org) and [docs.theforeman.org](https://github.com/theforeman/foreman-documentation): all important notices that users must be aware of before upgrading
-- [ ] Update installer options section using the [get-params script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/installer/get-params) (Note: this step can only be done after packages are released)
-[ ] [Generate](https://github.com/theforeman/apidocs#adding-new-version) the apipie docs and raise pull request in [apidocs](https://github.com/theforeman/apidocs) repository
+  - Headline features: half a dozen important features with a few sentences description each
+  - Upgrade warnings: all important notices that users must be aware of before upgrading
+  - Deprecations: anything that will be removed in a future release
+<% end -%>
+  - Submit this as a PR
+- [ ] Update [docs.theforeman.org](https://github.com/theforeman/foreman-documentation)
+  - Using [redmine_release_notes](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_Notes/redmine_release_notes) script (see [README](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_Notes/README.md) as well): `./guides/doc-Release_Notes/redmine_release_notes foreman <%= version %> > ./guides/doc-Release_Notes/topics/foreman-<%= version %>.adoc`
+  - Append CLI release notes taken from the [hammer-cli](https://github.com/theforeman/hammer-cli/blob/<%= short_version %>-stable/doc/release_notes.md) and [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman/blob/<%= short_version %>-stable/doc/release_notes.md) changelogs to [`foreman-<%= version %>.adoc`](https://github.com/theforeman/foreman-documentation/tree/<%= short_version %>/guides/doc-Release_Notes/topics/foreman-<%= version %>.adoc).
+<% unless is_rc && !full_version.end_with?('1') -%>
+  - Add `topics/foreman-<%= version %>.adoc` to `guides/doc-Release_Notes/master.adoc`: `sed '/x.y.z releases here/a include::topics/foreman-<%= version %>.adoc[leveloffset=+1]' master.adoc`
+<% end -%>
+  - Make sure [foreman-contributors.adoc](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_Notes/topics/foreman-contributors.adoc) is updated
+  - Make sure headline features, upgrade warnings and deprecations are in sync with the website
+  - Submit this as a PR
+<% if is_rc && full_version.end_with?('1') -%>
+- [ ] [Generate](https://github.com/theforeman/apidocs#adding-new-version) the apipie docs and raise pull request in [apidocs](https://github.com/theforeman/apidocs) repository
 <% else -%>
-- [ ] Update installer options section using the [get-params script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/installer/get-params) if any changes were made in the installer or installer modules (after new packages have been released)
 - [ ] [Update](https://github.com/theforeman/apidocs#adding-new-version) the apipie docs and place those in the [foreman/<%= short_version %>/apidoc](https://github.com/theforeman/apidocs/tree/gh-pages/foreman/<%= short_version %>/apidoc) directory if any changes were made to the API
 <% end -%>
 
@@ -113,6 +122,9 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 
 # Release Owner
 
+<% if (is_rc full_version.end_with?('0')) -%>
+- [ ] Update installer options section using the [get-params script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/installer/get-params) (Note: this step can only be done after packages are released)
+<% end -%>
 <% unless is_rc -%>
 - [ ] Update the versions on the website in [version](https://github.com/theforeman/theforeman.org/blob/gh-pages/_includes/version.html) and [latest news](https://github.com/theforeman/theforeman.org/blob/gh-pages/_includes/latest_news.html)
 <% end -%>
