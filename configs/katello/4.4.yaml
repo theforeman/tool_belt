@@ -2,6 +2,10 @@
 :project: katello
 :github_org: katello
 :releases:
+  :4.4.2:
+    :redmine_version_id: 1611
+  :4.4.1:
+    :redmine_version_id: 1591
   :4.4.0.2:
     :redmine_version_id: 1590
   :4.4.0.1:
@@ -9,10 +13,10 @@
   :4.4.0:
     :redmine_version_id: 1517
 :prior_releases:
-  :4.3.1:
-    :redmine_version_id: 1535
   :4.3.2:
     :redmine_version_id: 1554
+  :4.3.1:
+    :redmine_version_id: 1535
 :code_name: Habanero
 :mash_scripts:
   - katello-4.4-rhel7
@@ -52,6 +56,7 @@
   - 33291
   - 34182 # merged before branching
   - 34449 # duplicate
+  - 34779 # issue does not apply
 :strict_keys: true
 :gpg_key: 6DA7EB32
 :tags:
