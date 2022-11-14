@@ -52,9 +52,6 @@
   - [ ] [pulpcore](https://github.com/theforeman/puppet-pulpcore)
   - [ ] [foreman_proxy_content](https://github.com/theforeman/puppet-foreman_proxy_content)
   - [ ] [katello](https://github.com/theforeman/puppet-katello)
-- [ ] Create PRs to [jenkins-jobs](https://github.com/theforeman/jenkins-jobs) to add a mapping between the current Foreman and Katello release branches and update pipelines. See [this test mapping PR example](https://github.com/theforeman/jenkins-jobs/pull/179) and [this pipeline PR example](https://github.com/theforeman/jenkins-jobs/pull/178).
-- [ ] Files to edit: [testKatello.groovy](https://github.com/theforeman/jenkins-jobs/blob/master/theforeman.org/pipelines/test/testKatello.groovy), [katello-pipelines.yml](https://github.com/theforeman/jenkins-jobs/blob/master/centos.org/jobs/katello-pipelines.yml), and [katello-rpm-pipeline.yaml](https://github.com/theforeman/jenkins-jobs/blob/master/theforeman.org/yaml/jobs/pipeline/katello-rpm-pipeline.yaml).
-  - [ ] File to create: [<%= release %>.groovy](https://github.com/theforeman/jenkins-jobs/blob/master/theforeman.org/pipelines/vars/katello/<%= release %>.groovy).  Copy [nightly.groovy](https://github.com/theforeman/jenkins-jobs/blob/master/theforeman.org/pipelines/vars/katello/nightly.groovy) and replace the Foreman and Katello versions in the file accordingly.
 - [ ] Review the Foreman schedule and planning ([example](https://community.theforeman.org/t/foreman-2-5-schedule-and-planning/22219)) and note the date of the first scheduled release candidate.
 
 ## Release Engineer
@@ -96,5 +93,3 @@
 - [ ] Run `./tools.rb koji configs/katello/<%= release %>.yaml --confirm` from [tool_belt](https://github.com/theforeman/tool_belt) to create Koji tags
 - [ ] Run `./tools.rb mash-scripts configs/katello/<%= release %>.yaml` from [tool_belt](https://github.com/theforeman/tool_belt) to create Koji mash configs and open PR to tool_belt to commit
 - [ ] Copy mash configs to Koji `scp mash_scripts/katello/<%= release %>/*.mash root@koji.katello.org:/etc/mash/`
-- [ ] Add new Katello release job to [foreman-infra](https://github.com/theforeman/foreman-infra/tree/master/puppet/modules/jenkins_job_builder/files/theforeman.org/yaml/jobs/pipeline)
-- [ ] Update Katello PR pipeline with new version [pipeline](https://github.com/theforeman/foreman-infra/blob/master/puppet/modules/jenkins_job_builder/files/theforeman.org/pipelines/test/testKatello.groovy#L1)
