@@ -93,8 +93,8 @@
 
 ## Release Engineer
 
-- [ ] Run `./tools koji configs/katello/<%= release %>.yaml --confirm` from [tool_belt](https://github.com/theforeman/tool_belt) to create Koji tags
-- [ ] Run `./tools mash-scripts configs/katello/<%= release %>.yaml` from [tool_belt](https://github.com/theforeman/tool_belt) to create Koji mash configs and open PR to tool_belt to commit
+- [ ] Run `./tools.rb koji configs/katello/<%= release %>.yaml --confirm` from [tool_belt](https://github.com/theforeman/tool_belt) to create Koji tags
+- [ ] Run `./tools.rb mash-scripts configs/katello/<%= release %>.yaml` from [tool_belt](https://github.com/theforeman/tool_belt) to create Koji mash configs and open PR to tool_belt to commit
 - [ ] Copy mash configs to Koji `scp mash_scripts/katello/<%= release %>/*.mash root@koji.katello.org:/etc/mash/`
 - [ ] Update the branch map in the [mash script](https://github.com/theforeman/foreman-infra/blob/master/koji/collection-mash-split.py) and deploy it to Koji `scp collection-mash-split.py root@koji.katello.org:/usr/local/bin`
 - [ ] Add <%= release %> to [Forklift versions config](https://github.com/theforeman/forklift/blob/master/vagrant/config/versions.yaml)
