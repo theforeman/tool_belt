@@ -12,9 +12,6 @@
 - [ ] Request Hammer CLI Katello release from maintainers
 - [ ] Request Virt Who Configure release from maintainers
 - [ ] Request any other releases as needed from the release owners (consult the `:repos:` section of `configs/katello/<%= short_version %>.yaml`)
-<% unless is_rc -%>
-- [ ] Change Redmine version <%= full_version %> state to Closed
-<% end -%>
 <% unless is_rc && full_version.end_with?('1') -%>
 - [ ] Do Cherry-picks: Clone [tool_belt](https://github.com/theforeman/tool_belt)
   - [ ] If any minor versions of Katello have been added to Redmine since the last cherry-pick, make sure to include them in `prior_releases` in configs/katello/<%= short_version %>.yaml
@@ -23,6 +20,9 @@
   - [ ] Open a PR in Katello release branch.  Make sure the PR name starts with [CP] to prevent our automations from adding it to Redmine issues.
   - [ ] Using `git cherry-pick -x` as needed, verify tickets in the cherry_picks_<%= full_version %> file are accounted for, or additionally cherry-pick them.  Recommended: Do this in tool_belt's checkout of Katello, in `repos/katello/<%= full_version %>/katello`. This way when you run cherry-picks again, tool_belt will be aware of any picks already completed.
   - [ ] For any cherry-picks that are not needed (including Redmine trackers) you can add them to the `:ignores:` section of `tool_belt` in `configs/katello/<%= short_version %>.yaml`
+<% end -%>
+<% unless is_rc -%>
+- [ ] Change Redmine version <%= full_version %> state to Closed
 <% end -%>
 - [ ] Check for outdated deprecation warnings in the current and next release with `./tools check-deprecation-warnings configs/katello/<%= short_version %>.yaml`. Follow the instructions in the output of the command. Don't forget to create any Redmine issues needed!
 
