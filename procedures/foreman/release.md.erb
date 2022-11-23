@@ -122,7 +122,7 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 
 # Release Owner
 
-<% if (is_rc full_version.end_with?('0')) -%>
+<% if (is_rc || full_version.end_with?('0')) -%>
 - [ ] Update installer options section using the [get-params script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/installer/get-params) (Note: this step can only be done after packages are released)
 <% end -%>
 <% unless is_rc -%>
