@@ -3,12 +3,10 @@ require 'ostruct'
 
 module ToolBelt
   module Template
-    def self.render(template, vars)
-      ERB.new(template, trim_mode: '-').result(OpenStruct.new(vars).instance_eval { binding })
-    end
-
     def self.render_file(filename, context)
-      self.render(File.read(filename), context)
+      erb = ERB.new(File.read(filename), trim_mode: '-')
+      erb.filename = File.expand_path(filename)
+      erb.result(OpenStruct.new(context).instance_eval { binding })
     end
   end
 end
