@@ -26,7 +26,7 @@
   - Using [redmine_release_notes](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_Notes/redmine_release_notes) script (see [README](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_Notes/README.md) as well): `./guides/doc-Release_Notes/redmine_release_notes foreman <%= version %> > ./guides/doc-Release_Notes/topics/foreman-<%= version %>.adoc`
   - Append CLI release notes taken from the [hammer-cli](https://github.com/theforeman/hammer-cli/blob/<%= short_version %>-stable/doc/release_notes.md) and [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman/blob/<%= short_version %>-stable/doc/release_notes.md) changelogs to [`foreman-<%= version %>.adoc`](https://github.com/theforeman/foreman-documentation/tree/<%= short_version %>/guides/doc-Release_Notes/topics/foreman-<%= version %>.adoc).
 <% unless is_rc && !full_version.end_with?('1') -%>
-  - Add `topics/foreman-<%= version %>.adoc` to `guides/doc-Release_Notes/master.adoc`: `sed '/x.y.z releases here/a include::topics/foreman-<%= version %>.adoc[leveloffset=+1]' master.adoc`
+  - Add `topics/foreman-<%= version %>.adoc` to `guides/doc-Release_Notes/master.adoc`: `sed -i '/x.y.z releases here/a include::topics/foreman-<%= version %>.adoc[leveloffset=+1]' guides/doc-Release_Notes/master.adoc`
 <% end -%>
   - Make sure [foreman-contributors.adoc](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_Notes/topics/foreman-contributors.adoc) is updated
   - Make sure headline features, upgrade warnings and deprecations are in sync with the website
