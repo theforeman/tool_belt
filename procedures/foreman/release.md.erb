@@ -137,6 +137,9 @@ Note: If for some reason there was an issue with the tarballs that required uplo
   - [ ] Update <%= short_version %> as `supported`
   - [ ] Update <%= short_version_minus_two %> as `unsupported`
 <% end -%>
+<% if is_rc && full_version.end_with?('1') -%>
+- [ ] Create a testweek post on [Discourse](https://community.theforeman.org/c/development/9) with the tag `testweek` using the tool_belt procedure: `bundle exec ./tools.rb procedure testweek foreman <%= full_version %>`
+<% end -%>
 - [ ] Announce the release on [Discourse](https://community.theforeman.org/c/release-announcements/8)
 - [ ] Update the topic in #theforeman channel on Libera.Chat
 - [ ] Share the release announcement on Twitter
