@@ -17,10 +17,10 @@
   - [ ] [Configure the Transifex client](https://projects.theforeman.org/projects/foreman/wiki/Translating#How-to-pull-translations)
   - [ ] [Install grunt](https://github.com/Katello/katello/blob/master/engines/bastion_katello/README.md)
   - [ ] `grunt i18n:extract` in the katello/engines/bastion_katello directory
-  - [ ] `make -C locale tx-update` in the katello directory
+  - [ ] `make -C locale tx-pull` in the katello directory
   - [ ] `grunt i18n:compile` in the katello/engines/bastion_katello directory
   - [ ] `bundle exec rake plugin:gettext[katello]` in the foreman directory
-  - [ ] Commit the resulting files in the katello directory with a message like "i18n - pulling from tx"
+  - [ ] `make -C locale mo-files` in the katello directory
   - [ ] Open a PR to Katello (no Redmine issue needed)
 
 # Three Weeks Prior to Branch Date
