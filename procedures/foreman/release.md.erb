@@ -131,7 +131,7 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 <% if is_rc && full_version.end_with?('1') -%>
 - [ ] Add the <%= short_version %> in `foreman_versions` list in website's [`_config.yml`](https://github.com/theforeman/theforeman.org/blob/gh-pages/_config.yml) file
 <% end -%>
-<% if full_version.end_with?('.0') %>
+<% if full_version.end_with?('.0') -%>
 - [ ] Update the `foreman_version` to <%= short_version %> in website's [`_config.yml`](https://github.com/theforeman/theforeman.org/blob/gh-pages/_config.yml) file
 - [ ] Update the [docs.theforeman.org](https://github.com/theforeman/foreman-documentation) [index page](https://github.com/theforeman/foreman-documentation/blob/master/web/content/index.adoc) and [versions](https://github.com/theforeman/foreman-documentation/blob/master/web/content/js/versions.js),
   - [ ] Update <%= short_version %> as `supported`
@@ -140,7 +140,7 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 - [ ] Announce the release on [Discourse](https://community.theforeman.org/c/release-announcements/8)
 - [ ] Update the topic in #theforeman channel on Libera.Chat
 - [ ] Share the release announcement on Twitter
-<% if full_version.end_with?('.0') %>
+<% if full_version.end_with?('.0') -%>
 - [ ] After about a week, update `stable` version in [foreman-infra](https://github.com/theforeman/foreman-infra/blob/master/puppet/modules/profiles/manifests/web.pp#L24)
 <% end -%>
 - [ ] Release pipeline will trigger [foreman-plugins-<%= short_version %>-deb-test-pipeline](https://ci.theforeman.org/job/foreman-plugins-<%= short_version %>-deb-test-pipeline/) and [foreman-plugins-<%= short_version %>-rpm-test-pipeline](https://ci.theforeman.org/job/foreman-plugins-<%= short_version %>-rpm-test-pipeline/). These don't block releases but can be used to understand known issues around plugin compatibility with Foreman <%= short_version %>.
