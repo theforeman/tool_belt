@@ -30,6 +30,11 @@
 <% end -%>
   - Make sure [foreman-contributors.adoc](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_Notes/topics/foreman-contributors.adoc) is updated
   - Make sure headline features, upgrade warnings and deprecations are in sync with the website
+<% if full_version.end_with?('.0') -%>
+  - Update `web/content/index.adoc` and `web/content/js/versions.js` to declare <%= short_version %> as stable and <%= short_version_minus_two %> as unsupported
+<% elsif is_rc && full_version.end_with?('1') -%>
+  - Update `web/content/index.adoc` and `web/content/js/versions.js` to add <%= short_version %> as a release candidate
+<% end -%>
   - Submit this as a PR
 <% if is_rc && full_version.end_with?('1') -%>
 - [ ] [Generate](https://github.com/theforeman/apidocs#adding-new-version) the apipie docs and raise pull request in [apidocs](https://github.com/theforeman/apidocs) repository
