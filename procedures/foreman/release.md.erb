@@ -4,7 +4,7 @@
 
 * Release Owner: <%= owner %>
 * Release Engineer: <%= engineer %>
-<% unless is_rc && full_version.end_with?('1') -%>
+<% unless is_first_rc -%>
 * Installer Maintainer: @
 <% end -%>
 
@@ -16,7 +16,7 @@
 - [ ] Update the [website's release notes section](https://github.com/theforeman/theforeman.org/tree/gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md) in the manual
   - Using the [release notes script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/release_notes.rb): `./scripts/release_notes.rb foreman <%= version %>`
   - Append CLI release notes taken from the [hammer-cli](https://github.com/theforeman/hammer-cli/blob/<%= short_version %>-stable/doc/release_notes.md) and [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman/blob/<%= short_version %>-stable/doc/release_notes.md) changelogs, in [theforeman.org](https://github.com/theforeman/theforeman.org/trees/gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md).
-<% if (is_rc || full_version.end_with?('0')) -%>
+<% if is_rc || is_first_ga -%>
   - Headline features: half a dozen important features with a few sentences description each
   - Upgrade warnings: all important notices that users must be aware of before upgrading
   - Deprecations: anything that will be removed in a future release
@@ -25,25 +25,25 @@
 - [ ] Update [docs.theforeman.org](https://github.com/theforeman/foreman-documentation)
   - Using [redmine_release_notes](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_Notes/redmine_release_notes) script (see [README](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_Notes/README.md) as well): `./guides/doc-Release_Notes/redmine_release_notes foreman <%= version %> > ./guides/doc-Release_Notes/topics/foreman-<%= version %>.adoc`
   - Append CLI release notes taken from the [hammer-cli](https://github.com/theforeman/hammer-cli/blob/<%= short_version %>-stable/doc/release_notes.md) and [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman/blob/<%= short_version %>-stable/doc/release_notes.md) changelogs to [`foreman-<%= version %>.adoc`](https://github.com/theforeman/foreman-documentation/tree/<%= short_version %>/guides/doc-Release_Notes/topics/foreman-<%= version %>.adoc).
-<% unless is_rc && !full_version.end_with?('1') -%>
+<% if is_first_rc || (!is_rc && !is_first_ga) -%>
   - Add `topics/foreman-<%= version %>.adoc` to `guides/doc-Release_Notes/master.adoc`: `sed -i '/x.y.z releases here/a include::topics/foreman-<%= version %>.adoc[leveloffset=+1]' guides/doc-Release_Notes/master.adoc`
 <% end -%>
   - Make sure [foreman-contributors.adoc](https://github.com/theforeman/foreman-documentation/blob/<%= short_version %>/guides/doc-Release_Notes/topics/foreman-contributors.adoc) is updated
   - Make sure headline features, upgrade warnings and deprecations are in sync with the website
-<% if full_version.end_with?('.0') -%>
+<% if is_first_ga -%>
   - Update `web/content/index.adoc` and `web/content/js/versions.js` to declare <%= short_version %> as stable and <%= short_version_minus_two %> as unsupported
-<% elsif is_rc && full_version.end_with?('1') -%>
+<% elsif is_first_rc -%>
   - Update `web/content/index.adoc` and `web/content/js/versions.js` to add <%= short_version %> as a release candidate
 <% end -%>
   - Submit this as a PR
-<% if is_rc && full_version.end_with?('1') -%>
+<% if is_first_Rc -%>
 - [ ] [Generate](https://github.com/theforeman/apidocs#adding-new-version) the apipie docs and raise pull request in [apidocs](https://github.com/theforeman/apidocs) repository
 <% else -%>
 - [ ] [Update](https://github.com/theforeman/apidocs#adding-new-version) the apipie docs and place those in the [foreman/<%= short_version %>/apidoc](https://github.com/theforeman/apidocs/tree/gh-pages/foreman/<%= short_version %>/apidoc) directory if any changes were made to the API
 <% end -%>
 
 # Preparing code: <%= target_date %>
-<% unless is_rc && full_version.end_with?('1') -%>
+<% unless is_first_rc -%>
 
 ## Installer Maintainer
 
@@ -53,7 +53,7 @@
 
 ## Release Owner
 
-<% unless (is_rc || full_version.end_with?('.0')) -%>
+<% unless is_rc -%>
 - [ ] Add a new [Redmine version](https://projects.theforeman.org/projects/foreman/settings/versions) for the next minor, unless the series is EOL. Be sure the version is set to sharing with subprojects.
 <% end -%>
 - [ ] Remove/change target version field for any open Redmine tickets assigned to the release still (next minor, unset it or reject)
@@ -67,7 +67,7 @@
 ## Release Owner
 
 - [ ] Make sure [test_<%= short_version.tr('.', '_') %>_stable](https://ci.theforeman.org/job/test_<%= short_version.tr('.', '_') %>_stable/) and [smart-proxy<%= short_version %>-stable-test](https://ci.theforeman.org/job/smart-proxy-<%= short_version %>-stable-test/) are green using [verify_green_jobs](https://github.com/theforeman/theforeman-rel-eng/blob/master/verify_green_jobs)
-<% if (is_rc || full_version.end_with?('0')) -%>
+<% if is_rc || is_first_ga -%>
 - [ ] Run `make -C locale tx-update` in foreman <%= short_version %>-stable
 <% end -%>
 - [ ] Update release version similar to [here](https://github.com/theforeman/theforeman-rel-eng/commit/2029a9688da00d9c385c3438dd71b594ba5f728e)
@@ -120,16 +120,16 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 
 # Release Owner
 
-<% if (is_rc || full_version.end_with?('0')) -%>
+<% if (is_rc && !is_first_rc) || is_first_ga -%>
 - [ ] Update installer options section using the [get-params script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/installer/get-params) (Note: this step can only be done after packages are released)
 <% end -%>
 <% unless is_rc -%>
 - [ ] Update the versions on the website in [version](https://github.com/theforeman/theforeman.org/blob/gh-pages/_includes/version.html) and [latest news](https://github.com/theforeman/theforeman.org/blob/gh-pages/_includes/latest_news.html)
 <% end -%>
-<% if is_rc && full_version.end_with?('1') -%>
+<% if is_first_rc -%>
 - [ ] Add the <%= short_version %> in `foreman_versions` list in website's [`_config.yml`](https://github.com/theforeman/theforeman.org/blob/gh-pages/_config.yml) file
 <% end -%>
-<% if full_version.end_with?('.0') -%>
+<% if is_first_ga -%>
 - [ ] Update the `foreman_version` to <%= short_version %> in website's [`_config.yml`](https://github.com/theforeman/theforeman.org/blob/gh-pages/_config.yml) file
 - [ ] Update the [docs.theforeman.org](https://github.com/theforeman/foreman-documentation) [index page](https://github.com/theforeman/foreman-documentation/blob/master/web/content/index.adoc) and [versions](https://github.com/theforeman/foreman-documentation/blob/master/web/content/js/versions.js),
   - Update <%= short_version %> as `supported`
@@ -138,7 +138,7 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 - [ ] Announce the release on [Discourse](https://community.theforeman.org/c/release-announcements/8)
 - [ ] Update the topic in #theforeman channel on Libera.Chat
 - [ ] Share the release announcement on Twitter
-<% if full_version.end_with?('.0') -%>
+<% if is_first_ga -%>
 - [ ] After about a week, update `stable` version in [foreman-infra](https://github.com/theforeman/foreman-infra/blob/master/puppet/modules/profiles/manifests/web.pp#L24)
 <% end -%>
 - [ ] Release pipeline will trigger [foreman-plugins-<%= short_version %>-deb-test-pipeline](https://ci.theforeman.org/job/foreman-plugins-<%= short_version %>-deb-test-pipeline/) and [foreman-plugins-<%= short_version %>-rpm-test-pipeline](https://ci.theforeman.org/job/foreman-plugins-<%= short_version %>-rpm-test-pipeline/). These don't block releases but can be used to understand known issues around plugin compatibility with Foreman <%= short_version %>.

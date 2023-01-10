@@ -50,13 +50,15 @@ module ToolBelt
 
         def execute
           version, extra = full_version.split('-', 2)
-          major, minor, _ = version.split('.', 3)
+          major, minor, patch = version.split('.', 3)
           debian_full_version = version + (extra ? "~#{extra.downcase}" : '') + '-1'
 
           parsed_date = Date.parse(target_date)
 
           context = {
             is_rc: !extra.nil?,
+            is_first_rc: extra == 'rc1',
+            is_first_ga: patch == 0 && !is_rc,
             extra: extra,
             short_version: "#{major}.#{minor}", # 1.20
             debian_full_version: debian_full_version, # 1.20.0~rc1-1
