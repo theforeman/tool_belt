@@ -2,9 +2,11 @@
 :project: katello
 :github_org: katello
 :releases:
+  :4.7.1:
+   :redmine_version_id: 1646
+:prior_releases:
   :4.7.0:
     :redmine_version_id: 1613
-:prior_releases:
   :4.6.0:
     :redmine_version_id: 1561
 :code_name: Whiskey Sour
