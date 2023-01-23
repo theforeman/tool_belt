@@ -17,6 +17,7 @@
   - [ ] [Configure the Transifex client](https://projects.theforeman.org/projects/foreman/wiki/Translating#How-to-pull-translations)
   - [ ] [Install grunt](https://github.com/Katello/katello/blob/master/engines/bastion_katello/README.md)
   - [ ] `grunt i18n:extract` in the katello/engines/bastion_katello directory
+  - [ ] `tx pull --minimum-perc 50 --all` in the katello directory
   - [ ] `make -C locale tx-pull` in the katello directory
   - [ ] `grunt i18n:compile` in the katello/engines/bastion_katello directory
   - [ ] `bundle exec rake plugin:gettext[katello]` in the foreman directory
@@ -66,6 +67,8 @@
   - [ ] [katello](https://github.com/katello/katello)
 - [ ] Bump versions to <%= develop %>-master
   - [ ] [katello](https://github.com/katello/katello)
+- [] Bump Katello related packages to their next versions
+  - [] [packaging](https://github.com/theforeman/foreman-packaging/pull/8729/files)
 - [ ] Generate and post the release procedure, if not already posted:
   - [ ] (Note that Katello uses dots instead of dashes for release candidates, e.g. 4.1.1.rc1 not 4.1.1-rc1)
   - [ ] Make sure to run `./tools.rb setup-environment` first
