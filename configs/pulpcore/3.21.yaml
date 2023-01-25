@@ -40,6 +40,8 @@
         mode: bare
       - name: flat-rust-toolset-el8
         mode: bare
+      - name: flat-llvm-toolset-el8
+        mode: bare
       - name: centos8-devel
         mode: bare
       - name: centos8-configmanagement-ansible-29
