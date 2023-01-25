@@ -38,6 +38,8 @@
         mode: bare
       - name: flat-swig30-el8
         mode: bare
+      - name: flat-rust-toolset-el8
+        mode: bare
       - name: centos8-devel
         mode: bare
       - name: centos8-configmanagement-ansible-29
@@ -78,6 +80,7 @@
         - rpm-build
         - shadow-utils
   - name: pulpcore-3.21-el9
+    based_off: pulpcore-3.18-el9
     helper_tags:
       pulpcore-3.21-el9-override: null
     build_target: pulpcore-3.21-el9-build
