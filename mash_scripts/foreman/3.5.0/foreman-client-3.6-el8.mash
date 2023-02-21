@@ -1,0 +1,12 @@
+[foreman-client-3.6-el8]
+rpm_path = %(arch)s/os/Packages
+repodata_path = %(arch)s/os/
+source_path = source/SRPMS
+debuginfo = False
+multilib = False
+multilib_method = devel
+tag = foreman-client-3.6-el8
+inherit = True
+strict_keys = True
+keys = fed77e93
+arches = x86_64
