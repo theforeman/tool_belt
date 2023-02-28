@@ -42,7 +42,7 @@
     :repo: https://github.com/Katello/katello-selinux.git
 :ignores:
 :strict_keys: true
-:gpg_key: 8f5ca95b
+:gpg_key: fed77e93
 :tags:
   - name: katello-candlepin-4.8-el8
     based_off: katello-candlepin-nightly-el8
