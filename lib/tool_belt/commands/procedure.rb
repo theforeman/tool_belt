@@ -72,6 +72,10 @@ module ToolBelt
             short_version_minus_two: "#{major}.#{minor.to_i - 2}"
           }
 
+          if project == 'katello'
+            context['foreman_version'] = 'FOREMAN_VERSION'
+          end
+
           render(project, 'release', context)
         end
       end
