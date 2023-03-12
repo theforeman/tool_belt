@@ -15,7 +15,7 @@
 - [ ] Update manual if applicable for any additional installation steps
 - [ ] Update the [website's release notes section](https://github.com/theforeman/theforeman.org/tree/gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md) in the manual
   - Using the [release notes script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/release_notes.rb): `./scripts/release_notes.rb foreman <%= version %>`
-  - Append CLI release notes taken from the [hammer-cli](https://github.com/theforeman/hammer-cli/blob/<%= short_version %>-stable/doc/release_notes.md) and [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman/blob/<%= short_version %>-stable/doc/release_notes.md) changelogs, in [theforeman.org](https://github.com/theforeman/theforeman.org/trees/gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md) and [docs.theforeman.org](https://github.com/theforeman/foreman-documentation/tree/<%= short_version %>/guides/doc-Release_Notes/topics/foreman-<%= full_version %>.adoc) websites release notes.
+  - Append CLI release notes taken from the [hammer-cli](https://github.com/theforeman/hammer-cli/blob/<%= short_version %>-stable/doc/release_notes.md) and [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman/blob/<%= short_version %>-stable/doc/release_notes.md) changelogs, in [theforeman.org](https://github.com/theforeman/theforeman.org/trees/gh-pages/_includes/manuals/<%= short_version %>/1.2_release_notes.md).
 <% if (is_rc || full_version.end_with?('0')) -%>
   - Headline features: half a dozen important features with a few sentences description each
   - Upgrade warnings: all important notices that users must be aware of before upgrading
