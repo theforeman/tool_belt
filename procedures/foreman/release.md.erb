@@ -93,9 +93,7 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 - [ ] Update [foreman-packaging](https://github.com/theforeman/foreman-packaging) branches
   - [ ] [rpm/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_rpm_packaging)
   - [ ] [deb/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_deb_packaging)
-- [ ] Wait for packages to be built
-  - [ ] [rpm/<%= short_version %>](https://ci.theforeman.org/job/foreman-packaging-rpm-<%= short_version %>-release/)
-  - [ ] [deb/<%= short_version %>](https://ci.theforeman.org/job/foreman-packaging-deb-<%= short_version %>-release/)
+- [ ] Wait for packages to be built using [wait_packaging](https://github.com/theforeman/theforeman-rel-eng/blob/master/wait_packaging) (checks [rpm/<%= short_version %>](https://ci.theforeman.org/job/foreman-packaging-rpm-<%= short_version %>-release/) and [deb/<%= short_version %>](https://ci.theforeman.org/job/foreman-packaging-deb-<%= short_version %>-release/))
 - [ ] Check for outstanding PRs against <%= short_version %> packaging, and merge if possible:
   - [ ] [rpm/<%= short_version%>](https://github.com/theforeman/foreman-packaging/pulls?q=is%3Apr+is%3Aopen+base%3Arpm%2F<%= short_version %>)
   - [ ] [deb/<%= short_version%>](https://github.com/theforeman/foreman-packaging/pulls?q=is%3Apr+is%3Aopen+base%3Adeb%2F<%= short_version %>)
