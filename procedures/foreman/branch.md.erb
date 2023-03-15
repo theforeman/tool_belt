@@ -96,26 +96,15 @@
 
 ## Release Owner
 
-- [ ] Create <%= release %>-stable branches
-  - [ ] [foreman](https://github.com/theforeman/foreman)
-  - [ ] [foreman-installer](https://github.com/theforeman/foreman-installer)
-    - [ ] `bundle exec rake pin_modules && sed -i '/Puppetfile.lock/d' .gitignore && bundle exec librarian-puppet install && git add Puppetfile*`
-  - [ ] [foreman-selinux](https://github.com/theforeman/foreman-selinux)
-  - [ ] [smart-proxy](https://github.com/theforeman/smart-proxy)
-  - [ ] [hammer-cli](https://github.com/theforeman/hammer-cli)
-  - [ ] [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman)
+- [ ] Create <%= release %>-stable branches using [branch_project](https://github.com/theforeman/theforeman-rel-eng/blob/master/branch_project)
+- [ ] Push <%= release %>-stable branches using [branch_push](https://github.com/theforeman/theforeman-rel-eng/blob/master/branch_push)
+- [ ] Ask Hammer maintainer to branch [hammer-cli](https://github.com/theforeman/hammer-cli) and [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman)
 
 The next step should only be done after all branching, including packaging, has completed.
 
-- [ ] Bump versions to <%= develop %>-develop
-  `echo <%= develop %>.0-develop > VERSION`
-  - [ ] [foreman](https://github.com/theforeman/foreman)
-  Also change package.json version field to <%= develop %>.0
-  - [ ] [foreman-installer](https://github.com/theforeman/foreman-installer)
-  - [ ] [foreman-selinux](https://github.com/theforeman/foreman-selinux)
-  - [ ] [smart-proxy](https://github.com/theforeman/smart-proxy)
-  - [ ] [hammer-cli](https://github.com/theforeman/hammer-cli)
-  - [ ] [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman)
+- [ ] Bump versions to <%= develop %>-develop using [develop_branch_bump]
+- [ ] Push version bumps to <%= develop %>-develop using [develop_branch_push]
+- [ ] Ask Hammer maintainer to bump [hammer-cli](https://github.com/theforeman/hammer-cli) and [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman)
 
 - Branch foreman-documentation git repository and update website for new release:
   - [ ] Branch the [github repository](https://github.com/theforeman/foreman-documentation#branching-new-release).
