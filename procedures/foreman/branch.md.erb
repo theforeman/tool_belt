@@ -63,7 +63,7 @@
   - [ ] [Upload](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_gpg)
 - [ ] Publish the key by [exporting](https://github.com/theforeman/theforeman-rel-eng/blob/master/export_gpg_public) the GPG key
   - [ ] Update the website's [security.md](https://github.com/theforeman/theforeman.org/blob/gh-pages/security.md) and create a file in [static/keys](https://github.com/theforeman/theforeman.org/tree/gh-pages/static/keys)
-  - [ ] Create [releases/<%= release %>/RPM-GPG-KEY-foreman](https://yum.theforeman.org/releases/<%= release %>/RPM-GPG-KEY-foreman) on yum.theforeman.org
+  - [ ] Use [upload_yum_gpg](https://github.com/theforeman/theforeman-rel-eng/blob/master/export_gpg_public) to create [releases/<%= release %>/RPM-GPG-KEY-foreman](https://yum.theforeman.org/releases/<%= release %>/RPM-GPG-KEY-foreman) on yum.theforeman.org
   - [ ] Commit the [settings file](https://github.com/theforeman/theforeman-rel-eng/blob/master/releases/foreman/<%= release %>/settings) to the `theforeman-rel-eng` repository
 - [ ] Create new settings files for [client](https://github.com/theforeman/theforeman-rel-eng/blob/master/releases/client/<%= release %>/settings), ensure it has the rights `OSES` list and commit it too.
 - [ ] Create `configs/foreman/<%= release %>.yaml` based on the nightly and previous release. Ensure that any `based_on` entries are filled out and pointing to nightly version of tag.
