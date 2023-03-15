@@ -49,9 +49,6 @@
   - [ ] Copy [website manual content](https://github.com/theforeman/theforeman.org/tree/gh-pages/manuals) from nightly to <%= release %> and update version numbers mentioned in it.
   - [ ] Update installer options section of nightly manual using the [get-params script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/installer/get-params)
   - [ ] Clean up deprecation and upgrade warnings from nightly manual.
-- Branch foreman-documentation git repository and update website for new release:
-  - [ ] Branch the [github repository](https://github.com/theforeman/foreman-documentation#branching-new-release).
-  - [ ] Add the <%= release %> in [index page](https://github.com/theforeman/foreman-documentation/blob/master/web/content/index.adoc) and [versions](https://github.com/theforeman/foreman-documentation/blob/master/web/content/js/versions.js) with RC as a state
 - [ ] Add new languages that are at a [reasonable completion on Transifex](https://www.transifex.com/foreman/foreman/foreman/) to __develop__
 
 ## Release Engineer
@@ -118,6 +115,10 @@ The next step should only be done after all branching, including packaging, has 
   - [ ] [smart-proxy](https://github.com/theforeman/smart-proxy)
   - [ ] [hammer-cli](https://github.com/theforeman/hammer-cli)
   - [ ] [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman)
+
+- Branch foreman-documentation git repository and update website for new release:
+  - [ ] Branch the [github repository](https://github.com/theforeman/foreman-documentation#branching-new-release).
+  - [ ] Add the <%= release %> in [index page](https://github.com/theforeman/foreman-documentation/blob/master/web/content/index.adoc) and [versions](https://github.com/theforeman/foreman-documentation/blob/master/web/content/js/versions.js) with RC as a state
 
 # Preparing build systems: <%= target_date %>
 
