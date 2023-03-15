@@ -10,7 +10,7 @@
 
 ## Installer Maintainer
 
-- [ ] Make releases of installer modules
+- Make releases of installer modules
   - Tier 0 (no dependencies)
     - [ ] [candlepin](https://github.com/theforeman/puppet-candlepin)
     - [ ] [certs](https://github.com/theforeman/puppet-certs)
@@ -86,11 +86,11 @@
 
 ## Release Engineer
 
-- [ ] Branch RPM packaging using [tool_belt](https://github.com/theforeman/tool_belt)
+- Branch RPM packaging using [tool_belt](https://github.com/theforeman/tool_belt)
   - [ ] Clone tags and create build targets in Koji: `bundle exec ./tools.rb koji --commit configs/foreman/<%= release %>.yaml`
     Note that you must use koji client < 1.30 since clone-tag was changed and our Koji server is too old. See https://docs.pagure.org/koji/release_notes/release_notes_1.30/#system-changes for details.
   - [ ] Create a `rpm/<%= release %>` branch in [foreman-packaging](https://github.com/theforeman/foreman-packaging) based on `rpm/develop`
-- [ ] Branch Debian packaging
+- Branch Debian packaging
   - [ ] Clone Debian nightly repos to <%= release %> using [copy/freight instructions](https://projects.theforeman.org/projects/foreman/wiki/Debian_Packaging#Branching-for-release)
   - [ ] Create a `deb/<%= release %>` branch in [foreman-packaging](https://github.com/theforeman/foreman-packaging) based on `deb/develop`
 

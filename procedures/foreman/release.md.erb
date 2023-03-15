@@ -66,14 +66,14 @@
 - [ ] Run `make -C locale tx-update` in foreman <%= short_version %>-stable
 <% end -%>
 - [ ] Update release version similar to [here](https://github.com/theforeman/theforeman-rel-eng/commit/2029a9688da00d9c385c3438dd71b594ba5f728e)
-- [ ] Tag the projects
+- Tag the projects
   - [ ] Create tags [tag_project](https://github.com/theforeman/theforeman-rel-eng/blob/master/tag_project)
   - [ ] Push tags [tag_push](https://github.com/theforeman/theforeman-rel-eng/blob/master/tag_push)
 - [ ] Run the Jenkins [Tarballs Release](https://ci.theforeman.org/job/tarballs-release/) using [release_tarballs](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_tarballs) to create tarballs
 
 ## Release Engineer
 
-- [ ] Sign Tarballs
+- Sign Tarballs
   - [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_tarballs)
   - [ ] [Inspect](https://github.com/theforeman/theforeman-rel-eng/blob/master/inspect_tarballs)
   - [ ] [Sign and upload detached signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_tarballs)
@@ -90,19 +90,19 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 
 [Background documentation](https://projects.theforeman.org/projects/foreman/wiki/Release_Process#Packaging-a-release)
 
-- [ ] Update [foreman-packaging](https://github.com/theforeman/foreman-packaging) branches
+- Update [foreman-packaging](https://github.com/theforeman/foreman-packaging) branches
   - [ ] [rpm/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_rpm_packaging)
   - [ ] [deb/<%= short_version %>](https://github.com/theforeman/theforeman-rel-eng/blob/master/bump_deb_packaging)
 - [ ] Wait for packages to be built using [wait_packaging](https://github.com/theforeman/theforeman-rel-eng/blob/master/wait_packaging) (checks [rpm/<%= short_version %>](https://ci.theforeman.org/job/foreman-packaging-rpm-<%= short_version %>-release/) and [deb/<%= short_version %>](https://ci.theforeman.org/job/foreman-packaging-deb-<%= short_version %>-release/))
-- [ ] Check for outstanding PRs against <%= short_version %> packaging, and merge if possible:
+- Check for outstanding PRs against <%= short_version %> packaging, and merge if possible:
   - [ ] [rpm/<%= short_version%>](https://github.com/theforeman/foreman-packaging/pulls?q=is%3Apr+is%3Aopen+base%3Arpm%2F<%= short_version %>)
   - [ ] [deb/<%= short_version%>](https://github.com/theforeman/foreman-packaging/pulls?q=is%3Apr+is%3Aopen+base%3Adeb%2F<%= short_version %>)
-- [ ] Sign the RPMs in the release
+- Sign the RPMs in the release
   - [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms)
   - [ ] [Sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms)
   - [ ] [Upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures)
   - [ ] [Upload RPMs](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpms)
-- [ ] Sign RPMs for client repos (call scripts with `PROJECT=client`)
+- Sign RPMs for client repos (call scripts with `PROJECT=client`)
   - [ ] [Download](https://github.com/theforeman/theforeman-rel-eng/blob/master/download_rpms)
   - [ ] [Sign](https://github.com/theforeman/theforeman-rel-eng/blob/master/sign_rpms)
   - [ ] [Upload RPM signatures](https://github.com/theforeman/theforeman-rel-eng/blob/master/upload_rpm_signatures)
@@ -127,8 +127,8 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 <% if full_version.end_with?('.0') -%>
 - [ ] Update the `foreman_version` to <%= short_version %> in website's [`_config.yml`](https://github.com/theforeman/theforeman.org/blob/gh-pages/_config.yml) file
 - [ ] Update the [docs.theforeman.org](https://github.com/theforeman/foreman-documentation) [index page](https://github.com/theforeman/foreman-documentation/blob/master/web/content/index.adoc) and [versions](https://github.com/theforeman/foreman-documentation/blob/master/web/content/js/versions.js),
-  - [ ] Update <%= short_version %> as `supported`
-  - [ ] Update <%= short_version_minus_two %> as `unsupported`
+  - Update <%= short_version %> as `supported`
+  - Update <%= short_version_minus_two %> as `unsupported`
 <% end -%>
 - [ ] Announce the release on [Discourse](https://community.theforeman.org/c/release-announcements/8)
 - [ ] Update the topic in #theforeman channel on Libera.Chat
