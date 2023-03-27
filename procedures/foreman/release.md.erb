@@ -36,7 +36,7 @@
   - Update `web/content/index.adoc` and `web/content/js/versions.js` to add <%= short_version %> as a release candidate
 <% end -%>
   - Submit this as a PR
-<% if is_first_Rc -%>
+<% if is_first_rc -%>
 - [ ] [Generate](https://github.com/theforeman/apidocs#adding-new-version) the apipie docs and raise pull request in [apidocs](https://github.com/theforeman/apidocs) repository
 <% else -%>
 - [ ] [Update](https://github.com/theforeman/apidocs#adding-new-version) the apipie docs and place those in the [foreman/<%= short_version %>/apidoc](https://github.com/theforeman/apidocs/tree/gh-pages/foreman/<%= short_version %>/apidoc) directory if any changes were made to the API
