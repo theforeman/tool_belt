@@ -120,18 +120,23 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 
 # Release Owner
 
-<% if (is_rc && !is_first_rc) || is_first_ga -%>
 - [ ] Update [theforeman.org](https://github.com/theforeman/theforeman.org)
+<% if (is_rc && !is_first_rc) || is_first_ga -%>
   - Update installer options section using the [get-params script](https://github.com/theforeman/theforeman.org/blob/gh-pages/scripts/installer/get-params) (Note: this step can only be done after packages are released)
 <% end -%>
+<% if is_first_rc || !is_rc %>
+    - Update [`_config.yml`](https://github.com/theforeman/theforeman.org/blob/gh-pages/_config.yml)
+<% if is_first_ga -%>
+    - Update the `foreman_version` to <%= short_version %>
+<% end -%>
 <% unless is_rc -%>
-  - Update the versions in [version](https://github.com/theforeman/theforeman.org/blob/gh-pages/_includes/version.html) and [latest news](https://github.com/theforeman/theforeman.org/blob/gh-pages/_includes/latest_news.html)
+    - Update `foreman_latest_releases`
 <% end -%>
 <% if is_first_rc -%>
-  - Add the <%= short_version %> in `foreman_versions` list in [`_config.yml`](https://github.com/theforeman/theforeman.org/blob/gh-pages/_config.yml) file
+    - Add the <%= short_version %> in `foreman_versions` list
+<% end -%>
 <% end -%>
 <% if is_first_ga -%>
-  - Update the `foreman_version` to <%= short_version %> in [`_config.yml`](https://github.com/theforeman/theforeman.org/blob/gh-pages/_config.yml) file
 - [ ] Update the [docs.theforeman.org](https://github.com/theforeman/foreman-documentation) [index page](https://github.com/theforeman/foreman-documentation/blob/master/web/content/index.adoc) and [versions](https://github.com/theforeman/foreman-documentation/blob/master/web/content/js/versions.js)
   - Update <%= short_version %> as `supported`
   - Update <%= short_version_minus_two %> as `unsupported`
