@@ -145,6 +145,6 @@ Note: If for some reason there was an issue with the tarballs that required uplo
 - [ ] Update the topic in #theforeman channel on Libera.Chat
 - [ ] Share the release announcement on Twitter
 <% if is_first_ga -%>
-- [ ] After about a week, update `stable` version in [foreman-infra](https://github.com/theforeman/foreman-infra/blob/master/puppet/modules/profiles/manifests/web.pp#L24)
+- [ ] Update `stable` version in [foreman-infra](https://github.com/theforeman/foreman-infra/blob/master/puppet/modules/profiles/manifests/web.pp#L24)
 <% end -%>
 - [ ] Release pipeline will trigger [foreman-plugins-<%= short_version %>-deb-test-pipeline](https://ci.theforeman.org/job/foreman-plugins-<%= short_version %>-deb-test-pipeline/) and [foreman-plugins-<%= short_version %>-rpm-test-pipeline](https://ci.theforeman.org/job/foreman-plugins-<%= short_version %>-rpm-test-pipeline/). These don't block releases but can be used to understand known issues around plugin compatibility with Foreman <%= short_version %>.
