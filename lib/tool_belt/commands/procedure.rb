@@ -105,7 +105,7 @@ module ToolBelt
       end
 
       def procedure_filename(project, procedure)
-        "procedures/#{project}/#{procedure}.md.erb"
+        File.join(__dir__, '..', '..', '..', 'procedures', project, "#{procedure}.md.erb")
       end
 
       def bump_last(version)
