@@ -34,16 +34,10 @@
 
 ## Release Owner
 
-- [ ] Add tool_belt config for new release:
-  - [ ] Create a new yaml file using the nightly Katello config as a template: [tool_belt configs](https://github.com/theforeman/tool_belt/tree/master/configs/katello)
-  - [ ] Manually update the following sections:
-    - [ ] releases: update to current release.  Move the previous 'current' release to prior_releases below.
-    - [ ] prior_releases: Remove the oldest prior_release (check with that release owner first to see if there's a reason it should stay)
-    - [ ] mash_scripts: update Katello version number in all values
-    - [ ] repos: Update branch names to current versions, including any new releases that need to happen
-    - [ ] ignores: Delete all items from this list and start fresh (this will be used for cherry-picks later)
-    - [ ] gpg-key: When it becomes available, get the new Foreman GPG key for the corresponding Foreman version ([example here](https://github.com/theforeman/theforeman-rel-eng/blob/master/releases/foreman/2.5/settings) and put the last 8 characters here
-    - [ ] tags: update Katello version number in all values.  Check the nightly config to see if any tags/repos need to be updated
+- [ ] Create `configs/katello/<%= release %>.yaml` in [tool_belt](https://github.com/theforeman/tool_belt/tree/master/configs/foreman) using [create_mash_configs](https://github.com/theforeman/theforeman-rel-eng/blob/master/create_mash_configs)
+  - [ ] Manually add the following sections:
+    - `:prior_releases`: Add all released versions in the previous y-stream
+    - `:repos`: Update branch names to current versions, including any new releases that need to happen
   - [ ] Open a PR to [tool_belt](https://github.com/theforeman/tool_belt) with the new config file
 - [ ] Ensure stable Pulp release
   - [ ] Update the [katello-repos](https://github.com/theforeman/foreman-packaging/blob/rpm/develop/packages/katello/katello-repos/katello-repos.spec#L1-L2)
