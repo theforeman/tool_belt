@@ -1,0 +1,127 @@
+#!/usr/bin/env ruby
+
+require 'date'
+require 'erb'
+require 'optparse'
+require 'optparse/date'
+require 'ostruct'
+
+def self.render_file(filename, context)
+  erb = ERB.new(File.read(filename), trim_mode: '-')
+  erb.filename = File.expand_path(filename)
+  erb.result(OpenStruct.new(context).instance_eval { binding })
+end
+
+def render(project, procedure, context)
+  filename = procedure_filename(project, procedure)
+  puts render_file(filename, context)
+end
+
+def procedure_filename(project, procedure)
+  File.join(__dir__, 'procedures', project, "#{procedure}.md.erb")
+end
+
+def bump_last(version)
+  parts = version.split('.')
+  (parts[0..-2] + [(parts.last.to_i + 1).to_s]).join('.')
+end
+
+def previous_release(version)
+  parts = version.split('.')
+  (parts[0..-2] + [(parts.last.to_i - 1).to_s]).join('.')
+end
+
+def discourse_username(name)
+  name.start_with?('@') ? name : "@#{name}"
+end
+
+context = {}
+
+global = OptionParser.new do |opts|
+  opts.banner = "Usage: #{opts.program_name} [branch|release]"
+end
+procedures = {
+	'branch' => OptionParser.new do |opts|
+    opts.banner = "Usage: #{opts.program_name} branch --project [foreman|katello] --release [X.Y] --target-date [YYYY-MM-DD] --owner [OWNER] [--engineer [ENGINEER]]"
+
+    opts.on('--project [PROJECT]', ['foreman', 'katello'],
+            'Project to generate branch procedure for') do |t|
+      context[:project] = t
+    end
+    opts.on('--release [RELEASE]', /^\d+\.\d+$/,
+            'Version currently in nightly in the major.minor format, like 3.7') do |release|
+      context[:release] = release
+      context[:develop] = bump_last(release)
+    end
+    opts.on('--target-date [YYYY-MM-DD]', Date,
+            'Target date that the procedure should be completed on') do |date|
+      context[:target_date] = date
+      context[:two_weeks_before] = date - 14
+      context[:one_week_before] = date - 7
+    end
+    opts.on('--owner [OWNER]', "The release owner's username on Discourse") do |t|
+      owner = discourse_username(t)
+      context[:owner] = owner
+      context[:engineer] ||= owner
+    end
+    opts.on('--engineer [ENGINEER]', "The release engineer's username on Discourse") do |t|
+      context[:engineer] = discourse_username(t)
+    end
+	end,
+	'release' => OptionParser.new do |opts|
+    opts.on('--project [PROJECT]', ['foreman', 'katello'],
+            'Project to generate release procedure for') do |project|
+      context[:project] = project
+      if project == 'katello'
+        context[:foreman_version] = 'FOREMAN_VERSION'
+      end
+    end
+    opts.on('--version [FULL_VERSION]',
+            /^(?<version>(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+))([-.](?<extra>rc\d+))?$/,
+            'Version that the branch will have - like 1.20.0-rc1') do |full_version, version, major, minor, patch, extra|
+      debian_full_version = version + (extra ? "~#{extra.downcase}" : '') + '-1'
+      context.merge!(
+        is_rc: !extra.nil?,
+        is_first_rc: extra == 'rc1',
+        is_first_ga: patch == 0 && !is_rc,
+        extra: extra,
+        short_version: "#{major}.#{minor}", # 1.20
+        debian_full_version: debian_full_version, # 1.20.0~rc1-1
+        full_version: full_version, # 1.20.0-rc1
+        version: version, # 1.20.0
+        short_version_minus_two: "#{major}.#{minor.to_i - 2}"
+      )
+    end
+    opts.on('--target-date [YYYY-MM-DD]', Date,
+            'Target date that the procedure should be completed on') do |date|
+      context[:target_date] = date
+      context[:two_weeks_before] = date - 14
+      context[:one_week_before] = date - 7
+    end
+    opts.on('--owner [OWNER]', "The release owner's username on Discourse") do |t|
+      owner = discourse_username(t)
+      context[:owner] = owner
+      context[:engineer] ||= owner
+    end
+    opts.on('--engineer [ENGINEER]', "The release engineer's username on Discourse") do |t|
+      context[:engineer] = discourse_username(t)
+    end
+	end
+}
+
+global.order!
+procedure = ARGV.shift
+if procedures.key?(procedure)
+  command = procedures[procedure]
+  command.order!
+
+  unless context[:project] && context[:target_date] && context[:owner]
+    STDERR.puts command.help
+    exit 1
+  end
+
+  render(context[:project], procedure, context)
+else
+  STDERR.puts global.help
+  exit 1
+end
