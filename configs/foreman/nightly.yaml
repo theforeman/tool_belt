@@ -8,7 +8,6 @@
   - foreman-client-nightly-el9
   - foreman-client-nightly-el8
   - foreman-client-nightly-rhel7
-  - foreman-client-nightly-sles11
   - foreman-client-nightly-sles12
 :tags:
   - name: foreman-nightly-el8
@@ -297,11 +296,3 @@
       foreman-client-nightly-sles12: null
     inherits:
       foreman-client-nightly-sles12: {}
-  - name: foreman-client-nightly-sles11
-    based_off: null
-    arches:
-      - x86_64
-    helper_tags:
-      foreman-client-nightly-sles11: null
-    inherits:
-      foreman-client-nightly-sles11: {}
