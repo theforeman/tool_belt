@@ -123,6 +123,7 @@ The next step should only be done after all branching, including packaging, has 
 
 ## Release Owner
 
+- [ ] Create the <%= release %>.0-rc release procedure in [Development/Releases](https://community.theforeman.org/c/development/releases/20): `PROJECT=foreman VERSION=<%= release %> ./procedure_release <%= target_date %> '<%= owner %>' '<%= engineer %>' | wl-copy`
 - [ ] Create a `Foreman <%= develop %> Schedule and Planning` post on [Development/Releases](https://community.theforeman.org/c/development/releases/20) using [schedule](https://github.com/theforeman/theforeman-rel-eng/blob/master/schedule)
 - [ ] Create Redmine version <%= develop %>.0 and make sure it is shared with subprojects in [foreman](https://projects.theforeman.org/projects/foreman/settings/versions)
 - [ ] Ensure current Foreman deprecations for the next release are removed in __develop__
