@@ -105,6 +105,7 @@ The next step should only be done after all branching, including packaging, has 
 
 ## Release engineer
 
+- [ ] Merge the earlier created [jenkins-jobs PR](https://github.com/theforeman/jenkins-jobs/pulls) that creates the release pipelines
 - [ ] Update foreman-packaging rpm/develop to ensure nightlies build:
   - [ ] rpm/develop:
     - [ ] Update the build tag: `sed -i 's/fm<%= release.tr('.', '_') %>/fm<%= develop.tr('.', '_') %>/g' package_manifest.yaml`
