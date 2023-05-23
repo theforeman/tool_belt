@@ -36,7 +36,9 @@
 <% if is_rc || is_first_ga -%>
 - [ ] Run `make -C locale tx-update` in foreman <%= short_version %>-stable
 <% end -%>
+<% unless is_first_rc -%>
 - [ ] Update release version similar to [here](https://github.com/theforeman/theforeman-rel-eng/commit/2029a9688da00d9c385c3438dd71b594ba5f728e)
+<% end -%>
 - Tag the projects
   - [ ] Create tags [tag_project](https://github.com/theforeman/theforeman-rel-eng/blob/master/tag_project)
   - [ ] Push tags [tag_push](https://github.com/theforeman/theforeman-rel-eng/blob/master/tag_push)
