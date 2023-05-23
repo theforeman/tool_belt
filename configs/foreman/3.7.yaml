@@ -15,7 +15,7 @@
     helper_tags:
       foreman-3.7-el8-override:
     build_target: foreman-3.7-el8-build
-    build_package_group_source_tag: foreman-3.7-el8-build
+    build_package_group_source_tag: foreman-nightly-el8-build
     arches:
       - x86_64
     inherits:
@@ -73,7 +73,7 @@
     helper_tags:
       foreman-plugins-3.7-el8-override:
     build_target: foreman-plugins-3.7-el8-build
-    build_package_group_source_tag: foreman-plugins-3.7-el8-build
+    build_package_group_source_tag: foreman-plugins-nightly-el8-build
     arches:
       - x86_64
     inherits:
