@@ -89,6 +89,7 @@
 
 - [ ] Create <%= release %>-stable branches using [branch_project](https://github.com/theforeman/theforeman-rel-eng/blob/master/branch_project)
 - [ ] Push <%= release %>-stable branches using [branch_push](https://github.com/theforeman/theforeman-rel-eng/blob/master/branch_push)
+- [ ] Branch foreman-documentation git repository and update website for new release by following the [README instructions](https://github.com/theforeman/foreman-documentation#branching-new-release)
 - [ ] Ask Hammer maintainer to branch [hammer-cli](https://github.com/theforeman/hammer-cli) and [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman)
 
 The next step should only be done after all branching, including packaging, has completed.
@@ -96,10 +97,6 @@ The next step should only be done after all branching, including packaging, has 
 - [ ] Bump versions to <%= develop %>-develop using [develop_branch_bump]
 - [ ] Push version bumps to <%= develop %>-develop using [develop_branch_push]
 - [ ] Ask Hammer maintainer to bump [hammer-cli](https://github.com/theforeman/hammer-cli) and [hammer-cli-foreman](https://github.com/theforeman/hammer-cli-foreman)
-
-- Branch foreman-documentation git repository and update website for new release:
-  - [ ] Branch the [github repository](https://github.com/theforeman/foreman-documentation#branching-new-release).
-  - [ ] Add the <%= release %> in [index page](https://github.com/theforeman/foreman-documentation/blob/master/web/content/index.adoc) and [versions](https://github.com/theforeman/foreman-documentation/blob/master/web/content/js/versions.js) with RC as a state
 
 # Preparing build systems: <%= target_date %>
 
