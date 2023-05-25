@@ -12,7 +12,7 @@
 - [ ] Request Hammer CLI Katello release from maintainers
 - [ ] Request Virt Who Configure release from maintainers
 - [ ] Request any other releases as needed from the release owners (consult the `:repos:` section of `configs/katello/<%= short_version %>.yaml`)
-<% unless is_rc && full_version.end_with?('1') -%>
+<% unless is_first_rc -%>
 - [ ] Do Cherry-picks: Clone [tool_belt](https://github.com/theforeman/tool_belt)
   - [ ] If any minor versions of Katello have been added to Redmine since the last cherry-pick, make sure to include them in `prior_releases` in configs/katello/<%= short_version %>.yaml
   - [ ] Run `./tools.rb setup-environment configs/katello/<%= short_version %>.yaml`
@@ -73,7 +73,7 @@
 - [ ] Confirm response that the build succeeded (or if necessary, do more cherry-picks and version bumps repeating the steps above)
 - [ ] Test the install and upgrade documentation for both the Katello server and smart proxy
 - [ ] Post a [release announcement](https://community.theforeman.org/c/release-announcements/8)
-<% if !is_rc && full_version.end_with?('.0') -%>
+<% if is_first_ga -%>
 - [ ] Create and upload [release specific developer stable box](https://github.com/theforeman/forklift/blob/master/packer/README.md#creating-version-specific-katello-devel-boxes)
 - [ ] Remove references to the oldest Katello version from [testKatello.groovy](https://github.com/theforeman/jenkins-jobs/blob/master/theforeman.org/pipelines/test/testKatello.groovy) and [katello-pipelines.yml](https://github.com/theforeman/jenkins-jobs/blob/master/centos.org/jobs/katello-pipelines.yml).
 <% end -%>
