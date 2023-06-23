@@ -4,27 +4,27 @@
 :nightly: false
 :repos: []
 :releases:
-  :3.22:
+  :3.28:
     :redmine_version_id: -1
 :mash_scripts:
-  - pulpcore-3.22-el8
-  - pulpcore-3.22-el9
+  - pulpcore-3.28-el8
+  - pulpcore-3.28-el9
 :strict_keys: true
-:gpg_key: B3CF4900
+:gpg_key: 2622DB63
 :tags:
-  - name: pulpcore-3.22-el8
-    based_off: pulpcore-3.21-el8
+  - name: pulpcore-3.28-el8
+    based_off: pulpcore-3.22-el8
     helper_tags:
-      pulpcore-3.22-el8-override: null
-    build_target: pulpcore-3.22-el8-build
-    build_package_group_source_tag: pulpcore-3.22-el8-build
+      pulpcore-3.28-el8-override: null
+    build_target: pulpcore-3.28-el8-build
+    build_package_group_source_tag: pulpcore-3.28-el8-build
     arches:
       - x86_64
     inherits:
-      pulpcore-3.22-el8-build:
-        pulpcore-3.22-el8-override: 0
-      pulpcore-3.22-el8-override:
-        pulpcore-3.22-el8: 0
+      pulpcore-3.28-el8-build:
+        pulpcore-3.28-el8-override: 0
+      pulpcore-3.28-el8-override:
+        pulpcore-3.28-el8: 0
     external_repos:
       - name: flat-base-el8
         mode: bare
@@ -43,6 +43,8 @@
       - name: flat-llvm-toolset-el8
         mode: bare
       - name: centos8-devel
+        mode: bare
+      - name: centos8-configmanagement-ansible-29
         mode: bare
     build_groups:
       build:
@@ -79,19 +81,19 @@
         - rhpkg-simple
         - rpm-build
         - shadow-utils
-  - name: pulpcore-3.22-el9
-    based_off: pulpcore-3.21-el9
+  - name: pulpcore-3.28-el9
+    based_off: pulpcore-3.22-el9
     helper_tags:
-      pulpcore-3.22-el9-override: null
-    build_target: pulpcore-3.22-el9-build
-    build_package_group_source_tag: pulpcore-3.22-el9-build
+      pulpcore-3.28-el9-override: null
+    build_target: pulpcore-3.28-el9-build
+    build_package_group_source_tag: pulpcore-3.28-el9-build
     arches:
       - x86_64
     inherits:
-      pulpcore-3.22-el9-build:
-        pulpcore-3.22-el9-override: 0
-      pulpcore-3.22-el9-override:
-        pulpcore-3.22-el9: 0
+      pulpcore-3.28-el9-build:
+        pulpcore-3.28-el9-override: 0
+      pulpcore-3.28-el9-override:
+        pulpcore-3.28-el9: 0
     external_repos:
       - name: centos9stream-baseos
         mode: bare
