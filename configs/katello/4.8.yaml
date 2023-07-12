@@ -2,6 +2,8 @@
 :project: katello
 :github_org: katello
 :releases:
+  :4.8.3:
+    :redmine_version_id: 1743
   :4.8.2:
     :redmine_version_id: 1712
   :4.8.1:
