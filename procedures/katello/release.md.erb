@@ -44,6 +44,9 @@
   - [ ] Commit: `git commit -m "Release <%= full_version %>"`
   - [ ] Ensure that the commit above is the _last_ commit and there are no commits after it. This is the commit that will get tagged. (Rearrange commits with `git rebase -i` if needed.)
 - [ ] Once the PR is merged, perform the following in the Katello release branch (the real one, not your fork):
+  - [ ] Create upstream remote: `git remote add upstream https://github.com/Katello/katello.git`
+  - [ ] Fetch upstream remote: `git fetch upstream`
+  - [ ] Checkout upstream release branch: `git checkout upstream/KATELLO-<%= short_version %>`
   - [ ] Tag: `git tag -s -m "Release <%= full_version %>" <%= full_version %>`
   - [ ] Push: `git push --follow-tags` (Must be pushed directly to the release branch, as pull request merges will not preserve tags.)
   - [ ] Generate .mo translation files: `make -C locale all-mo` in the katello directory
