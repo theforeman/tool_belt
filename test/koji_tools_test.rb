@@ -3,7 +3,7 @@ require 'minitest/mock'
 require 'tool_belt'
 require 'mocha/minitest'
 
-class KojiToolsTest < MiniTest::Test
+class KojiToolsTest < Minitest::Test
 
   def setup
     @tools = ToolBelt::KojiTools.new

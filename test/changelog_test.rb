@@ -3,7 +3,7 @@ require 'minitest/mock'
 require 'tool_belt'
 require 'mocha/minitest'
 
-class ChangelogTest < MiniTest::Test
+class ChangelogTest < Minitest::Test
 
   def setup
     issue = Redmine::Issue.new
