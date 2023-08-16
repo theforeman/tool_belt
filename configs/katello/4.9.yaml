@@ -107,6 +107,8 @@
   :4.9.1:
     :redmine_version_id: 1744
 :prior_releases:
+  :4.8.5:
+    :redmine_version_id: 1756
   :4.8.4:
     :redmine_version_id: 1749
   :4.8.3:
