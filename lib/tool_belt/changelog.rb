@@ -4,7 +4,7 @@ require File.join(File.dirname(__FILE__), 'redmine/issue')
 module ToolBelt
   class Changelog
 
-    attr_accessor :issues, :bugs, :features, :release_environment, :config
+    attr_accessor :issues, :bugs, :features, :release_environment, :config, :cached_changelog_content
 
     def initialize(config, release_environment, issues)
       self.config = config
@@ -13,13 +13,26 @@ module ToolBelt
       self.issues = issues
       self.release_environment = release_environment
 
+      cache_existing_changelog
       generate_entries(@issues)
       changelog = format_entries
-      write_changelog(changelog, config.release, release_environment.main_repo, config.code_name)
+      releases = config.releases.keys.map { |key| key.to_s }
+      minor_release = releases.sort_by { |v| v.split('.').map(&:to_i) }.last
+      write_changelog(changelog, minor_release, release_environment.main_repo, config.code_name)
+    end
+
+    def cache_existing_changelog
+      filepath = File.join(release_environment.repo_location(config.project), 'CHANGELOG.md')
+      @cached_changelog_content = File.exist?(filepath) ? File.read(filepath) : ''
+    end
+
+    def issue_already_in_changelog?(issue)
+      @cached_changelog_content.include?(issue.html_url)
     end
 
     def generate_entries(issues)
       issues.select(&:closed?).each do |issue|
+        next if issue_already_in_changelog?(issue)
         generate_entry(issue)
       end
     end
@@ -118,7 +131,7 @@ module ToolBelt
           else
             file.puts("# #{release} (#{Date.today.to_s})")
           end
-          file.write(changelog)
+          file.write(changelog + '\n\n' + @cached_changelog_content)
 
           if File.exist?('CHANGELOG.md.backup')
             File.open('CHANGELOG.md.backup', 'r') { |backup| file.write(backup.read) }
