@@ -196,6 +196,7 @@
         foreman-client-3.8-el8: 0
       foreman-client-3.8-el8: {}
     external_repos:
+      - flat-go-toolset-1-20-el8
       - centos8-baseos
       - centos8-appstream
     build_groups:
