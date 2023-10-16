@@ -85,6 +85,7 @@
     external_repos:
       - flat-ruby27-el8
       - flat-python39-el8
+      - flat-go-toolset-1-20-el8
       - test-flat-el8
     build_groups:
       build:
