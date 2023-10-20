@@ -26,6 +26,7 @@
     external_repos:
       - flat-ruby27-el8
       - flat-python39-el8
+      - flat-nodejs-14-el8
       - test-flat-el8
       - centos8-devel
       - puppetlabs-puppet7-rhel-8
@@ -86,6 +87,7 @@
       - flat-ruby27-el8
       - flat-python39-el8
       - flat-go-toolset-1-20-el8
+      - flat-nodejs-14-el8
       - test-flat-el8
     build_groups:
       build:

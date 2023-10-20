@@ -31,6 +31,7 @@
         katello-thirdparty-el8: 0
     external_repos:
       - flat-ruby27-el8
+      - flat-nodejs-14-el8
       - test-flat-el8
       - centos8-devel
     build_groups:
