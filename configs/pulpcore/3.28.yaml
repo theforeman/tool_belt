@@ -26,8 +26,6 @@
       pulpcore-3.28-el8-override:
         pulpcore-3.28-el8: 0
     external_repos:
-      - name: flat-base-el8
-        mode: bare
       - name: flat-python36-el8
         mode: bare
       - name: flat-python39-el8
@@ -43,6 +41,8 @@
       - name: flat-llvm-toolset-el8
         mode: bare
       - name: flat-postgresql-12-el8
+        mode: bare
+      - name: test-flat-el8
         mode: bare
       - name: centos8-devel
         mode: bare
