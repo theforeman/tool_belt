@@ -1,0 +1,112 @@
+---
+:project: katello
+:github_org: katello
+:nightly: false
+:gpg_key: 56641D7B
+:mash_scripts:
+  - katello-4.11-el8
+  - katello-candlepin-4.11-el8
+:releases:
+  :4.11.0:
+    :redmine_version_id: 1732
+:prior_releases:
+  :4.10.1:
+    :redmine_version_id: 1774
+  :4.9.3:
+    :redmine_version_id: 1775
+:ignores:
+:repos:
+  :katello:
+    :main: true
+    :branch: KATELLO-4.11
+    :repo: https://github.com/Katello/katello.git
+    :version_branch: true
+  :foreman-packaging:
+    :branch: rpm/3.9
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :hammer-cli-katello:
+    :branch: 1.11.z
+    :repo: https://github.com/Katello/hammer-cli-katello.git
+  :katello-host-tools:
+    :branch: 4.3.0
+    :repo: https://github.com/Katello/katello-host-tools.git
+  :katello-certs-tools:
+    :branch: 2.9.0
+    :repo: https://github.com/Katello/katello-certs-tools.git
+  :foreman_virt_who_configure:
+    :branch: 0.5.15
+    :repo: https://github.com/theforeman/foreman_virt_who_configure.git
+  :smart_proxy_container_gateway:
+    :branch: 1.1.0
+    :repo: https://github.com/Katello/smart_proxy_container_gateway.git
+  :katello-selinux:
+    :branch: 5.0.2
+    :repo: https://github.com/Katello/katello-selinux.git
+:tags:
+  - name: katello-candlepin-4.11-el8
+    based_off: katello-candlepin-nightly-el8
+    build_target: katello-4.11-el8-build
+    arches:
+      - x86_64
+  - name: katello-4.11-el8
+    based_off: katello-nightly-el8
+    helper_tags:
+      katello-thirdparty-el8: null
+      katello-4.11-el8-override: null
+    build_target: katello-4.11-el8-build
+    build_package_group_source_tag: katello-4.11-el8-build
+    arches:
+      - x86_64
+    inherits:
+      katello-4.11-el8-build:
+        katello-4.11-el8-override: 0
+        foreman-plugins-4.11-el8: 3
+        foreman-4.11-el8: 5
+      katello-4.11-el8-override:
+        katello-4.11-el8: 0
+      katello-4.11-el8:
+        katello-thirdparty-el8: 0
+    external_repos:
+      - flat-ruby27-el8
+      - flat-nodejs-14-el8
+      - test-flat-el8
+      - centos8-devel
+    build_groups:
+      build:
+        - bash
+        - bzip2
+        - centos-release
+        - coreutils
+        - cpio
+        - diffutils
+        - findutils
+        - foreman-build
+        - gawk
+        - gcc
+        - gcc-c++
+        - grep
+        - gzip
+        - info
+        - make
+        - patch
+        - platform-python
+        - python3-rpm-macros
+        - redhat-rpm-config
+        - rpm-build
+        - sed
+        - shadow-utils
+        - tar
+        - unzip
+        - util-linux
+        - which
+        - xz
+      srpm-build:
+        - bash
+        - centos-release
+        - foreman-build
+        - platform-python
+        - python3-rpm-macros
+        - redhat-rpm-config
+        - rhpkg-simple
+        - rpm-build
+        - shadow-utils
