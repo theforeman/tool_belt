@@ -73,7 +73,7 @@
         - rpm-build
         - shadow-utils
 :strict_keys: true
-:gpg_key: bdcc85ae
+:gpg_key: cbe50fbe
 :repos:
   :katello:
     :main: true
