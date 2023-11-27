@@ -1,0 +1,12 @@
+[pulpcore-3.28-el8]
+rpm_path = %(arch)s/os/Packages
+repodata_path = %(arch)s/os/
+source_path = source/SRPMS
+debuginfo = False
+multilib = False
+multilib_method = devel
+tag = pulpcore-3.28-el8
+inherit = True
+strict_keys = True
+keys = 2622DB63
+arches = x86_64
