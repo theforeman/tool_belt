@@ -1,0 +1,41 @@
+---
+:project: katello
+:github_org: katello
+:nightly: false
+:releases:
+  :4.12.0:
+    :redmine_version_id: 1760
+:prior-releases:
+  :4.11.2:
+    :redmine_version_id: 1806
+  :4.10.1:
+    :redmine_version_id: 1774
+:code_name: Mile 42
+:ignores:
+:repos:
+  :katello:
+    :main: true
+    :branch: KATELLO-4.12
+    :repo: https://github.com/Katello/katello.git
+    :version_branch: true
+  :foreman-packaging:
+    :branch: rpm/3.10
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :hammer-cli-katello:
+    :branch: 1.12.z
+    :repo: https://github.com/Katello/hammer-cli-katello.git
+  :katello-host-tools:
+    :branch: 4.3.0
+    :repo: https://github.com/Katello/katello-host-tools.git
+  :katello-certs-tools:
+    :branch: 2.9.0
+    :repo: https://github.com/Katello/katello-certs-tools.git
+  :foreman_virt_who_configure:
+    :branch: 0.5.20
+    :repo: https://github.com/theforeman/foreman_virt_who_configure.git
+  :smart_proxy_container_gateway:
+    :branch: 1.2.0
+    :repo: https://github.com/Katello/smart_proxy_container_gateway.git
+  :katello-selinux:
+    :branch: 5.0.2
+    :repo: https://github.com/Katello/katello-selinux.git
