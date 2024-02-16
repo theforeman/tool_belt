@@ -65,7 +65,3 @@ The `:ignores` list can be a list of Redmine ticket IDs, or a hash of ticket IDs
       7423:
         - d29a748f6653bcae41272d9faa1aae61a4bcfb6e
       8265:   # ignores all revisions
-
-#### Koji Commands
-
-The koji subcommands are designed to generate tags for different buildroot and tagging configurations that Katello supports today. The commands can generate new nightly buildroots for a given operating system and support automating the creation of buildroots when a new version is being released. See `./tools.rb koji --help` for a list of sub commands and what each does.
