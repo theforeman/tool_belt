@@ -1,0 +1,43 @@
+---
+:project: katello
+:github_org: katello
+:nightly: false
+:releases:
+  :4.13.0:
+    :redmine_version_id: 1788
+:prior-releases:
+  :4.12.1:
+    :redmine_version_id: 1824
+  :4.12.0:
+    :redmine_version_id: 1760
+  :4.11.2:
+    :redmine_version_id: 1806
+:code_name: Sosta
+:ignores:
+:repos:
+  :katello:
+    :main: true
+    :branch: KATELLO-4.13
+    :repo: https://github.com/Katello/katello.git
+    :version_branch: true
+  :foreman-packaging:
+    :branch: rpm/3.11
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :hammer-cli-katello:
+    :branch: 1.13.z
+    :repo: https://github.com/Katello/hammer-cli-katello.git
+  :katello-host-tools:
+    :branch: 4.4.0
+    :repo: https://github.com/Katello/katello-host-tools.git
+  :katello-certs-tools:
+    :branch: 2.10.0
+    :repo: https://github.com/Katello/katello-certs-tools.git
+  :foreman_virt_who_configure:
+    :branch: 0.5.22
+    :repo: https://github.com/theforeman/foreman_virt_who_configure.git
+  :smart_proxy_container_gateway:
+    :branch: 3.0.0
+    :repo: https://github.com/Katello/smart_proxy_container_gateway.git
+  :katello-selinux:
+    :branch: 5.0.2
+    :repo: https://github.com/Katello/katello-selinux.git
