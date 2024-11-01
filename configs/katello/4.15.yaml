@@ -11,6 +11,7 @@
     :redmine_version_id: 1857
   :4.13.0:
     :redmine_version_id: 1788
+:code_name: Macho Man
 :ignores:
 :repos:
   :katello:
