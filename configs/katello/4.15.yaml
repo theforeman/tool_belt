@@ -5,12 +5,12 @@
   :4.15.0:
     :redmine_version_id: 1843
 :prior-releases:
+  :4.14.1:
+    :redmine_version_id: 1878
   :4.14.0:
     :redmine_version_id: 1808
   :4.13.1:
     :redmine_version_id: 1857
-  :4.13.0:
-    :redmine_version_id: 1788
 :code_name: Macho Man
 :ignores:
 :repos:
