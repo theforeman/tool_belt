@@ -1,16 +1,17 @@
 ---
 :project: katello
 :github_org: katello
-:nightly: false:releases:
+:nightly: false
+:releases:
   :4.15.0:
     :redmine_version_id: 1843
 :prior-releases:
+  :4.14.2:
+    :redmine_version_id: 1914
   :4.14.1:
     :redmine_version_id: 1878
   :4.14.0:
     :redmine_version_id: 1808
-  :4.13.1:
-    :redmine_version_id: 1857
 :code_name: Macho Man
 :ignores:
 :repos:
