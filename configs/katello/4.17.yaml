@@ -3,9 +3,13 @@
 :github_org: katello
 :nightly: false
 :releases:
+  :4.17.1:
+    :redmine_version_id: 1963
   :4.17.0:
     :redmine_version_id: 1913
 :prior-releases:
+  :4.16.3:
+    :redmine_version_id: 1969
   :4.16.2:
     :redmine_version_id: 1958
   :4.16.1:
