@@ -9,7 +9,7 @@ module ToolBelt
       self.project_name = config.project
       self.release = config.release
       self.redmine_version_id = config.redmine_version_id
-      self.prior_releases = config.prior_releases || []
+      self.prior_releases = config.send(:"prior-releases") || []
       self.version_priors = config.releases.dig(:"#{release}", :prior_release) || []
     end
 
