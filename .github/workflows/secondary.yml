@@ -1,0 +1,40 @@
+name: artifacts
+
+on: [push, pull_request]
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+    - uses: actions/checkout@v2
+    - id: set-matrix
+      run: echo "::set-output name=matrix::$(basename --suffix=.yaml configs/katello/*.yaml | grep -v 'nightly' | sort --version-sort | tail -n 3 | jq -cRs 'split("\n")[:-1]')"
+  build:
+    needs: prepare
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        version: ${{fromJson(needs.prepare.outputs.matrix)}}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '2.5'
+          bundler-cache: true
+      - name: setup environment
+        run: bundle exec ./tools.rb setup-environment configs/katello/${{ matrix.version }}.yaml
+      - name: generate CHANGELOG
+        run: bundle exec ./tools.rb changelog configs/katello/${{ matrix.version }}.yaml
+      - name: generate cherry-picks
+        env:
+          GITHUB_ACCESS_TOKEN: ${{ secrets.GH_ACCESS_TOKEN }}
+        run: bundle exec ./tools.rb cherry-picks configs/katello/${{ matrix.version }}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: katello-${{ matrix.version }}
+          path: |
+            cherry_picks*
+            repos/katello/**/katello/CHANGELOG.md
