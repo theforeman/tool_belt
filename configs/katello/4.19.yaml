@@ -1,4 +1,42 @@
 ---
 :project: katello
 :github_org: katello
-:nightly: true
+:nightly: false
+:releases:
+  :4.19.0:
+    :redmine_version_id: TBD  # update with actual Redmine version ID
+:prior-releases:
+  :4.18.0:
+    :redmine_version_id: 1943
+  :4.17.1:
+    :redmine_version_id: 1963
+  :4.17.0:
+    :redmine_version_id: 1913
+:ignores:
+:repos:
+  :katello:
+    :main: true
+    :branch: KATELLO-4.19
+    :repo: https://github.com/Katello/katello.git
+    :version_branch: true
+  :foreman-packaging:
+    :branch: rpm/3.17  # verify foreman pairing
+    :repo: https://github.com/theforeman/foreman-packaging.git
+  :hammer-cli-katello:
+    :branch: 1.19.z  # verify
+    :repo: https://github.com/Katello/hammer-cli-katello.git
+  :katello-host-tools:
+    :branch: 4.5.0
+    :repo: https://github.com/Katello/katello-host-tools.git
+  :katello-certs-tools:
+    :branch: 2.10.0
+    :repo: https://github.com/Katello/katello-certs-tools.git
+  :foreman_virt_who_configure:
+    :branch: v0.5.26
+    :repo: https://github.com/theforeman/foreman_virt_who_configure.git
+  :smart_proxy_container_gateway:
+    :branch: 3.4.0  # verify
+    :repo: https://github.com/Katello/smart_proxy_container_gateway.git
+  :katello-selinux:
+    :branch: 5.2.0 
+    :repo: https://github.com/Katello/katello-selinux.git
