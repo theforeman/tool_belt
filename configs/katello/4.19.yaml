@@ -4,7 +4,7 @@
 :nightly: false
 :releases:
   :4.19.0:
-    :redmine_version_id: TBD  # update with actual Redmine version ID
+    :redmine_version_id: 1962
 :prior-releases:
   :4.18.0:
     :redmine_version_id: 1943
@@ -20,10 +20,10 @@
     :repo: https://github.com/Katello/katello.git
     :version_branch: true
   :foreman-packaging:
-    :branch: rpm/3.17  # verify foreman pairing
+    :branch: rpm/3.17
     :repo: https://github.com/theforeman/foreman-packaging.git
   :hammer-cli-katello:
-    :branch: 1.19.z  # verify
+    :branch: 1.19.z
     :repo: https://github.com/Katello/hammer-cli-katello.git
   :katello-host-tools:
     :branch: 4.5.0
