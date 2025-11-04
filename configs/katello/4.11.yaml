@@ -2,10 +2,6 @@
 :project: katello
 :github_org: katello
 :nightly: false
-:gpg_key: 56641D7B
-:mash_scripts:
-  - katello-4.11-el8
-  - katello-candlepin-4.11-el8
 :releases:
   :4.11.0:
     :redmine_version_id: 1732
@@ -42,71 +38,3 @@
   :katello-selinux:
     :branch: 5.0.2
     :repo: https://github.com/Katello/katello-selinux.git
-:tags:
-  - name: katello-candlepin-4.11-el8
-    based_off: katello-candlepin-nightly-el8
-    build_target: katello-4.11-el8-build
-    arches:
-      - x86_64
-  - name: katello-4.11-el8
-    based_off: katello-nightly-el8
-    helper_tags:
-      katello-thirdparty-el8: null
-      katello-4.11-el8-override: null
-    build_target: katello-4.11-el8-build
-    build_package_group_source_tag: katello-4.11-el8-build
-    arches:
-      - x86_64
-    inherits:
-      katello-4.11-el8-build:
-        katello-4.11-el8-override: 0
-        foreman-plugins-4.11-el8: 3
-        foreman-4.11-el8: 5
-      katello-4.11-el8-override:
-        katello-4.11-el8: 0
-      katello-4.11-el8:
-        katello-thirdparty-el8: 0
-    external_repos:
-      - flat-ruby27-el8
-      - flat-nodejs-14-el8
-      - test-flat-el8
-      - centos8-devel
-    build_groups:
-      build:
-        - bash
-        - bzip2
-        - centos-release
-        - coreutils
-        - cpio
-        - diffutils
-        - findutils
-        - foreman-build
-        - gawk
-        - gcc
-        - gcc-c++
-        - grep
-        - gzip
-        - info
-        - make
-        - patch
-        - platform-python
-        - python3-rpm-macros
-        - redhat-rpm-config
-        - rpm-build
-        - sed
-        - shadow-utils
-        - tar
-        - unzip
-        - util-linux
-        - which
-        - xz
-      srpm-build:
-        - bash
-        - centos-release
-        - foreman-build
-        - platform-python
-        - python3-rpm-macros
-        - redhat-rpm-config
-        - rhpkg-simple
-        - rpm-build
-        - shadow-utils

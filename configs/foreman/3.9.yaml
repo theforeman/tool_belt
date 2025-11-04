@@ -2,8 +2,6 @@
 :project: foreman
 :github_org: theforeman
 :nightly: false
-:strict_keys: true
-:gpg_key: 56641D7B
 :repos: []
 :releases:
   :3.9.0:
