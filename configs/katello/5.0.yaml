@@ -3,9 +3,19 @@
 :github_org: katello
 :nightly: false
 :releases:
+  :5.0.2:
+    :redmine_version_id: 2107
+  :5.0.1:
+    :redmine_version_id: 2097
   :5.0.0:
     :redmine_version_id: 2020
 :prior-releases:
+  :4.21.3:
+    :redmine_version_id: 2108
+  :4.21.2:
+    :redmine_version_id: 2101
+  :4.21.1:
+    :redmine_version_id: 2090
   :4.21.0:
     :redmine_version_id: 2011
   :4.20.1:
