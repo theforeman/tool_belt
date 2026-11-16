@@ -40,7 +40,7 @@
     :branch: 2.11.0
     :repo: https://github.com/Katello/katello-certs-tools.git
   :foreman_virt_who_configure:
-    :branch: v5.0.1
+    :branch: v5.0.2
     :repo: https://github.com/theforeman/foreman_virt_who_configure.git
   :smart_proxy_container_gateway:
     :branch: 4.0.4
